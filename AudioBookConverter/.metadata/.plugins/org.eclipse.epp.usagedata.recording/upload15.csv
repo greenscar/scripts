@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,editor,org.eclipse.jdt.ui,3.4.0.v20080603-2000,org.eclipse.jdt.ui.CompilationUnitEditor,1230243218644
+started,bundle,org.eclipse.search,3.4.0.v20080603-2000,org.eclipse.search,1230243223153
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243223358
+opened,view,org.eclipse.search,3.4.0.v20080603-2000,org.eclipse.search.ui.views.SearchView,1230243224678
+activated,view,org.eclipse.search,3.4.0.v20080603-2000,org.eclipse.search.ui.views.SearchView,1230243224709
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243224833
+started,bundle,org.eclipse.emf.common,2.4.0.v200806091234,org.eclipse.emf.common,1230243224863
+executed,command,org.eclipse.search,3.4.0.v20080603-2000,org.eclipse.search.ui.openSearchDialog,1230243224898
+started,bundle,org.eclipse.emf.ecore,2.4.0.v200806091234,org.eclipse.emf.ecore,1230243225298
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243225513
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243225657
+no handler,command,org.eclipse.ui,3.4.0.I20080610-1200,org.eclipse.ui.edit.findReplace,1230243229324
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243231668
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243247497
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243247882
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243254791
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243262320
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243268703
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243269086
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230243270677
+activated,editor,org.eclipse.jdt.ui,3.4.0.v20080603-2000,org.eclipse.jdt.ui.CompilationUnitEditor,1230243271088
+activated,view,org.eclipse.search,3.4.0.v20080603-2000,org.eclipse.search.ui.views.SearchView,1230243272349
+opened,editor,org.eclipse.jdt.ui,3.4.0.v20080603-2000,org.eclipse.jdt.ui.CompilationUnitEditor,1230243272700
+activated,editor,org.eclipse.jdt.ui,3.4.0.v20080603-2000,org.eclipse.jdt.ui.CompilationUnitEditor,1230243272817
+opened,editor,org.eclipse.jdt.ui,3.4.0.v20080603-2000,org.eclipse.jdt.ui.CompilationUnitEditor,1230244480658

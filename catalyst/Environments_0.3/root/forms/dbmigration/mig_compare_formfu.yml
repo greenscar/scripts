@@ -1,0 +1,23 @@
+---
+# Indicator is hte field used to test for form submission
+indicator: submit
+# Start listing the form elements
+elements:
+   # A drop down for ENV1 - dynamically filled from controller
+   - type: Select
+     name: env1
+     label: ENV1
+     
+    # A drop down for ENV2 - dynamically filled from controller
+   - type: Select
+     name: env2
+     label: ENV2
+   
+   - type: Select
+     name: release
+     label: Release
+     
+   # Submit Button
+   - type: Submit
+     name: submit
+     value: Show Migration Diff

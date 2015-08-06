@@ -1,0 +1,22 @@
+(dp1
+S'id'
+p2
+S'INT AUTO_INCREMENT NOT NULL'
+p3
+sS'created_at'
+p4
+S'DATETIME NOT NULL'
+p5
+sS'dbs_id'
+p6
+S'INT, INDEX dbs_id__idx (dbs_id), FOREIGN KEY (dbs_id) REFERENCES dbs(id) ON DELETE CASCADE'
+p7
+sS'updated_at'
+p8
+S'DATETIME NOT NULL'
+p9
+sS'environments_id'
+p10
+S'INT, INDEX environments_id__idx (environments_id), FOREIGN KEY (environments_id) REFERENCES environments(id) ON DELETE CASCADE'
+p11
+s.

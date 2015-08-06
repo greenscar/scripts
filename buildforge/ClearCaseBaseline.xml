@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<!-- (c) Copyright by IBM Corp. and other(s) [2003], 2007 All Rights Reserved. -->
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.021">
+	<template>
+		<!-- Template section, these are parsed out of the final xml and used to populate an 
+		existing environment group if an instance of this interface is linked with a project.
+		However, use the list below to help identify the variables needed to run this interface
+		if you are integrating it during a regular BuildForge step.
+		-->
+		<env name="INT_STREAM" value="int_stream_selecter"/>
+		<env name="VIEW" value="int_view_selecter" />
+		<env name="PROJECT_VOB" value="\ProjectVob" />
+		<env name="CCSERVER" value="logical_server" />
+		<env name="UNIXCLIENT" value="0" />
+	</template>
+	<!-- The 'ByBaseline' entry point will create a new baseline inside your source, and will then diff between the 
+	newly crated baseline, and the baseline created during the previous build of the project -->
+	<interface>
+		<!-- The internal variable 'Changing' is used to store an email template that we will dynamically generate -->
+		<setenv name="Changing" value="Source Changes for this Build:\n" type="temp"/>
+		
+		<!-- Set some platform specific information -->
+		<setenv name="CdCommand" value="cd /view" type="temp" condition="true($UNIXCLIENT==1)"/>
+		<setenv name="CdCommand" value="pushd \\view" type="temp" condition="true($UNIXCLIENT==0)"/>
+		<setenv name="DirSep" value="/" type="temp" condition="true($UNIXCLIENT==1)"/>
+		<setenv name="DirSep" value="\" type="temp" condition="true($UNIXCLIENT==0)"/>
+		
+		<!--  Check for deliveries in progress -->
+		<run command="cc_get_dev_streams" params="$INT_STREAM $PROJECT_VOB" server="$CCSERVER" dir="/" timeout="360"/>
+		
+		<!-- Check for delivered activities since the recommended baseline was created -->
+		<run command="cc_get_rec_bl" params="$INT_STREAM $PROJECT_VOB" server="$CCSERVER" dir="/" timeout="360"/>
+		
+		<!--  Fail project if we find a dev stream with a Deliver in Progress -->
+		<ontempenv name="DELIVER_IN_PROGRESS" state="hastext">
+			<step result="FAIL"/>
+		</ontempenv>
+		
+		<!--  Fail the step if we DO NOT find outstanding deliveries requiring a new baseline -->
+		<ontempenv name="PENDING_DELIVER" state="empty">
+			<step result="FAIL"/>
+		</ontempenv>
+		
+		<!-- Set some notifications for when the build completes -->
+		<onproject result="fail">
+			<notify group="MyChangers" subject="Build $BF_TAG ($CurDate) Failed." message="${Changing}${Changes}"/>
+		</onproject>
+		<onproject result="pass">
+			<notify group="MyChangers" subject="Build $BF_TAG ($CurDate) Passed." message="${Changing}${Changes}"/>
+		</onproject>
+	</interface>
+	<!-- Get dev streams in integration stream -->
+	<command name="cc_get_dev_streams">
+		<execute>
+			cleartool startview $VIEW
+			cleartool lsstream -s -in $1@$2
+		</execute>
+		<resultsblock>
+			<match pattern="^(.*?)_(.*?)$"><!-- Need to tweak this regex pattern for AGE naming conventions on dev streams> -->
+				<run command="cc_deliver_in_progress" params="$1 $2 $PROJECT_VOB" server="$CCSERVER" dir="/" timeout="360"/>
+			</match>
+		</resultsblock>
+	</command>
+	
+	<!-- Check for deliveries in progress -->
+	<command name="cc_deliver_in_progress">
+		<execute>
+			cleartool startview $VIEW
+			cleartool deliver -status -stream ${1}_$2@$3
+		</execute>
+		<resultsblock>
+			<match pattern="^Deliver operation in progress on stream">
+				<!-- <run command="cc_get_rec_bl" params="$INT_STREAM $PROJECT_VOB" server="$CCSERVER" dir="/" timeout="360"/> -->
+				<setenv name="DELIVER_IN_PROGRESS" value="true" type="temp once"/>
+			</match>
+		</resultsblock>
+	</command>
+
+	<!-- Get recommended baseline on $INT_STREAM. -->
+	<command name="cc_get_rec_bl">
+		<execute>
+			cleartool lsstream -l $1@$2
+		</execute>
+		<resultsblock beginpattern="^  recommended baselines(.*?)$" endpattern="^  views(.*?)$">
+			<match pattern="^\s(.*?)@(.*?)$">
+				<run command="cc_chk_pending_deliveries" params="$INT_STREAM $1 $PROJECT_VOB" server="$CCSERVER" dir="/" timeout="360"/>
+			</match>
+		</resultsblock>
+	</command>
+
+	<!-- diffbl against stream and verify outstanding deliveries requiring a new baseline. -->
+	<command name="cc_chk_pending_deliveries">
+		<execute>
+			cleartool diffbl baseline:$2@$3 stream:$1@$3
+		</execute>
+		<resultsblock>
+			<match pattern="^\W>\s(.*?)@(.*?)$">
+				<run command="cc_actdescribe" params="$VIEW $1" server="$CCSERVER" dir="/" timeout="360"/>
+				<setenv name="PENDING_DELIVER" value="true" type="temp once"/>
+			</match>
+		</resultsblock>		
+	</command>
+
+	<!-- This command gathers details about an activity and logs pertinent information to the BuildForge BOM -->
+	<command name="cc_actdescribe">
+		<execute>
+			<!--
+				Need to run this from view context to get changeset.  This is Win32 only.
+				Specify view context in calling <run command ... dir="/" ... /> XML for UNIX
+			-->
+			$CdCommand${DirSep}$1 &amp;&amp; cleartool lsact -l $2
+		</execute>
+		<resultsblock>
+			<!-- look for something resempling an activity identifier -->
+			<match pattern="^activity\s&quot;(.*?)&quot;$">
+				<bom category="Source" section="activities">
+					<field name="ID" text="$1"/>
+				</bom>
+			</match>
+			<!-- look for an activity owner -->
+			<match pattern="owner:\s(.*?\\|)(.*?)$">
+				<bom category="Source" section="activities">
+					<field name="Owner" text="${1}${2}"/>
+				</bom>
+				<!-- add the user to our list of people who contributed changes to this build -->
+				<!-- <adduser group="MyChangers" user="$2"/> -->
+			</match>
+			<!-- look for some stream information -->
+			<match pattern="stream:\s(.*?)$">
+				<bom category="Source" section="activities">
+					<field name="Stream" text="$1"/>
+				</bom>
+			</match>
+			<!-- See if we get a title for this activity -->
+			<match pattern="title:\s(.*?)$">
+				<bom category="Source" section="activities">
+					<field name="Title" text="$1"/>
+				</bom>
+			</match>
+			<!-- This identifies any file/directory changes within the activity -->
+			<match pattern="^\s+([\\/].*?)\@\@(.*?\d)$">
+				<bom category="Source" section="changeset">
+					<field name="Change Set" text="$1@@$2"/>
+				</bom>
+				<!-- add the information to our email template -->
+				<!-- <setenv name="Changes" value="$1\@\@$2" type="temp append\n"/> -->
+			</match>
+		</resultsblock>
+	</command>
+
+	<!-- The bomformat sets up the BuildForge BOM display for the information we gather during this interface execution -->
+	<!-- A category is a top level expandable item -->
+	<bomformat category="Source" title="Activities">
+		<!-- A section defines the columns for blocks of information, a new row of information is added 
+			each time the last field (by order number) in a block is populated with new information -->
+		<section name="activities">
+			<field order="1" name="ID" title="ID"/>
+			<field order="2" name="Owner" title="Owner"/>
+			<field order="3" name="Stream" title="Stream"/>
+			<field order="4" name="Title" title="Title"/>
+		</section>
+		<section name="changeset">
+			<field order="1" name="Change Set" title="Change Set"/>
+		</section>
+	</bomformat>
+</PROJECT_INTERFACE>

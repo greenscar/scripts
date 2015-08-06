@@ -1,0 +1,13 @@
+Package platform 1.0.2
+Meta activestatetags ActiveTcl Public
+Meta entrysource     platform.tcl
+Meta included        platform.tcl
+Meta platform        tcl
+
+Package platform::shell 1.1.1
+Meta activestatetags ActiveTcl Public
+Meta entrysource     shell.tcl
+Meta included        shell.tcl
+Meta platform        tcl
+Meta require         platform
+

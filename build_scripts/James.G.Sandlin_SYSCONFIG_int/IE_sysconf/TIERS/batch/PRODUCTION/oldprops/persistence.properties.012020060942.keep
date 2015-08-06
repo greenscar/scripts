@@ -1,0 +1,17 @@
+timeout.length		= 60
+timeout.frequency	= 0
+
+dbms.userId 		= TIERS2CON
+dbms.password 		= dwellphi 
+#dbms.password 		= trentonburg111
+
+context.factory 	= com.ibm.websphere.naming.WsnInitialContextFactory
+dbms.source 		= jdbc/tiers2DS
+dbms.provider 		= iiop:///
+
+dbms.driver 		= oracle.jdbc.driver.OracleDriver
+#dbms.url 		= jdbc:oracle:thin:@onyx.dhs.state.tx.us:1521:bte3
+dbms.url 		= jdbc:oracle:thin:@coral01.dhs.state.tx.us:1521:pte1a
+dbms.url.coral01=jdbc:oracle:thin:@coral01.dhs.state.tx.us:1521:pte1a
+dbms.url.coral02=jdbc:oracle:thin:@coral02.dhs.state.tx.us:1521:pte1b
+#dbms.url 		= jdbc:oracle:thin:@gold.dhs.state.tx.us:1521:pte4

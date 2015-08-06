@@ -1,0 +1,6 @@
+<p>
+   TT view template name = '[% template.name %]'.
+   <br>
+   Hello, [% username %]!
+   <br>
+</p>

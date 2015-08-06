@@ -1,0 +1,82 @@
+#
+# Author: Barry Searle
+#
+# (C) Copyright IBM Corp. 2004,2006 - All Rights Reserved.
+# DISCLAIMER:
+# The following source code is sample code created by IBM Corporation.
+# This sample code is not part of any standard IBM product and is provided
+# to you solely for the purpose of assisting you in the development of your
+# applications. The code is provided 'AS IS', without warranty or condition
+# of any kind. IBM shall not be liable for any damages arising out of your
+# use of the sample code, even if IBM has been advised of the possibility of
+# such damages.
+#
+# Change History:
+# 2.0 (10feb2006) code cleanup, removed unneeded modules[0] from getModuleID
+# 2.0 (10feb2006) removed getModuleID WebModuleDeployment (works for any module)
+# 1.1 (17nov2004) initial shipped version
+#
+
+
+proc getModuleID { appName moduleName } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+
+        set appID   [$AdminConfig  getid  /Deployment:$appName/]
+        set objID   [$AdminConfig  showAttribute $appID deployedObject]
+        set modules [$AdminConfig  showAttribute  $objID  modules]
+        set modules [lindex $modules 0]
+        log $DEBUG_ "getModuleID: modules=$modules"
+        foreach module $modules {
+                set id [$AdminConfig showAttribute $module uri]
+                if {$id==$moduleName} {
+                        set moduleID $id
+                        log $DEBUG_ "getModuleID: $module"
+                        return $module
+                }
+        }
+        return ""
+}
+
+proc showAttribute { objName objType attName appName} {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+
+        if { "Application" == $objType } {
+                set objID  "[$AdminConfig  showAttribute [$AdminConfig  getid  /Deployment:$objName/] deployedObject]"
+        } else {
+                set objID [getModuleID $appName $objName]
+        }
+
+        if {$attName=="ALL" || $attName=="all" || $attName=="*" || $attName==""} {
+                set att [$AdminConfig show $objID]
+        } else {
+                set att [$AdminConfig showAttribute $objID $attName]
+        }
+        log $INFO_ "showAtribute: $objName $attName=$att"
+}
+
+proc setAttribute { objName objType attName attValue appName showSetResult } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        log $INFO_ "setAttribute: Type=$objType  Name=$objName  App=$appName  Attribute=$attName  Value=$attValue"
+        if { "Application" == $objType } {
+                set objID [$AdminConfig  getid  /Deployment:$objName/]
+                set objID  [$AdminConfig  showAttribute $objID deployedObject]
+        } else {
+                set objID [getModuleID $appName $objName]
+        }
+        #log $DEBUG_ "setAttribute: attName=$attName attValue=$attValue objID=$objID"
+        set settings [list [list $attName $attValue]]
+        if { [llength $objID] >0 } {
+                set modified [$AdminConfig  modify $objID $settings]
+        } else {
+                set modified ""
+                log $ERROR_  "could not get objID for Type=$objType  Name=$objName  Attribute=$attName"
+                return
+        }
+        if { [llength $modified] >0 } {
+                log $INFO_ $modified
+        }
+
+        if { $showSetResult } {
+                showAttribute $objName $objType $attName $appName
+        }
+}

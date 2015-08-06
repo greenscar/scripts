@@ -1,0 +1,106 @@
+<html>
+<head><title>http://127.0.0.1/exam_datetime_db_modify/update_exam_create_time.php</title></head>
+<body>
+<?php
+require_once("classes/DB_Mgr.inc");
+$tbl_dbmgr = new DB_Mgr("web");
+$data_db_mgr = new DB_Mgr("web");
+$data_db_mgr2 = new DB_Mgr("web");
+$tables = array("ses_EXAM_ENTRY",
+					 "ses_WORD_BANK_QUESTION",
+					 "ses_WORD_BANK_CHOICE",
+					 "ses_WORD_BANK",
+					 "ses_TRUE_FALSE",
+					 "ses_SECTION_HEADER",
+					 "ses_MULT_CHOICE",
+					 "ses_MATCHING_QUESTION",
+					 "ses_MATCHING_CHOICE",
+					 "ses_MATCHING",
+					 "ses_FILL_IN_BLANK_SOLUTION",
+					 "ses_FILL_IN_BLANK",
+					 "ses_ESSAY");
+$table2 = "ses_EMP_ANSWER";
+
+echo("<table border=4 align=\"center\">");
+echo("<tr valign=\"middle\"><td><h1> <font color=#FFFFFF>http://127.0.0.1/exam_datetime_db_modify/update_exam_create_time.php</font></h1></td></tr>");
+echo("</table>");
+// UPDATE ALL TABLES
+
+foreach($tables AS $id=>$key)
+{
+	$rowNum = 0;
+   $table = $key;
+	echo("<h3>" . $table . "</H3>");
+	
+   $sel = "SELECT exam_num, exam_loc from " . $table;
+	$nl = $data_db_mgr->query($sel);
+	while($data_db_mgr->fetch_row())
+	{
+		$en = $data_db_mgr->get_field(1);
+		$el = $data_db_mgr->get_field(2);
+		$it = ($en * 10) . $el;
+		$upd = "UPDATE $table set insert_time = $it  where exam_num =  $en and exam_loc =  $el";
+		$data_db_mgr2->query($upd);
+		//echo($upd . "<br>");
+	}
+}
+echo("<hr>");
+// UPDATE ses_EMP_ANSWER
+$q1 = "select et.take_num, et.exam_num, ea.exam_loc from ses_EXAM_TAKE et, ses_EMP_ANSWER ea where et.take_num = ea.take_num";
+$q1 = $data_db_mgr->query($q1);
+while($data_db_mgr->fetch_row())
+{
+	$take_num = $data_db_mgr->get_field(1);
+	$exam_num = $data_db_mgr->get_field(2);
+	$exam_loc = $data_db_mgr->get_field(3);
+	$it = ($exam_num * 10) . $exam_loc;
+	$upd = "UPDATE ses_EMP_ANSWER set insert_time = $it where take_num = $take_num and exam_loc = $exam_loc";
+	$data_db_mgr2->query($upd);
+	//echo($upd . "<BR>");
+}
+$selectTables = "select name from sysobjects where type='U' and name like 'ses_%' order by name DESC";
+$tbl_dbmgr->query($selectTables);
+while($tbl_dbmgr->fetch_row())
+{
+	$table = trim($tbl_dbmgr->get_field(1));
+	echo("<h3>" . $table . "</H3>");
+}
+$tbl_dbmgr->query($selectTables);
+echo("<table border=4 align=\"center\">");
+echo("<tr valign=\"middle\"><td><h1> <font color=#FFFFFF>The Exam Tables</font></h1></td></tr>");
+echo("</table>");
+while($tbl_dbmgr->fetch_row())
+{
+	$rowNum = 0;
+   $table = trim($tbl_dbmgr->get_field(1));
+	echo("<h3>" . $table . "</H3>");
+	
+   $data_db_mgr = new DB_Mgr("web");
+   $query = "SELECT * FROM " . $table;
+   $temp = $data_db_mgr->query($query);
+   echo("<TABLE border=1 align=center>");
+	for ( $f = 1 ; $f <= $data_db_mgr->get_num_fields(); $f++ ){
+      $name = $data_db_mgr->get_field_name($f);
+		echo "<td class=\"header\">".$name."</td>";
+	}
+	
+   while($data_db_mgr->fetch_row())
+   {
+	//while($row = mssql_fetch_row($temp)){
+		echo("<tr class=\"");
+		if($rowNum++%2 == 0){
+			echo("even\">");
+		}
+      else
+         echo("odd\">");
+      for($x=1; $x <= $data_db_mgr->get_num_fields(); $x++)
+      {
+			echo("<TD class=\"data\">" . $data_db_mgr->get_field($x) . "</TD>");
+		}
+		echo("</tr>");
+	}
+	echo("</TABLE>");
+}
+?>
+</BODY>
+</HTML>

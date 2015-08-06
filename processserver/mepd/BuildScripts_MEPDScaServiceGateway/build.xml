@@ -1,0 +1,401 @@
+<project name="buildAll" basedir="." default="buildAll">
+
+	<path id="prj.class.path">
+		<fileset dir="${basedir}">
+			<include name="${basedir}/lib/*.jar" />
+		</fileset>		
+	</path>
+	
+	<property file="${basedir}/props/taskdef.properties"/>
+	<property file="${basedir}/props/import.properties"/>
+  	<property file="${basedir}/props/Endpoints.properties"/>
+
+	<taskdef name="servicedeploy" classname="${was.ServiceDeployTask}" >
+		 <classpath>
+		   <pathelement path="${was.home}/lib/*.jar"/>	   
+		 </classpath>
+	</taskdef>
+
+	 <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	 <taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
+	   	      
+	  <property environment="buildenv" />
+	  <property name="automation.home" value="${buildenv.AUTOMATION_HOME}" />
+	  <property name="clearcase.view" value="${buildenv.CLEARCASE_VIEW}" />
+	  <property name="lib.clearcase.view" value="${buildenv.LIB_CLEARCASE_VIEW}" />
+	  <property name="work.dir" value="${buildenv.WORK_DIR}" />
+	  <property name="module.list" value="${buildenv.MODULE_LIST}" />
+	  <property name="output.dir.zip" value="${buildenv.OUTPUT_DIR_ZIP}" />
+	  <property name="output.dir.ear" value="${buildenv.OUTPUT_DIR_EAR}" />
+	  <property name="service.deploy" value="${buildenv.SERVICEDEPLOY}" />
+	  <property name="source.dir" value="${buildenv.SOURCE}" />
+	  <property name="env.dir" value="${buildenv.ENVIRONMENT}" />
+	                
+	  <target name="buildAll" depends="clean,init"  description="Builds all integration modules">
+		      <foreach list="${module.list}" 
+	               target="buildModule"
+	               param="module.name"
+	      	       delimiter=","/>
+	  	
+	  	  </target>
+	
+	  <target name="clean" description="Deletes following directories: SCA module Source Dir, SCA module Zip Dir, SCA module EAR Dir">
+	     <echo message="Delete folders: ${source.dir} ${output.dir.zip} ${output.dir.ear}" />
+	     <delete dir="${source.dir}"/>
+	     <delete dir="${output.dir.zip}"/>
+	     <delete dir="${output.dir.ear}"/>
+	  </target>
+	
+	  <target name="init" description="Creates following directories: SCA module Source Dir, SCA module Zip Dir, SCA module EAR Dir">
+	      <echo message="Create folders: ${source.dir} ${output.dir.zip} ${output.dir.ear}" />
+	      <mkdir dir="${source.dir}"/>
+	     <mkdir dir="${output.dir.zip}"/>
+	     <mkdir dir="${output.dir.ear}"/>
+	    
+	     
+	  </target>
+	
+	  <target name="buildModule" description="Builds the selected Integration module">
+	     <property name="project.name" value="${module.name}" />
+	     <echo message="Build module: ${module.name}" />          
+	     <antcall target="getProject" />
+	     <antcall target="createZip" />
+	     <antcall target="createEAR" />
+	  </target>
+	
+	  <target name="getProject" description="Copy projects in SCA module Source Dir from ClearCase View Dir">
+	        <echo message="Copy ${project.name} To ${source.dir}" />
+	        	        
+	        <if>
+		       <or>
+		       <equals arg1="${project.name}" arg2="SharedServicesLib" />
+		       <equals arg1="${project.name}" arg2="SharedUtilProj" />
+		       </or>
+		       <then>
+		       		<copy todir="${source.dir}\${project.name}">
+				      <fileset dir="${lib.clearcase.view}\${project.name}"/>
+	        		</copy>
+		       </then>
+		<elseif>
+			<equals arg1="${project.name}" arg2="MEPDScaServiceGateway" />
+			<then>
+				<copy todir="${source.dir}\${project.name}">
+					<fileset dir="${clearcase.view}\${project.name}"/>
+	        		</copy>
+	        		
+	        		<antcall target="Change.Endpoints" />
+			</then>
+		
+		</elseif>
+	        <else>
+	        <copy todir="${source.dir}\${project.name}">
+	           <fileset dir="${clearcase.view}\${project.name}"/>
+	        </copy>
+	        </else>
+	        </if>
+	  </target>
+	  
+	  <target name="Change.Endpoints" description="Changing the endpoints to the corresponding environment">
+	   		      <foreach list="${import.file}" 
+	   	               target="xmltask.replace.text"
+	   	               param="importFile"
+	   	      	       delimiter=","/>
+	   	  	
+	  	  	  </target>
+	    
+	    
+	  <target name = "environment">
+	  <echo message="Changing the Endpoints to the ${env.dir} Environment " />
+	  <property name="xml.xpath" value="/scdl:import/esbBinding//@endpoint" /> 
+	  	<if>
+	  		<equals arg1="${env.dir}" arg2="Cola" />
+	  		<then>
+	  		
+	  		      <property name="ArApplicationRegistrationImport1" value="${eaws.UAT2.endpoint.ArApplicationRegistrationImport1}" />
+	  		      <property name="ArRegisterIndividualImport1" value="${eaws.UAT2.endpoint.ArRegisterIndividualImport1}" />
+	  		      <property name="ArRegisterProgramImport1" value="${eaws.UAT2.endpoint.ArRegisterProgramImport1}" />
+	  		      <property name="CaseServiceImport1" value="${eaws.UAT2.endpoint.CaseServiceImport1}" />
+	  		      <property name="ConversionServiceImport1" value="${eaws.UAT2.endpoint.ConversionServiceImport1}" />
+	  		      <property name="DADSMEPDInquiryImport1" value="${eaws.UAT2.endpoint.DADSMEPDInquiryImport1}" />
+	  		      <property name="DcPregnanciesLUWImport1" value="${eaws.UAT2.endpoint.DcPregnanciesLUWImport1}" />
+	  		      <property name="DeliveredServiceLUWImport1" value="${eaws.UAT2.endpoint.DeliveredServiceLUWImport1}" />
+	  		      <property name="EdgServiceImport1" value="${eaws.UAT2.endpoint.EdgServiceImport1}" />
+	  		      <property name="IndividualServiceImport1" value="${eaws.UAT2.endpoint.IndividualServiceImport1}" />
+	  		      <property name="IndividualServiceWSATImport1" value="${eaws.UAT2.endpoint.IndividualServiceWSATImport1}" />
+	  		      <property name="IndvLivingArrangementFacilityLUWImport1" value="${eaws.UAT2.endpoint.IndvLivingArrangementFacilityLUWImport1}" />
+	  		      <property name="LTSSCopaypayOverrideLUWImport1" value="${eaws.UAT2.endpoint.LTSSCopaypayOverrideLUWImport1}" />
+	  		      <property name="LTSSEligibilityPeriodsLUWImport1" value="${eaws.UAT2.endpoint.LTSSEligibilityPeriodsLUWImport1}" />
+	  		      <property name="LTSSMedicaidWaiverLUWImport1" value="${eaws.UAT2.endpoint.LTSSMedicaidWaiverLUWImport1}" />
+	  		      <property name="LTSSSummaryLUWImport1" value="${eaws.UAT2.endpoint.LTSSSummaryLUWImport1}" />
+	  		      <property name="TOSServiceImport1" value="${eaws.UAT2.endpoint.TOSServiceImport1}" />
+	  		      
+	  		      
+	  		</then>
+	  		<elseif>
+	  		 	<equals arg1="${env.dir}" arg2="Mark" />
+					  		<then>
+					  		      
+					  		      <property name="ArApplicationRegistrationImport1" value="${eaws.Mark.endpoint.ArApplicationRegistrationImport1}" />
+					  		      <property name="ArRegisterIndividualImport1" value="${eaws.Mark.endpoint.ArRegisterIndividualImport1}" />
+					  		      <property name="ArRegisterProgramImport1" value="${eaws.Mark.endpoint.ArRegisterProgramImport1}" />
+					  		      <property name="CaseServiceImport1" value="${eaws.Mark.endpoint.CaseServiceImport1}" />
+					  		      <property name="ConversionServiceImport1" value="${eaws.Mark.endpoint.ConversionServiceImport1}" />
+					  		      <property name="DADSMEPDInquiryImport1" value="${eaws.Mark.endpoint.DADSMEPDInquiryImport1}" />
+					  		      <property name="DcPregnanciesLUWImport1" value="${eaws.Mark.endpoint.DcPregnanciesLUWImport1}" />
+					  		      <property name="DeliveredServiceLUWImport1" value="${eaws.Mark.endpoint.DeliveredServiceLUWImport1}" />
+					  		      <property name="EdgServiceImport1" value="${eaws.Mark.endpoint.EdgServiceImport1}" />
+					  		      <property name="IndividualServiceImport1" value="${eaws.Mark.endpoint.IndividualServiceImport1}" />
+					  		      <property name="IndividualServiceWSATImport1" value="${eaws.Mark.endpoint.IndividualServiceWSATImport1}" />
+					  		      <property name="IndvLivingArrangementFacilityLUWImport1" value="${eaws.Mark.endpoint.IndvLivingArrangementFacilityLUWImport1}" />
+					  		      <property name="LTSSCopaypayOverrideLUWImport1" value="${eaws.Mark.endpoint.LTSSCopaypayOverrideLUWImport1}" />
+					  		      <property name="LTSSEligibilityPeriodsLUWImport1" value="${eaws.Mark.endpoint.LTSSEligibilityPeriodsLUWImport1}" />
+					  		      <property name="LTSSMedicaidWaiverLUWImport1" value="${eaws.Mark.endpoint.LTSSMedicaidWaiverLUWImport1}" />
+					  		      <property name="LTSSSummaryLUWImport1" value="${eaws.Mark.endpoint.LTSSSummaryLUWImport1}" />
+					  		      <property name="TOSServiceImport1" value="${eaws.Mark.endpoint.TOSServiceImport1}" />
+					  		      
+					  		      
+	  						</then>
+	  		</elseif>
+	  		
+	  		<elseif>
+				  		 	<equals arg1="${env.dir}" arg2="Last" />
+								  		<then>
+								  		      
+								  		      <property name="ArApplicationRegistrationImport1" value="${eaws.LAST.endpoint.ArApplicationRegistrationImport1}" />
+								  		      <property name="ArRegisterIndividualImport1" value="${eaws.LAST.endpoint.ArRegisterIndividualImport1}" />
+								  		      <property name="ArRegisterProgramImport1" value="${eaws.LAST.endpoint.ArRegisterProgramImport1}" />
+								  		      <property name="CaseServiceImport1" value="${eaws.LAST.endpoint.CaseServiceImport1}" />
+								  		      <property name="ConversionServiceImport1" value="${eaws.LAST.endpoint.ConversionServiceImport1}" />
+								  		      <property name="DADSMEPDInquiryImport1" value="${eaws.LAST.endpoint.DADSMEPDInquiryImport1}" />
+								  		      <property name="DcPregnanciesLUWImport1" value="${eaws.LAST.endpoint.DcPregnanciesLUWImport1}" />
+								  		      <property name="DeliveredServiceLUWImport1" value="${eaws.LAST.endpoint.DeliveredServiceLUWImport1}" />
+								  		      <property name="EdgServiceImport1" value="${eaws.LAST.endpoint.EdgServiceImport1}" />
+								  		      <property name="IndividualServiceImport1" value="${eaws.LAST.endpoint.IndividualServiceImport1}" />
+								  		      <property name="IndividualServiceWSATImport1" value="${eaws.LAST.endpoint.IndividualServiceWSATImport1}" />
+								  		      <property name="IndvLivingArrangementFacilityLUWImport1" value="${eaws.LAST.endpoint.IndvLivingArrangementFacilityLUWImport1}" />
+								  		      <property name="LTSSCopaypayOverrideLUWImport1" value="${eaws.LAST.endpoint.LTSSCopaypayOverrideLUWImport1}" />
+								  		      <property name="LTSSEligibilityPeriodsLUWImport1" value="${eaws.LAST.endpoint.LTSSEligibilityPeriodsLUWImport1}" />
+								  		      <property name="LTSSMedicaidWaiverLUWImport1" value="${eaws.LAST.endpoint.LTSSMedicaidWaiverLUWImport1}" />
+								  		      <property name="LTSSSummaryLUWImport1" value="${eaws.LAST.endpoint.LTSSSummaryLUWImport1}" />
+								  		      <property name="TOSServiceImport1" value="${eaws.LAST.endpoint.TOSServiceImport1}" />
+								  		      
+								  		      
+				  						</then>
+	  		</elseif>
+	  		
+	  		<elseif>
+				  		 	<equals arg1="${env.dir}" arg2="Prod" />
+								  		<then>
+								  		      
+								  		      <property name="ArApplicationRegistrationImport1" value="${eaws.Prod.endpoint.ArApplicationRegistrationImport1}" />
+								  		      <property name="ArRegisterIndividualImport1" value="${eaws.Prod.endpoint.ArRegisterIndividualImport1}" />
+								  		      <property name="ArRegisterProgramImport1" value="${eaws.Prod.endpoint.ArRegisterProgramImport1}" />
+								  		      <property name="CaseServiceImport1" value="${eaws.Prod.endpoint.CaseServiceImport1}" />
+								  		      <property name="ConversionServiceImport1" value="${eaws.Prod.endpoint.ConversionServiceImport1}" />
+								  		      <property name="DADSMEPDInquiryImport1" value="${eaws.Prod.endpoint.DADSMEPDInquiryImport1}" />
+								  		      <property name="DcPregnanciesLUWImport1" value="${eaws.Prod.endpoint.DcPregnanciesLUWImport1}" />
+								  		      <property name="DeliveredServiceLUWImport1" value="${eaws.Prod.endpoint.DeliveredServiceLUWImport1}" />
+								  		      <property name="EdgServiceImport1" value="${eaws.Prod.endpoint.EdgServiceImport1}" />
+								  		      <property name="IndividualServiceImport1" value="${eaws.Prod.endpoint.IndividualServiceImport1}" />
+								  		      <property name="IndividualServiceWSATImport1" value="${eaws.Prod.endpoint.IndividualServiceWSATImport1}" />
+								  		      <property name="IndvLivingArrangementFacilityLUWImport1" value="${eaws.Prod.endpoint.IndvLivingArrangementFacilityLUWImport1}" />
+								  		      <property name="LTSSCopaypayOverrideLUWImport1" value="${eaws.Prod.endpoint.LTSSCopaypayOverrideLUWImport1}" />
+								  		      <property name="LTSSEligibilityPeriodsLUWImport1" value="${eaws.Prod.endpoint.LTSSEligibilityPeriodsLUWImport1}" />
+								  		      <property name="LTSSMedicaidWaiverLUWImport1" value="${eaws.Prod.endpoint.LTSSMedicaidWaiverLUWImport1}" />
+								  		      <property name="LTSSSummaryLUWImport1" value="${eaws.Prod.endpoint.LTSSSummaryLUWImport1}" />
+								  		      <property name="TOSServiceImport1" value="${eaws.Prod.endpoint.TOSServiceImport1}" />
+								  		      
+								  		      
+				  						</then>
+	  		</elseif>
+	  		
+	  		<else>
+	  			<echo message="Environment  you Specified doesn't exist..Enter the correct Environment" />
+	  		</else>
+	  	</if>
+	  </target>
+	  
+	  
+	  <target name="xmltask.replace.text" depends = "environment">
+	  
+	  
+	   <if>
+	     
+	   
+	   	<equals arg1="${importFile}" arg2="ArApplicationRegistrationImport1" />
+	  	     <then>
+	  		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	  		<replace path="${xml.xpath}" withText="${ArApplicationRegistrationImport1}"/>
+	  		</xmltask> 
+	       	    </then>
+	   
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="ArRegisterIndividualImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${ArRegisterIndividualImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="ArRegisterProgramImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${ArRegisterProgramImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="CaseServiceImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${CaseServiceImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="ConversionServiceImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${ConversionServiceImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="DADSMEPDInquiryImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${DADSMEPDInquiryImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="DcPregnanciesLUWImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${DcPregnanciesLUWImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="DeliveredServiceLUWImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${DeliveredServiceLUWImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="EdgServiceImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${EdgServiceImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="IndividualServiceImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${IndividualServiceImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="IndividualServiceWSATImport" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${IndividualServiceWSATImport1}"/>
+	   		</xmltask>
+	             </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="LTSSCopaypayOverrideLUWImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${LTSSCopaypayOverrideLUWImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="LTSSEligibilityPeriodsLUWImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${LTSSEligibilityPeriodsLUWImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="LTSSMedicaidWaiverLUWImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${LTSSMedicaidWaiverLUWImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="LTSSSummaryLUWImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${LTSSSummaryLUWImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="TOSServiceImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${TOSServiceImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   <elseif>
+	    	<equals arg1="${importFile}" arg2="IndvLivingArrangementFacilityLUWImport1" />
+	   	     <then>
+	   		<xmltask source="${source.dir}\MEPDScaServiceGateway\${importFile}.import" dest = "${source.dir}\MEPDScaServiceGateway\${importFile}.import"> 
+	   		<replace path="${xml.xpath}" withText="${IndvLivingArrangementFacilityLUWImport1}"/>
+	   		</xmltask> 
+	        	    </then>
+	   </elseif>
+	   
+	   </if>
+ </target>
+	
+	   <target name="getDependencyList" description="Get the list of dependencies for the selected Integration module">
+	     <echo message="Get the list of dependencies for module: ${module.name}" />  
+	     <loadfile property="dependency.list" srcFile="${source.dir}/${module.name}/modulerefs.txt" />
+	  </target>
+	
+	  <target name="getDependencies" depends="getDependencyList" description="Invoke the target 'getProject' for every dependent project of the selected integration module">
+	     <echo message="Get the projects from the following list: ${dependency.list}" />  
+	       <foreach list="${dependency.list}" 
+	              	  target="getProject"
+		          param="project.name"
+	              delimiter="?"/>
+	  </target>
+	
+	   <target name="createZip" depends="getDependencies" description="Create ZIP of the selected Integration module">
+	      <echo message="Create zip for the module: ${module.name}" />
+		<zip destfile="${output.dir.zip}/${module.name}.zip"
+	              basedir="${source.dir}" 
+		           />
+		           <delete dir="${source.dir}"/>
+		           <mkdir dir="${source.dir}"/>
+	   </target>
+	
+	   <target name="createEAR" description="Create EAR of the selected Integration module">
+	      <echo message="Run service deploy for ${module.name}" />
+	      <!-- Run service deploy command to generate an ear file to deploy to a WebSphere Process Server -->
+	      	         	 <mkdir dir="${work.dir}"/>
+		 		<servicedeploy scaModule="${output.dir.zip}/${module.name}.zip"
+		 			ignoreErrors="false"
+		 			outputApplication="${output.dir.ear}/${module.name}.ear"
+		 			workingDirectory="${work.dir}"
+		 			noJ2eeDeploy="false"
+					cleanStagingModules="true"/>
+				<delete dir="${work.dir}"/>
+			     
+	   </target>
+	
+</project>

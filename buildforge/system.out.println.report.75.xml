@@ -1,0 +1,115 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <!-- Template section, these are parsed out of the final xml and used to populate an 
+      existing environment group if an instance of this interface is linked with a project.
+      However, use the list below to help identify the variables needed to run this interface
+      if you are integrating it during a regular BuildForge step.
+      -->
+   
+      <env name="APP"     value="required"/>
+      <env name="RELEASE_NUM" value="required"/>
+      <env name="SOURCE_STREAM" value="required"/>
+      <env name="BF_SERVER"   value="iedaau020_wasadmin"/>
+      <env name="SYSCONFIG_VIEW"    value="required"/>
+      <env name="BF_SERVER_ROOT" value="required"/>
+   </template>
+   
+   <interface>  
+      <setenv name="VIEW_NAME" value="${APP}_${RELEASE_NUM}_${SOURCE_STREAM}" type="temp"/>
+	   <run command="cleanssp" params="$VIEW_NAME" server="$BF_SERVER" timeout="600" condition="true('$APP' eq 'SSP')"/>
+      <run command="cleanstp" params="$VIEW_NAME" server="$BF_SERVER" timeout="600" condition="true('$APP' eq 'STP')"/>
+      <run command="cleantlm" params="$VIEW_NAME" server="$BF_SERVER" timeout="600" condition="true('$APP' eq 'TLM')"/>
+   </interface>
+   
+   <command name="echo">
+      <execute>
+         echo '$1'
+      </execute>
+      <resultsblock>
+         <match pattern="(.*)">
+            <setenv name="x" value="${1}" type="temp"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="figure_app">
+      <execute>
+         echo '$1'
+      </execute>
+      <resultsblock>
+         <match pattern="(SSP)">
+            <setenv name="app" value="SSP" type="temp"/>
+         </match>
+         <match pattern="(STP)">
+            <setenv name="app" value="STP" type="temp"/>
+         </match>
+         <match pattern="(TLM)">
+            <setenv name="app" value="TLM" type="temp"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="cleantlm">
+      <execute>
+         ${loadprofile}
+         /usr/bin/perl ${BF_ROOT}/${SYSCONFIG_VIEW}/pbad/scripts/perl/system_out_clean.pl --stream=$1 --action=replace
+      </execute>
+      <resultsblock>
+         <match pattern="((^\s)*)">
+            <bom category="tlmsop" section="tlmfiles">
+               <field name="tlmfile" text="$_"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+
+   <command name="cleanstp">
+      <execute>
+         ${loadprofile}
+         /usr/bin/perl ${BF_ROOT}/${SYSCONFIG_VIEW}/pbad/scripts/perl/system_out_clean.pl --stream=$1 --action=replace
+      </execute>
+      <resultsblock>
+         <match pattern="((^\s)*)">
+            <bom category="stpsop" section="stpfiles">
+               <field name="stpfile" text="$_"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>      
+   
+   <command name="cleanssp">
+      <execute>
+         ${loadprofile}
+         /usr/bin/perl ${BF_ROOT}/${SYSCONFIG_VIEW}/pbad/scripts/perl/system_out_clean.pl --stream=$1 --action=replace
+      </execute>
+      <resultsblock>
+         <match pattern="((^\s)*)">
+            <bom category="sspsop" section="sspfiles">
+               <field name="sspfile" text="$_"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>      
+   
+   <bomformat category="sspsop" title="STP System.out.printlns">
+      <section name="sspfiles">
+         <field order="1" name="sspfile" title="Files"/>         
+      </section>
+   </bomformat>
+   
+   <bomformat category="stpsop" title="STP System.out.printlns">
+      <section name="stpfiles">
+         <field order="1" name="stpfile" title="Files"/>         
+      </section>
+   </bomformat>
+   
+   <bomformat category="tlmsop" title="TLM System.out.printlns">
+      <section name="tlmfiles">
+         <field order="1" name="tlmfile" title="Files"/>         
+      </section>
+   </bomformat>
+   
+   
+</PROJECT_INTERFACE>
+

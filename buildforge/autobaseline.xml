@@ -1,0 +1,78 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <!-- Template section, these are parsed out of the final xml and used to populate an 
+      existing environment group if an instance of this interface is linked with a project.
+      However, use the list below to help identify the variables needed to run this interface
+      if you are integrating it during a regular BuildForge step.
+      -->
+      <env name="VIEW_NAME"        value="view"/>
+      <env name="BF_SERVER"   value="iedaau020_wasadmin"/>
+      
+   </template>
+   
+   <interface>
+      <run command="set_app_rel_src" params="$VIEW_NAME" server="${BF_SERVER}" dir="/" timeout="360"/>
+      <run command="set_prev_source_stream" params="$PREV_SOURCE_STREAM" server="${BF_SERVER}" dir="/" timeout="360"/>
+      <!--
+      <run command="clean_system_outs" params="$APP $VIEW $ACTION" server="$BF_SERVER" dir="${PBAD_DIR}/scripts/perl" timeout="600"/>
+      -->
+      <run command="printit" params="$PREV_SOURCE_STREAM" server="${BF_SERVER}" dir="/" timeout="360"/>
+   </interface>
+   
+   <command name="set_app_rel_src">
+      <execute>
+         print $1
+      </execute>
+      <resultsblock>
+         <match pattern="^([a-zA-Z]+)_(\d\d\.\d\.\d\.\d)_([A-Za-z]{3})$">
+            <setenv name="APPLICATION"          value="$1"/>
+            <setenv name="RELEASE"              value="$2"/>
+            <setenv name="SOURCE_STREAM"   value="$3" />
+         </match>
+      </resultsblock>      
+   </command>
+   
+   <command name="set_prev_source_stream">
+      <execute>
+         if [ $1 eq "SIT" ]; then
+               print "DEV"
+            elsif [ $1 eq "UAT" ]; then
+               print "SIT"
+            else; then
+               print "DEV"
+         fi
+      </execute>
+      <resultsblock>
+         <match pattern="^([A-Za-z]{3})$">
+            <setenv name="PREV_SOURCE_STREAM"   value="$1" />
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="print_it">
+      <execute>
+         print "print_it = " . $1
+      </execute>
+   </command>
+   
+   <command name="clean_system_outs">
+      <execute>
+         /usr/bin/perl system_out_clean.pl --stream=$2 --action=$3
+      </execute>
+      <resultsblock>
+         <match pattern="^">
+            <bom category="System.out.printlns" section="File Name">
+               <field name="file" text="$_"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>   
+   
+   <bomformat category="System.out.printlns" title="System.out.printlns">
+      <section name="File Name" expandable="true">
+         <field order="1" name="file" title="Files"/>         
+      </section>
+   </bomformat>
+</PROJECT_INTERFACE>
+

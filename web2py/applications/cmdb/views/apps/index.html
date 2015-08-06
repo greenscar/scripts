@@ -1,0 +1,32 @@
+
+{{extend 'layout.html'}}
+{{if response.flash:}}<div id="flash">{{=response.flash}}</div>{{pass}}
+<h1>Apps</h1>
+<table border="1px">
+   <tr>
+      <th>Edit</th>
+      <th>{{=A('Group Name', _href=URL(r=request, args="group_name"))}}</th>
+      <th>{{=A('Process Name', _href=URL(r=request, args="service_name"))}}</th>
+      <th>{{=A('App Name', _href=URL(r=request, args="app_name"))}}</th>
+      <th>{{=A('MBean', _href=URL(r=request, args="mbean"))}}</th>
+      <th>{{=A('Alive Check', _href=URL(r=request, args="alive_check"))}}</th>
+   </tr>
+   {{ x = 0 }}
+   {{for service in processes:}}
+   {{if x % 2 == 0:}}
+   <tr class="grey">
+   {{else:}}
+   <tr>
+   {{pass}}
+   {{ x = x + 1 }}
+      {{=TD(A('EDIT', _href=URL(r=request, f='edit', args=service.apps.id)))}}
+      {{=TD(service.groups.name)}}
+      {{=TD(service.processes.name)}}
+      {{=TD(service.apps.name)}}
+      {{=TD(service.apps.mbean)}}
+      {{=TD(service.apps.alive_check)}}
+   </tr>
+   {{pass}}
+</table>
+{{=H2(A('Add App', _href=URL(r=request, f='add')))}}
+

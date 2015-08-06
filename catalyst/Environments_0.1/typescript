@@ -1,0 +1,1179 @@
+Script started on Wed Jul 29 12:51:39 2009
+jsandlin:~/catalyst/Environments> /Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/SystemConfiguration.framewoork/Versions/A/SystemConfiguration ; exit;[A[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CDBIC=[K+T[K[K_TRACE=1; script/environments_server.pl 
+[debug] Debug messages enabled
+[debug] Statistics enabled
+[debug] Loaded plugins:
+.----------------------------------------------------------------------------.
+| Catalyst::Plugin::ConfigLoader  0.24                                       |
+| Catalyst::Plugin::StackTrace  0.10                                         |
+| Catalyst::Plugin::Static::Simple  0.21                                     |
+'----------------------------------------------------------------------------'
+
+[debug] Loaded dispatcher "Catalyst::Dispatcher"
+[debug] Loaded engine "Catalyst::Engine::HTTP"
+[debug] Found home "/Users/jsandlin/catalyst/Environments"
+[debug] Loaded Config "/Users/jsandlin/catalyst/Environments/environments.conf"
+[debug] Loaded components:
+.-----------------------------------------------------------------+----------.
+| Class                                                           | Type     |
++-----------------------------------------------------------------+----------+
+| Environments::Controller::DBMigration                           | instance |
+| Environments::Controller::Database                              | instance |
+| Environments::Controller::Root                                  | instance |
+| Environments::Model::DB                                         | instance |
+| Environments::Model::DB::Applications                           | class    |
+| Environments::Model::DB::Author                                 | class    |
+| Environments::Model::DB::Book                                   | class    |
+| Environments::Model::DB::BookAuthor                             | class    |
+| Environments::Model::DB::Deployments                            | class    |
+| Environments::Model::DB::Environments                           | class    |
+| Environments::Model::DB::Files                                  | class    |
+| Environments::Model::DB::Links                                  | class    |
+| Environments::Model::DB::PropNames                              | class    |
+| Environments::Model::DB::Properties                             | class    |
+| Environments::Model::DB::Releases                               | class    |
+| Environments::Model::DB::Services                               | class    |
+| Environments::Model::DB::Stage_Merge                            | class    |
+| Environments::Model::DB::V_Ad_Hosts                             | class    |
+| Environments::Model::DB::V_Ad_Instances                         | class    |
+| Environments::Model::DB::V_Environments                         | class    |
+| Environments::View::TT                                          | instance |
+'-----------------------------------------------------------------+----------'
+
+[debug] Loaded Private actions:
+.----------------------+--------------------------------------+--------------.
+| Private              | Class                                | Method       |
++----------------------+--------------------------------------+--------------+
+| /default             | Environments::Controller::Root       | default      |
+| /end                 | Environments::Controller::Root       | end          |
+| /index               | Environments::Controller::Root       | index        |
+| /database/base       | Environments::Controller::Database   | base         |
+| /database/listrel    | Environments::Controller::Database   | listrel      |
+| /database/listapp    | Environments::Controller::Database   | listapp      |
+| /database/listrelapp | Environments::Controller::Database   | listrelapp   |
+| /database/listall    | Environments::Controller::Database   | listall      |
+| /database/list       | Environments::Controller::Database   | list         |
+| /dbmigration/base    | Environments::Controller::DBMigrati- | base         |
+|                      | on                                   |              |
+| /dbmigration/listrel | Environments::Controller::DBMigrati- | listrel      |
+|                      | on                                   |              |
+| /dbmigration/list    | Environments::Controller::DBMigrati- | list         |
+|                      | on                                   |              |
+'----------------------+--------------------------------------+--------------'
+
+[debug] Loaded Path actions:
+.-------------------------------------+--------------------------------------.
+| Path                                | Private                              |
++-------------------------------------+--------------------------------------+
+| /                                   | /default                             |
+| /                                   | /index                               |
+'-------------------------------------+--------------------------------------'
+
+[debug] Loaded Chained actions:
+.-------------------------------------+--------------------------------------.
+| Path Spec                           | Private                              |
++-------------------------------------+--------------------------------------+
+| /database/list/...                  | /database/base (0)                   |
+|                                     | => /database/list                    |
+| /database/listall/...               | /database/base (0)                   |
+|                                     | => /database/listall                 |
+| /database/listapp/*                 | /database/base (0)                   |
+|                                     | => /database/listapp                 |
+| /database/listrel/*                 | /database/base (0)                   |
+|                                     | => /database/listrel                 |
+| /database/listrelapp/*/*            | /database/base (0)                   |
+|                                     | => /database/listrelapp              |
+| /dbmigration/list/...               | /dbmigration/base (0)                |
+|                                     | => /dbmigration/list                 |
+| /dbmigration/listrel/*              | /dbmigration/base (0)                |
+|                                     | => /dbmigration/listrel              |
+'-------------------------------------+--------------------------------------'
+
+[info] Environments powered by Catalyst 5.80004
+You can connect to your server at http://james-sandlins-macbook-pro.local:3000
+
+^C
+jsandlin:~/catalyst/Environments> 
+jsandlin:~/catalyst/Environments> DBIC_TRACE=1; script/environments_server.pl 
+[debug] Debug messages enabled
+[debug] Statistics enabled
+[debug] Loaded plugins:
+.----------------------------------------------------------------------------.
+| Catalyst::Plugin::ConfigLoader  0.24                                       |
+| Catalyst::Plugin::StackTrace  0.10                                         |
+| Catalyst::Plugin::Static::Simple  0.21                                     |
+'----------------------------------------------------------------------------'
+
+[debug] Loaded dispatcher "Catalyst::Dispatcher"
+[debug] Loaded engine "Catalyst::Engine::HTTP"
+[debug] Found home "/Users/jsandlin/catalyst/Environments"
+[debug] Loaded Config "/Users/jsandlin/catalyst/Environments/environments.conf"
+[debug] Loaded components:
+.-----------------------------------------------------------------+----------.
+| Class                                                           | Type     |
++-----------------------------------------------------------------+----------+
+| Environments::Controller::DBMigration                           | instance |
+| Environments::Controller::Database                              | instance |
+| Environments::Controller::Root                                  | instance |
+| Environments::Model::DB                                         | instance |
+| Environments::Model::DB::Applications                           | class    |
+| Environments::Model::DB::Author                                 | class    |
+| Environments::Model::DB::Book                                   | class    |
+| Environments::Model::DB::BookAuthor                             | class    |
+| Environments::Model::DB::Deployments                            | class    |
+| Environments::Model::DB::Environments                           | class    |
+| Environments::Model::DB::Files                                  | class    |
+| Environments::Model::DB::Links                                  | class    |
+| Environments::Model::DB::PropNames                              | class    |
+| Environments::Model::DB::Properties                             | class    |
+| Environments::Model::DB::Releases                               | class    |
+| Environments::Model::DB::Services                               | class    |
+| Environments::Model::DB::Stage_Merge                            | class    |
+| Environments::Model::DB::V_Ad_Hosts                             | class    |
+| Environments::Model::DB::V_Ad_Instances                         | class    |
+| Environments::Model::DB::V_Environments                         | class    |
+| Environments::View::TT                                          | instance |
+'-----------------------------------------------------------------+----------'
+
+[debug] Loaded Private actions:
+.----------------------+--------------------------------------+--------------.
+| Private              | Class                                | Method       |
++----------------------+--------------------------------------+--------------+
+| /default             | Environments::Controller::Root       | default      |
+| /end                 | Environments::Controller::Root       | end          |
+| /index               | Environments::Controller::Root       | index        |
+| /database/base       | Environments::Controller::Database   | base         |
+| /database/listrel    | Environments::Controller::Database   | listrel      |
+| /database/listapp    | Environments::Controller::Database   | listapp      |
+| /database/listrelapp | Environments::Controller::Database   | listrelapp   |
+| /database/listall    | Environments::Controller::Database   | listall      |
+| /database/list       | Environments::Controller::Database   | list         |
+| /dbmigration/base    | Environments::Controller::DBMigrati- | base         |
+|                      | on                                   |              |
+| /dbmigration/listrel | Environments::Controller::DBMigrati- | listrel      |
+|                      | on                                   |              |
+| /dbmigration/list    | Environments::Controller::DBMigrati- | list         |
+|                      | on                                   |              |
+'----------------------+--------------------------------------+--------------'
+
+[debug] Loaded Path actions:
+.-------------------------------------+--------------------------------------.
+| Path                                | Private                              |
++-------------------------------------+--------------------------------------+
+| /                                   | /default                             |
+| /                                   | /index                               |
+'-------------------------------------+--------------------------------------'
+
+[debug] Loaded Chained actions:
+.-------------------------------------+--------------------------------------.
+| Path Spec                           | Private                              |
++-------------------------------------+--------------------------------------+
+| /database/list/...                  | /database/base (0)                   |
+|                                     | => /database/list                    |
+| /database/listall/...               | /database/base (0)                   |
+|                                     | => /database/listall                 |
+| /database/listapp/*                 | /database/base (0)                   |
+|                                     | => /database/listapp                 |
+| /database/listrel/*                 | /database/base (0)                   |
+|                                     | => /database/listrel                 |
+| /database/listrelapp/*/*            | /database/base (0)                   |
+|                                     | => /database/listrelapp              |
+| /dbmigration/list/...               | /dbmigration/base (0)                |
+|                                     | => /dbmigration/list                 |
+| /dbmigration/listrel/*              | /dbmigration/base (0)                |
+|                                     | => /dbmigration/listrel              |
+'-------------------------------------+--------------------------------------'
+
+[info] Environments powered by Catalyst 5.80004
+You can connect to your server at http://james-sandlins-macbook-pro.local:3000
+[info] *** Request 1 (0.037/s) [2250] [Wed Jul 29 13:44:57 2009] ***
+[debug] "GET" request for "/" from "127.0.0.1"
+[info] Request took 0.014211s (70.368/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /index                                                     | 0.000284s |
+| /end                                                       | 0.000416s |
+'------------------------------------------------------------+-----------'
+
+DBI connect('ENV_MGT_TOOLS','ENV_MGT',...) failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('ENV_MGT_TOOLS','ENV_MGT',...) failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('ENV_MGT_TOOLS','ENV_MGT',...) failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('ENV_MGT_TOOLS','ENV_MGT',...) failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+[info] *** Request 4 (0.111/s) [2250] [Wed Jul 29 13:45:06 2009] ***
+[debug] "GET" request for "database/list" from "127.0.0.1"
+[debug] Path is "/database/list"
+[debug] get_rel_num_list
+[debug] name = ALL, rel = ALL
+[error] DBIx::Class::ResultSet::search(): DBI Connection failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 80
+[error] DBIx::Class::ResultSet::search(): DBI Connection failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 43
+[info] Request took 36.624121s (0.027/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /database/base                                             | 36.49341s |
+| /database/list                                             | 0.015114s |
+| /end                                                       | 0.000275s |
+'------------------------------------------------------------+-----------'
+
+DBI connect('ENV_MGT_TOOLS','ENV_MGT',...) failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('ENV_MGT_TOOLS','ENV_MGT',...) failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('ENV_MGT_TOOLS','ENV_MGT',...) failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('ENV_MGT_TOOLS','ENV_MGT',...) failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+[info] *** Request 5 (0.068/s) [2250] [Wed Jul 29 13:45:43 2009] ***
+[debug] "GET" request for "database/listapp/TIERS" from "127.0.0.1"
+[debug] Path is "/database/listapp"
+[debug] Arguments are "TIERS"
+[debug] get_rel_num_list
+[error] DBIx::Class::ResultSet::search(): DBI Connection failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 80
+[error] DBIx::Class::ResultSet::search(): DBI Connection failed: ORA-12154: TNS:could not resolve the connect identifier specified (DBD ERROR: OCIServerAttach) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 16
+[info] Request took 0.136856s (7.307/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /database/base                                             | 0.015470s |
+| /database/listapp                                          | 0.014747s |
+| /end                                                       | 0.000250s |
+'------------------------------------------------------------+-----------'
+
+^C
+jsandlin:~/catalyst/Environments> DBIC_TRACE=1; script/environments_server.pl 
+syntax error at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Model/DB.pm line 9, near ""dbi:Oracle:HOST=165.184.34.104;SID=DTE2;port=1522";"
+syntax error at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Model/DB.pm line 15, near ")"
+Compilation failed in require at /opt/perl-5.10.0/lib/site_perl/5.10.0/Catalyst/Utils.pm line 278.
+Compilation failed in require at script/environments_server.pl line 66.
+jsandlin:~/catalyst/Environments> DBIC_TRACE=1; script/environments_server.pl 
+[debug] Debug messages enabled
+[debug] Statistics enabled
+[debug] Loaded plugins:
+.----------------------------------------------------------------------------.
+| Catalyst::Plugin::ConfigLoader  0.24                                       |
+| Catalyst::Plugin::StackTrace  0.10                                         |
+| Catalyst::Plugin::Static::Simple  0.21                                     |
+'----------------------------------------------------------------------------'
+
+[debug] Loaded dispatcher "Catalyst::Dispatcher"
+[debug] Loaded engine "Catalyst::Engine::HTTP"
+[debug] Found home "/Users/jsandlin/catalyst/Environments"
+[debug] Loaded Config "/Users/jsandlin/catalyst/Environments/environments.conf"
+[debug] Loaded components:
+.-----------------------------------------------------------------+----------.
+| Class                                                           | Type     |
++-----------------------------------------------------------------+----------+
+| Environments::Controller::DBMigration                           | instance |
+| Environments::Controller::Database                              | instance |
+| Environments::Controller::Root                                  | instance |
+| Environments::Model::DB                                         | instance |
+| Environments::Model::DB::Applications                           | class    |
+| Environments::Model::DB::Author                                 | class    |
+| Environments::Model::DB::Book                                   | class    |
+| Environments::Model::DB::BookAuthor                             | class    |
+| Environments::Model::DB::Deployments                            | class    |
+| Environments::Model::DB::Environments                           | class    |
+| Environments::Model::DB::Files                                  | class    |
+| Environments::Model::DB::Links                                  | class    |
+| Environments::Model::DB::PropNames                              | class    |
+| Environments::Model::DB::Properties                             | class    |
+| Environments::Model::DB::Releases                               | class    |
+| Environments::Model::DB::Services                               | class    |
+| Environments::Model::DB::Stage_Merge                            | class    |
+| Environments::Model::DB::V_Ad_Hosts                             | class    |
+| Environments::Model::DB::V_Ad_Instances                         | class    |
+| Environments::Model::DB::V_Environments                         | class    |
+| Environments::View::TT                                          | instance |
+'-----------------------------------------------------------------+----------'
+
+[debug] Loaded Private actions:
+.----------------------+--------------------------------------+--------------.
+| Private              | Class                                | Method       |
++----------------------+--------------------------------------+--------------+
+| /default             | Environments::Controller::Root       | default      |
+| /end                 | Environments::Controller::Root       | end          |
+| /index               | Environments::Controller::Root       | index        |
+| /database/base       | Environments::Controller::Database   | base         |
+| /database/listrel    | Environments::Controller::Database   | listrel      |
+| /database/listapp    | Environments::Controller::Database   | listapp      |
+| /database/listrelapp | Environments::Controller::Database   | listrelapp   |
+| /database/listall    | Environments::Controller::Database   | listall      |
+| /database/list       | Environments::Controller::Database   | list         |
+| /dbmigration/base    | Environments::Controller::DBMigrati- | base         |
+|                      | on                                   |              |
+| /dbmigration/listrel | Environments::Controller::DBMigrati- | listrel      |
+|                      | on                                   |              |
+| /dbmigration/list    | Environments::Controller::DBMigrati- | list         |
+|                      | on                                   |              |
+'----------------------+--------------------------------------+--------------'
+
+[debug] Loaded Path actions:
+.-------------------------------------+--------------------------------------.
+| Path                                | Private                              |
++-------------------------------------+--------------------------------------+
+| /                                   | /default                             |
+| /                                   | /index                               |
+'-------------------------------------+--------------------------------------'
+
+[debug] Loaded Chained actions:
+.-------------------------------------+--------------------------------------.
+| Path Spec                           | Private                              |
++-------------------------------------+--------------------------------------+
+| /database/list/...                  | /database/base (0)                   |
+|                                     | => /database/list                    |
+| /database/listall/...               | /database/base (0)                   |
+|                                     | => /database/listall                 |
+| /database/listapp/*                 | /database/base (0)                   |
+|                                     | => /database/listapp                 |
+| /database/listrel/*                 | /database/base (0)                   |
+|                                     | => /database/listrel                 |
+| /database/listrelapp/*/*            | /database/base (0)                   |
+|                                     | => /database/listrelapp              |
+| /dbmigration/list/...               | /dbmigration/base (0)                |
+|                                     | => /dbmigration/list                 |
+| /dbmigration/listrel/*              | /dbmigration/base (0)                |
+|                                     | => /dbmigration/listrel              |
+'-------------------------------------+--------------------------------------'
+
+[info] Environments powered by Catalyst 5.80004
+You can connect to your server at http://ea-99xnkr5.hhsea.txnet.state.tx.us:3000
+DBI connect('HOST=165.184.34.104;SID=DTE2;port=1522','ENV_MGT',...) failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('HOST=165.184.34.104;SID=DTE2;port=1522','ENV_MGT',...) failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('HOST=165.184.34.104;SID=DTE2;port=1522','ENV_MGT',...) failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('HOST=165.184.34.104;SID=DTE2;port=1522','ENV_MGT',...) failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+[info] *** Request 1 (0.083/s) [2342] [Wed Jul 29 14:12:05 2009] ***
+[debug] "GET" request for "database/listapp/TIERS" from "127.0.0.1"
+[debug] Path is "/database/listapp"
+[debug] Arguments are "TIERS"
+[debug] get_rel_num_list
+[error] DBIx::Class::ResultSet::search(): DBI Connection failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 80
+[error] DBIx::Class::ResultSet::search(): DBI Connection failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 16
+[info] Request took 0.461574s (2.166/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /database/base                                             | 0.238560s |
+| /database/listapp                                          | 0.082422s |
+| /end                                                       | 0.000354s |
+'------------------------------------------------------------+-----------'
+
+^CSegmentation fault
+jsandlin:~/catalyst/Environments> DBIC_TRACE=1; script/environments_server.pl 
+[debug] Debug messages enabled
+[debug] Statistics enabled
+[debug] Loaded plugins:
+.----------------------------------------------------------------------------.
+| Catalyst::Plugin::ConfigLoader  0.24                                       |
+| Catalyst::Plugin::StackTrace  0.10                                         |
+| Catalyst::Plugin::Static::Simple  0.21                                     |
+'----------------------------------------------------------------------------'
+
+[debug] Loaded dispatcher "Catalyst::Dispatcher"
+[debug] Loaded engine "Catalyst::Engine::HTTP"
+[debug] Found home "/Users/jsandlin/catalyst/Environments"
+[debug] Loaded Config "/Users/jsandlin/catalyst/Environments/environments.conf"
+[debug] Loaded components:
+.-----------------------------------------------------------------+----------.
+| Class                                                           | Type     |
++-----------------------------------------------------------------+----------+
+| Environments::Controller::DBMigration                           | instance |
+| Environments::Controller::Database                              | instance |
+| Environments::Controller::Root                                  | instance |
+| Environments::Model::DB                                         | instance |
+| Environments::Model::DB::Applications                           | class    |
+| Environments::Model::DB::Author                                 | class    |
+| Environments::Model::DB::Book                                   | class    |
+| Environments::Model::DB::BookAuthor                             | class    |
+| Environments::Model::DB::Deployments                            | class    |
+| Environments::Model::DB::Environments                           | class    |
+| Environments::Model::DB::Files                                  | class    |
+| Environments::Model::DB::Links                                  | class    |
+| Environments::Model::DB::PropNames                              | class    |
+| Environments::Model::DB::Properties                             | class    |
+| Environments::Model::DB::Releases                               | class    |
+| Environments::Model::DB::Services                               | class    |
+| Environments::Model::DB::Stage_Merge                            | class    |
+| Environments::Model::DB::V_Ad_Hosts                             | class    |
+| Environments::Model::DB::V_Ad_Instances                         | class    |
+| Environments::Model::DB::V_Environments                         | class    |
+| Environments::View::TT                                          | instance |
+'-----------------------------------------------------------------+----------'
+
+[debug] Loaded Private actions:
+.----------------------+--------------------------------------+--------------.
+| Private              | Class                                | Method       |
++----------------------+--------------------------------------+--------------+
+| /default             | Environments::Controller::Root       | default      |
+| /end                 | Environments::Controller::Root       | end          |
+| /index               | Environments::Controller::Root       | index        |
+| /database/base       | Environments::Controller::Database   | base         |
+| /database/listrel    | Environments::Controller::Database   | listrel      |
+| /database/listapp    | Environments::Controller::Database   | listapp      |
+| /database/listrelapp | Environments::Controller::Database   | listrelapp   |
+| /database/listall    | Environments::Controller::Database   | listall      |
+| /database/list       | Environments::Controller::Database   | list         |
+| /dbmigration/base    | Environments::Controller::DBMigrati- | base         |
+|                      | on                                   |              |
+| /dbmigration/listrel | Environments::Controller::DBMigrati- | listrel      |
+|                      | on                                   |              |
+| /dbmigration/list    | Environments::Controller::DBMigrati- | list         |
+|                      | on                                   |              |
+'----------------------+--------------------------------------+--------------'
+
+[debug] Loaded Path actions:
+.-------------------------------------+--------------------------------------.
+| Path                                | Private                              |
++-------------------------------------+--------------------------------------+
+| /                                   | /default                             |
+| /                                   | /index                               |
+'-------------------------------------+--------------------------------------'
+
+[debug] Loaded Chained actions:
+.-------------------------------------+--------------------------------------.
+| Path Spec                           | Private                              |
++-------------------------------------+--------------------------------------+
+| /database/list/...                  | /database/base (0)                   |
+|                                     | => /database/list                    |
+| /database/listall/...               | /database/base (0)                   |
+|                                     | => /database/listall                 |
+| /database/listapp/*                 | /database/base (0)                   |
+|                                     | => /database/listapp                 |
+| /database/listrel/*                 | /database/base (0)                   |
+|                                     | => /database/listrel                 |
+| /database/listrelapp/*/*            | /database/base (0)                   |
+|                                     | => /database/listrelapp              |
+| /dbmigration/list/...               | /dbmigration/base (0)                |
+|                                     | => /dbmigration/list                 |
+| /dbmigration/listrel/*              | /dbmigration/base (0)                |
+|                                     | => /dbmigration/listrel              |
+'-------------------------------------+--------------------------------------'
+
+[info] Environments powered by Catalyst 5.80004
+You can connect to your server at http://ea-99xnkr5.hhsea.txnet.state.tx.us:3000
+DBI connect('host=165.184.34.104;sid=DTE2;port=1522','ENV_MGT',...) failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('host=165.184.34.104;sid=DTE2;port=1522','ENV_MGT',...) failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('host=165.184.34.104;sid=DTE2;port=1522','ENV_MGT',...) failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('host=165.184.34.104;sid=DTE2;port=1522','ENV_MGT',...) failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+[info] *** Request 1 (0.125/s) [2391] [Wed Jul 29 14:23:23 2009] ***
+[debug] "GET" request for "database/listapp/TIERS" from "127.0.0.1"
+[debug] Path is "/database/listapp"
+[debug] Arguments are "TIERS"
+[debug] get_rel_num_list
+[error] DBIx::Class::ResultSet::search(): DBI Connection failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 80
+[error] DBIx::Class::ResultSet::search(): DBI Connection failed: ORA-12505: TNS:listener does not currently know of SID given in connect descriptor (DBD ERROR: OCIServerAttach) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 16
+[info] Request took 0.903918s (1.106/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /database/base                                             | 0.605230s |
+| /database/listapp                                          | 0.205793s |
+| /end                                                       | 0.000393s |
+'------------------------------------------------------------+-----------'
+
+^C^[[ASegmentation fault
+jsandlin:~/catalyst/Environments> DBIC_TRACE=1; script/environments_server.pl 
+[debug] Debug messages enabled
+[debug] Statistics enabled
+[debug] Loaded plugins:
+.----------------------------------------------------------------------------.
+| Catalyst::Plugin::ConfigLoader  0.24                                       |
+| Catalyst::Plugin::StackTrace  0.10                                         |
+| Catalyst::Plugin::Static::Simple  0.21                                     |
+'----------------------------------------------------------------------------'
+
+[debug] Loaded dispatcher "Catalyst::Dispatcher"
+[debug] Loaded engine "Catalyst::Engine::HTTP"
+[debug] Found home "/Users/jsandlin/catalyst/Environments"
+[debug] Loaded Config "/Users/jsandlin/catalyst/Environments/environments.conf"
+[debug] Loaded components:
+.-----------------------------------------------------------------+----------.
+| Class                                                           | Type     |
++-----------------------------------------------------------------+----------+
+| Environments::Controller::DBMigration                           | instance |
+| Environments::Controller::Database                              | instance |
+| Environments::Controller::Root                                  | instance |
+| Environments::Model::DB                                         | instance |
+| Environments::Model::DB::Applications                           | class    |
+| Environments::Model::DB::Author                                 | class    |
+| Environments::Model::DB::Book                                   | class    |
+| Environments::Model::DB::BookAuthor                             | class    |
+| Environments::Model::DB::Deployments                            | class    |
+| Environments::Model::DB::Environments                           | class    |
+| Environments::Model::DB::Files                                  | class    |
+| Environments::Model::DB::Links                                  | class    |
+| Environments::Model::DB::PropNames                              | class    |
+| Environments::Model::DB::Properties                             | class    |
+| Environments::Model::DB::Releases                               | class    |
+| Environments::Model::DB::Services                               | class    |
+| Environments::Model::DB::Stage_Merge                            | class    |
+| Environments::Model::DB::V_Ad_Hosts                             | class    |
+| Environments::Model::DB::V_Ad_Instances                         | class    |
+| Environments::Model::DB::V_Environments                         | class    |
+| Environments::View::TT                                          | instance |
+'-----------------------------------------------------------------+----------'
+
+[debug] Loaded Private actions:
+.----------------------+--------------------------------------+--------------.
+| Private              | Class                                | Method       |
++----------------------+--------------------------------------+--------------+
+| /default             | Environments::Controller::Root       | default      |
+| /end                 | Environments::Controller::Root       | end          |
+| /index               | Environments::Controller::Root       | index        |
+| /database/base       | Environments::Controller::Database   | base         |
+| /database/listrel    | Environments::Controller::Database   | listrel      |
+| /database/listapp    | Environments::Controller::Database   | listapp      |
+| /database/listrelapp | Environments::Controller::Database   | listrelapp   |
+| /database/listall    | Environments::Controller::Database   | listall      |
+| /database/list       | Environments::Controller::Database   | list         |
+| /dbmigration/base    | Environments::Controller::DBMigrati- | base         |
+|                      | on                                   |              |
+| /dbmigration/listrel | Environments::Controller::DBMigrati- | listrel      |
+|                      | on                                   |              |
+| /dbmigration/list    | Environments::Controller::DBMigrati- | list         |
+|                      | on                                   |              |
+'----------------------+--------------------------------------+--------------'
+
+[debug] Loaded Path actions:
+.-------------------------------------+--------------------------------------.
+| Path                                | Private                              |
++-------------------------------------+--------------------------------------+
+| /                                   | /default                             |
+| /                                   | /index                               |
+'-------------------------------------+--------------------------------------'
+
+[debug] Loaded Chained actions:
+.-------------------------------------+--------------------------------------.
+| Path Spec                           | Private                              |
++-------------------------------------+--------------------------------------+
+| /database/list/...                  | /database/base (0)                   |
+|                                     | => /database/list                    |
+| /database/listall/...               | /database/base (0)                   |
+|                                     | => /database/listall                 |
+| /database/listapp/*                 | /database/base (0)                   |
+|                                     | => /database/listapp                 |
+| /database/listrel/*                 | /database/base (0)                   |
+|                                     | => /database/listrel                 |
+| /database/listrelapp/*/*            | /database/base (0)                   |
+|                                     | => /database/listrelapp              |
+| /dbmigration/list/...               | /dbmigration/base (0)                |
+|                                     | => /dbmigration/list                 |
+| /dbmigration/listrel/*              | /dbmigration/base (0)                |
+|                                     | => /dbmigration/listrel              |
+'-------------------------------------+--------------------------------------'
+
+[info] Environments powered by Catalyst 5.80004
+You can connect to your server at http://ea-99xnkr5.hhsea.txnet.state.tx.us:3000
+DBI connect('host=165.184.34.104;port=1522','ENV_MGT',...) failed: Can't connect using this syntax without specifying a HOST and one of SID INSTANCE_NAME SERVER SERVICE_NAME at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('host=165.184.34.104;port=1522','ENV_MGT',...) failed: Can't connect using this syntax without specifying a HOST and one of SID INSTANCE_NAME SERVER SERVICE_NAME at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('host=165.184.34.104;port=1522','ENV_MGT',...) failed: Can't connect using this syntax without specifying a HOST and one of SID INSTANCE_NAME SERVER SERVICE_NAME at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+DBI connect('host=165.184.34.104;port=1522','ENV_MGT',...) failed: Can't connect using this syntax without specifying a HOST and one of SID INSTANCE_NAME SERVER SERVICE_NAME at /opt/perl-5.10.0/lib/site_perl/5.10.0/DBIx/Class/Storage/DBI.pm line 715
+[info] *** Request 1 (0.250/s) [2402] [Wed Jul 29 14:23:52 2009] ***
+[debug] "GET" request for "database/listapp/TIERS" from "127.0.0.1"
+[debug] Path is "/database/listapp"
+[debug] Arguments are "TIERS"
+[debug] get_rel_num_list
+[error] DBIx::Class::ResultSet::search(): DBI Connection failed: Can't connect using this syntax without specifying a HOST and one of SID INSTANCE_NAME SERVER SERVICE_NAME at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 80
+[error] DBIx::Class::ResultSet::search(): DBI Connection failed: Can't connect using this syntax without specifying a HOST and one of SID INSTANCE_NAME SERVER SERVICE_NAME at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 16
+[info] Request took 0.130482s (7.664/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /database/base                                             | 0.045512s |
+| /database/listapp                                          | 0.011256s |
+| /end                                                       | 0.000357s |
+'------------------------------------------------------------+-----------'
+
+^C
+jsandlin:~/catalyst/Environments> DBIC_TRACE=1; script/environments_server.pl 
+[debug] Debug messages enabled
+[debug] Statistics enabled
+[debug] Loaded plugins:
+.----------------------------------------------------------------------------.
+| Catalyst::Plugin::ConfigLoader  0.24                                       |
+| Catalyst::Plugin::StackTrace  0.10                                         |
+| Catalyst::Plugin::Static::Simple  0.21                                     |
+'----------------------------------------------------------------------------'
+
+[debug] Loaded dispatcher "Catalyst::Dispatcher"
+[debug] Loaded engine "Catalyst::Engine::HTTP"
+[debug] Found home "/Users/jsandlin/catalyst/Environments"
+[debug] Loaded Config "/Users/jsandlin/catalyst/Environments/environments.conf"
+[debug] Loaded components:
+.-----------------------------------------------------------------+----------.
+| Class                                                           | Type     |
++-----------------------------------------------------------------+----------+
+| Environments::Controller::DBMigration                           | instance |
+| Environments::Controller::Database                              | instance |
+| Environments::Controller::Root                                  | instance |
+| Environments::Model::DB                                         | instance |
+| Environments::Model::DB::Applications                           | class    |
+| Environments::Model::DB::Author                                 | class    |
+| Environments::Model::DB::Book                                   | class    |
+| Environments::Model::DB::BookAuthor                             | class    |
+| Environments::Model::DB::Deployments                            | class    |
+| Environments::Model::DB::Environments                           | class    |
+| Environments::Model::DB::Files                                  | class    |
+| Environments::Model::DB::Links                                  | class    |
+| Environments::Model::DB::PropNames                              | class    |
+| Environments::Model::DB::Properties                             | class    |
+| Environments::Model::DB::Releases                               | class    |
+| Environments::Model::DB::Services                               | class    |
+| Environments::Model::DB::Stage_Merge                            | class    |
+| Environments::Model::DB::V_Ad_Hosts                             | class    |
+| Environments::Model::DB::V_Ad_Instances                         | class    |
+| Environments::Model::DB::V_Environments                         | class    |
+| Environments::View::TT                                          | instance |
+'-----------------------------------------------------------------+----------'
+
+[debug] Loaded Private actions:
+.----------------------+--------------------------------------+--------------.
+| Private              | Class                                | Method       |
++----------------------+--------------------------------------+--------------+
+| /default             | Environments::Controller::Root       | default      |
+| /end                 | Environments::Controller::Root       | end          |
+| /index               | Environments::Controller::Root       | index        |
+| /database/base       | Environments::Controller::Database   | base         |
+| /database/listrel    | Environments::Controller::Database   | listrel      |
+| /database/listapp    | Environments::Controller::Database   | listapp      |
+| /database/listrelapp | Environments::Controller::Database   | listrelapp   |
+| /database/listall    | Environments::Controller::Database   | listall      |
+| /database/list       | Environments::Controller::Database   | list         |
+| /dbmigration/base    | Environments::Controller::DBMigrati- | base         |
+|                      | on                                   |              |
+| /dbmigration/listrel | Environments::Controller::DBMigrati- | listrel      |
+|                      | on                                   |              |
+| /dbmigration/list    | Environments::Controller::DBMigrati- | list         |
+|                      | on                                   |              |
+'----------------------+--------------------------------------+--------------'
+
+[debug] Loaded Path actions:
+.-------------------------------------+--------------------------------------.
+| Path                                | Private                              |
++-------------------------------------+--------------------------------------+
+| /                                   | /default                             |
+| /                                   | /index                               |
+'-------------------------------------+--------------------------------------'
+
+[debug] Loaded Chained actions:
+.-------------------------------------+--------------------------------------.
+| Path Spec                           | Private                              |
++-------------------------------------+--------------------------------------+
+| /database/list/...                  | /database/base (0)                   |
+|                                     | => /database/list                    |
+| /database/listall/...               | /database/base (0)                   |
+|                                     | => /database/listall                 |
+| /database/listapp/*                 | /database/base (0)                   |
+|                                     | => /database/listapp                 |
+| /database/listrel/*                 | /database/base (0)                   |
+|                                     | => /database/listrel                 |
+| /database/listrelapp/*/*            | /database/base (0)                   |
+|                                     | => /database/listrelapp              |
+| /dbmigration/list/...               | /dbmigration/base (0)                |
+|                                     | => /dbmigration/list                 |
+| /dbmigration/listrel/*              | /dbmigration/base (0)                |
+|                                     | => /dbmigration/listrel              |
+'-------------------------------------+--------------------------------------'
+
+[info] Environments powered by Catalyst 5.80004
+You can connect to your server at http://ea-99xnkr5.hhsea.txnet.state.tx.us:3000
+Odd number of elements in hash assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 90.
+Use of uninitialized value in list assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 90.
+Use of uninitialized value $1 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $2 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $1 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $2 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $subnum in pattern match (m//) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 94.
+Odd number of elements in hash assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 128.
+Use of uninitialized value in list assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 128.
+Use of uninitialized value $app in pattern match (m//) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 132.
+[info] *** Request 1 (0.125/s) [2405] [Wed Jul 29 14:24:36 2009] ***
+[debug] "GET" request for "database/listapp/TIERS" from "127.0.0.1"
+[debug] Path is "/database/listapp"
+[debug] Arguments are "TIERS"
+[debug] get_rel_num_list
+[debug] relnums{52.5} = 52.5
+[debug] relnums{54.2} = 54.2
+[debug] relnums{54.1} = 54.1
+[debug] relnums{58.1} = 58.1
+[debug] relnums{60.1} = 60.1
+[debug] relnums{62.0} = 62.0
+[debug] relnums{62.1} = 62.1
+[debug] relnums{70.0} = 70.0
+[debug] relnums{71.0} = 71.0
+[debug] relnums{71.1} = 71.1
+[debug] relnums{71.3} = 71.3
+[debug] relnums{71.4} = 71.4
+[debug] relnums{72.0} = 72.0
+[debug] relnums{73.0} = 73.0
+[debug] relnums{73.2} = 73.2
+[debug] relnums{74.0} = 74.0
+[debug] relnums{75.0} = 75.0
+[debug] relnums{75.2} = 75.2
+[debug] relnums{76.0} = 76.0
+[debug] get_app_list
+[debug] apps{DBA TEST} = DBA TEST
+[debug] apps{DHS Suppor} = DHS Suppor
+[debug] apps{ITIM} = ITIM
+[debug] apps{MAXIE} = MAXIE
+[debug] apps{TIERS} = TIERS
+[debug] apps{TIERS FW} = TIERS FW
+[debug] apps{TIERS TOOL} = TIERS TOOL
+[debug] apps{TIERSTOOL} = TIERSTOOL
+[debug] apps{TIMTAM} = TIMTAM
+[debug] apps{TLM} = TLM
+[debug] apps{UCOSM_PX} = UCOSM_PX
+[debug] apps{VENDORDRUG} = VENDORDRUG
+[debug] apps{WBSRVCS} = WBSRVCS
+[debug] apps{WILY} = WILY
+[debug] *** INSIDE BASE METHOD ***
+[debug] Rendering template "dbs/schema_list.tt2"
+[info] Request took 6.807954s (0.147/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /database/base                                             | 2.439634s |
+| /database/listapp                                          | 0.135360s |
+| /end                                                       | 4.226903s |
+|  -> Environments::View::TT->process                        | 4.226039s |
+'------------------------------------------------------------+-----------'
+
+Odd number of elements in hash assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 90.
+Use of uninitialized value in list assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 90.
+Use of uninitialized value $1 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $2 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $1 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $2 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $subnum in pattern match (m//) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 94.
+Odd number of elements in hash assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 128.
+Use of uninitialized value in list assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 128.
+Use of uninitialized value $app in pattern match (m//) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 132.
+[info] *** Request 2 (0.133/s) [2405] [Wed Jul 29 14:24:43 2009] ***
+[debug] "GET" request for "database/listapp/script.js" from "127.0.0.1"
+[debug] Path is "/database/listapp"
+[debug] Arguments are "script.js"
+[debug] get_rel_num_list
+[debug] relnums{52.5} = 52.5
+[debug] relnums{54.2} = 54.2
+[debug] relnums{54.1} = 54.1
+[debug] relnums{58.1} = 58.1
+[debug] relnums{60.1} = 60.1
+[debug] relnums{62.0} = 62.0
+[debug] relnums{62.1} = 62.1
+[debug] relnums{70.0} = 70.0
+[debug] relnums{71.0} = 71.0
+[debug] relnums{71.1} = 71.1
+[debug] relnums{71.3} = 71.3
+[debug] relnums{71.4} = 71.4
+[debug] relnums{72.0} = 72.0
+[debug] relnums{73.0} = 73.0
+[debug] relnums{73.2} = 73.2
+[debug] relnums{74.0} = 74.0
+[debug] relnums{75.0} = 75.0
+[debug] relnums{75.2} = 75.2
+[debug] relnums{76.0} = 76.0
+[debug] get_app_list
+[debug] apps{DBA TEST} = DBA TEST
+[debug] apps{DHS Suppor} = DHS Suppor
+[debug] apps{ITIM} = ITIM
+[debug] apps{MAXIE} = MAXIE
+[debug] apps{TIERS} = TIERS
+[debug] apps{TIERS FW} = TIERS FW
+[debug] apps{TIERS TOOL} = TIERS TOOL
+[debug] apps{TIERSTOOL} = TIERSTOOL
+[debug] apps{TIMTAM} = TIMTAM
+[debug] apps{TLM} = TLM
+[debug] apps{UCOSM_PX} = UCOSM_PX
+[debug] apps{VENDORDRUG} = VENDORDRUG
+[debug] apps{WBSRVCS} = WBSRVCS
+[debug] apps{WILY} = WILY
+[debug] *** INSIDE BASE METHOD ***
+[debug] Rendering template "dbs/schema_list.tt2"
+[info] Request took 0.083399s (11.991/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /database/base                                             | 0.051861s |
+| /database/listapp                                          | 0.018702s |
+| /end                                                       | 0.008583s |
+|  -> Environments::View::TT->process                        | 0.007511s |
+'------------------------------------------------------------+-----------'
+
+Odd number of elements in hash assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 90.
+Use of uninitialized value in list assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 90.
+Use of uninitialized value $1 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $2 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $1 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $2 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $subnum in pattern match (m//) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 94.
+Odd number of elements in hash assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 128.
+Use of uninitialized value in list assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 128.
+Use of uninitialized value $app in pattern match (m//) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 132.
+[info] *** Request 3 (0.200/s) [2405] [Wed Jul 29 14:24:43 2009] ***
+[debug] "GET" request for "database/listapp/autosuggest.js" from "127.0.0.1"
+[debug] Path is "/database/listapp"
+[debug] Arguments are "autosuggest.js"
+[debug] get_rel_num_list
+[debug] relnums{52.5} = 52.5
+[debug] relnums{54.2} = 54.2
+[debug] relnums{54.1} = 54.1
+[debug] relnums{58.1} = 58.1
+[debug] relnums{60.1} = 60.1
+[debug] relnums{62.0} = 62.0
+[debug] relnums{62.1} = 62.1
+[debug] relnums{70.0} = 70.0
+[debug] relnums{71.0} = 71.0
+[debug] relnums{71.1} = 71.1
+[debug] relnums{71.3} = 71.3
+[debug] relnums{71.4} = 71.4
+[debug] relnums{72.0} = 72.0
+[debug] relnums{73.0} = 73.0
+[debug] relnums{73.2} = 73.2
+[debug] relnums{74.0} = 74.0
+[debug] relnums{75.0} = 75.0
+[debug] relnums{75.2} = 75.2
+[debug] relnums{76.0} = 76.0
+[debug] get_app_list
+[debug] apps{DBA TEST} = DBA TEST
+[debug] apps{DHS Suppor} = DHS Suppor
+[debug] apps{ITIM} = ITIM
+[debug] apps{MAXIE} = MAXIE
+[debug] apps{TIERS} = TIERS
+[debug] apps{TIERS FW} = TIERS FW
+[debug] apps{TIERS TOOL} = TIERS TOOL
+[debug] apps{TIERSTOOL} = TIERSTOOL
+[debug] apps{TIMTAM} = TIMTAM
+[debug] apps{TLM} = TLM
+[debug] apps{UCOSM_PX} = UCOSM_PX
+[debug] apps{VENDORDRUG} = VENDORDRUG
+[debug] apps{WBSRVCS} = WBSRVCS
+[debug] apps{WILY} = WILY
+[debug] *** INSIDE BASE METHOD ***
+[debug] Rendering template "dbs/schema_list.tt2"
+[info] Request took 0.101958s (9.808/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /database/base                                             | 0.069037s |
+| /database/listapp                                          | 0.021173s |
+| /end                                                       | 0.008180s |
+|  -> Environments::View::TT->process                        | 0.007445s |
+'------------------------------------------------------------+-----------'
+
+Odd number of elements in hash assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 90.
+Use of uninitialized value in list assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 90.
+Use of uninitialized value $1 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $2 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $1 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $2 in concatenation (.) or string at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 95.
+Use of uninitialized value $subnum in pattern match (m//) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 94.
+Odd number of elements in hash assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 128.
+Use of uninitialized value in list assignment at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 128.
+Use of uninitialized value $app in pattern match (m//) at /Users/jsandlin/catalyst/Environments/script/../lib/Environments/Schema/ResultSet/V_Environments.pm line 132.
+[info] *** Request 5 (0.333/s) [2405] [Wed Jul 29 14:24:43 2009] ***
+[debug] "GET" request for "database/listapp/monkey.png" from "127.0.0.1"
+[debug] Path is "/database/listapp"
+[debug] Arguments are "monkey.png"
+[debug] get_rel_num_list
+[debug] relnums{52.5} = 52.5
+[debug] relnums{54.2} = 54.2
+[debug] relnums{54.1} = 54.1
+[debug] relnums{58.1} = 58.1
+[debug] relnums{60.1} = 60.1
+[debug] relnums{62.0} = 62.0
+[debug] relnums{62.1} = 62.1
+[debug] relnums{70.0} = 70.0
+[debug] relnums{71.0} = 71.0
+[debug] relnums{71.1} = 71.1
+[debug] relnums{71.3} = 71.3
+[debug] relnums{71.4} = 71.4
+[debug] relnums{72.0} = 72.0
+[debug] relnums{73.0} = 73.0
+[debug] relnums{73.2} = 73.2
+[debug] relnums{74.0} = 74.0
+[debug] relnums{75.0} = 75.0
+[debug] relnums{75.2} = 75.2
+[debug] relnums{76.0} = 76.0
+[debug] get_app_list
+[debug] apps{DBA TEST} = DBA TEST
+[debug] apps{DHS Suppor} = DHS Suppor
+[debug] apps{ITIM} = ITIM
+[debug] apps{MAXIE} = MAXIE
+[debug] apps{TIERS} = TIERS
+[debug] apps{TIERS FW} = TIERS FW
+[debug] apps{TIERS TOOL} = TIERS TOOL
+[debug] apps{TIERSTOOL} = TIERSTOOL
+[debug] apps{TIMTAM} = TIMTAM
+[debug] apps{TLM} = TLM
+[debug] apps{UCOSM_PX} = UCOSM_PX
+[debug] apps{VENDORDRUG} = VENDORDRUG
+[debug] apps{WBSRVCS} = WBSRVCS
+[debug] apps{WILY} = WILY
+[debug] *** INSIDE BASE METHOD ***
+[debug] Rendering template "dbs/schema_list.tt2"
+[info] Request took 0.116007s (8.620/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /database/base                                             | 0.066358s |
+| /database/listapp                                          | 0.037207s |
+| /end                                                       | 0.008765s |
+|  -> Environments::View::TT->process                        | 0.007500s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 7 (0.032/s) [2405] [Wed Jul 29 14:28:07 2009] ***
+[debug] "GET" request for "dbmigration/list" from "127.0.0.1"
+[debug] Path is "/dbmigration/list"
+[debug] rel = ALL
+[debug] Stage_Merge->release_num(436, Environments=HASH(0xe41ee0), ALL)
+[debug] Rendering template "dbs/mig_scripts.tt2"
+[info] Request took 5.562363s (0.180/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /dbmigration/base                                          | 1.383324s |
+| /dbmigration/list                                          | 4.005870s |
+| /end                                                       | 0.167979s |
+|  -> Environments::View::TT->process                        | 0.166991s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 8 (0.036/s) [2405] [Wed Jul 29 14:28:12 2009] ***
+[debug] "GET" request for "dbmigration/script.js" from "127.0.0.1"
+[debug] Arguments are "dbmigration/script.js"
+[info] Request took 0.004686s (213.402/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000232s |
+| /end                                                       | 0.000195s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 9 (0.040/s) [2405] [Wed Jul 29 14:28:12 2009] ***
+[debug] "GET" request for "dbmigration/autosuggest.js" from "127.0.0.1"
+[debug] Arguments are "dbmigration/autosuggest.js"
+[info] Request took 0.003747s (266.880/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000141s |
+| /end                                                       | 0.000219s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 10 (0.045/s) [2405] [Wed Jul 29 14:28:12 2009] ***
+[debug] "GET" request for "dbmigration/monkey.png" from "127.0.0.1"
+[debug] Arguments are "dbmigration/monkey.png"
+[info] Request took 0.003776s (264.831/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000132s |
+| /end                                                       | 0.000185s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 11 (0.047/s) [2405] [Wed Jul 29 14:28:22 2009] ***
+[debug] Query Parameters are:
+.-------------------------------------+--------------------------------------.
+| Parameter                           | Value                                |
++-------------------------------------+--------------------------------------+
+| rel                                 | 76000                                |
+'-------------------------------------+--------------------------------------'
+[debug] "GET" request for "dbmigration/list" from "127.0.0.1"
+[debug] Path is "/dbmigration/list"
+[debug] rel = 76000
+[debug] Stage_Merge->release_num(436, Environments=HASH(0xf2ed60), 76000)
+[debug] Rendering template "dbs/mig_scripts.tt2"
+[info] Request took 1.176045s (0.850/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /dbmigration/base                                          | 0.803457s |
+| /dbmigration/list                                          | 0.357397s |
+| /end                                                       | 0.010598s |
+|  -> Environments::View::TT->process                        | 0.009833s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 12 (0.051/s) [2405] [Wed Jul 29 14:28:23 2009] ***
+[debug] "GET" request for "dbmigration/script.js" from "127.0.0.1"
+[debug] Arguments are "dbmigration/script.js"
+[info] Request took 0.010128s (98.736/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000282s |
+| /end                                                       | 0.000268s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 13 (0.055/s) [2405] [Wed Jul 29 14:28:23 2009] ***
+[debug] "GET" request for "dbmigration/autosuggest.js" from "127.0.0.1"
+[debug] Arguments are "dbmigration/autosuggest.js"
+[info] Request took 0.003191s (313.381/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000119s |
+| /end                                                       | 0.000221s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 14 (0.060/s) [2405] [Wed Jul 29 14:28:23 2009] ***
+[debug] "GET" request for "dbmigration/monkey.png" from "127.0.0.1"
+[debug] Arguments are "dbmigration/monkey.png"
+[info] Request took 0.004536s (220.459/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000193s |
+| /end                                                       | 0.000195s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 15 (0.059/s) [2405] [Wed Jul 29 14:28:41 2009] ***
+[debug] "GET" request for "dbmigration/list" from "127.0.0.1"
+[debug] Path is "/dbmigration/list"
+[debug] rel = ALL
+[debug] Stage_Merge->release_num(436, Environments=HASH(0xfd35b0), ALL)
+[debug] Rendering template "dbs/mig_scripts.tt2"
+[info] Request took 3.105321s (0.322/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /dbmigration/base                                          | 0.990947s |
+| /dbmigration/list                                          | 1.971450s |
+| /end                                                       | 0.137892s |
+|  -> Environments::View::TT->process                        | 0.137182s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 16 (0.062/s) [2405] [Wed Jul 29 14:28:44 2009] ***
+[debug] "GET" request for "dbmigration/script.js" from "127.0.0.1"
+[debug] Arguments are "dbmigration/script.js"
+[info] Request took 0.005941s (168.322/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000161s |
+| /end                                                       | 0.000234s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 17 (0.066/s) [2405] [Wed Jul 29 14:28:44 2009] ***
+[debug] "GET" request for "dbmigration/autosuggest.js" from "127.0.0.1"
+[debug] Arguments are "dbmigration/autosuggest.js"
+[info] Request took 0.003570s (280.112/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000131s |
+| /end                                                       | 0.000184s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 18 (0.070/s) [2405] [Wed Jul 29 14:28:44 2009] ***
+[debug] "GET" request for "dbmigration/monkey.png" from "127.0.0.1"
+[debug] Arguments are "dbmigration/monkey.png"
+[info] Request took 0.005961s (167.757/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000187s |
+| /end                                                       | 0.000235s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 19 (0.073/s) [2405] [Wed Jul 29 14:28:50 2009] ***
+[debug] Query Parameters are:
+.-------------------------------------+--------------------------------------.
+| Parameter                           | Value                                |
++-------------------------------------+--------------------------------------+
+| rel                                 | 75000                                |
+'-------------------------------------+--------------------------------------'
+[debug] "GET" request for "dbmigration/list" from "127.0.0.1"
+[debug] Path is "/dbmigration/list"
+[debug] rel = 75000
+[debug] Stage_Merge->release_num(436, Environments=HASH(0xe3d950), 75000)
+[debug] Rendering template "dbs/mig_scripts.tt2"
+[info] Request took 0.746443s (1.340/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /dbmigration/base                                          | 0.664727s |
+| /dbmigration/list                                          | 0.068729s |
+| /end                                                       | 0.008817s |
+|  -> Environments::View::TT->process                        | 0.008129s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 20 (0.076/s) [2405] [Wed Jul 29 14:28:50 2009] ***
+[debug] "GET" request for "dbmigration/script.js" from "127.0.0.1"
+[debug] Arguments are "dbmigration/script.js"
+[info] Request took 0.003168s (315.657/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000128s |
+| /end                                                       | 0.000185s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 21 (0.080/s) [2405] [Wed Jul 29 14:28:50 2009] ***
+[debug] "GET" request for "dbmigration/autosuggest.js" from "127.0.0.1"
+[debug] Arguments are "dbmigration/autosuggest.js"
+[info] Request took 0.005161s (193.761/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000156s |
+| /end                                                       | 0.000571s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 22 (0.084/s) [2405] [Wed Jul 29 14:28:50 2009] ***
+[debug] "GET" request for "dbmigration/monkey.png" from "127.0.0.1"
+[debug] Arguments are "dbmigration/monkey.png"
+[info] Request took 0.004471s (223.664/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000146s |
+| /end                                                       | 0.000473s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 23 (0.054/s) [2405] [Wed Jul 29 14:31:36 2009] ***
+[debug] "GET" request for "dbmigration/list" from "127.0.0.1"
+[debug] Path is "/dbmigration/list"
+[debug] rel = ALL
+[debug] Stage_Merge->release_num(436, Environments=HASH(0xf2bca0), ALL)
+[debug] Rendering template "dbs/mig_scripts.tt2"
+[info] Request took 1.529890s (0.654/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /dbmigration/base                                          | 0.619390s |
+| /dbmigration/list                                          | 0.762963s |
+| /end                                                       | 0.141391s |
+|  -> Environments::View::TT->process                        | 0.140618s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 24 (0.056/s) [2405] [Wed Jul 29 14:31:37 2009] ***
+[debug] "GET" request for "dbmigration/script.js" from "127.0.0.1"
+[debug] Arguments are "dbmigration/script.js"
+[info] Request took 0.005357s (186.672/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000158s |
+| /end                                                       | 0.000935s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 25 (0.058/s) [2405] [Wed Jul 29 14:31:37 2009] ***
+[debug] "GET" request for "dbmigration/autosuggest.js" from "127.0.0.1"
+[debug] Arguments are "dbmigration/autosuggest.js"
+[info] Request took 0.004083s (244.918/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000170s |
+| /end                                                       | 0.000220s |
+'------------------------------------------------------------+-----------'
+
+[info] *** Request 26 (0.061/s) [2405] [Wed Jul 29 14:31:37 2009] ***
+[debug] "GET" request for "dbmigration/monkey.png" from "127.0.0.1"
+[debug] Arguments are "dbmigration/monkey.png"
+[info] Request took 0.004799s (208.377/s)
+.------------------------------------------------------------+-----------.
+| Action                                                     | Time      |
++------------------------------------------------------------+-----------+
+| /default                                                   | 0.000146s |
+| /end                                                       | 0.000867s |
+'------------------------------------------------------------+-----------'
+
+^C^Z^X^X^Z^Z^Z^C^C^C^Z^ZKilled
+jsandlin:~/catalyst/Environments> DBIC_TRACE=1; script/environments_server.pl [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K

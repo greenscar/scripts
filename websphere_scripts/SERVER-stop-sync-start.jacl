@@ -1,0 +1,181 @@
+#
+# Author: Barry Searle
+#
+# (C) Copyright IBM Corp. 2004,2006 - All Rights Reserved.
+# DISCLAIMER:
+# The following source code is sample code created by IBM Corporation.
+# This sample code is not part of any standard IBM product and is provided
+# to you solely for the purpose of assisting you in the development of your
+# applications. The code is provided 'AS IS', without warranty or condition
+# of any kind. IBM shall not be liable for any damages arising out of your
+# use of the sample code, even if IBM has been advised of the possibility of
+# such damages.
+#
+# Change History:
+# 2.0 (10feb2006) code cleanup, no functional change
+# 1.1 (17nov2004) initial shipped version
+#
+
+
+proc stopSyncStart { action nodeName containedServerNames } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        set containedAppNames ""
+        log $MAJOR_ "stopSyncStart: nodename=$nodeName containedServernames=$containedServerNames ..."
+        if { ($action == "update") } {
+                log $MAJOR_ "stopSyncStart: FUTURE: plugin-cfg.xml QUIESCE node=$nodeName servers=$containedServerNames"
+                foreach serverName      $containedServerNames {
+                        stopNDServer    $nodeName $serverName
+                }
+        }
+        syncNDNode                      $nodeName
+        if { ($action == "update") } {
+                foreach serverName      $containedServerNames {
+                        startNDServer   $nodeName $serverName
+                }
+        } elseif { ($action == "install") } {
+                log $INFO_ "syncNDNode: TEMPORARY: do nothing during install?"
+                foreach serverName      $containedServerNames {
+                        foreach appName $containedAppNames {
+                                log $INFO_ "stopSyncStart: QUESTION: start what Apps on what Servers  on this node=$nodeName"
+                                ### StartApplication $appName $nodeName $serverName
+                        }
+                }
+        } elseif { ($action == "uninstall") } {
+                log $INFO_ "syncNDNode: TEMPORARY: do nothing during uninstall?"
+                foreach serverName      $containedServerNames {
+                        foreach appName $containedAppNames {
+                                ### StartApplication $appName $nodeName $serverName
+                        }
+                }
+        } else {
+                log $ERROR_ "stopSyncStart: unknown action=$action"
+        }
+        if { ($action == "update") } {
+                log $MAJOR_ "stopSyncStart: FUTURE: plugin-cfg.xml RE-ACTIVATE node=$nodeName servers=$containedServerNames"
+        }
+        log $MAJOR_ "stopSyncStart: DONE. (nodeName=$nodeName)"
+}
+
+proc syncNDNode { nodeName } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        set EarExpandDelay 10
+        log $MAJOR_ "syncNDNode: ReSync of ND Node=$nodeName (actual application distribution to Server(s) ) ..."
+        set ndSync [$AdminControl completeObjectName type=NodeSync,node=$nodeName,*]
+        if { ($ndSync=="") } then {
+                fail "cannot syncNDNode (stopped?) nodeName=$nodeName"
+        }
+        set  sync [$AdminControl invoke $ndSync sync]
+        log $INFO_ "syncNDNode: $nodeName invoked sync=$sync  DONE."
+        log $INFO_ "syncNDNode: FUTURE: check for nodeSync EAR expansion complete (for now just delay $EarExpandDelay secs)"
+        sleepDelay $EarExpandDelay
+}
+
+proc startNDServer { nodeName serverName } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        log $MAJOR_ "startNDServer: nodeName=$nodeName serverName=$serverName ..."
+        log $VERBOSE_  "startNDServer: FUTURE: replace wsAdmin.startserver with NodeAgent.launchProcess+Wait"
+        set started ""
+        set temp [catch {set started [$AdminControl startServer $serverName $nodeName 100000]}]
+        log $DEBUG_ "startNDServer: errorcode=$temp started=$started ..."
+        set retries 0
+        while { ($temp > 0) && ($retries < 5) } {
+                incr retries
+                log $ERROR_ "startNDServer: start failed exception=$temp for $nodeName $serverName, retries=$retries ..."
+                set temp [catch {set started [$AdminControl startServer $serverName $nodeName 100000]}]
+                log $DEBUG_ "startNDServer: temp=$temp started=$started ..."
+        }
+        checkServerStarted $nodeName $serverName
+        log $VERBOSE_ "startNDServer: DONE."
+}
+
+proc checkServerStarted { nodeName serverName } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        log $INFO_ "checkServerStarted: nodeName=$nodeName serverName=$serverName ..."
+        set serverID ""
+        set retries -1
+        while { ([llength $serverID] == 0) && ($retries < 300) } {
+                incr retries
+                log $VERBOSE_ "checkServerStarted: server not yet started, retries=$retries ..."
+                sleepDelay 10
+                set temp [catch {set  serverID  [$AdminControl completeObjectName node=$nodeName,name=$serverName,type=Server,*]}]
+                if { $temp != 0 } {
+                        log $WARNING_ "checkServerStarted AdminControl exception=$temp serverID=$serverID"
+                }
+                #log $DEBUG_ "checkServerStarted: serverID=$serverID  retries=$retries ..."
+        }
+        if { $retries > 0 } {
+                log $INFO_ "checkServerStarted: $nodeName $serverName had slow start, status retries=$retries"
+        }
+        if { $serverID == "" } {
+                log $ERROR_ "checkServerStarted: $nodeName $serverName server FAILED TO START."
+                return
+        }
+        set state [$AdminControl getAttribute $serverID state]
+        set state [string toupper $state]
+        if { $state == "STARTED" } {
+                log $INFO_ "checkServerStarted: $nodeName $serverName state=$state"
+        } else {
+                log $ERROR_ "checkServerStarted: $nodeName $serverName INCORRECT state=$state"
+        }
+        log $VERBOSE_ "checkServerStarted: DONE."
+}
+
+
+proc stopNDServer { nodeName serverName } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        log $DEBUG_ "stopNDServer: nodeName=$nodeName serverName=$serverName"
+        set serverID [$AdminControl completeObjectName node=$nodeName,name=$serverName,type=Server,*]
+        if { [llength $serverID]==0 } {
+                set msg "stopNDServer: cannot access node=$nodeName server=$serverName state=STOPPED?"
+                log $WARNING_ $msg
+                return
+        }
+        set state [$AdminControl getAttribute $serverID state]
+        set state [string toupper $state]
+        log $INFO_ "stopNDServer: nodeName=$nodeName serverName=$serverName state=$state"
+        if { "$state"=="STOPPED" } {
+                log $INFO_ "$nodeName $serverName state=STOPPED"
+        } else {
+                set stopped [$AdminControl stopServer $serverName $nodeName immediate]
+                if { [llength $stopped] != 0} {
+                        log $VERBOSE_ "stopNDServer: stopServer response=$stopped"
+                }
+                checkServerStopped $nodeName $serverName
+        }
+        log $VERBOSE_ "stopNDServer: DONE."
+}
+
+proc checkServerStopped { nodeName serverName } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        log $DEBUG_ "checkServerStopped: nodeName=$nodeName serverName=$serverName"
+        set desiredState "STOPPED"
+        set  serverID ""
+        set temp [catch {set serverID [$AdminControl completeObjectName node=$nodeName,name=$serverName,type=Server,*]}]
+        if { $temp != 0 } {
+                log $WARNING_ "checkServerStopped: exception=$temp trying to access $nodeName $serverName"
+        }
+        if { [llength $serverID]==0 } {
+                log $VERBOSE_ "checkServerStopped: cannot access node=$nodeName server=$serverName (STOPPED?)"
+                set actualState $desiredState
+        } else {
+                set actualState [$AdminControl getAttribute $serverID state]
+        }
+        set actualState [string toupper $actualState]
+        log $INFO_ "checkServerStopped: $nodeName $serverName actualState=$actualState desiredState=$desiredState"
+        if { $actualState!=$desiredState } {
+                set msg "ERROR: checkServerStopped: $nodeName $serverName actualState=$actualState instead of desiredState=$desiredState"
+                fail $msg
+        }
+}
+
+proc sleepDelay { secs } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        set tstart [clock format [clock seconds] -format "%H:%M:%S"]
+        package require java
+        set temp [catch {
+                java::call java.lang.Thread sleep [expr $secs*1000]
+        }]
+        set tdone [clock format [clock seconds] -format "%H:%M:%S"]
+        log $VERBOSE_ "sleepDelay seconds=$secs start=$tstart done=$tdone"
+}
+

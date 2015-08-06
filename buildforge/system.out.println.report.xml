@@ -1,0 +1,38 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <!-- Template section, these are parsed out of the final xml and used to populate an 
+      existing environment group if an instance of this interface is linked with a project.
+      However, use the list below to help identify the variables needed to run this interface
+      if you are integrating it during a regular BuildForge step.
+      -->
+      <env name="VIEW_NAME"        value="view"/>
+      <env name="BF_SERVER"   value="iedaau020_wasadmin"/>
+      <env name="PBAD_DIR"    value="pbad_dir"/>
+   </template>
+   
+   <interface>
+   
+      <run command="clean_system_outs" params="$VIEW_NAME" server="$BF_SERVER" dir="${PBAD_DIR}/scripts/perl" timeout="600"/>
+   </interface>
+   
+   <command name="clean_system_outs">
+      <execute>
+         /usr/bin/perl system_out_clean.pl --stream=$1 --action=replace
+      </execute>
+      <resultsblock>
+         <match pattern="((^\s)*)">
+            <bom category="System.out.printlns" section="Files">
+               <field name="file" text="$_"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>   
+   
+   <bomformat category="System.out.printlns" title="System.out.printlns">
+      <section name="Files" expandable="true">
+         <field order="1" name="file" title="Files"/>         
+      </section>
+   </bomformat>
+</PROJECT_INTERFACE>
+

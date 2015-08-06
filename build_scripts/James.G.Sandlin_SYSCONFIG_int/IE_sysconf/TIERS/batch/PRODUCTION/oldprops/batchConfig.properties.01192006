@@ -1,0 +1,38 @@
+FW-GLOBL-DLY#-server 
+CO-GENPL-DLY#-server -Xmx128m -Xms128m 
+BI-SPLCF-DLY#-server -Xms512m -Xmx512m -XX:MaxPermSize=256m -XX:NewSize=128m -XX:MaxNewSize=128m -XX:NewRatio=3
+BI-FSISS-BIP#-server -Xmx128m -Xms128m
+BI-TFISS-BIP#-server -Xmx128m -Xms128m
+IN-TNFEX-MAC#-server -Xmx78m -Xms78m
+IN-TNFEX-BIP#-server -Xmx128m -Xms128m
+RP-EXTPR-BIP#-server -Xmx128m -Xms128m
+IN-FSEXT-BIP#-server -Xmx128m -Xms128m
+IN-FSEXT-MAC#-server -Xmx78m -Xms78m
+IN-RCOLT-ONR#-server -Xmx512m -Xms512m
+IN-RASSI-ONR#-server -Xmx512m -Xms512m
+CV-LODDU-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD01-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD02-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD03-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD04-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD05-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD06-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD07-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD08-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD09-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD10-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD11-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD12-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD13-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD14-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD15-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD16-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD17-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD18-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD19-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+CV-LOD20-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+SH-SCHED-CTC#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+AL-TDALT-DLY#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+MU-EDPUR-DLY#-server -Xms512m -Xmx512m -XX:MaxPermSize=256m -XX:NewSize=128m -XX:MaxNewSize=128m -XX:NewRatio=3
+CV-CASQL-COR#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3
+SH-SHLTC-CTC#-server -Xms256m -Xmx256m -XX:MaxPermSize=128m -XX:NewSize=64m -XX:MaxNewSize=64m -XX:NewRatio=3

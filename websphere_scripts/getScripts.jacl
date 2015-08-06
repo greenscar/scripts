@@ -1,0 +1,102 @@
+#
+# Author: Barry Searle
+#
+# (C) Copyright IBM Corp. 2004,2007 - All Rights Reserved.
+# DISCLAIMER:
+# The following source code is sample code created by IBM Corporation.
+# This sample code is not part of any standard IBM product and is provided
+# to you solely for the purpose of assisting you in the development of your
+# applications. The code is provided 'AS IS', without warranty or condition
+# of any kind. IBM shall not be liable for any damages arising out of your
+# use of the sample code, even if IBM has been advised of the possibility of
+# such damages.
+#
+# Change History:
+# 3.1 (08may2007) initialVersion
+#
+
+proc PreValidateScriptsFile { appName depType distDir  } {
+        set ext ".scripts"
+        set  scriptsFileName $distDir/$appName$depType$ext
+
+        if { [file isfile $scriptsFileName]==0 } {
+                set msg "PreValidateScriptsFile: ERROR: is not a file, scriptsFileName=$scriptsFileName"
+                fail $msg
+        }
+        if { [file exists $scriptsFileName]==0 } {
+                set msg "PreValidateScriptsFile: ERROR: does not exist, scriptsFileName=$scriptsFileName"
+                fail $msg
+        }
+        if { [file readable $scriptsFileName]==0 } {
+                set msg "PreValidateScriptsFile: ERROR: cannot read scriptsFileName=$scriptsFileName"
+                fail $msg
+        }
+}
+
+proc processScriptsFile { appName depType distDir phase } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        PreValidateScriptsFile $appName $depType $distDir
+        set ext ".scripts"
+        set  scriptsFileName $distDir/$appName$depType$ext
+        log $INFO_ ""
+
+        set temp [catch {open $scriptsFileName r} fd]
+        if { $temp == 0 } {
+                set more $true
+        } else {
+                set more $false
+                set msg "ERROR: processScriptsFile: attempting to read scriptsFileName=$scriptsFileName"
+                fail $msg
+                exit -1
+        }
+        while {$more} {
+                if { [eof $fd] } {
+                        set more $false
+                }
+                set line [gets $fd]
+                set line [string trim $line]
+                set comment [string first "#" $line]
+                if { $comment==0 } {
+                        set line ""
+                }
+                set i [string first "=" $line]
+                if { $i>0 } {
+                        set param1 [string range $line 0 [expr $i-1] ]
+                        set param1 [string trim $param1]
+                        set param2  [string range $line [expr $i+1] end]
+                        if {$param1=="scriptLoad"} {
+                                set param2 "$param2.jacl"
+                                log $INFO_ "processScriptsFile: $phase scriptLoad=$param2"
+                                source "$ScriptLocation/dist/$param2"
+                        } elseif {$param1==$phase} {
+                                regsub -all {, } $param2 " " param2
+                                regsub {\(} $param2 " " param2
+                                regsub {\)} $param2 " " param2
+                                set param2 [string trim $param2]
+                                log $INFO_ "processScriptsFile: $phase scriptCall=$param2"
+                                set temp [catch {eval $param2} errMsg]
+                                if { $temp != 0 } {
+                                        set msg "processScriptsFile: $phase scriptCall Exception $param2"
+                                        log $ERROR_,"scriptCall Exception=$errMsg"
+                                        fail $msg
+                                }
+                        } else {
+                                if {$param1!="preInstall" && $param1!="postInstall" && $param1!="preUninstall" && $param1!="postUninstall"} {
+                                        set msg "processScriptsFile: ERROR unknown: $param1 $param2"
+                                        log $ERROR_ $msg
+                                        fail $msg
+                                }
+                        }
+                } else {
+                        if { "" == $line } {
+                                #log $DEBUG_ "BLANK line"
+                        } else {
+                                set msg "processScriptsFile: ERROR(MISSING'='):  line=$line   propertyfile=$scriptsFileName "
+                                log $ERROR_ $msg
+                                fail $msg
+                        }
+                }
+        }
+        log $VERBOSE_ "processScriptsFile: DONE."
+        close $fd
+}

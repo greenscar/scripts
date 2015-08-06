@@ -1,0 +1,32 @@
+timestamp: 2010-02-17T14:54:13.964517
+CREATE TABLE users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    email CHAR(512)
+);
+success!
+timestamp: 2010-02-17T14:54:13.968211
+CREATE TABLE dogs(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    owner_id REFERENCES users(id) ON DELETE CASCADE,
+    name CHAR(512),
+    type CHAR(512),
+    vaccinated CHAR(1),
+    picture CHAR(512)
+);
+success!
+timestamp: 2010-02-17T14:54:13.970748
+CREATE TABLE products(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2010-02-17T14:54:13.973303
+CREATE TABLE purchases(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    buyer_id REFERENCES users(id) ON DELETE CASCADE,
+    product_id REFERENCES products(id) ON DELETE CASCADE,
+    quantity INTEGER
+);
+success!

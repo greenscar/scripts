@@ -1,0 +1,5 @@
+# In Production, this points to a virtual IP for load balancing
+ALERTS.WEBSERVICE=168.56.37.65:8080
+
+APPT_SCHEDULER_GENERIC_USER_EMP_ID=49687
+APPT_SCHEDULER_GENERIC_USER_ID=taagenericuser

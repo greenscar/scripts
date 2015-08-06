@@ -1,0 +1,164 @@
+<project name="buildAll" basedir=".">
+
+   <property file="${basedir}/props/taskdef.properties"/>
+   <property file="${basedir}/props/hb321.properties" prefix="hb"/>
+
+	<path id="prj.class.path">
+		<fileset dir=".">
+			<include name="${basedir}/lib/*.jar" />
+		</fileset>		
+	</path>
+	
+   <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+      <classpath>
+         <pathelement location="${basedir}/lib/ant-contrib-0.6.jar"/>
+      </classpath>
+   </taskdef>
+   
+   <taskdef name="servicedeploy" classname="${was.ServiceDeployTask}" >
+		 <classpath>
+		   <pathelement path="${was.home}/lib/*.jar"/>	   
+		 </classpath>
+	</taskdef>
+        
+<!--
+   <target name="buildAll" depends="init,clean"  description="Builds all integration modules">
+      <foreach list="${hb.module.list}" 
+         target="buildModule"
+         param="module.name"
+         delimiter=","/>
+   </target>
+-->
+   <target name="clean" description="Deletes following directories: SCA module Source Dir, SCA module Zip Dir, SCA module EAR Dir">
+      <echo message="Delete folders: ${hb.output.dir.source} ${hb.output.dir.zip} ${hb.output.dir.ear}" />
+      <for list="${hb.output.dir.source},${hb.output.dir.zip},${hb.output.dir.ear},${hb.output.dir.automation}" param="output.dir">
+         <sequential>
+            <delete>
+               <fileset dir="@{output.dir}" includes="**/*"/>
+            </delete>
+         </sequential>
+      </for>
+   </target>
+	
+   <target name="init" description="Creates following directories: SCA module Source Dir, SCA module Zip Dir, SCA module EAR Dir">
+      <echo message="Create folders: ${hb.output.dir.source} ${hb.output.dir.zip} ${hb.output.dir.ear} ${hb.output.dir.automation}" />
+      <for list="${hb.output.dir.source},${hb.output.dir.zip},${hb.output.dir.ear},${hb.output.dir.automation}" param="output.dir">
+         <sequential>
+            <mkdir dir="@{output.dir}"/>
+         </sequential>
+      </for>
+   </target>
+
+   <target name="buildModule" description="Builds the selected Integration module">
+      <property name="project.name" value="${module.name}" />
+      <echo message="Build module: ${module.name}" />          
+      <antcall target="copyCodeToWorkingDir" />
+      <antcall target="createZip" />
+      <antcall target="createEAR" />
+   </target>
+
+   <!--
+      Copy code from CC view dir into local working dir
+   -->
+   <target name="copyCodeToWorkingDir" description="Copy projects in SCA module Source Dir from ClearCase View Dir">
+      <echo message="Copy ${project.name} To ${hb.output.dir.source}" />
+      <if>
+         <equals arg1="${project.name}" arg2="SharedServicesLib" />
+         <then>
+            <exec executable="/opt/csw/bin/rsync" failonerror="true">
+               <arg value="-r"/>
+               <arg value="-delete"/>
+               <arg value="${hb.cc.view.shared}/${project.name}"/>
+               <arg value="${hb.output.dir.source}"/>
+            </exec>
+         </then>
+         <else>
+            <exec executable="/opt/csw/bin/rsync" failonerror="true">
+               <arg value="-r"/>
+               <arg value="-delete"/>
+               <arg value="${hb.cc.view}/${project.name}"/>
+               <arg value="${hb.output.dir.source}"/>
+            </exec>
+         </else>
+      </if>
+   </target>
+   
+	<!--
+      Get the list of dependencies from modulerefs.txt
+   -->
+   <target name="getDependencyList" description="Get the list of dependencies for the selected Integration module">
+      <echo message="Get the list of dependencies for module: ${module.name}" />  
+      <loadfile property="dependency.list" srcFile="${hb.output.dir.source}/${module.name}/modulerefs.txt" />
+      <echo message="${module.name} dependends on: ${dependency.list}"/>
+   </target>
+	
+   <!--
+      Go through list of dependencies defined in getDependencyList.
+      For each dependency, call the copyCodeToWorkingDir method
+   -->
+   <target name="getDependencies" depends="getDependencyList" description="Invoke the target 'copyCodeToWorkingDir' for every dependent project of the selected integration module">
+      <echo message="Get the projects from the following list: ${dependency.list}" />  
+      <!--<var name="project.name" unset="true"/>-->
+      <foreach list="${dependency.list}" 
+         target="copyCodeToWorkingDir"
+         param="project.name"
+         delimiter="?"/>
+   </target>
+   
+   
+   <target name="createZip" depends="getDependencies" description="Create ZIP of the selected Integration module">
+      <echo message="Create zip for the module: ${module.name}" />
+      <propertyregex property="dependency.includes"
+                     input="${dependency.list}"
+                     regexp="\?"
+                     replace="\/\*\*," />
+      <zip destfile="${hb.output.dir.zip}/${module.name}.zip"
+         basedir="${hb.output.dir.source}"
+         includes="${module.name}/**/**/*,${dependency.includes}"
+         />
+      <delete>
+         <fileset dir="${hb.output.dir.source}" includes="**/*"/>
+      </delete>
+   </target>
+   
+  <target name="createEAR" description="Create EAR of the selected Integration module">
+      <echo message="Run service deploy for ${module.name}" />
+      <echo message="scaModule=${hb.output.dir.zip}/${module.name}.zip"/>
+      <echo message="outputApplication=${hb.output.dir.ear}/${module.name}.ear"/>
+      <echo message="workingDirectory=${hb.output.dir.automation}"/>
+      <echo message="build.script.dir=${hb.build.script.dir}"/>
+      <echo message="service.deploy=${hb.service.deploy}"/>
+      <!-- Run service deploy command to generate an ear file to deploy to a WebSphere Process Server -->
+      <!--
+      NOTE: To call serviceDeploy, we had to first modify the servicedeploy.sh file 
+            adding -XX:MaxPermSize=256m to the JVM_OPTIONS
+            Final value: JVM_OPTIONS="-XX:MaxPermSize=256m -Xms256M -Xmx512M -Dwas.home=$WAS_HOME"
+      -->
+      <!--
+         Option in exec which I removed so output goes to stdout
+         output="${hb.output.dir.log}/${module.name}.log"
+      -->
+      <exec dir="${hb.build.script.dir}"
+         executable="${hb.service.deploy}"
+         failonerror="false"
+         resultproperty="servicedeploy.rc">
+         <arg line=" ${hb.output.dir.zip}/${module.name}.zip
+              -outputApplication ${hb.output.dir.ear}/${module.name}.ear
+              -workingDirectory ${hb.output.dir.automation}
+              -cleanStagingModules -noj2eedeploy"/>
+      </exec>
+      <!--
+         The ANT call to servicedeploy is below. For an unknown reason, when executing
+         servicedeploy using the call below on iedaau020, the system hangs as it did 
+         before we added the MaxPermSize=256m argument to serviceDepoy.sh file.
+         The call below does exactly the same thing as the exec call above.
+         
+         <servicedeploy scaModule="${hb.output.dir.zip}/${module.name}.zip"
+         ignoreErrors="true"
+         outputApplication="${hb.output.dir.ear}/${module.name}.ear"
+         workingDirectory="${hb.output.dir.automation}"
+         noJ2eeDeploy="false"
+         cleanStagingModules="true"/>
+      -->
+   </target>
+</project>

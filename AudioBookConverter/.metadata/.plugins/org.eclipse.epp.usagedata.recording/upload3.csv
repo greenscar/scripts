@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230128632470
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230128635836
+started,bundle,org.eclipse.debug.core,3.4.0.v20080612,org.eclipse.debug.core,1230128639979
+started,bundle,org.eclipse.debug.ui,3.4.0.v20080529-1300,org.eclipse.debug.ui,1230128640126
+started,bundle,org.eclipse.ui.externaltools,3.2.0.v20080514-1542,org.eclipse.ui.externaltools,1230128640230
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230128649094
+started,bundle,org.eclipse.ecf.filetransfer,2.0.0.v20080611-1715,org.eclipse.ecf.filetransfer,1230128656926
+started,bundle,org.eclipse.ecf.provider.filetransfer,2.0.0.v20080611-1715,org.eclipse.ecf.provider.filetransfer,1230128656956
+started,bundle,org.eclipse.ecf.identity,2.0.0.v20080611-1715,org.eclipse.ecf.identity,1230128656960
+started,bundle,org.eclipse.ecf,2.0.0.v20080611-1715,org.eclipse.ecf,1230128656997
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230128667857
+executed,command,org.eclipse.equinox.p2.ui.sdk,1.0.0.v20080605-1731,org.eclipse.equinox.p2.ui.sdk.update,1230128668114
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230128670454
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230128690265
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230128705035
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230128713213
+executed,command,org.eclipse.ui,3.4.0.I20080610-1200,org.eclipse.ui.file.import,1230128713227
+started,bundle,org.eclipse.jdt.launching,3.4.0.v20080529-1300,org.eclipse.jdt.launching,1230128743281
+started,bundle,org.eclipse.jdt.launching.macosx,3.1.100.v20080422,org.eclipse.jdt.launching.macosx,1230128743309
+deactivated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230128753318
+executed,command,org.eclipse.ui,3.4.0.I20080610-1200,org.eclipse.ui.edit.paste,1230128944312
+no handler,command,org.eclipse.ui,3.4.0.I20080610-1200,org.eclipse.ui.edit.undo,1230128945326
+started,bundle,org.eclipse.core.filesystem,1.2.0.v20080604-1400,org.eclipse.core.filesystem,1230130288162
+activated,workbench,org.eclipse.ui.workbench,3.4.0.I20080606-1300,,1230130303132
+started,bundle,org.eclipse.jdt.apt.core,3.3.100.v20080513-1235,org.eclipse.jdt.apt.core,1230130303140

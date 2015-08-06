@@ -1,0 +1,29 @@
+# ClearCase snapshot view update log
+# Update session parameters:
+#
+FormatVersion:           4
+SnapshotView:            /home/wasadmin/SNBX_89.0.0.0_SIT
+StartTime:               2009-03-30T11:55:28-05
+UserID:                  wasadmin@iedaau020
+ProcessID:               13609
+ConfigSpecSet:           FALSE
+PreviewOnly:             FALSE
+PreserveVOBTimes:        FALSE
+UpdateHijackedFiles:     FALSE
+RenameHijackedFiles:     FALSE
+#
+# Actions taken to update the view:
+#
+Updated:                 snbx_ccd/Test_fld3_R1/testing.txt /main/Test_snbx_2_Mainline_Int/Test_prj1_85.0_Tst/SNBX_89.0.0.0_Tst/2 /main/Test_snbx_2_Mainline_Int/Test_prj1_85.0_Tst/2
+Updated:                 snbx_batch/Tst_fldr_1/test-r1-a.txt /main/Test_snbx_2_Mainline_Int/SNBX_89.0.0.0_Tst/6 /main/Test_snbx_2_Mainline_Int/2
+Updated:                 snbx_bo/another1/anotherone /main/Test_prj1_85.0_Tst/SNBX_89.0.0.0_Tst/3 /main/Test_prj1_85.0_Tst/2
+New:                     snbx_bo/another1/text123 /main/Test_prj1_85.0_Tst/1
+UnloadDeleted:           snbx_dao/daotest.txt
+UnloadDeleted:           snbx_bo/another1/text123.txt
+UnloadDeleted:           snbx_batch/KK_TEST
+#
+# Update session status:
+#
+EndTime:                 2009-03-30T11:55:29-05
+BytesCopied:             181
+CancelledByUser:         FALSE

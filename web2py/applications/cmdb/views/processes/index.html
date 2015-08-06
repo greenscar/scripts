@@ -1,0 +1,22 @@
+
+{{extend 'layout.html'}}
+<h1>Processes</h1>
+<table border="1px">
+{{=TR(TH('EDIT'), 
+      TH(A('GROUP', _href=URL(r=request, args="group"))),
+      TH(A('FRIENDLY NAME', _href=URL(r=request, args="friendly"))), 
+      TH(A('PROCESS NAME', _href=URL(r=request, args="service")))
+     )
+}}
+{{ x = 0 }}
+{{for s in processes:}}
+{{if x % 2 == 0:}}
+{{=TR(TD(A('EDIT', _href=URL(r=request, f='edit', args=s.processes.id))), s.groups.name, s.processes.name_friendly, s.processes.name, _class="grey")}}
+{{else:}}
+{{=TR(TD(A('EDIT', _href=URL(r=request, f='edit', args=s.processes.id))), s.groups.name, s.processes.name_friendly, s.processes.name)}}
+{{pass}}
+{{ x = x + 1 }}
+{{pass}}
+</table>
+{{=H2(A('Add Service', _href=URL(r=request, f='add')))}}
+<br>

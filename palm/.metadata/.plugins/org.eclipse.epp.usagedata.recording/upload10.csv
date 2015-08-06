@@ -1,0 +1,10 @@
+what,kind,bundleId,bundleVersion,description,time
+stopped,bundle,org.eclipse.gmf.xpand.editor,1.0.0.v20080425-1959,org.eclipse.gmf.xpand.editor,1248317342782
+stopped,bundle,org.eclipse.m2m.qvt.oml.emf.util.ui,1.0.0.v20080611-1330,org.eclipse.m2m.qvt.oml.emf.util.ui,1248317342783
+stopped,bundle,org.eclipse.xsd.editor,2.4.0.v200806091234,org.eclipse.xsd.editor,1248317342784
+stopped,bundle,org.eclipse.ui.editors,3.4.0.v20080603-2000,org.eclipse.ui.editors,1248317342784
+stopped,bundle,org.eclipse.emf.ecoretools,0.8.0.v200806130600,org.eclipse.emf.ecoretools,1248317342784
+stopped,bundle,org.eclipse.ui.navigator.resources,3.3.100.I20080606-1300,org.eclipse.ui.navigator.resources,1248317342785
+stopped,bundle,org.eclipse.emf.cdo.ui,1.0.0.v200806180411,org.eclipse.emf.cdo.ui,1248317342785
+stopped,bundle,org.eclipse.uml2.uml.ecore.exporter,2.2.0.v200805131030,org.eclipse.uml2.uml.ecore.exporter,1248317342786
+stopped,bundle,org.eclipse.xsd.ecore.exporter,2.4.0.v200806091234,org.eclipse.xsd.ecore.exporter,1248317342786

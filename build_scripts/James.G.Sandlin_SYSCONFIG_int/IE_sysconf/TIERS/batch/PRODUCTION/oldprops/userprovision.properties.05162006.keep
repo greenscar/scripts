@@ -1,0 +1,10 @@
+#Excel file name and full path
+userProvisionFilepath=/TIERS/ENV/se/data/TIERSUsersTest.xls
+#To disable TAM user creation, set the following value to false
+createTAMuser=true
+#Default TAM password
+defaultTAMpassword=changeme123
+#To disable email notification, set the following value to false
+sendEmail=true
+#SMTP email host name
+EmailHost=IEDAMW011

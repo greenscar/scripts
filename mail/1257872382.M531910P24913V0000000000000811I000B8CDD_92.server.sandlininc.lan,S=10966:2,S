@@ -1,0 +1,217 @@
+Return-Path: <james@caffeinewebdesign.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 2580590069
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 08:32:28 -0500 (CDT)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id EaxPynHv6YlN for <james@sandlininc.com>;
+	Sat, 23 Aug 2008 08:32:28 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 1C14290652
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 07:53:37 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Sat, 23 Aug 2008 07:44:28 -0500
+Received: from sandlininc.com [74.55.232.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Sat, 23 Aug 2008 07:53:37 -0500 (CDT)
+Received: from cpe-66-68-52-223.austin.res.rr.com ([66.68.52.223]:61706 helo=[10.0.0.9])
+	by maxserv.yourhostdns.com with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.69)
+	(envelope-from <james@caffeinewebdesign.com>)
+	id 1KWsTk-0004jP-0M
+	for james@sandlininc.com; Sat, 23 Aug 2008 07:44:28 -0500
+Resent-From: James Sandlin <james@caffeinewebdesign.com>
+Resent-To: james@sandlininc.com
+Resent-Date: Sat, 23 Aug 2008 07:44:28 -0500
+Resent-Message-Id: <48B0062C.5010400@caffeinewebdesign.com>
+Resent-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.16) Gecko/20080724 Thunderbird/2.0.0.16
+X-Mozilla-Keys:                                                                                 
+Received: from smtp.linuxquestions.org ([208.101.3.244] helo=sql02.linuxquestions.org)
+	by maxserv.yourhostdns.com with esmtps (TLSv1:AES256-SHA:256)
+	(Exim 4.68)
+	(envelope-from <forum@linuxquestions.org>)
+	id 1JUtBm-0005Ds-Fr
+	for linux@caffeinewebdesign.com; Thu, 28 Feb 2008 18:33:26 -0600
+Received: from web01.linuxquestions.org (web01-be.linuxquestions.org [10.13.156.2])
+	by sql02.linuxquestions.org (8.13.8/8.13.8) with ESMTP id m1T0XU2o011884
+	for <linux@caffeinewebdesign.com>; Thu, 28 Feb 2008 19:33:30 -0500
+DomainKey-Signature: a=rsa-sha1; s=smtp; d=linuxquestions.org; c=simple; q=dns;
+	b=Yzw+JtsaHXv9sl5W/Ip/MF+O1CmGokFb1iQVBFnQxhKd4gX1cEHltHw/tHoYnBGUX
+	bOEQ2VBrhBCL4Ny0r5xyQ==
+Received: from web01.linuxquestions.org (localhost.localdomain [127.0.0.1])
+	by web01.linuxquestions.org (8.13.8/8.13.8) with ESMTP id m1T0XU4x020808
+	for <linux@caffeinewebdesign.com>; Thu, 28 Feb 2008 19:33:30 -0500
+Received: (from nobody@localhost)
+	by web01.linuxquestions.org (8.13.8/8.13.8/Submit) id m1T0XUnC020805;
+	Thu, 28 Feb 2008 19:33:30 -0500
+Date: Thu, 28 Feb 2008 19:33:30 -0500
+To: linux@caffeinewebdesign.com
+Subject: LinuxQuestions.org - Community Bulletin
+From: "forum@linuxquestions.org" <forum@linuxquestions.org>
+Message-ID: <200802290030.198c5b729159@www.linuxquestions.org>
+X-LQ-ComTo: 43509
+MIME-Version: 1.0
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 8bit
+X-Priority: 3
+X-Mailer: LQ Mailer
+
+For unsubscription information, please see the bottom of this email
+
+---------------------------------------------------------------------------
+*Note: To ensure the LQ Community Bulletin regularly makes it to your inbox, please add forum@linuxquestions.org to your address book or whitelist.*
+
+sandlinjames,
+
+     I'm happy to announce that the polls are closed and the results are in.  This was the seventh annual LinuxQuestions.org Members Choice Awards and we've set a record for participation each and every year.  We had some extremely close races this year (in fact just .41% separated first and second in one case). We also had a couple of multi-year winners unseated this year.  Visit http://www.linuxquestions.org/questions/linux-news-59/2007-linuxquestions.org-members-choice-award-winners-622825/ for a summary of the winners and links to the detailed poll results.
+
+     Questions about the infrastructure that runs LQ are always popular, so I thought I'd give everyone a heads up that we're making some substantial upgrades and also moving data centers.  Visit http://jeremy.linuxquestions.org/2008/02/01/new-lq-infrastructure/ for more information.  Any feedback you have on the speed and reliability of that site would be appreciated. Thanks.
+
+     Have you ever listened to the LinuxQuestions.org Podcast?  If not, visit http://radio.linuxquestions.org/ and tune in. You can automatically download the latest podcasts by adding the RSS Feed ( http://radio.linuxquestions.org/syndicate/lq.php ) to your favorite podcatcher. The LQ Podcast is a short audio program that discusses the  latest in Linux and Open Source.  A new podcast was just posted today.  LQ Radio is Open Talk... about Open Source and Linux.
+
+-jeremy
+http://jeremy.linuxquestions.org/
+
+***SPONSOR***
+Big ideas, Know-how & Connections: Harness the power of MySQL at the MySQL Conference & Expo
+
+Fast-paced sessions, guru-programming advice, in-depth tutorials, late night hacking...the MySQL Conference & Expo packs a wealth of big ideas, know-how, and connections into 4 concentrated days and nights. Learn how to create the best database applications, tools, and software through expert instruction and hands-on learning at the MySQL Conference & Expo, April 14-17, Santa Clara, CA. Use code mys08linq to save 15% off registration fees.
+http://en.oreilly.com/mysql2008/
+***SPONSOR**
+
+---------------------------------------------------------------------------
+
+Today's Date: 02-28-2008
+
+Activity since: 02-15-2008
+---------------------------------------------------------------------------
+
+View all new content here: http://www.linuxquestions.org/questions/
+---------------------------------------------------------------------------
+LATEST THREADS
+---------------------------------------------------------------------------
+
+-- Threads posted most recently --
+
+Title: "cron job is not working" (Date Posted 02-28-2008 by moagalbm)
+ o 0 Replies, 0 Views, Last Post: 06:57 PM, 02-28-2008 by moagalbm
+ o http://www.linuxquestions.org/questions/showthread.php?t=624599
+
+Title: "How to install Ubuntu 7.10 Server on MS Virtual Server 2005 R2" (Date Posted 02-28-2008 by TigerLilly56)
+ o 0 Replies, 1 Views, Last Post: 06:52 PM, 02-28-2008 by TigerLilly56
+ o http://www.linuxquestions.org/questions/showthread.php?t=624598
+
+Title: "Suse or Redhat kgdb" (Date Posted 02-28-2008 by pvpnguyen)
+ o 0 Replies, 5 Views, Last Post: 06:34 PM, 02-28-2008 by pvpnguyen
+ o http://www.linuxquestions.org/questions/showthread.php?t=624595
+
+Title: "Troubleshooting script that uses expect" (Date Posted 02-28-2008 by kaplan71)
+ o 0 Replies, 6 Views, Last Post: 06:31 PM, 02-28-2008 by kaplan71
+ o http://www.linuxquestions.org/questions/showthread.php?t=624594
+
+Title: "hpiod problem" (Date Posted 02-28-2008 by C-Sniper)
+ o 0 Replies, 6 Views, Last Post: 06:30 PM, 02-28-2008 by C-Sniper
+ o http://www.linuxquestions.org/questions/showthread.php?t=624593
+
+Title: "Trouble Compiling LC-3 Simulator in Debian Etch" (Date Posted 02-28-2008 by GBW88)
+ o 0 Replies, 2 Views, Last Post: 06:27 PM, 02-28-2008 by GBW88
+ o http://www.linuxquestions.org/questions/showthread.php?t=624592
+
+Title: "c++: can you set a string to a #defined value?" (Date Posted 02-28-2008 by BrianK)
+ o 4 Replies, 21 Views, Last Post: 06:28 PM, 02-28-2008 by dmail
+ o http://www.linuxquestions.org/questions/showthread.php?t=624591
+
+
+-- Threads with no replies yet --
+
+Title: "Solved - the shrinking screen resolution on a headless server" (Date Posted 02-28-2008 by taylorkh)
+ o 6 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=624589
+
+Title: "did kernel 2.6.22-3-ame64 break bcm43xx driver?" (Date Posted 02-28-2008 by rbees)
+ o 5 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=624588
+
+Title: "Quality Open Office Templates for Flyers" (Date Posted 02-28-2008 by fakie_flip)
+ o 10 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=624585
+
+Title: "Run Puppy via USB mid XP session" (Date Posted 02-28-2008 by flotoonie)
+ o 7 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=624583
+
+Title: "External drive, installed Slackware & the panicked kernel" (Date Posted 02-28-2008 by juju)
+ o 29 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=624578
+
+Title: "patching problem" (Date Posted 02-28-2008 by aloishis89)
+ o 17 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=624577
+
+Title: "java xpath evaluate on a node" (Date Posted 02-28-2008 by h/w)
+ o 11 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=624572
+
+---------------------------------------------------------------------------
+LATEST POLLS
+---------------------------------------------------------------------------
+
+Question: Desktop environment of Slackware users
+ o 'kde' (127 Votes)
+ o 'xfce' (46 Votes)
+ o 'gnome' (22 Votes)
+ o 'fluxbox' (36 Votes)
+ o 'blackbox' (4 Votes)
+ o 'wmaker' (8 Votes)
+ o 'fvwm2' (11 Votes)
+ o 'twm' (2 Votes)
+   View Poll Results: http://www.linuxquestions.org/questions/showthread.php?t=619266
+
+Question: Best option to learn RHCE?
+ o 'Expert Trainer of RHCE, who is RHCE certified' (3 Votes)
+ o 'Redhat Certified Training partner' (3 Votes)
+ o 'Self Study through books and internet materials' (6 Votes)
+ o 'Self Study through practical lab environment at home' (6 Votes)
+   View Poll Results: http://www.linuxquestions.org/questions/showthread.php?t=617552
+
+
+---------------------------------------------------------------------------
+FORTHCOMING EVENTS 			Public:
+to view the calendar, click the link below:
+http://www.linuxquestions.org/questions/calendar.php?c=1
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+STATISTICS:
+We have had the following activity since 02-15-2008
+---------------------------------------------------------------------------
+
+ o 2,719 New Members
+ o 2,732 New Threads
+ o 14,225 New posts
+ o 1 New 
+
+
+---------------------------------------------------------------------------
+USER INFO:
+These are your current user details
+---------------------------------------------------------------------------
+
+ o Your username is: "sandlinjames"
+ o You have 0 Posts
+ o You registered on 08-03-2003
+  o You were last active on LinuxQuestions.org at 01:56 PM, 04-08-2005
+ 
+
+---------------------------------------------------------------------------
+To unsubscribe from the community updates, click this link:
+http://www.linuxquestions.org/questions/profile.php?do=editoptions
+and uncheck "Receive Community Bulletin Newsletters". 
+Currently, community updates are sent weekly. 
+---------------------------------------------------------------------------
+Best regards, The LinuxQuestions.org Administrators.
+

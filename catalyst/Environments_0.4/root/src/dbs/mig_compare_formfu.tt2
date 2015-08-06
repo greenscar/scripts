@@ -1,0 +1,5 @@
+[% META title = 'Select Schemas to Compare' %]
+[%# Render the HTML::FormFu Form %]
+
+<H3> Please select the DBID's you would like to compare</H3>
+[% form %]

@@ -1,0 +1,23 @@
+[%- # List all script changes -%]
+[% META title = 'Change List' -%]
+<h1>[% mig_scripts.size -%] MIG Scripts run for release [% rel %]</h1>
+<table border="1">
+   <tr>
+      <th>ER</th>
+      <th>Build Num</th>
+      <th>Track</th>
+      <th>File</th>
+   </tr>
+   [% FOREACH ms IN mig_scripts -%]
+   <tr>
+      <td>[% ms.tiers_id %]</td>
+      <td>
+         <a href="[% c.uri_for(c.controller.action_for('list')) %]?rel=[% ms.BUILD_NUM %]">
+            [% ms.build_num %]
+         </a>
+      </td>
+      <td>[% ms.track %]</td>
+      <td>[% ms.unix_loc %]</td>
+   </tr>
+   [% END -%]
+</table>

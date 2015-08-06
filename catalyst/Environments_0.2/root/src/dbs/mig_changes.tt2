@@ -1,0 +1,19 @@
+[%- # List all script changes -%]
+[% META title = 'Change List' -%]
+<h1>[% mig_changes.size -%] mig scripts executed in  [% env %] </h1>
+<table border="1">
+   <tr>
+      <th>ER</th>
+      <th>Date Run</th>
+      <th>Build Num</th>
+      <th>File Name</th>
+   </tr>
+   [% FOREACH change IN mig_changes -%]
+   <tr>
+      <td>[% change.tiers_id %]</td>
+      <td>[% change.start_dt %]</td>
+      <td>[% change.build_num %]</td>
+      <td>[% change.file.file_name %]</td>
+   </tr>
+   [% END -%]
+</table>

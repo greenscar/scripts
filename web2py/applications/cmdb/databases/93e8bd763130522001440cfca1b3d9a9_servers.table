@@ -1,0 +1,22 @@
+(dp1
+S'created_at'
+p2
+S'DATETIME NOT NULL'
+p3
+sS'os'
+p4
+S'VARCHAR(24) NOT NULL'
+p5
+sS'updated_at'
+p6
+S'DATETIME NOT NULL'
+p7
+sS'name'
+p8
+S'VARCHAR(45) NOT NULL'
+p9
+sS'id'
+p10
+S'INT AUTO_INCREMENT NOT NULL'
+p11
+s.

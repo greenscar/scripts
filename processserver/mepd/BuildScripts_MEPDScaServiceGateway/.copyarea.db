@@ -1,0 +1,12 @@
+ClearCase CopyAreaDB|4
+EA_mepd1\BuildScripts_MEPDScaServiceGateway
+2
+8
+9:build.bat|1|11fae2a1ed1|831|7ff86ac0|2e81c2bbed774dfba850a27fcaf1294d|0
+5:props|2|0|0|0|120aaa70c35c43d48196942ab0ac4b2a|0
+13:ant-contrib-0.3.jar|1|11fae2a1e54|452c|4fb210b3|ffbcd0c27135435d86e08c59f8f28a75|0
+c:WsrrUtil.jar|1|11fae2a200a|1622|c1f15d66|f3186c112a3f4026bddf85acdae2ae70|0
+3:lib|2|0|0|0|49bfd388a3dd4ec3a0e9d2874db4c698|0
+9:build.xml|1|11fae2a1f1f|5575|ecf45c07|ad6768b7a29c402e946ee1f5f9906796|0
+a:ReadMe.txt|1|11fae2a1e16|e8|37c84d07|814284c9efd44268b88bcd962a13bb90|0
+13:xmltask-v1.15.1.jar|1|11fae2a1fac|11249|2a469881|490087185bce42eab1c289db09e83ced|0

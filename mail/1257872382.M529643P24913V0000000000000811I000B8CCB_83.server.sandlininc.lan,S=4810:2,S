@@ -1,0 +1,82 @@
+Return-Path: <james@caffeinewebdesign.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id F0DEB9006E
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 08:25:40 -0500 (CDT)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qd4CD-hy9lg3 for <james@sandlininc.com>;
+	Sat, 23 Aug 2008 08:25:40 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 59EA69027A
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 07:36:39 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Sat, 23 Aug 2008 07:33:24 -0500
+Received: from sandlininc.com [74.55.232.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Sat, 23 Aug 2008 07:36:39 -0500 (CDT)
+Received: from cpe-66-68-52-223.austin.res.rr.com ([66.68.52.223]:60436 helo=[10.0.0.9])
+	by maxserv.yourhostdns.com with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.69)
+	(envelope-from <james@caffeinewebdesign.com>)
+	id 1KWsJ2-0003Aj-Pl
+	for james@sandlininc.com; Sat, 23 Aug 2008 07:33:24 -0500
+Resent-From: James Sandlin <james@caffeinewebdesign.com>
+Resent-To: james@sandlininc.com
+Resent-Date: Sat, 23 Aug 2008 07:33:26 -0500
+Resent-Message-Id: <48B00396.6000003@caffeinewebdesign.com>
+Resent-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.16) Gecko/20080724 Thunderbird/2.0.0.16
+X-Mozilla-Keys:                                                                                 
+Received: from mail3.meetup.com ([64.90.170.33])
+	by maxser.yourhostdns.com with esmtp (Exim 4.68)
+	(envelope-from <info@meetup.com>)
+	id 1JRUfc-0000xW-MM
+	for james@h8n.com; Tue, 19 Feb 2008 09:46:12 -0600
+Received: from mail3.meetup.com (localhost.localdomain [127.0.0.1])
+	by mail3.meetup.com (Postfix) with ESMTP id 0BE24448790
+	for <james@h8n.com>; Tue, 19 Feb 2008 10:46:15 -0500 (EST)
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=meetup.com; q=dns; s=meetup; b=X1
+	wdWblybSg7jpo8AoWnDr9nY9GDzvPOum+ZSTsEgtFTW1XSL82uXac2ja3m/F9wVY
+	SPDfFNGHo729QMGn4AI3B5Wf6qFHzIPgW/6+1ZJQc3aBjsj4s/BIPqN6jTmSBPPf
+	4qfe0AbEzKmg7o4l8ucR2NM8cSqjq8u6zKo//x3EM=
+Received: from mail.meetup.com (james0.int.meetup.com [192.168.60.30])
+	by mail3.meetup.com (Postfix) with ESMTP id 04EF14486F5
+	for <james@h8n.com>; Tue, 19 Feb 2008 10:46:14 -0500 (EST)
+Message-ID: <1901080884.1203435974818.JavaMail.nobody@james0>
+From: Jacob Godwin <jacob@infinitepath.org>
+Sender: taoism-134-announce@meetup.com
+To: taoism-134-announce@meetup.com
+Subject: [taoism-134] Meeting details changed: The Austin Daoism March
+ Meeting
+MIME-Version: 1.0
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+X-MEETUP-TRACK: bc2
+Reply-To: taoism-134@meetup.com
+Mailing-List: list taoism-134@meetup.com; contact postmaster@meetup.com
+List-Id: <taoism-134.meetup.com>
+List-Unsubscribe: <mailto: support@meetup.com>
+Errors-To: info@meetup.com
+Precedence: list
+X-MEETUP-RECIP-ID: 4793497
+X-MEETUP-MESG-ID: 2169522
+Date: Tue, 19 Feb 2008 10:46:14 -0500 (EST)
+
+<html><body>I've updated this meeting. For more details, see the full listing: <a href="http://taoism.meetup.com/134/calendar/7359075/">http://taoism.meetup.com/134/calendar/7359075/</a><br /><br />When: Monday, March 17, 2008 at 7:30 PM<br /><br />Where: Source Wellness Center<br />3355 Bee Caves Rd. STE. 508<br />Austin, TX 78746<br />512-732-1886<br /><br />RSVP limit: 10 &quot;Yes&quot; RSVPs<br /><br />If the changes affect your plans to attend, please take a moment to update your RSVP. (You can RSVP 'No' or 'Yes'.)<br /><br />You can always get in touch with me through the 'Contact Organizer' feature on the Meetup.com website: <a href="http://taoism.meetup.com/134/suggestion/">http://taoism.meetup.com/134/suggestion/</a><br />
+<br /><br />
+<br />
+<br />
+--<br />
+Please Note: If you hit "<strong>REPLY</strong>", your message will be sent to <strong>everyone</strong> on this mailing list (<a href="mailto:taoism-134@meetup.com">taoism-134@meetup.com</a>)<br />
+This message was sent by Jacob Godwin (jacob@infinitepath.org) from <a href="http://taoism.meetup.com/134">The Austin Taoism Meetup Group</a>.<br />
+To learn more about Jacob Godwin, visit his/her <a href="http://taoism.meetup.com/134/members/3460619/">member profile</a><br />
+To unsubscribe or to update your mailing list settings, <a href="http://www.meetup.com/account/?tab=comm">click here</a><br /><br />
+<small style="color:gray">
+	Meetup.com Customer Service: support@meetup.com <br />
+	632 Broadway New York NY 10012 USA
+</small>
+
+</body></html>
+

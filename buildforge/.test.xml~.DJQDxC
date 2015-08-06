@@ -1,0 +1,98 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <env name="VIEW_NAME"     value="required"/>
+      <env name="BF_SERVER"         value="required"/>
+      <env name="BF_ROOT"           value="required"/>
+		<env name="CUR_DATE"          value="required" />
+   </template>
+   
+   <interface>      
+      <run command="figure_app" params="$VIEW_NAME" server="$BF_SERVER" dir="/" timeout="120"/>
+	   <run command="get_bls_ssp" params="$VIEW_NAME" server="$BF_SERVER" dir="/" timeout="120" condition="true('$app' eq 'SSP')"/>
+      <run command="get_bls_stp" params="$VIEW_NAME" server="$BF_SERVER" dir="/" timeout="120" condition="true('$app' eq 'STP')"/>
+      <run command="get_bls_tlm" params="$VIEW_NAME" server="$BF_SERVER" dir="/" timeout="120" condition="true('$app' eq 'TLM')"/>
+   </interface>
+   
+   <command name="figure_app">
+      <execute>
+         echo '$1'
+      </execute>
+      <resultsblock>
+         <match pattern="(SSP)">
+            <setenv name="app" value="SSP" type="temp"/>
+         </match>
+         <match pattern="(STP)">
+            <setenv name="app" value="STP" type="temp"/>
+         </match>
+         <match pattern="(TLM)">
+            <setenv name="app" value="TLM" type="temp"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="get_bls_ssp">
+      <execute>
+         ${BF_ROOT}get_bls.pl --srcstream "$1"
+      </execute>
+      <resultsblock>
+         <match pattern="bl_(.+)=baseline:(.+)@\/DC_Projects">
+            <bom category="blssp" section="sspbaselines">
+               <field name="testlvl" text="$1"/>
+               <field name="baseline" text="$2"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+   
+   
+   <command name="get_bls_stp">
+      <execute>
+         ${BF_ROOT}get_bls.pl --srcstream "$1"
+      </execute>
+      <resultsblock>
+         <match pattern="bl_(.+)=baseline:(.+)@\/DC_Projects">
+            <bom category="blstp" section="stpbaselines">
+               <field name="testlvl" text="$1"/>
+               <field name="baseline" text="$2"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="get_bls_tlm">
+      <execute>
+         ${BF_ROOT}get_bls.pl --srcstream "$1"
+      </execute>
+      <resultsblock>
+         <match pattern="bl_(.+)=baseline:(.+)@\/DC_Projects">
+            <bom category="bltlm" section="tlmbaselines">
+               <field name="testlvl" text="$1"/>
+               <field name="baseline" text="$2"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <bomformat category="blssp" title="SSP Baselines">
+      <section name="sspbaselines">
+         <field order="1" name="testlvl" title="Test Level"/>
+         <field order="2" name="baseline" title="Baseline Name"/>
+      </section>
+   </bomformat>
+   
+   <bomformat category="blstp" title="STP Baselines">
+      <section name="stpbaselines">
+         <field order="1" name="testlvl" title="Test Level"/>
+         <field order="2" name="baseline" title="Baseline Name"/>
+      </section>
+   </bomformat>
+   
+   
+   <bomformat category="bltlm" title="TLM Baselines">
+      <section name="tlmbaselines">
+         <field order="1" name="testlvl" title="Test Level"/>
+         <field order="2" name="baseline" title="Baseline Name"/>
+      </section>
+   </bomformat>
+</PROJECT_INTERFACE>

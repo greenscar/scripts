@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_cUJVUGyhEd2rN7cHhDtLDQ" name="cookbook">
+  <elementImport xmi:id="_cWyZoGyhEd2rN7cHhDtLDQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_cW6VcGyhEd2rN7cHhDtLDQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_cW68gGyhEd2rN7cHhDtLDQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_cW68gWyhEd2rN7cHhDtLDQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_dwewcGyhEd2rN7cHhDtLDQ" name="Category">
+    <ownedAttribute xmi:id="_jU5bQGyhEd2rN7cHhDtLDQ" name="id" aggregation="composite"/>
+    <ownedAttribute xmi:id="_k1UFIGyhEd2rN7cHhDtLDQ" name="descr" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_oHm8UGyhEd2rN7cHhDtLDQ" name="User">
+    <ownedAttribute xmi:id="_pWPSoGyhEd2rN7cHhDtLDQ" name="id" aggregation="composite"/>
+    <ownedAttribute xmi:id="_roC9MGyhEd2rN7cHhDtLDQ" name="pwd" aggregation="composite"/>
+    <ownedAttribute xmi:id="_ssn_oGyhEd2rN7cHhDtLDQ" name="name_first" aggregation="composite"/>
+    <ownedAttribute xmi:id="_uDJGoGyhEd2rN7cHhDtLDQ" name="name_last" aggregation="composite"/>
+    <ownedAttribute xmi:id="_we3iMGyhEd2rN7cHhDtLDQ" name="email" aggregation="composite"/>
+    <ownedOperation xmi:id="_yKIKIGyhEd2rN7cHhDtLDQ" name="db_login">
+      <ownedParameter xmi:id="_0O-WwGyhEd2rN7cHhDtLDQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_3OteUGyhEd2rN7cHhDtLDQ" name="Settings">
+    <ownedAttribute xmi:id="_6snvoGyhEd2rN7cHhDtLDQ" name="server" aggregation="composite"/>
+    <ownedAttribute xmi:id="_7AXLAGyhEd2rN7cHhDtLDQ" name="db" aggregation="composite"/>
+    <ownedAttribute xmi:id="_7FMAoGyhEd2rN7cHhDtLDQ" name="id" aggregation="composite"/>
+    <ownedAttribute xmi:id="_7GSz4GyhEd2rN7cHhDtLDQ" name="pwd" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_W_V-YGyiEd2rN7cHhDtLDQ" name="Recipe">
+    <ownedAttribute xmi:id="_7HCI0GyjEd2rN7cHhDtLDQ" name="name" aggregation="composite"/>
+    <ownedAttribute xmi:id="_8DAB0GyjEd2rN7cHhDtLDQ" name="id" aggregation="composite"/>
+    <ownedAttribute xmi:id="_-a5GQGyjEd2rN7cHhDtLDQ" name="ingredients" aggregation="composite"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_yXpW0GyjEd2rN7cHhDtLDQ" name="category"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_4ZdvUGyjEd2rN7cHhDtLDQ" name="ingredients"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_4ucg0GyjEd2rN7cHhDtLDQ" name="steps"/>
+    <ownedOperation xmi:id="_JigT4GykEd2rN7cHhDtLDQ" name="add_ingredient"/>
+    <ownedOperation xmi:id="_JkHdcGykEd2rN7cHhDtLDQ" name="set_category"/>
+    <ownedOperation xmi:id="_JlhysGykEd2rN7cHhDtLDQ" name="add_step"/>
+    <ownedOperation xmi:id="_Jm99IGykEd2rN7cHhDtLDQ" name="db_insert"/>
+    <ownedOperation xmi:id="_JoVPEGykEd2rN7cHhDtLDQ" name="db_update"/>
+    <ownedOperation xmi:id="_JprS4GykEd2rN7cHhDtLDQ" name="db_deactivate"/>
+    <ownedOperation xmi:id="_JrFBEGykEd2rN7cHhDtLDQ" name="db_load"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_eN16gGykEd2rN7cHhDtLDQ" name="Measurement">
+    <ownedAttribute xmi:id="_fCxXYGykEd2rN7cHhDtLDQ" name="id" aggregation="composite"/>
+    <ownedAttribute xmi:id="_fETBYGykEd2rN7cHhDtLDQ" name="descr" aggregation="composite"/>
+    <ownedOperation xmi:id="_kajUYGykEd2rN7cHhDtLDQ" name="db_load_via_id">
+      <ownedParameter xmi:id="_n6aGcGykEd2rN7cHhDtLDQ" direction="return"/>
+      <ownedParameter xmi:id="_n6atgGykEd2rN7cHhDtLDQ" name="int id"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_k1GiYGykEd2rN7cHhDtLDQ" name="db_insert">
+      <ownedParameter xmi:id="_vsYN8GykEd2rN7cHhDtLDQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_z_ELIGykEd2rN7cHhDtLDQ" memberEnd="_z_EyMGykEd2rN7cHhDtLDQ _z_FZQWykEd2rN7cHhDtLDQ">
+    <ownedEnd xmi:id="_z_EyMGykEd2rN7cHhDtLDQ" name="src" type="_W_V-YGyiEd2rN7cHhDtLDQ" association="_z_ELIGykEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_z_FZQGykEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_z_EyMWykEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_z_FZQWykEd2rN7cHhDtLDQ" name="dst" type="_dwewcGyhEd2rN7cHhDtLDQ" association="_z_ELIGykEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_z_FZQ2ykEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_z_FZQmykEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_5TyNEGykEd2rN7cHhDtLDQ" name="Food_item">
+    <ownedAttribute xmi:id="_7BivYGykEd2rN7cHhDtLDQ" name="id" aggregation="composite"/>
+    <ownedAttribute xmi:id="_7GzC0GykEd2rN7cHhDtLDQ" name="descr" aggregation="composite"/>
+    <ownedOperation xmi:id="_ATg_UGylEd2rN7cHhDtLDQ" name="db_load_via_id">
+      <ownedParameter xmi:id="_CwFvcGylEd2rN7cHhDtLDQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_AVO2kGylEd2rN7cHhDtLDQ" name="db_load_via_descr">
+      <ownedParameter xmi:id="_FER_oGylEd2rN7cHhDtLDQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_GOGHYGylEd2rN7cHhDtLDQ" name="db_insert">
+      <ownedParameter xmi:id="_HuuMoGylEd2rN7cHhDtLDQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_OiK2YGylEd2rN7cHhDtLDQ" name="Ingredient">
+    <ownedAttribute xmi:id="_Qo55YGylEd2rN7cHhDtLDQ" name="order_num" aggregation="composite"/>
+    <ownedAttribute xmi:id="_Qtjv4GylEd2rN7cHhDtLDQ" name="quantity" aggregation="composite"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_U1E-4GylEd2rN7cHhDtLDQ" name="measurement"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_aQhT4GylEd2rN7cHhDtLDQ" name="food_item"/>
+    <ownedOperation xmi:id="_j8kicGylEd2rN7cHhDtLDQ" name="db_set_item_via_descr">
+      <ownedParameter xmi:id="_o2QOMGylEd2rN7cHhDtLDQ" direction="return"/>
+      <ownedParameter xmi:id="_o2Q1QGylEd2rN7cHhDtLDQ" name="String descr"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_kKJrcGylEd2rN7cHhDtLDQ" name="set_measurement">
+      <ownedParameter xmi:id="_y0DUEGylEd2rN7cHhDtLDQ" direction="return"/>
+      <ownedParameter xmi:id="_y0D7IGylEd2rN7cHhDtLDQ" name="String msrmnt_descr"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_kLquYGylEd2rN7cHhDtLDQ" name="db_insert">
+      <ownedParameter xmi:id="_3L1zsGylEd2rN7cHhDtLDQ" direction="return"/>
+      <ownedParameter xmi:id="_3L1zsWylEd2rN7cHhDtLDQ" name="int recipe_id"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_dkciwGylEd2rN7cHhDtLDQ" memberEnd="_dkciwWylEd2rN7cHhDtLDQ _dkdJ0mylEd2rN7cHhDtLDQ">
+    <ownedEnd xmi:id="_dkciwWylEd2rN7cHhDtLDQ" name="src" type="_OiK2YGylEd2rN7cHhDtLDQ" association="_dkciwGylEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dkdJ0WylEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dkdJ0GylEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_dkdJ0mylEd2rN7cHhDtLDQ" name="dst" type="_5TyNEGykEd2rN7cHhDtLDQ" association="_dkciwGylEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dkdJ1GylEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dkdJ02ylEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_eKvGsGylEd2rN7cHhDtLDQ" memberEnd="_eKvGsWylEd2rN7cHhDtLDQ _eKvtwWylEd2rN7cHhDtLDQ">
+    <ownedEnd xmi:id="_eKvGsWylEd2rN7cHhDtLDQ" name="src" type="_OiK2YGylEd2rN7cHhDtLDQ" association="_eKvGsGylEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eKvtwGylEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eKvGsmylEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_eKvtwWylEd2rN7cHhDtLDQ" name="dst" type="_eN16gGykEd2rN7cHhDtLDQ" association="_eKvGsGylEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eKvtw2ylEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eKvtwmylEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_6g2nsGylEd2rN7cHhDtLDQ" memberEnd="_6g2nsWylEd2rN7cHhDtLDQ _6g3OwWylEd2rN7cHhDtLDQ">
+    <ownedEnd xmi:id="_6g2nsWylEd2rN7cHhDtLDQ" name="src" type="_W_V-YGyiEd2rN7cHhDtLDQ" association="_6g2nsGylEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6g3OwGylEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6g2nsmylEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_6g3OwWylEd2rN7cHhDtLDQ" name="dst" type="_OiK2YGylEd2rN7cHhDtLDQ" association="_6g2nsGylEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6g3Ow2ylEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6g3OwmylEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JBVOkGymEd2rN7cHhDtLDQ" name="Cookbook">
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_LBkA8GymEd2rN7cHhDtLDQ" name="categories"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_LIg9gGymEd2rN7cHhDtLDQ" name="a_category"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_LMjI8GymEd2rN7cHhDtLDQ" name="recipes"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_LOr28GymEd2rN7cHhDtLDQ" name="measurements"/>
+    <ownedOperation xmi:id="_V0Z4cGymEd2rN7cHhDtLDQ" name="process_login">
+      <ownedParameter xmi:id="_ZeasEGymEd2rN7cHhDtLDQ" direction="return"/>
+      <ownedParameter xmi:id="_ZeasEWymEd2rN7cHhDtLDQ" name="String id"/>
+      <ownedParameter xmi:id="_ZebTIGymEd2rN7cHhDtLDQ" name="String pwd"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_V4iKgGymEd2rN7cHhDtLDQ" name="get_categories">
+      <ownedParameter xmi:id="_cgpuAGymEd2rN7cHhDtLDQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_V6R28GymEd2rN7cHhDtLDQ" name="get_measurements">
+      <ownedParameter xmi:id="_dtBagGymEd2rN7cHhDtLDQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_V7szQGymEd2rN7cHhDtLDQ" name="get_recipes_all">
+      <ownedParameter xmi:id="_fckFgGymEd2rN7cHhDtLDQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_V83Q4GymEd2rN7cHhDtLDQ" name="search_recipes">
+      <ownedParameter xmi:id="_nGJtEGymEd2rN7cHhDtLDQ" direction="return"/>
+      <ownedParameter xmi:id="_nGJtEWymEd2rN7cHhDtLDQ" name="String keyword"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_V-FY4GymEd2rN7cHhDtLDQ" name="get_recipes_of_category">
+      <ownedParameter xmi:id="_sR1u0GymEd2rN7cHhDtLDQ" direction="return"/>
+      <ownedParameter xmi:id="_sR2V4GymEd2rN7cHhDtLDQ" name="int catid"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_0F12oGymEd2rN7cHhDtLDQ" memberEnd="_0F12oWymEd2rN7cHhDtLDQ _0F2dsmymEd2rN7cHhDtLDQ">
+    <ownedEnd xmi:id="_0F12oWymEd2rN7cHhDtLDQ" name="src" type="_JBVOkGymEd2rN7cHhDtLDQ" association="_0F12oGymEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0F2dsWymEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0F2dsGymEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_0F2dsmymEd2rN7cHhDtLDQ" name="dst" type="_W_V-YGyiEd2rN7cHhDtLDQ" association="_0F12oGymEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0F2dtGymEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0F2ds2ymEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_4o6ZMGymEd2rN7cHhDtLDQ" memberEnd="_4o6ZMWymEd2rN7cHhDtLDQ _4o7AQWymEd2rN7cHhDtLDQ">
+    <ownedEnd xmi:id="_4o6ZMWymEd2rN7cHhDtLDQ" name="src" type="_JBVOkGymEd2rN7cHhDtLDQ" association="_4o6ZMGymEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4o7AQGymEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4o6ZMmymEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_4o7AQWymEd2rN7cHhDtLDQ" name="dst" type="_oHm8UGyhEd2rN7cHhDtLDQ" association="_4o6ZMGymEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4o7AQ2ymEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4o7AQmymEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_56KlsGymEd2rN7cHhDtLDQ" memberEnd="_56KlsWymEd2rN7cHhDtLDQ _56LMwmymEd2rN7cHhDtLDQ">
+    <ownedEnd xmi:id="_56KlsWymEd2rN7cHhDtLDQ" name="src" type="_JBVOkGymEd2rN7cHhDtLDQ" association="_56KlsGymEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_56LMwWymEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_56LMwGymEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_56LMwmymEd2rN7cHhDtLDQ" name="dst" type="_dwewcGyhEd2rN7cHhDtLDQ" association="_56KlsGymEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_56Lz0GymEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_56LMw2ymEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_96u4IGymEd2rN7cHhDtLDQ" memberEnd="_96u4IWymEd2rN7cHhDtLDQ _96vfMmymEd2rN7cHhDtLDQ">
+    <ownedEnd xmi:id="_96u4IWymEd2rN7cHhDtLDQ" name="src" type="_JBVOkGymEd2rN7cHhDtLDQ" association="_96u4IGymEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_96vfMWymEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_96vfMGymEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_96vfMmymEd2rN7cHhDtLDQ" name="dst" type="_eN16gGykEd2rN7cHhDtLDQ" association="_96u4IGymEd2rN7cHhDtLDQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_96wGQGymEd2rN7cHhDtLDQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_96vfM2ymEd2rN7cHhDtLDQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

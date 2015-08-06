@@ -1,0 +1,188 @@
+function TimerViewAssistant () {
+}
+/*
+ * The setup method is called from the stage-assistant->setup method
+ */
+TimerViewAssistant.prototype.setup = function () {
+	
+	// set interval var to null
+	this.interval = null;
+	// create hours field attributes
+	this.hoursAttr = {
+		label: 'Hours',
+		modelProperty: 'hours',
+		min: 0,
+		max: 99
+	};
+	// create hours model
+	this.hoursModel = {
+		hours: 0
+	};
+	// create minutes field attributes
+	this.minutesAttr = {
+		label: 'Minutes',
+		modelProperty: 'minutes',
+		min: 0,
+		max: 59
+	};
+	// create minutes model
+	this.minutesModel = {
+		minutes: 5
+	};
+	// create seconds field attributes
+	this.secondsAttr = {
+		label: 'Seconds',
+		modelProperty: 'seconds',
+		min: 0,
+		max: 59
+	};
+	// create seconds model
+	this.secondsModel = {
+		seconds: 0
+	};
+	// add hours widget to controller using attributes & model
+	this.controller.setupWidget('hours',
+				    this.hoursAttr,
+				    this.hoursModel);
+	// add minutes widget to controller using attributes & model
+	this.controller.setupWidget('minutes',
+				    this.minutesAttr,
+				    this.minutesModel);
+	// add seconds widget to controller using attributes & model
+	this.controller.setupWidget('seconds',
+				    this.secondsAttr,
+				    this.secondsModel);
+	// tell controller to listen for hours widget propertyChanged & call setClockFromPickers
+ 	this.controller.listen('hours',
+			       Mojo.Event.propertyChanged,
+ 			       this.setClockFromPickers.bindAsEventListener(this));
+	// tell controller to listen for minutes widget propertyChanged & call setClockFromPickers
+ 	this.controller.listen('minutes', 
+			       Mojo.Event.propertyChanged,
+ 			       this.setClockFromPickers.bindAsEventListener(this));
+	// tell controller to listen for seconds widget propertyChanged & call setClockFromPickers
+ 	this.controller.listen('seconds', 
+			       Mojo.Event.propertyChanged,
+ 			       this.setClockFromPickers.bindAsEventListener(this));
+	// call setClockFromPickers displaying current selected time
+ 	this.setClockFromPickers();
+	
+	// create start button attribute
+ 	this.startAttr = {
+		disabledProperty: "disabled"
+ 	};
+	// create start button model
+ 	this.startModel = {
+ 		buttonLabel: 'Start',
+		buttonClass: "",
+		disabled: false
+ 	};
+	// tell controller to listen for startButton widget using attributes & model
+ 	this.controller.setupWidget('startButton',
+				    this.startAttr,
+				    this.startModel);
+	// create stop button attribute
+ 	this.stopAttr = {
+		disabledProperty: "disabled"
+ 	};
+	// create stop button model
+ 	this.stopModel = {
+ 		buttonLabel: 'Stop',
+		buttonClass: "",
+		disabled: false
+ 	};
+	// tell controller to listen for stopButton widget using attributes & model
+ 	this.controller.setupWidget('stopButton',
+				    this.stopAttr,
+				    this.stopModel);
+	// tell controller to listen for startButton widget usin attributes & model
+ 	this.controller.listen("startButton",
+ 			       Mojo.Event.tap,
+ 			       this.startTimer.bindAsEventListener(this));
+ 	this.controller.listen("stopButton",
+ 			       Mojo.Event.tap,
+ 			       this.stopTimer.bindAsEventListener(this));
+
+ 	$("stopButton").hide();
+};
+
+TimerViewAssistant.prototype.activate = function (event) {
+};
+
+TimerViewAssistant.prototype.deactivate = function (event) {
+};
+
+TimerViewAssistant.prototype.cleanup = function (event) {
+};
+
+TimerViewAssistant.prototype.setClockFromPickers = function (event) {
+	var h, m, s;
+	h = this.hoursModel.hours;
+	m = this.minutesModel.minutes;
+	s = this.secondsModel.seconds;
+	this.seconds = h * 3600 + m * 60 + s;
+	this.displayClock();
+};
+
+TimerViewAssistant.prototype.displayClock = function () {
+	$("timerDisplay").innerHTML = this.formatTime(this.seconds);
+};
+
+TimerViewAssistant.prototype.formatTime = function (seconds) {
+	var h, m, s, hh, mm, ss;
+	h = Math.floor(seconds / 3600);
+	m = Math.floor(seconds / 60) % 60;
+	s = seconds % 60;
+	hh = "0" + h.toString();
+	mm = "0" + m.toString();
+	ss = "0" + s.toString();
+	hh = hh.substring(hh.length - 2);
+	mm = mm.substring(mm.length - 2);
+	ss = ss.substring(ss.length - 2);
+	return hh + ":" + mm + ":" + ss;
+};
+
+TimerViewAssistant.prototype.startTimer = function (event) {
+	var that = this;
+	this.setClockFromPickers();
+	if (this.seconds < 1) {
+		Mojo.Controller.errorDialog("You must specify " + 
+					    "more than 0 seconds.");
+		return;
+	}
+	$("startButton").hide();
+	$("stopButton").show();
+	$("timerTable").style.visibility = "hidden";
+	
+	if (this.interval) {	// for good measure.
+		window.clearInterval(this.interval);
+		this.interval = null;
+	}
+	this.startedTimer = this.formatTime(this.seconds);
+	this.interval = window.setInterval(function () {
+		var appController, bannerParams;
+		that.seconds -= 1;
+		that.displayClock();
+		if (that.seconds < 1) {
+			that.stopTimer();
+			appController = Mojo.Controller.getAppController();
+			bannerParams = {
+				messageText: "Time is up! " + that.startedTimer,
+				soundClass: "alerts"
+			};
+			appController.showBanner(bannerParams, {},
+						 "timerStopped");
+		}
+	}, 1000);
+};
+
+TimerViewAssistant.prototype.stopTimer = function (event) {
+	if (this.interval) {
+		window.clearInterval(this.interval);
+		this.interval = null;
+	}
+	$("stopButton").hide();
+	$("startButton").show();
+	$("timerTable").style.visibility = "visible";
+};
+

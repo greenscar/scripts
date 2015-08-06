@@ -1,0 +1,156 @@
+Return-Path: <mary_bellie@yahoo.com>
+X-Original-To: james@caffeinewebdesign.com
+Delivered-To: james@caffeinewebdesign.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id F13A59006C
+	for <james@caffeinewebdesign.com>; Mon, 15 Dec 2008 21:26:00 -0600 (CST)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RfmFBo8RWhIQ for <james@caffeinewebdesign.com>;
+	Mon, 15 Dec 2008 21:26:00 -0600 (CST)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id B41B090069
+	for <james@caffeinewebdesign.com>; Mon, 15 Dec 2008 21:26:00 -0600 (CST)
+Envelope-to: james@caffeinewebdesign.com
+Delivery-date: Mon, 15 Dec 2008 21:22:49 -0600
+Received: from caffeinewebdesign.com [174.133.130.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@caffeinewebdesign.com> (single-drop); Mon, 15 Dec 2008 21:26:00 -0600 (CST)
+Received: from web38708.mail.mud.yahoo.com ([209.191.125.84])
+	by lizzie.yourhostdns.com with smtp (Exim 4.69)
+	(envelope-from <mary_bellie@yahoo.com>)
+	id 1LCQWH-0006ny-N7
+	for james@caffeinewebdesign.com; Mon, 15 Dec 2008 21:22:49 -0600
+Received: (qmail 6740 invoked by uid 60001); 16 Dec 2008 03:22:52 -0000
+DomainKey-Signature: a=rsa-sha1; q=dns; c=nofws;
+  s=s1024; d=yahoo.com;
+  h=X-YMail-OSG:Received:X-Mailer:Date:From:Reply-To:Subject:To:MIME-Version:Content-Type:Message-ID;
+  b=C3E7Kmh51fbcuahwfItn06ouCUaQPvy4sPxhawFLglhIDSB3yv+97LRtPs2T3mxtZZhzoL40fRx7FxQnkzsTStLFIdvb3N+vnkCLMFqiehmeUYnq7PhdGYzKiBpFh/n4ES+eEhelJe3gOYeDE+jzFrweUWYJPvgDGAs3uEfYDXo=;
+X-YMail-OSG: Iu4Gs4oVM1k8na3Ja8E7DaR.oTF4B9ASxzmFiZXXw9SiqokmRMj48kCgSU4AcUU3v1toDtQRzrK5da3PFxeq010VAAQ22jhrYPihqSkWBjRouMwTIdOLG3w8KZBft_PymD1tWNssMcyOSdAgomSHGFpold.wAsnbUBZjdXlRCZMIjUvG3JpAYg3WSZsSmcu.teIamp_gIbM3tW0a
+Received: from [70.180.90.99] by web38708.mail.mud.yahoo.com via HTTP; Mon, 15 Dec 2008 19:22:52 PST
+X-Mailer: YahooMailWebService/0.7.260.1
+Date: Mon, 15 Dec 2008 19:22:52 -0800 (PST)
+From: DOLLIE BLANDA <mary_bellie@yahoo.com>
+Reply-To: mary_bellie@yahoo.com
+Subject: The Dancing Dufrene's (Country Style)
+To: joe amedee <jpamedee@riverrentaltools.com>,
+  kristy m Amedee <KAmedee1@cox.net>, amy <AmyLynn826@aol.com>,
+  Desiree Armstrong <desiree.armstrong@yahoo.com>,
+  joan badeaux <jbadeaux4@gmail.com>, Kristin Badeaux <kris10bado@cox.net>,
+  Julie Bell <jbell1999@bellsouth.net>, kimmie blake <duracel287@aol.com>,
+  jamie blanchard <sexy22282@aol.com>,
+  heidi davenport bozzelle <hbozzelle@yahoo.com>,
+  joyce brandstetter <rockiej4@cox.net>,
+  shellie brandstetter <Shellie_brandstetter@yahoo.com>,
+  Jason Camardelle <jpclsu@gmail.com>, Kimberly Daigle <kimmi1120@yahoo.com>,
+  sue davenport <mimisuesue@yahoo.com>,
+  paul davenport <pedavenport@bellsouth.net>,
+  shannon delaney <shannondelaney12@yahoo.com>,
+  CHERYL DUFRENE <cgdufrene@cox.net>, EVA DUFRENE <edufrene3@cox.net>,
+  Rocky Dufrene <rockydufrene@yahoo.com>,
+  Rickie Dufrene <rickie.dufrene@capitalonebank.com>,
+  Richie Dufrene <rjdufrene1@yahoo.com>,
+  aunt reenie dufrene <elizabeth.dufrene@acosta.com>,
+  Rickie Dufrene <rickie7479@gmail.com>,
+  Monique Folse <renesis23@hotmail.com>,
+  Barbara Gasser <bgasser@whitneybank.com>,
+  Jeff gonzales <jeffgonzalez20@yahoo.com>,
+  jc hernendez <chewy8982@gmail.com>, JENNY HETHCOAT <JENNYHET@GMAIL.COM>,
+  Hillary Huck <hilhuck@yahoo.com>, JEFF <laynejewell@aol.com>,
+  bonnie Kent <bonnmarie@yahoo.com>, JENNIFER LAPISH <venusjems@yahoo.com>,
+  kasey lapouble <lapoub@cox.net>, Connie Leblanc <cleblanc49@cox.net>,
+  Tasha Lyon <natlyon1@yahoo.com>, jay manuel <eaglepacking@cs.com>,
+  daina manuel <dbmanuel2001@yahoo.com>, courtney mataya <court669@aol.com>,
+  Alexis Mataya <sexi15lexi@aol.com>, mom <n_blanda@yahoo.com>,
+  melanie nguyen <melanietnguyen504@yahoo.com>, dana nolan <dana.n@cox.net>,
+  Matthew Popp <matthewpopp@msn.com>,
+  brett prejeant <brett.prejeant@acosta.com>,
+  Tiffany Rauschkolb <trauschkolb@americanairlinescenter.com>,
+  linnea rodriguez <linnearodriguez@cox.net>,
+  Kelli Rulh <kellirulh@yahoo.com>, Aubri Sandlin <aubri@sandlininc.com>,
+  james sandlin <james@caffeinewebdesign.com>,
+  Aimee Cruz Sandoval <asandoval@teament.com>,
+  Kelley - Savoie <Kelley-premier@nocoxmail.com>,
+  Andy Schwing <andyschwing@aol.com>, denise seidman <dseidman911@gmail.com>,
+  dixie todaro <dixietodaro114@yahoo.com>,
+  "Erin S. Vicari" <esvicari@gmail.com>,
+  alison leonard williams <aml9578@cox.net>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="0-1494024866-1229397772=:370"
+Message-ID: <561343.370.qm@web38708.mail.mud.yahoo.com>
+
+--0-1494024866-1229397772=:370
+Content-Type: text/plain; charset=us-ascii
+
+
+
+--- On Tue, 12/16/08, Dollie <elfyourself@jibjab.com> wrote:
+
+From: Dollie <elfyourself@jibjab.com>
+Subject: Your ElfYourself dance has been sent
+To: mary_bellie@yahoo.com
+Date: Tuesday, December 16, 2008, 2:00 PM
+
+Greetings Dollie!
+
+We wanted to let you know that we have sent your ElfYourself dance!
+
+Click here to see your dance:
+
+http://elfyourself.jibjab.com/view/TGTiwIozM1XdWqZa
+
+You can always visit "My eCards" to see all your ElfYourself dances:
+
+http://sendables.jibjab.com/my_account/my_stuff
+
+Thanks for using ElfYourself, brought to you by OfficeMax and powered by
+JibJab!
+
+Happy Holidays!
+
+ElfYourself Terms & Privacy:
+http://sendables.jibjab.com/about/elfyourself_terms_and_privacy
+
+ElfYourself is a registered mark of OfficeMax Incorporated.
+
+JibJab is a registered trademark of JibJab Media Inc.
+
+
+
+
+
+      
+--0-1494024866-1229397772=:370
+Content-Type: text/html; charset=us-ascii
+
+<table cellspacing="0" cellpadding="0" border="0" ><tr><td valign="top" style="font: inherit;"><BR><BR>--- On <B>Tue, 12/16/08, Dollie <I>&lt;elfyourself@jibjab.com&gt;</I></B> wrote:<BR>
+<BLOCKQUOTE style="PADDING-LEFT: 5px; MARGIN-LEFT: 5px; BORDER-LEFT: rgb(16,16,255) 2px solid">From: Dollie &lt;elfyourself@jibjab.com&gt;<BR>Subject: Your ElfYourself dance has been sent<BR>To: mary_bellie@yahoo.com<BR>Date: Tuesday, December 16, 2008, 2:00 PM<BR><BR><PRE>Greetings Dollie!
+
+We wanted to let you know that we have sent your ElfYourself dance!
+
+Click here to see your dance:
+
+http://elfyourself.jibjab.com/view/TGTiwIozM1XdWqZa
+
+You can always visit "My eCards" to see all your ElfYourself dances:
+
+http://sendables.jibjab.com/my_account/my_stuff
+
+Thanks for using ElfYourself, brought to you by OfficeMax and powered by
+JibJab!
+
+Happy Holidays!
+
+ElfYourself Terms &amp; Privacy:
+http://sendables.jibjab.com/about/elfyourself_terms_and_privacy
+
+ElfYourself is a registered mark of OfficeMax Incorporated.
+
+JibJab is a registered trademark of JibJab Media Inc.
+
+
+</PRE></BLOCKQUOTE></td></tr></table><br>
+
+      
+--0-1494024866-1229397772=:370--

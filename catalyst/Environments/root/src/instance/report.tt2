@@ -1,0 +1,29 @@
+[%- # List all instances -%]
+[% META title = 'Env Report' -%]
+<h1>[% envs.size %] environments have instances</h1>
+<table border="1">
+   <tr>
+      <th>Environment</th>
+      <th>Application</th>
+      <th>Link</th>
+      <th>Link Public</th>
+   </tr>
+   [% FOREACH e in envs -%]
+   <tr>
+      <td>[% e.name %]</td>
+      <td>
+      [% FOREACH i IN e.r2instances -%]
+      <tr>
+         <td>[% i.environment.name %]</td>
+         <td>[% i.application.name %]</td>
+         <td>[% i.link %]</td>
+         <td>[% i.link_public %]</td>
+      </tr>
+      [% END -%]
+      </td>
+   </tr>
+   [% END -%]
+   
+</table>
+<a href="[% c.uri_for(c.controller.action_for('create')) %]">NEW ENV / Instance Set</a>
+   

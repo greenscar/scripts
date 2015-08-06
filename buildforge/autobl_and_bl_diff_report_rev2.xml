@@ -1,0 +1,202 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <env name="VIEW_NAME"     value="required"/>
+      <env name="PVOB"              value="required"/>
+      <env name="BF_SERVER"         value="required"/>
+      <env name="BF_ROOT"           value="required"/>
+      <env name="BF_USER_EMAIL"     value="required"/>
+		<env name="CUR_DATE"          value="required" />
+      <env name="DO_REBASE"         value="YES"/>
+   </template>
+   
+   <interface>      
+		<adduser group="MyChangers" user="$BF_USER_EMAIL"/>
+      <setenv name="NEWBL" value="" type="temp"/>
+      
+      <run command="check_test_lvl" params="$VIEW_NAME" server="$BF_SERVER" dir="/" timeout="120" condition="true('$DO_REBASE' eq 'YES')"/>
+      <run command="set_bl_vars" params="$VIEW_NAME $STREAM_LEVEL" server="$BF_SERVER" dir="/" timeout="120" condition="true('$DO_REBASE' eq 'YES')"/>
+      
+      <run command="autobl" params="$B $VIEW_NAME $BF_ROOT $BL_DEV $BL_SIT $BL_UAT" server="$BF_SERVER" dir="/" timeout="600" condition="true('$DO_REBASE' eq 'YES')"/>
+      <run command="cc_baselineactivities" params="$OLDBL $NEWBL $VIEW_NAME $PVOB" server="$BF_SERVER" dir="/" timeout="360" condition="hastext($NEWBL)"/>
+      
+   </interface>
+   
+   <command name="set_bl_vars">
+      <execute>
+         #!/usr/bin/perl
+         echo(
+      </execute>
+   </command>
+   <command name="check_test_lvl">
+      <execute>
+         echo '$1'
+      </execute>
+      <resultsblock>
+         <match pattern="(LOCAL)">
+            <setenv name="DO_REBASE" value="NO" type="temp"/>
+            <setenv name="STREAM_LEVEL" value="${1}" type="temp"/>
+         </match>
+         <match pattern="(DEV)">
+            <setenv name="STREAM_LEVEL" value="${1}" type="temp"/>
+         </match>
+         <match pattern="(SIT)">
+            <setenv name="STREAM_LEVEL" value="${1}" type="temp"/>
+         </match>
+         <match pattern="(UAT)">
+            <setenv name="STREAM_LEVEL" value="${1}" type="temp"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="autobl">
+      <execute>
+         ${BF_ROOT}autobl.pl --bftag "$1" --srcstream "$2" --bfroot "$3" --bldev $4 --blsit $5 --bluat $6
+         #print "LOCAL - NO REBASE NEEDED"
+      </execute>
+      <resultsblock>
+         <match pattern="^([A-Z]+)_OLDBL=(.+)$">
+            <bom category="build_report" section="baselines">
+               <field name="testlvl" text="$1"/>
+               <field name="oldbl" text="$2"/>
+            </bom>
+            <setenv name="testlvl" value="$1"/>
+            <setenv name="OLDBL" value="$2" type="temp"/>
+         </match>      
+         <match pattern="^([A-Z]+)_NEWBL=(.+)$">
+            <bom category="build_report" section="baselines">
+               <field name="newbl" text="$2"/>
+            </bom>
+            <setenv name="testlvl" value="$1"/>
+            <setenv name="NEWBL" value="$2" type="temp"/>
+            <setenv group="[ADAPTOR]" name="BL_${VIEW_NAME}" value="$2"/>
+         </match>
+         <match pattern="^LOCAL - NO REBASE NEEDED$">
+            <field name="testlvl" text="LOCAL"/>
+            <setenv name="DO_REBASE" value="NO"/>
+         </match>
+         <match pattern="^(\w+\ MUST\ BE\ REBASED\ BEFORE\ \w+)$">
+            <setenv name="errors" value="$1\n" type="temp append\n"/>
+            <setenv name="DO_REBASE" value="NO"/>
+            <bom category="error_report" section="errors">
+               <field name="error" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^(NO REBASE NEEDED)$">
+			   <setenv name="errors" value="$1\n" type="temp append\n"/>
+            <setenv name="DO_REBASE" value="NO"/>
+            <bom category="error_report" section="errors">
+               <field name="error" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="(Not ownercleartool)">
+			   <setenv name="errors" value="$1\n" type="temp append\n"/>
+            <setenv name="DO_REBASE" value="NO"/>
+            <bom category="error_report" section="errors">
+               <field name="error" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^(RC=.*)$">
+			   <setenv name="errors" value="$1\n" type="temp append\n"/>
+            <setenv name="DO_REBASE" value="NO"/>
+            <bom category="error_report" section="errors">
+               <field name="error" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^(The view.+does not exist!)$">
+			   <setenv name="errors" value="$1\n" type="temp append\n"/>
+            <setenv name="DO_REBASE" value="NO"/>
+            <bom category="error_report" section="errors">
+               <field name="error" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^(\d)$">
+            <setenv name="errors" value="$1\n" type="temp append\n"/>
+            <setenv name="DO_REBASE" value="NO"/>
+            <bom category="error_report" section="errors">
+               <field name="error" text="$1"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+   <!-- 
+      This command lists the activities that occurred between two baselines, 
+		it then calls cc_actdescribe to gather further details about the activities -->
+	<command name="cc_baselineactivities">
+		<execute>
+         cd $VIEW_NAME
+         cleartool diffbl -act $1@\$4 $2@\$4
+		</execute>
+		<resultsblock>
+			<match pattern="^[->]>\s+([^\s].*?)\s.*$">
+				<run command="cc_actdescribe" params="$VIEW_NAME $1" server="$BF_SERVER" dir="/" timeout="360"/>
+			</match>
+         <match pattern="^Source Stream is LOCAL .+$">
+            <setenv name="Changes" value="$_" type="temp"/>
+         </match>
+		</resultsblock>
+	</command>
+	<!-- This command gathers details about an activity and logs pertinent information to the BuildForge BOM -->
+	<command name="cc_actdescribe">
+		<execute>
+         cd $1
+         cleartool lsact -l $2
+		</execute>
+		<resultsblock>
+			<!-- look for something resempling an activity identifier -->
+			<match pattern="^activity\s&quot;(.*?)&quot;$">
+				<bom category="Source" section="activities">
+					<field name="id" text="$1"/>
+				</bom>
+			</match>
+			<!-- look for some stream information -->
+			<match pattern="stream:\s(.*?)$">
+				<bom category="Source" section="activities">
+					<field name="stream" text="$1"/>
+				</bom>
+			</match>
+			<!-- See if we get a title for this activity -->
+			<match pattern="title:\s(.*?)$">
+				<bom category="Source" section="activities">
+					<field name="title" text="$1"/>
+				</bom>
+			</match>
+		</resultsblock>
+	</command>
+	
+	<!-- The bomformat sets up the BuildForge BOM display for the information we gather during this interface execution -->
+	<!-- A category is a top level expandable item -->
+	<bomformat category="Source" title="Source Changes">
+		<!-- A section defines the columns for blocks of information, a new row of information is added 
+			each time the last field (by order number) in a block is populated with new information -->
+		<section name="changes">
+			<field order="1" name="file" title="File/Dir Name"/>
+			<field order="2" name="version" title="Version"/>
+			<field order="3" name="date" title="Date"/>
+			<field order="4" name="user" title="User"/>
+			<field order="5" name="comment" title="Comment"/>
+		</section>
+		<section name="activities">
+			<field order="1" name="id" title="Activity"/>
+			<field order="3" name="stream" title="Stream"/>
+			<field order="4" name="title" title="Title"/>
+		</section>
+		<section name="changeset">
+			<field order="1" name="version" title="Change set version"/>
+		</section>
+	</bomformat>
+   <bomformat category="build_report" title="Baseline Report">
+      <section name="baselines">
+         <field order="1" name="testlvl" title="Test Level"/>
+         <field order="2" name="oldbl" title="Old Baseline"/>
+         <field order="3" name="newbl" title="New Baseline"/>
+      </section>
+   </bomformat>
+   <bomformat category="error_report" title="Baseline Errors">
+      <section name="errors">
+         <field order="1" name="error" title="Errors"/>
+      </section>
+   </bomformat>
+   
+   
+</PROJECT_INTERFACE>

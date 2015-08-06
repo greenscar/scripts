@@ -1,0 +1,618 @@
+Return-Path: <james@sandlininc.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id C86E1900B4
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 00:19:34 -0500 (CDT)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pIZxeYyS5oLg for <james@sandlininc.com>;
+	Sat, 23 Aug 2008 00:19:27 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 2350790223
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 00:03:18 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Sat, 23 Aug 2008 00:01:28 -0500
+Received: from sandlininc.com [74.55.232.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Sat, 23 Aug 2008 00:03:18 -0500 (CDT)
+Received: from cpe-66-68-52-223.austin.res.rr.com ([66.68.52.223]:61783 helo=[10.0.0.9])
+	by maxserv.yourhostdns.com with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.69)
+	(envelope-from <james@sandlininc.com>)
+	id 1KWlFc-0001Rs-N6
+	for james@sandlininc.com; Sat, 23 Aug 2008 00:01:28 -0500
+Resent-From: James Sandlin <james@sandlininc.com>
+Resent-To: james@sandlininc.com
+Resent-Date: Sat, 23 Aug 2008 00:01:26 -0500
+Resent-Message-Id: <48AF99A6.9070303@sandlininc.com>
+Resent-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.16) Gecko/20080724 Thunderbird/2.0.0.16
+X-Mozilla-Keys:                                                                                 
+Received: from mailman201-q0.be.tmpw.net ([208.71.199.1]:37269)
+	by maxserv.yourhostdns.com with smtp (Exim 4.69)
+	(envelope-from <jagent@route.monster.com>)
+	id 1KHXNn-0000U7-5Q
+	for james@sandlininc.com; Sat, 12 Jul 2008 00:10:58 -0500
+Received: (qmail 27374 invoked from network); 12 Jul 2008 00:10:59 -0500
+Received: from agent102.ma.monster.com (HELO AGENT102) (10.50.10.90)
+  by mailman201-q0.be.tmpw.net with SMTP; 12 Jul 2008 00:10:59 -0500
+Received: from mail pickup service by AGENT102 with Microsoft SMTPSVC;
+	 Sat, 12 Jul 2008 00:10:57 -0500
+X-agent-version: JobSearchAgentLucene, Version=2008.1.11.0, Culture=neutral,
+ PublicKeyToken=null
+MIME-Version: 1.0
+From: "Monster Job Search Agent" <jagent@route.monster.com>
+To: james@sandlininc.com
+Date: 12 Jul 2008 00:10:56 -0500
+Subject: Monster Agent Results - 7/12/2008
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Message-ID: <AGENT1027kaHvHJ1i9X03461cac@AGENT102>
+X-OriginalArrivalTime: 12 Jul 2008 05:10:57.0035 (UTC) FILETIME=[AAA61DB0:01C8E3DD]
+X-Spam-Bar: /
+
+=0D=0A<html>=0D=0A<head>=0D=0A    <title>B2C US - Job Search Agent</title>=
+=0D=0A</head>=0D=0A<body bgcolor=3D"#551f80" link=3D"#663399" vlink=3D"#663399"=
+ alink=3D"#663399" leftmargin=3D"0" topmargin=3D"0" rightmargin=3D"0" bottommargin=3D"0"=
+ marginwidth=3D"0" marginheight=3D"0">=0D=0A    <table height=3D"100%" width=3D"100%"=
+ bgcolor=3D"#551f80" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">=0D=0A=
+        <tr>=0D=0A            <td align=3D"center" valign=3D"top">=0D=0A=
+                <br />=0D=0A                <span style=3D"color: #bcadc7;=
+ font: 11px arial">To ensure delivery of this email please add monster@e0.monster.com=
+ to your Address Book or Safe List.<br />=0D=0A                    <br />=
+=0D=0A                </span>=0D=0A                <table width=3D"740"=
+ cellspacing=3D"0" cellpadding=3D"0" border=3D"0" id=3D"Table1" align=3D"center">=
+=0D=0A                    <tr>=0D=0A                        <td height=3D"6">=
+=0D=0A                        </td>=0D=0A                    </tr>=0D=0A=
+                    <tr>=0D=0A                        <td align=3D"center">=
+=0D=0A    	<a href=3D"http://ads.monster.com/click.ng/site=3Dmons&amp;affiliate=3Dmons&amp;app=3Djsa&amp;size=3D728x90&amp;pp=3D5&amp;tileid=3D11790636&amp;key=3Dbuild+manager,%22Build+Forge%22+%22Build+Engineer%22+%22configuration+manager%22+%22build+manager%22+%22system+administrator%22+%22web+developer%22+%22java%22+%22ant%22+%22perl%22+%22clearcase%22+%22unix%22&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631&amp;cid=3D660&amp;cid=3D660&amp;cid=3D660&amp;transactionid=3D11790636mons121&amp;ge=3D-1&amp;dcel=3D-1">=
+=0D=0A<img border=3D"0" nosend=3D"1" src=3D"http://ads.monster.com/image.ng/site=3Dmons&amp;affiliate=3Dmons&amp;app=3Djsa&amp;size=3D728x90&amp;pp=3D5&amp;tileid=3D11790636&amp;key=3Dbuild+manager,%22Build+Forge%22+%22Build+Engineer%22+%22configuration+manager%22+%22build+manager%22+%22system+administrator%22+%22web+developer%22+%22java%22+%22ant%22+%22perl%22+%22clearcase%22+%22unix%22&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631&amp;cid=3D660&amp;cid=3D660&amp;cid=3D660&amp;transactionid=3D11790636mons121&amp;ge=3D-1&amp;dcel=3D-1"=
+ /></a>=0D=0A                        </td>=0D=0A                    </tr>=
+=0D=0A                    <tr>=0D=0A                        <td height=3D"8">=
+=0D=0A                        </td>=0D=0A                    </tr>=0D=0A=
+                </table>=0D=0A                <table width=3D"740" cellspacing=3D"0"=
+ cellpadding=3D"1" border=3D"0" id=3D"Table2" align=3D"center">=0D=0A  =
+                  <tr>=0D=0A                        <td bgcolor=3D"#551f80">=
+=0D=0A                            <table bgcolor=3D"#f2efe0" width=3D"740"=
+ cellspacing=3D"0" cellpadding=3D"0" border=3D"0" id=3D"Table3" align=3D"center">=
+=0D=0A                                <tr height=3D"45">=0D=0A         =
+                           <td bgcolor=3D"#551f80" valign=3D"top">=0D=0A=
+                                        <img src=3D"http://media.monster.com/cm_images/xmonnamktx/000002jsa/header.gif"=
+ width=3D"739" height=3D"35" border=3D"0" nosend=3D"1" />=0D=0A        =
+                            </td>=0D=0A                                </tr>=
+=0D=0A                                <tr>=0D=0A                       =
+             <td height=3D"10">=0D=0A                                  =
+  </td>=0D=0A                                </tr>=0D=0A               =
+                 <tr>=0D=0A                                    <td valign=3D"top">=
+=0D=0A                                        <table width=3D"717" bgcolor=3D"#f2efe0"=
+ cellspacing=3D"0" cellpadding=3D"1" border=3D"0" id=3D"Table4" align=3D"center">=
+=0D=0A                                            <tr>=0D=0A           =
+                                     <td>=0D=0A                        =
+                            <table width=3D"717" bgcolor=3D"#f2efe0" cellspacing=3D"0"=
+ cellpadding=3D"0" border=3D"0" id=3D"Table5" align=3D"center">=0D=0A  =
+                                                      <tr>=0D=0A       =
+                                                     <td height=3D"10">=
+=0D=0A                                                            </td>=
+=0D=0A                                                        </tr>=0D=0A=
+                                                        <tr>=0D=0A     =
+                                                       <td width=3D"30">=
+=0D=0A                                                            </td>=
+=0D=0A                                                            <td align=3D"left">=
+=0D=0A                                                                <table=
+ width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" id=3D"Table6">=
+=0D=0A                                                                 =
+   <tr>=0D=0A                                                          =
+              <td colspan=3D"3">=0D=0A                                 =
+                                           <font face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#551f80"><strong>Here are the=
+ jobs we found for you based on your search criteria:</strong></font></td>=
+=0D=0A                                                                 =
+   </tr>=0D=0A                                                         =
+           <tr>=0D=0A                                                  =
+                      <td align=3D"right" colspan=3D"3">=0D=0A         =
+                                                                   <font=
+ face=3D"Verdana, Arial, Helvetica, sans-serif" size=3D"1" color=3D"#ff6504"><a=
+ href=3D"http://my.monster.com/manageagents.asp?WT.mc_n=3DMKT000125" style=3D"color:=
+ #ff6504;">Manage Agents</a></font>=0D=0A                              =
+                                          </td>=0D=0A                  =
+                                                  </tr>=0D=0A          =
+                                                          <tr>=0D=0A   =
+                                                                     <td=
+ height=3D"5">=0D=0A                                                   =
+                     </td>=0D=0A                                       =
+                             </tr>=0D=0A                               =
+                                     <tr>=0D=0A                        =
+                                                <td colspan=3D"3">=0D=0A=
+                                                                       =
+     <table width=3D"100%" cellspacing=3D"0" cellpadding=3D"2" border=3D"0"=
+ id=3D"Table8">=0D=0A                                                  =
+                            =0D=0A                                     =
+                                             =0D=0A                    =
+                                                              =0D=0A   =
+      <TR>=0D=0A           <TD height=3D"5" />=0D=0A         </TR>=0D=0A=
+         <TR bgcolor=3D"#dce8ba">=0D=0A           <TD width=3D"11" />=0D=0A=
+           <TD width=3D"637" height=3D"40">=0D=0A            <TABLE width=3D"100%"=
+ cellspacing=3D"0" cellpadding=3D"0" border=3D"0" id=3D"Table7">=0D=0A =
+              <TR>=0D=0A                 <TD><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#000000">My Saved Search:</FONT></TD>=
+=0D=0A                 <TD><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000">portland it general - 6/14/2008</FONT></TD>=
+=0D=0A                 <TD align=3D"right"><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#000000">=0D=0A            =
+       <A href=3D"http://jobsearch.monster.com/jobsearch.asp?fn=3D660&amp;brd=3D1%2c1862%2c1863&amp;qt=3Dall&amp;cnme=3Dportland&amp;rad=3D200&amp;qlat=3D1354978&amp;qlon=3D573063&amp;clid=3D578&amp;sid=3D71&amp;occ=3D660%2E11787%2c660%2E11904%2c660%2E11848%2c660%2E11882%2c660%2E11969%2c660%2E11970%2c660%2E11979%2c660%2E11996&amp;tm=3D1d&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">View all opportunities</A>=0D=0A            =
+       |=0D=0A                   <A href=3D"http://my.monster.com/Agents/ManageJobAgents.aspx?WT.mc_n=3DMKT000125"=
+ style=3D"color: #ff6504;">Refine Agent</A>=0D=0A                   |=0D=0A=
+                   <A href=3D"http://my.monster.com/Agents/ManageJobAgents.aspx?WT.mc_n=3DMKT000125"=
+ style=3D"color: #ff6504;">Disable Agent</A>=0D=0A                 </FONT></TD>=
+=0D=0A               </TR>=0D=0A               <TR>=0D=0A              =
+   <TD align=3D"right" colspan=3D"3"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000">=0D=0A                   <A href=3D"http://my.monster.com/forgot.asp?WT.mc_n=3DMKT000125"=
+ style=3D"color: #ff6504;">Forgot your username and password?</A>=0D=0A=
+                 </FONT></TD>=0D=0A               </TR>=0D=0A          =
+   </TABLE></TD><TD width=3D"11" />=0D=0A         </TR>=0D=0A         <TR>=
+=0D=0A           <TD colspan=3D"3">          =0D=0A           <TABLE width=3D"100%"=
+ cellspacing=3D"0" cellpadding=3D"2" border=3D"0" id=3D"Table8">=0D=0A =
+              <TR bgcolor=3D"#53523d">=0D=0A                 <TD width=3D"5"=
+ />=0D=0A                 <TD align=3D"left"><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#ffffff"><strong>Location</strong></FONT></TD>=
+=0D=0A                 <TD align=3D"left"><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#ffffff"><strong>Title</strong></FONT></TD>=
+=0D=0A                 <TD align=3D"left"><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#ffffff"><strong>Company</strong></FONT></TD>=
+=0D=0A                 <TD />=0D=0A               </TR>               =0D=0A=
+               =0D=0A               =0D=0A		=0D=0A		=0D=0A  		=0D=0A  	=
+	=0D=0A		                         <TR bgcolor=3D"#dce8ba">=0D=0A	      =
+                            <TD width=3D"5" />=0D=0A	                  =
+                <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000"><B>=0D=0A					=0D=0A							US-OR-Portland=
+=0D=0A						=0D=0A		</B></FONT></TD>=0D=0A	                            =
+      <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000"><A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73085964&amp;aid=3D77303133-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">Senior Software Engineer</A></FONT></TD>=0D=0A=
+	                                  <TD align=3D"left"><FONT face=3D"Verdana,=
+ Arial, Helvetica, sans-serif" size=3D"1" color=3D"#000000">=0D=0A			=0D=0A=
+					Volt Services=0D=0A				=0D=0A		</FONT></TD>=0D=0A	                =
+                  <TD><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000"><B><A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73085964&amp;aid=3D77303133-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">APPLY</A></B></FONT></TD>=0D=0A	            =
+                    </TR>=0D=0A		       =0D=0A	       =0D=0A  =0D=0A   =
+                           =0D=0A               <TR><TD height=3D"10" colspan=3D"5"=
+ /></TR>=0D=0A             </TABLE></TD>             =0D=0A         </TR>=
+			=0D=0A  =0D=0A         <TR>=0D=0A           <TD height=3D"5" />=0D=0A=
+         </TR>=0D=0A         <TR bgcolor=3D"#dce8ba">=0D=0A           <TD=
+ width=3D"11" />=0D=0A           <TD width=3D"637" height=3D"40">=0D=0A=
+            <TABLE width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0"=
+ id=3D"Table7">=0D=0A               <TR>=0D=0A                 <TD><FONT=
+ face=3D"Verdana, Arial, Helvetica, sans-serif" size=3D"1" color=3D"#000000">My=
+ Saved Search:</FONT></TD>=0D=0A                 <TD><FONT face=3D"Verdana,=
+ Arial, Helvetica, sans-serif" size=3D"1" color=3D"#000000">nc, vg, or -=
+ 6/15/2008</FONT></TD>=0D=0A                 <TD align=3D"right"><FONT face=3D"Verdana,=
+ Arial, Helvetica, sans-serif" size=3D"1" color=3D"#000000">=0D=0A     =
+              <A href=3D"http://jobsearch.monster.com/jobsearch.asp?lid=3D511%2c573%2c631&amp;fn=3D660&amp;brd=3D1%2c1862%2c1863&amp;qt=3Dall&amp;occ=3D660%2E11787%2c660%2E11904%2c660%2E11848%2c660%2E11882%2c660%2E11969%2c660%2E11970%2c660%2E11979%2c660%2E11996&amp;tm=3D1d&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">View all opportunities</A>=0D=0A            =
+       |=0D=0A                   <A href=3D"http://my.monster.com/Agents/ManageJobAgents.aspx?WT.mc_n=3DMKT000125"=
+ style=3D"color: #ff6504;">Refine Agent</A>=0D=0A                   |=0D=0A=
+                   <A href=3D"http://my.monster.com/Agents/ManageJobAgents.aspx?WT.mc_n=3DMKT000125"=
+ style=3D"color: #ff6504;">Disable Agent</A>=0D=0A                 </FONT></TD>=
+=0D=0A               </TR>=0D=0A               <TR>=0D=0A              =
+   <TD align=3D"right" colspan=3D"3"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000">=0D=0A                   <A href=3D"http://my.monster.com/forgot.asp?WT.mc_n=3DMKT000125"=
+ style=3D"color: #ff6504;">Forgot your username and password?</A>=0D=0A=
+                 </FONT></TD>=0D=0A               </TR>=0D=0A          =
+   </TABLE></TD><TD width=3D"11" />=0D=0A         </TR>=0D=0A         <TR>=
+=0D=0A           <TD colspan=3D"3">          =0D=0A           <TABLE width=3D"100%"=
+ cellspacing=3D"0" cellpadding=3D"2" border=3D"0" id=3D"Table8">=0D=0A =
+              <TR bgcolor=3D"#53523d">=0D=0A                 <TD width=3D"5"=
+ />=0D=0A                 <TD align=3D"left"><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#ffffff"><strong>Location</strong></FONT></TD>=
+=0D=0A                 <TD align=3D"left"><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#ffffff"><strong>Title</strong></FONT></TD>=
+=0D=0A                 <TD align=3D"left"><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#ffffff"><strong>Company</strong></FONT></TD>=
+=0D=0A                 <TD />=0D=0A               </TR>               =0D=0A=
+               =0D=0A               =0D=0A		=0D=0A		=0D=0A  		=0D=0A  	=
+	=0D=0A		                         <TR bgcolor=3D"#dce8ba">=0D=0A	      =
+                            <TD width=3D"5" />=0D=0A	                  =
+                <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000"><B>=0D=0A					=0D=0A							US-NC-Charlotte=
+=0D=0A						=0D=0A		</B></FONT></TD>=0D=0A	                            =
+      <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000"><A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73761721&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">WEB SITE ADMINISTRATOR</A></FONT></TD>=0D=0A=
+	                                  <TD align=3D"left"><FONT face=3D"Verdana,=
+ Arial, Helvetica, sans-serif" size=3D"1" color=3D"#000000">=0D=0A			=0D=0A=
+				      Company Confidential					=0D=0A				=0D=0A		</FONT></TD>=0D=0A=
+	                                  <TD><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000"><B><A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73761721&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">APPLY</A></B></FONT></TD>=0D=0A	            =
+                    </TR>=0D=0A		       =0D=0A	       =0D=0A  =0D=0A		=0D=0A=
+		=0D=0A  		=0D=0A  		=0D=0A		                         <TR>=0D=0A	     =
+                             <TD width=3D"5" />=0D=0A	                 =
+                 <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000"><B>=0D=0A					=0D=0A							US-VA-Fairfax=
+=0D=0A						=0D=0A		</B></FONT></TD>=0D=0A	                            =
+      <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000">=0D=0A                                   =
+   <A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73085951&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">Junior Java (J2EE) Developer</A>=0D=0A      =
+                              </FONT></TD>=0D=0A	                      =
+            <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000">=0D=0A			=0D=0A					Volt Services=
+=0D=0A				=0D=0A		</FONT></TD>=0D=0A	                                  <TD><FONT=
+ face=3D"Verdana, Arial, Helvetica, sans-serif" size=3D"1" color=3D"#000000"><B><A=
+ href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73085951&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">APPLY</A></B></FONT></TD>=0D=0A					     </TR>=
+=0D=0A			=0D=0A	       =0D=0A  =0D=0A		=0D=0A		=0D=0A  		=0D=0A  		=0D=0A=
+		                         <TR bgcolor=3D"#dce8ba">=0D=0A	             =
+                     <TD width=3D"5" />=0D=0A	                         =
+         <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000"><B>=0D=0A					=0D=0A							US-OR-Portland=
+=0D=0A						=0D=0A		</B></FONT></TD>=0D=0A	                            =
+      <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000"><A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73085964&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">Senior Software Engineer</A></FONT></TD>=0D=0A=
+	                                  <TD align=3D"left"><FONT face=3D"Verdana,=
+ Arial, Helvetica, sans-serif" size=3D"1" color=3D"#000000">=0D=0A			=0D=0A=
+					Volt Services=0D=0A				=0D=0A		</FONT></TD>=0D=0A	                =
+                  <TD><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000"><B><A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73085964&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">APPLY</A></B></FONT></TD>=0D=0A	            =
+                    </TR>=0D=0A		       =0D=0A	       =0D=0A  =0D=0A		=0D=0A=
+		=0D=0A  		=0D=0A  		=0D=0A		                         <TR>=0D=0A	     =
+                             <TD width=3D"5" />=0D=0A	                 =
+                 <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000"><B>=0D=0A					=0D=0A							US-NC-Raleigh/Durham-RTP=
+=0D=0A						=0D=0A		</B></FONT></TD>=0D=0A	                            =
+      <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000">=0D=0A                                   =
+   <A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73085925&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">Technical Support Engineer III</A>=0D=0A    =
+                                </FONT></TD>=0D=0A	                    =
+              <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000">=0D=0A			=0D=0A					Volt Services=
+=0D=0A				=0D=0A		</FONT></TD>=0D=0A	                                  <TD><FONT=
+ face=3D"Verdana, Arial, Helvetica, sans-serif" size=3D"1" color=3D"#000000"><B><A=
+ href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73085925&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">APPLY</A></B></FONT></TD>=0D=0A					     </TR>=
+=0D=0A			=0D=0A	       =0D=0A  =0D=0A		=0D=0A		=0D=0A  		=0D=0A  		=0D=0A=
+		                         <TR bgcolor=3D"#dce8ba">=0D=0A	             =
+                     <TD width=3D"5" />=0D=0A	                         =
+         <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000"><B>=0D=0A					=0D=0A							US-NC-Raleigh/Durham-RTP=
+=0D=0A						=0D=0A		</B></FONT></TD>=0D=0A	                            =
+      <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000"><A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73768805&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">RF Lan Support Analyst</A></FONT></TD>=0D=0A=
+	                                  <TD align=3D"left"><FONT face=3D"Verdana,=
+ Arial, Helvetica, sans-serif" size=3D"1" color=3D"#000000">=0D=0A			=0D=0A=
+					Robert Half Technology=0D=0A				=0D=0A		</FONT></TD>=0D=0A	       =
+                           <TD><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000"><B><A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73768805&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">APPLY</A></B></FONT></TD>=0D=0A	            =
+                    </TR>=0D=0A		       =0D=0A	       =0D=0A  =0D=0A		=0D=0A=
+		=0D=0A  		=0D=0A  		=0D=0A		                         <TR>=0D=0A	     =
+                             <TD width=3D"5" />=0D=0A	                 =
+                 <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000"><B>=0D=0A					=0D=0A							US-VA-McLean/Arlington=
+=0D=0A						=0D=0A		</B></FONT></TD>=0D=0A	                            =
+      <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000">=0D=0A                                   =
+   <A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73790778&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">SharePoint/Project Server Developer</A>=0D=0A=
+                                    </FONT></TD>=0D=0A	                =
+                  <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000">=0D=0A			=0D=0A					CompuCom Excell=
+ Data=0D=0A				=0D=0A		</FONT></TD>=0D=0A	                             =
+     <TD><FONT face=3D"Verdana, Arial, Helvetica, sans-serif" size=3D"1"=
+ color=3D"#000000"><B><A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73790778&amp;aid=3D77313549-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">APPLY</A></B></FONT></TD>=0D=0A					     </TR>=
+=0D=0A			=0D=0A	       =0D=0A  =0D=0A                              =0D=0A=
+               <TR><TD height=3D"10" colspan=3D"5" /></TR>=0D=0A       =
+      </TABLE></TD>             =0D=0A         </TR>			=0D=0A  =0D=0A  =
+       <TR>=0D=0A           <TD height=3D"5" />=0D=0A         </TR>=0D=0A=
+         <TR bgcolor=3D"#dce8ba">=0D=0A           <TD width=3D"11" />=0D=0A=
+           <TD width=3D"637" height=3D"40">=0D=0A            <TABLE width=3D"100%"=
+ cellspacing=3D"0" cellpadding=3D"0" border=3D"0" id=3D"Table7">=0D=0A =
+              <TR>=0D=0A                 <TD><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#000000">My Saved Search:</FONT></TD>=
+=0D=0A                 <TD><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000">Portland 200 miles</FONT></TD>=0D=0A     =
+            <TD align=3D"right"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000">=0D=0A                   <A href=3D"http://jobsearch.monster.com/jobsearch.asp?q=3D%22Build+Forge%22+%22Build+Engineer%22+%22configuration+manager%22+%22build+manager%22+%22system+administrator%22+%22web+developer%22+%22java%22+%22ant%22+%22perl%22+%22clearcase%22+%22unix%22&amp;brd=3D1&amp;cnme=3Dportland&amp;rad=3D200&amp;qlat=3D1354978&amp;qlon=3D573063&amp;clid=3D578&amp;sid=3D71&amp;tm=3D1d&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">View all opportunities</A>=0D=0A            =
+       |=0D=0A                   <A href=3D"http://my.monster.com/Agents/ManageJobAgents.aspx?WT.mc_n=3DMKT000125"=
+ style=3D"color: #ff6504;">Refine Agent</A>=0D=0A                   |=0D=0A=
+                   <A href=3D"http://my.monster.com/Agents/ManageJobAgents.aspx?WT.mc_n=3DMKT000125"=
+ style=3D"color: #ff6504;">Disable Agent</A>=0D=0A                 </FONT></TD>=
+=0D=0A               </TR>=0D=0A               <TR>=0D=0A              =
+   <TD align=3D"right" colspan=3D"3"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000">=0D=0A                   <A href=3D"http://my.monster.com/forgot.asp?WT.mc_n=3DMKT000125"=
+ style=3D"color: #ff6504;">Forgot your username and password?</A>=0D=0A=
+                 </FONT></TD>=0D=0A               </TR>=0D=0A          =
+   </TABLE></TD><TD width=3D"11" />=0D=0A         </TR>=0D=0A         <TR>=
+=0D=0A           <TD colspan=3D"3">          =0D=0A           <TABLE width=3D"100%"=
+ cellspacing=3D"0" cellpadding=3D"2" border=3D"0" id=3D"Table8">=0D=0A =
+              <TR bgcolor=3D"#53523d">=0D=0A                 <TD width=3D"5"=
+ />=0D=0A                 <TD align=3D"left"><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#ffffff"><strong>Location</strong></FONT></TD>=
+=0D=0A                 <TD align=3D"left"><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#ffffff"><strong>Title</strong></FONT></TD>=
+=0D=0A                 <TD align=3D"left"><FONT face=3D"Verdana, Arial,=
+ Helvetica, sans-serif" size=3D"1" color=3D"#ffffff"><strong>Company</strong></FONT></TD>=
+=0D=0A                 <TD />=0D=0A               </TR>               =0D=0A=
+               =0D=0A               =0D=0A		=0D=0A		=0D=0A  		=0D=0A  	=
+	=0D=0A		                         <TR bgcolor=3D"#dce8ba">=0D=0A	      =
+                            <TD width=3D"5" />=0D=0A	                  =
+                <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#000000"><B>=0D=0A					=0D=0A							US-OR-Portland=
+=0D=0A						=0D=0A		</B></FONT></TD>=0D=0A	                            =
+      <TD align=3D"left"><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000"><A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73085964&amp;aid=3D78014244-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">Senior Software Engineer</A></FONT></TD>=0D=0A=
+	                                  <TD align=3D"left"><FONT face=3D"Verdana,=
+ Arial, Helvetica, sans-serif" size=3D"1" color=3D"#000000">=0D=0A			=0D=0A=
+					Volt Services=0D=0A				=0D=0A		</FONT></TD>=0D=0A	                =
+                  <TD><FONT face=3D"Verdana, Arial, Helvetica, sans-serif"=
+ size=3D"1" color=3D"#000000"><B><A href=3D"http://jobview.monster.com/getjob.asp?JobID=3D73085964&amp;aid=3D78014244-1278&amp;WT.mc_n=3DMKT000351"=
+ style=3D"color: #ff6504;">APPLY</A></B></FONT></TD>=0D=0A	            =
+                    </TR>=0D=0A		       =0D=0A	       =0D=0A  =0D=0A   =
+                           =0D=0A               <TR><TD height=3D"10" colspan=3D"5"=
+ /></TR>=0D=0A             </TABLE></TD>             =0D=0A         </TR>=
+			=0D=0A  =0D=0A                                                      =
+                            =0D=0A=0D=0A                               =
+                                                 <tr>=0D=0A            =
+                                                                       =
+ <td colspan=3D"5" align=3D"center">=0D=0A                             =
+                                                         =0D=0A        =
+                                                                       =
+       <a href=3D"http://ads.monster.com/click.ng/site=3Dmons&amp;affiliate=3Dmons&amp;app=3Djsa&amp;size=3D631x80&amp;pp=3D5&amp;tileid=3D11790636&amp;key=3Dbuild+manager,%22Build+Forge%22+%22Build+Engineer%22+%22configuration+manager%22+%22build+manager%22+%22system+administrator%22+%22web+developer%22+%22java%22+%22ant%22+%22perl%22+%22clearcase%22+%22unix%22&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631&amp;cid=3D660&amp;cid=3D660&amp;cid=3D660&amp;transactionid=3D11790636mons123&amp;ge=3D-1&amp;dcel=3D-1&amp;lid=3D&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631">=
+=0D=0A<img border=3D"0" width=3D"631" height=3D"80" nosend=3D"1" src=3D"http://ads.monster.com/image.ng/site=3Dmons&amp;affiliate=3Dmons&amp;app=3Djsa&amp;size=3D631x80&amp;pp=3D5&amp;tileid=3D11790636&amp;key=3Dbuild+manager,%22Build+Forge%22+%22Build+Engineer%22+%22configuration+manager%22+%22build+manager%22+%22system+administrator%22+%22web+developer%22+%22java%22+%22ant%22+%22perl%22+%22clearcase%22+%22unix%22&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631&amp;cid=3D660&amp;cid=3D660&amp;cid=3D660&amp;transactionid=3D11790636mons123&amp;ge=3D-1&amp;dcel=3D-1&amp;lid=3D&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631"=
+ /></a>=0D=0A                                                          =
+                          </td>=0D=0A                                  =
+                                              </tr>=0D=0A              =
+                                                              </table>=0D=0A=
+                                                                       =
+ </td>=0D=0A                                                           =
+         </tr>=0D=0A                                                   =
+             </table>=0D=0A                                            =
+                </td>=0D=0A                                            =
+                <td width=3D"28">=0D=0A                                =
+                            </td>=0D=0A                                =
+                        </tr>=0D=0A                                    =
+                </table>=0D=0A                                         =
+       </td>=0D=0A                                            </tr>=0D=0A=
+                                        </table>=0D=0A                 =
+                   </td>=0D=0A                                </tr>=0D=0A=
+                                <tr>=0D=0A                             =
+       <td height=3D"10">=0D=0A                                    </td>=
+=0D=0A                                </tr>=0D=0A                      =
+          <tr>=0D=0A                                    <td valign=3D"top">=
+=0D=0A                                        <table width=3D"717" cellspacing=3D"0"=
+ cellpadding=3D"1" border=3D"0" id=3D"Table6" align=3D"center">=0D=0A  =
+                                          <tr>=0D=0A                   =
+                             <td>=0D=0A                                =
+                    <table width=3D"717" border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"0">=0D=0A                                              =
+          <tr>=0D=0A                                                   =
+         <td width=3D"15" rowspan=3D"5" nowrap=3D"">=0D=0A             =
+                                               </td>=0D=0A             =
+                                               <td height=3D"17" nowrap=3D"">=
+=0D=0A                                                            </td>=
+=0D=0A                                                            <td width=3D"15"=
+ rowspan=3D"5" nowrap=3D"">=0D=0A                                      =
+                      </td>=0D=0A                                      =
+                  </tr>=0D=0A                                          =
+              <tr>=0D=0A                                               =
+             <td valign=3D"top" width=3D"686" align=3D"center">=0D=0A  =
+                                                              <table width=3D"686"=
+ border=3D"0" cellspacing=3D"0" cellpadding=3D"0">=0D=0A               =
+                                                     <tr>=0D=0A        =
+                                                                <td width=3D"169"=
+ align=3D"left" valign=3D"top">=0D=0A                                  =
+                                          <table width=3D"169" cellspacing=3D"0"=
+ cellpadding=3D"0" border=3D"0" id=3D"Table11">=0D=0A                  =
+                                                              <tr>=0D=0A=
+                                                                       =
+             <td colspan=3D"3" height=3D"15" nowrap=3D"">=0D=0A        =
+                                                                       =
+     </td>=0D=0A                                                       =
+                         </tr>=0D=0A                                   =
+                                             <tr>=0D=0A                =
+                                                                    <td=
+ width=3D"12">=0D=0A                                                   =
+                                 </td>=0D=0A                           =
+                                                         <td width=3D"144"=
+ valign=3D"top">=0D=0A                                                 =
+                                       <img src=3D"http://media.monster.com/cm_images/xmonnamktx/000002jsa/helpfulhints2.gif"=
+ alt=3D"Helpful Hints" width=3D"170" height=3D"220" nosend=3D"1" /><br />=
+=0D=0A                                                                 =
+                       <br />=0D=0A                                    =
+                                                    <img src=3D"http://media.monster.com/cm_images/xmonnamktx/000002jsa/monster.jpg"=
+ width=3D"126" height=3D"45" alt=3D"Your calling is calling" align=3D"left"=
+ />=0D=0A                                                              =
+                      </td>=0D=0A                                      =
+                                              <td width=3D"13">=0D=0A  =
+                                                                       =
+           </td>=0D=0A                                                 =
+                               </tr>=0D=0A                             =
+                                                   <tr>=0D=0A          =
+                                                                       =
+   <td colspan=3D"3" height=3D"10" nowrap=3D"">=0D=0A                  =
+                                                                  </td>=
+=0D=0A                                                                 =
+               </tr>=0D=0A                                             =
+                               </table>=0D=0A                          =
+                                              </td>=0D=0A              =
+                                                          <td width=3D"15"=
+ nowrap=3D"">=0D=0A                                                    =
+                    </td>=0D=0A                                        =
+                                <td align=3D"right" valign=3D"top">=0D=0A=
+                                                                       =
+     <table width=3D"500" cellspacing=3D"0" cellpadding=3D"1" border=3D"0"=
+ id=3D"Table13">=0D=0A                                                 =
+                               <tr>=0D=0A                              =
+                                                      <td>=0D=0A       =
+                                                                       =
+          <table width=3D"500" cellspacing=3D"0" cellpadding=3D"1" border=3D"0"=
+ id=3D"Table14">=0D=0A                                                 =
+                                           <tr>=0D=0A                  =
+                                                                       =
+       <td colspan=3D"3" height=3D"8">=0D=0A                           =
+                                                                       =
+  <br />=0D=0A                                                         =
+                                       </td>=0D=0A                     =
+                                                                       </tr>=
+=0D=0A                                                                 =
+                           <tr>=0D=0A                                  =
+                                                              <td width=3D"5"=
+ nowrap=3D"">=0D=0A                                                    =
+                                            </td>=0D=0A                =
+                                                                       =
+         <td width=3D"9" valign=3D"top">=0D=0A                         =
+                                                                       =
+    <img src=3D"http://media.monster.com/cm_images/xmonnamktx/000001jsa/spacer.gif"=
+ width=3D"9" height=3D"4" border=3D"0" nosend=3D"1" /><br />=0D=0A     =
+                                                                       =
+                        <img src=3D"http://media.monster.com/cm_images/xmonnamktx/000002jsa/box_1_button.gif"=
+ width=3D"18" height=3D"18" border=3D"0" nosend=3D"1" /></td>=0D=0A    =
+                                                                       =
+                     <td align=3D"center" valign=3D"top">=0D=0A        =
+                                                                       =
+                   =0D=0A                                              =
+                                                    <a href=3D"http://ads.monster.com/click.ng/site=3Dmons&amp;affiliate=3Dmons&amp;app=3Djsa&amp;size=3D468x60&amp;pp=3D5&amp;tileid=3D11790636&amp;key=3Dbuild+manager,%22Build+Forge%22+%22Build+Engineer%22+%22configuration+manager%22+%22build+manager%22+%22system+administrator%22+%22web+developer%22+%22java%22+%22ant%22+%22perl%22+%22clearcase%22+%22unix%22&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631&amp;cid=3D660&amp;cid=3D660&amp;cid=3D660&amp;transactionid=3D11790636mons126&amp;ge=3D-1&amp;dcel=3D-1&amp;lid=3D&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631">=
+=0D=0A<img border=3D"0" width=3D"468" height=3D"60" nosend=3D"1" src=3D"http://ads.monster.com/image.ng/site=3Dmons&amp;affiliate=3Dmons&amp;app=3Djsa&amp;size=3D468x60&amp;pp=3D5&amp;tileid=3D11790636&amp;key=3Dbuild+manager,%22Build+Forge%22+%22Build+Engineer%22+%22configuration+manager%22+%22build+manager%22+%22system+administrator%22+%22web+developer%22+%22java%22+%22ant%22+%22perl%22+%22clearcase%22+%22unix%22&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631&amp;cid=3D660&amp;cid=3D660&amp;cid=3D660&amp;transactionid=3D11790636mons126&amp;ge=3D-1&amp;dcel=3D-1&amp;lid=3D&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631"=
+ /></a>=0D=0A                                                          =
+                                        =0D=0A                         =
+                                                                       </td>=
+=0D=0A                                                                 =
+                           </tr>=0D=0A                                 =
+                                                           <tr>=0D=0A  =
+                                                                       =
+                       <td colspan=3D"3" height=3D"8">=0D=0A           =
+                                                                       =
+              </td>=0D=0A                                              =
+                                              </tr>=0D=0A              =
+                                                                       =
+       <tr>=0D=0A                                                      =
+                                          <td width=3D"5" nowrap=3D"">=0D=0A=
+                                                                       =
+                         </td>=0D=0A                                   =
+                                                             <td width=3D"9"=
+ valign=3D"top">=0D=0A                                                 =
+                                                   <img src=3D"http://media.monster.com/cm_images/xmonnamktx/000001jsa/spacer.gif"=
+ width=3D"9" height=3D"4" border=3D"0" nosend=3D"1" /><br />=0D=0A     =
+                                                                       =
+                        <img src=3D"http://media.monster.com/cm_images/xmonnamktx/000002jsa/box_1_button.gif"=
+ width=3D"18" height=3D"18" border=3D"0" nosend=3D"1" /></td>=0D=0A    =
+                                                                       =
+                     <td align=3D"center" valign=3D"top">=0D=0A        =
+                                                                       =
+                   =0D=0A                                              =
+                                                    <a href=3D"http://ads.monster.com/click.ng/site=3Dmons&amp;affiliate=3Dmons&amp;app=3Djsa&amp;size=3D468x60&amp;pp=3D6&amp;tileid=3D11790636&amp;key=3Dbuild+manager,%22Build+Forge%22+%22Build+Engineer%22+%22configuration+manager%22+%22build+manager%22+%22system+administrator%22+%22web+developer%22+%22java%22+%22ant%22+%22perl%22+%22clearcase%22+%22unix%22&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631&amp;cid=3D660&amp;cid=3D660&amp;cid=3D660&amp;transactionid=3D11790636mons127&amp;ge=3D-1&amp;dcel=3D-1&amp;lid=3D&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631">=
+=0D=0A<img border=3D"0" width=3D"468" height=3D"60" nosend=3D"1" src=3D"http://ads.monster.com/image.ng/site=3Dmons&amp;affiliate=3Dmons&amp;app=3Djsa&amp;size=3D468x60&amp;pp=3D6&amp;tileid=3D11790636&amp;key=3Dbuild+manager,%22Build+Forge%22+%22Build+Engineer%22+%22configuration+manager%22+%22build+manager%22+%22system+administrator%22+%22web+developer%22+%22java%22+%22ant%22+%22perl%22+%22clearcase%22+%22unix%22&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631&amp;cid=3D660&amp;cid=3D660&amp;cid=3D660&amp;transactionid=3D11790636mons127&amp;ge=3D-1&amp;dcel=3D-1&amp;lid=3D&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631"=
+ /></a>=0D=0A                                                          =
+                                        =0D=0A                         =
+                                                                       </td>=
+=0D=0A                                                                 =
+                           </tr>=0D=0A                                 =
+                                                           <tr>=0D=0A  =
+                                                                       =
+                       <td colspan=3D"3" height=3D"8">=0D=0A           =
+                                                                       =
+              </td>=0D=0A                                              =
+                                              </tr>=0D=0A              =
+                                                                       =
+       <tr>=0D=0A                                                      =
+                                          <td width=3D"5" nowrap=3D"">=0D=0A=
+                                                                       =
+                         </td>=0D=0A                                   =
+                                                             <td width=3D"9"=
+ valign=3D"top">=0D=0A                                                 =
+                                                   <img src=3D"http://media.monster.com/cm_images/xmonnamktx/000001jsa/spacer.gif"=
+ width=3D"9" height=3D"4" border=3D"0" nosend=3D"1" /><br />=0D=0A     =
+                                                                       =
+                        <img src=3D"http://media.monster.com/cm_images/xmonnamktx/000002jsa/box_1_button.gif"=
+ width=3D"18" height=3D"18" border=3D"0" nosend=3D"1" /></td>=0D=0A    =
+                                                                       =
+                     <td align=3D"center" valign=3D"top">=0D=0A        =
+                                                                       =
+                   =0D=0A                                              =
+                                                    <a href=3D"http://ads.monster.com/click.ng/site=3Dmons&amp;affiliate=3Dmons&amp;app=3Djsa&amp;size=3D468x60&amp;pp=3D7&amp;tileid=3D11790636&amp;key=3Dbuild+manager,%22Build+Forge%22+%22Build+Engineer%22+%22configuration+manager%22+%22build+manager%22+%22system+administrator%22+%22web+developer%22+%22java%22+%22ant%22+%22perl%22+%22clearcase%22+%22unix%22&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631&amp;cid=3D660&amp;cid=3D660&amp;cid=3D660&amp;transactionid=3D11790636mons128&amp;ge=3D-1&amp;dcel=3D-1&amp;lid=3D&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631">=
+=0D=0A<img border=3D"0" width=3D"468" height=3D"60" nosend=3D"1" src=3D"http://ads.monster.com/image.ng/site=3Dmons&amp;affiliate=3Dmons&amp;app=3Djsa&amp;size=3D468x60&amp;pp=3D7&amp;tileid=3D11790636&amp;key=3Dbuild+manager,%22Build+Forge%22+%22Build+Engineer%22+%22configuration+manager%22+%22build+manager%22+%22system+administrator%22+%22web+developer%22+%22java%22+%22ant%22+%22perl%22+%22clearcase%22+%22unix%22&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631&amp;cid=3D660&amp;cid=3D660&amp;cid=3D660&amp;transactionid=3D11790636mons128&amp;ge=3D-1&amp;dcel=3D-1&amp;lid=3D&amp;lid=3D573&amp;lid=3D612&amp;lid=3D645&amp;lid=3D511&amp;lid=3D573&amp;lid=3D631"=
+ /></a>=0D=0A                                                          =
+                                        =0D=0A                         =
+                                                                       </td>=
+=0D=0A                                                                 =
+                           </tr>=0D=0A                                 =
+                                                           <tr>=0D=0A  =
+                                                                       =
+                       <td colspan=3D"3" height=3D"8">=0D=0A           =
+                                                                       =
+              </td>=0D=0A                                              =
+                                              </tr>=0D=0A              =
+                                                                       =
+   </table>=0D=0A                                                      =
+                              </td>=0D=0A                              =
+                                                  </tr>=0D=0A          =
+                                                                  </table>=
+=0D=0A                                                                 =
+       </td>=0D=0A                                                     =
+               </tr>=0D=0A                                             =
+                   </table>=0D=0A                                      =
+                      </td>=0D=0A                                      =
+                  </tr>=0D=0A                                          =
+              <tr>=0D=0A                                               =
+             <td height=3D"10" nowrap=3D"">=0D=0A                      =
+                                      </td>=0D=0A                      =
+                                  </tr>=0D=0A                          =
+                              <tr>=0D=0A                               =
+                             <td>=0D=0A                                =
+                                <font face=3D"Verdana, Arial, Helvetica,=
+ sans-serif" size=3D"1" color=3D"#535353">If you need help or have questions=
+ about this email, go to=0D=0A<A href=3D"http://www.monster.com/contact/?WT.mc_n=3DMKT000125"=
+ style=3D"color: #ff6504;">http://www.monster.com/contact/</A>.=0D=0A  =
+                                                              </font></td>=
+=0D=0A                                                        </tr>=0D=0A=
+                                                        <tr>=0D=0A     =
+                                                       <td height=3D"10"=
+ nowrap=3D"">=0D=0A                                                    =
+        </td>=0D=0A                                                    =
+    </tr>=0D=0A                                                    </table>=
+=0D=0A                                                </td>=0D=0A      =
+                                      </tr>=0D=0A                      =
+                      <tr>=0D=0A                                       =
+         <td height=3D"15">=0D=0A                                      =
+          </td>=0D=0A                                            </tr>=0D=0A=
+                                        </table>=0D=0A                 =
+                   </td>=0D=0A                                </tr>=0D=0A=
+                            </table>=0D=0A                        </td>=
+=0D=0A                    </tr>=0D=0A                </table>=0D=0A    =
+        </td>=0D=0A        </tr>=0D=0A    </table>=0D=0A  =0D=0A  =0D=0A=
+  	=0D=0A	<TABLE bgcolor=3D"#551f80" width=3D"738" align=3D"center" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0">=0D=0A	<TR>=0D=0A	<TD width=3D"15" nowrap=3D"true"=
+ />=0D=0A	<TD valign=3D"top" align=3D"left"><FONT FACE=3D"Verdana, Arial,=
+ Helvetica, sans-serif" SIZE=3D"1" COLOR=3D"#bcadc7"><BR /><BR />=0D=0A=
+	      =0D=0A		Monster respects your online time and privacy. If you no=
+ longer wish to receive Monster emails, please <A style=3D"font: 10px Verdana;=
+ COLOR: #bcadc7;" href=3D"http://my.monster.com/Agents/OptOutJobAgent.aspx?uid=3D0FBB1674520A3CE8A022AD5FED5B79630BC0898892520884F0162289AA58B3436FBE557332E1F576E96E0A9A61E16ED207FB073976288FE378E40B6E367CC9AEEFCF8BAA9CAFCBDE8E96163FEC2A7F8E&amp;WT.mc_n=3DMKT000125">click=
+ here</A> and submit your request.<BR /><BR />Requests for unsubscribing=
+ or for changing preferences can be made only by clicking on the link above=
+ and may take up to 10 days to take effect.<BR /><BR />=0D=0A		<B>Questions?</B>=
+ Email us directly by visiting <A style=3D"font: 10px Verdana; COLOR: #bcadc7;"=
+ href=3D"http://www.monster.com">www.monster.com</A>. Please do not reply=
+ to this email.<BR /><BR />To read the Monster Privacy Commitment, visit=
+ <A style=3D"font: 10px Verdana; COLOR: #bcadc7;" href=3D"http://about.monster.com/privacy">about.monster.com/privacy/</A><BR=
+ /><BR />	Monster, 5 Clock Tower Place, Suite 500, Maynard, MA 01754<BR=
+ /><BR />Add <A style=3D"font: 10px Verdana; COLOR: #bcadc7;" href=3D"mailto:monster@route.monster.com">monster@route.monster.com</A>=
+ to your address book to ensure delivery of Monster emails.<BR /><BR />=
+=0D=0A    If you have any doubt about the authenticity of an email from=
+ Monster, simply open a new web   browser, type in <A style=3D"font: 10px=
+ Verdana; COLOR: #bcadc7;" href=3D"http://www.monster.com" target=3D"_blank">http://www.monster.com</A>,=
+ log in to your Monster account safely and securely and then perform the=
+ requested activity.=0D=0A	<BR /><BR /></FONT></TD>=0D=0A	<TD width=3D"60"=
+ nowrap=3D"true" />=0D=0A	</TR>=0D=0A	</TABLE>   =0D=0A   =0D=0A=0D=0A =
+ =0D=0A  <FONT SIZE=3D"0" COLOR=3D"#551f80">EMAIL-TO:james@sandlininc.com</FONT>=
+=0D=0A=0D=0A</body>=0D=0A</html>=0D=0A=0D=0A
+

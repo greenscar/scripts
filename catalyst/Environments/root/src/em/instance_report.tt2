@@ -1,0 +1,58 @@
+[% META title = 'Environment Report' -%]
+<h1>App Instances</h1>
+<table class="envreport">
+<tr>
+   <th>Environment</th>
+   <th>Application</th>
+</tr>
+<tr>
+   <td></td>
+   <td>
+      <table>
+      <tr>
+         <td class="appname">App</td>
+         <td class="applink">Link</td>
+         <td>Current Baseline</td>
+      </tr>
+      </table>
+   </td>
+<tr>
+   <td colspan="2" class="spacer"></td>
+</tr>
+[% FOREACH e IN envs -%]
+<tr>
+   <td>
+      <a href="[% c.uri_for(c.controller.action_for('instances_edit'), [e.id]) %]">
+         [% e.name %]
+      </a>
+   </td>
+   <td>
+      <table>  
+         [% FOREACH i IN e.r2instances -%]
+               <tr>
+                  <td class="appname">[% i.application.name %]</td>
+                  <td class="applink">[% i.link %]</td>
+                  <td>
+                  [% d = i.get_latest_deployment(c) -%]
+                  [% d.baseline %]
+                  </td>
+               </tr>
+         [% END -%]
+      </table>
+   </td>
+</tr>
+<tr>
+   <td colspan="2" class="spacer"></td>
+</tr>
+[% END -%]
+<table>
+<br>
+<ul>
+<li>
+   To modify an Environment's App Instances, Click the Environment Name
+</li>
+<li>
+   To create add instances to an Environment not listed above: 
+   <a href="[% c.uri_for('/instance/create') %]">NEW ENV / Instance Set</a>
+</li>
+</ul>   

@@ -1,0 +1,2545 @@
+	<project name="TIERS" default="antserverstart" basedir="/home/ccbuild/tiersbuild/harmony">
+   <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      <title> TIERS </title>
+      File Name: build.xml
+      <author> Author: Raghurajan Gurunathan
+      Copyright 2003 Deloitte Consulting </author>
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+   
+
+ 	<property file="${basedir}/props/online.properties" prefix="op"/>
+ 	<property file="${basedir}/props/batch.properties" prefix="bp"/>
+		
+   <path id="project.3party.jars">
+      <fileset dir="${op.externaljar.dir}" includes="*.jar"/>
+      <pathelement path="${op.was.home}/java/jre/lib/ext/mail.jar"/>
+      <pathelement path="${op.was.home}/java/jre/lib/ext/log.jar"/>
+   </path>
+
+   <path id="project.othertiers.jars">
+      <pathelement path="${op.othertiers.dir}/AdminCommon.jar"/>
+      <pathelement path="${op.othertiers.dir}/AdminConsole.jar"/>
+      <pathelement path="${op.othertiers.dir}/Framework.jar"/>
+   </path>
+
+   <path id="project.layer.jars"> 
+      <pathelement path="${op.layerjar.dir}/trackFW.jar"/>
+      <pathelement path="${op.layerjar.dir}/bo.jar"/>
+      <pathelement path="${op.layerjar.dir}/ccd.jar"/>
+      <pathelement path="${op.layerjar.dir}/bean.jar"/>
+   </path>
+
+   <path id="project.build.classpath">
+      <path refid="project.layer.jars"/>
+      <path refid="project.othertiers.jars"/> 
+      <path refid="project.3party.jars"/>     
+   </path>
+
+   <taskdef resource="net/sf/antcontrib/antlib.xml"/> 
+   <!--	 <taskdef name="vizant" 				classname="vizant.Vizant"/> 
+   <taskdef name="AntDoc" 				classname="org.ed.pack.ant.AntDoc"/> -->
+   <taskdef name="wsAdmin" 				classname="com.ibm.websphere.ant.tasks.WsAdmin"/>
+   <taskdef name="wsStopServer" 			classname="com.ibm.websphere.ant.tasks.StopServer"/>
+   <taskdef name="wsEJBdeploy" 			classname="com.ibm.websphere.ant.tasks.WsEjbDeploy"/>
+   <taskdef name="wsStartServer" 			classname="com.ibm.websphere.ant.tasks.StartServer"/>
+   <taskdef name="wsServerStatus" 		       classname="com.ibm.websphere.ant.tasks.ServerStatus"/>
+   <taskdef name="wsStopApplication" 		classname="com.ibm.websphere.ant.tasks.StopApplication"/>
+   <taskdef name="wsStartApplication" 	       classname="com.ibm.websphere.ant.tasks.StartApplication"/>
+	
+   <target name="buildfiledoc">
+      <echo message="buildfiledoc ST.time = ${starttime}"/>	
+      <AntDoc destination="${op.buildfilehtml.dir}" buildfile="${op.buildxml.file}"/>
+      <vizant antfile="${op.buildxml.file}" outfile="${op.builddocdot.file}">
+         <attrstmt type="node">
+            <attr name="URL" value="javascript:alert('\N');"/>
+            <attr name="color" value="grey90"/>
+            <attr name="style" value="filled"/>
+         </attrstmt>
+         <attrstmt type="edge">
+            <attr name="color" value="grey70"/>
+         </attrstmt>
+         <attrstmt type="edge.antcall">				
+            <attr name="label" value="antcall"/>
+            <attr name="fontcolor" value="gray70"/>
+            <attr name="fontsize" value="9"/>
+         </attrstmt>
+         <attrstmt type="node.default">
+            <attr name="color" value="red"/>
+         </attrstmt>
+      </vizant>
+      <exec dir="${op.graphiz.dir}" executable="${op.graphiz.dir}/dot">
+         <arg line="${op.graphizip.option} ${op.graphizipip.file} ${op.graphizop.option} ${op.graphizipop.file}"/>
+      </exec>
+   </target>
+	
+   <!-- 
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      "envsetup" will make it easy setup required directory structure for the environment
+      This would reduce the manual work/error of creating directory structure for different 
+      envs
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+
+   <target name="envsetup">			
+      <echo message="envsetup ST.time = ${starttime}"/>		
+      <available file="${op.tiersapps.dir}" type="dir" property="envsetup_done"/>
+      <if>
+         <isset property="envsetup_done"/>
+         <then>
+            <echo message="Environment for ${view_name} already exists."/>
+         </then>
+         <else>
+            <echo message="!!! Setting environment for ${env_name} !!!"/>
+            <stopwatch name="envsetup.time" action="start"/>
+            <mkdir dir="${op.tiersapps.dir}"/>
+            <mkdir  dir="${op.online.dir}"/>
+            <mkdir dir="${op.layerjar.dir}"/>
+            <mkdir dir="${op.ear.dir}"/>
+            <mkdir dir="${op.bldreports.dir}"/>
+            <mkdir dir="${op.layer.classes}"/>
+            <mkdir dir="${op.tfwclass.dir}"/>
+            <mkdir dir="${op.ccdclass.dir}"/>
+            <mkdir dir="${op.boclass.dir}"/>
+            <mkdir dir="${op.beanclass.dir}"/>
+            <mkdir dir="${op.webclass.dir}"/>
+            <mkdir dir="${op.logs.dir}"/>
+            <mkdir dir="${bp.batch.dir}"/>
+            <mkdir dir="${bp.batchjar.dir}"/>
+            <mkdir dir="${bp.jartmpdest.dir}"/>
+            <mkdir  dir="${bp.batchsrc.dir}"/>
+            <mkdir  dir="${bp.batchclass.dir}"/>
+            <stopwatch name="envsetup.time" action="total"/>	
+         </else>
+      </if>   		
+   </target>
+
+   <target name="cleanup">
+      <stopwatch name="cleanup.time" action="start"/>
+         <delete includeemptydirs="true" failonerror="false">
+            <fileset dir="${op.online.dir}"/>
+         </delete>
+      <stopwatch name="cleanup.time" action="total"/>
+   </target>
+
+   <target name="antserverstart" >
+      <echo message="!!! Starting Ant Server !!!"/>
+      <antserver />
+   </target>
+	
+   <!-- 
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      "notifymail" is a one target to be used for any kind of notification, instead of having
+      more than one for different kind of notification. I also made it smart enough does it need
+      to attach any logfiles with the message or not
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+   
+   <target name="notifymail" depends="cleanlogfile">
+      <trycatch>
+        <try>
+      	  <if>
+           <isset property="mail.logfile"/>
+           <then>
+              <echo message="!!! Attaching log file !!!"/>
+              <mail mailhost="${op.email.host}" 
+                    mailport="${op.email.port}" 
+                    subject="${mail.subject}"
+                    files="${mail.logfile}" 
+                    tolist="${op.email.tolist}">
+                 <from address="${op.email.from}"/>
+                 <message>${mail.message}</message>
+              </mail>
+           </then>
+           <else>
+              <echo message="!!! Not attaching log file !!!"/>
+              <mail mailhost="${op.email.host}" 
+                    mailport="${op.email.port}" 
+                    subject="${mail.subject}"
+                    tolist="${op.email.tolist}">
+                 <from address="${op.email.from}"/>
+                 <message>${mail.message}</message>
+              </mail>
+           </else>
+      	  </if>
+        </try>
+        <catch>
+        </catch>
+      </trycatch>
+   </target>	
+	
+   <target name="cleanlogfile">
+      <echo message="!!! Cleaning up [ccupdate] from log file !!!"	/>
+      <shellscript shell="bash" dir="${op.logs.dir}">
+         touch tmp.log
+         grep -v ccupdate ${op.logs.dir}/${starttime}-online.log > tmp.log
+         mv tmp.log ${op.logs.dir}/${starttime}-online.log
+      </shellscript>	   
+   </target>
+	
+   <!-- 
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      These are the main targets which will make it easy for run different kind of build
+      activities
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+   <target name="propViewUpdate" depends="init,updatePropView"/>
+   <target name="propOnlineDeploy" depends="propJarCreate,propJarDeploy"/>
+   <!--
+      Taking out gen_properties_jar because it runs the risk of deploying properties to the environment on a single call.
+      propBatchDeploy deploys properties for batch
+      <target name="gen_properties_jar"   depends="init,updatePropView,propJarCreate,propJarDeploy"/>
+      <target name="properties_online_and_batch" depends="gen_properties_jar, propBatchDeploy"/>
+   -->
+   <!-- deployonlineonly is used to do a online deployment without a build -->
+   <target name="deployonlineonly" depends="init,deployonline"/>
+   <!-- buildboth_ws is used to build & deploy online & batch with web services.
+      This is the method used for 99% of builds. -->
+   <target name="buildboth_ws"	depends="compileonline_ws,deployonline,buildbatch"/>	
+   <!-- buildonline_ws is used to build & deploy online with web services. -->
+   <target name="buildonline_ws" 	depends="compileonline_ws,deployonline"/>
+   
+   <!-- deployboth is used to deploy online & batch from the previous build. -->
+   <target name="deployboth"		depends="init,deployonline,batchdeploy"/>
+   
+   <!-- buildbatchonly updates the view & builds & deploys batch -->
+   <target name="buildbatchonly" 	depends="batchinit,updateview,compilebatch,batchdeploy"/>
+   
+   <!-- buildonline_wo_viewupdate builds and deploys online without updating the view. -->   
+   <target name="buildonline_wo_viewupdate">
+      <antcall target="init"/>
+      <property name="is_ws_build" value="true"/>
+      <antcall target="compile"/>
+      <antcall target="deployonline"/>
+   </target>
+   
+   <target name="buildboth" 		depends="buildonline,buildbatch"/>
+   <target name="buildboth_ws_trackwise"	depends="buildonline_ws_trackwise,buildbatch"/>	
+   
+   <target name="buildonline" 	depends="init,updateview,compile,deployonline"/>
+   <target name="buildonline_ws_trackwise" 	depends="compileonline_ws_trackwise,deployonline"/>
+   <target name="buildonline_ws_andtrackwise" depends="compileonline_ws_trackwise"/>
+   <target name="buildbatch" 		depends="batchinit,compilebatch,batchdeploy"/>
+   <!-- <target name="buildbatchonly" 	depends="batchinit,updateview,compilebatch,batchdeploy"/> -->
+   <target name="completebatchbuild" depends="batchinit,updateview,compilebatch,batchdeploy"/>
+   <target name="completebuildbatch" depends="batchinit,compilebatch,batchdeploy"/>
+   <target name="forceboth"		depends="init,forceonline,forcebatch"/>
+   <target name="forceonline"  	depends="init,updateview,createlayerear,deployonline"/>
+   <target name="forcebatch"		depends="batchinit,compilebatch,batchdeploy"/>
+   <target name="compileonline"	depends="init,updateview,compile"/>
+   <target name="compileboth"		depends="compileonline,compilebatch"/>
+   <target name="bothdeploy"		depends="init,deployonline,batchdeploy"/>
+   <target name="compileonline_ws">
+      <property name="is_ws_build" value="true"/>
+      <antcall target="compileonline"/>	     
+   </target>
+   <target name="compileonline_ws_trackwise"	depends="compileonline_ws,buildtrackwise"/>
+   
+   
+   <target name="init">
+      <if>
+         <not>
+            <isset property="starttime"/>
+         </not>
+         <then>
+      <tstamp> 
+               <format property="starttime" pattern="${op.datetime.format}"/> 
+      </tstamp>
+         </then>
+      </if>
+      <antcall target="get_rel_num"/>
+      <antcall target="envsetup"/>
+      <antcall target="clean_bld_rpt_vars"/>
+      <echo message=" Build started at ${starttime}"/>
+      <record name="${op.logs.dir}/${starttime}-online.log" action="start" loglevel="${op.recordlog.level}"/> 
+   </target>
+	
+   
+   <!--
+      If the build report values are empty, the build report generation will fail.
+      Thus, before starting the build, fill in the build report values.
+   -->
+   <target name="clean_bld_rpt_vars">
+      <propertyfile file="${op.bldreport.props}"      comment="Harmony Build Report">
+         <entry key="${env_name}onlinepatchnumber"  value="N/A"/>
+         <entry key="${view_name}onlinereleasenum"  value="N/A"/>
+         <entry key="${env_name}onlinebuildstarttime"  value="N/A"/>
+         <entry key="${view_name}update"  value="N/A"/>
+         <entry key="${view_name}updatetime"  value="N/A"/>
+         <entry key="${view_name}onlinecompile"  value="N/A"/>
+         <entry key="${view_name}onlinecompiletime"  value="N/A"/>
+         <entry key="${view_name}onlinermic"  value="N/A"/>
+         <entry key="${view_name}onlinermictime"  value="N/A"/>
+         <entry key="${view_name}onlineear"  value="N/A"/>
+         <entry key="${view_name}onlineeartime"  value="N/A"/>
+         <entry key="${env_name}onlinedeploy"  value="N/A"/>
+         <entry key="${env_name}onlinedeploytime"  value="N/A"/>
+         <entry key="${env_name}onlineserverstart"  value="N/A"/>
+         <entry key="${env_name}onlineserverstarttime"  value="N/A"/>
+         <entry key="${env_name}onlinebuildendtime"  value="N/A"/>
+         <entry key="${env_name}onlineurl"  value="N/A"/>
+         <entry key="${env_name}batchRMIC"  value="N/A"/>
+         <entry key="${view_name}batchRMIC"  value="N/A"/>
+         <entry key="${view_name}batchRMICtime"  value="N/A"/>
+         <entry key="${view_name}batchjarcreation"  value="N/A"/>
+         <entry key="${view_name}batchjarcreationtime"  value="N/A"/>
+         
+         <entry key="${env_name}batchdeploy"  value="N/A"/>
+         <entry key="${env_name}batchdeploytime"  value="N/A"/>
+         <entry key="${env_name}batchcleanupscript"  value="N/A"/>
+         <entry key="${env_name}batchcleanupscripttime"  value="N/A"/>
+         <entry key="${env_name}batchbuildendtime"  value="N/A"/>
+      </propertyfile>
+   </target>
+   <!-- 
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      Update the view of the properties file.
+      Although the view is updated from build.sh, we need to update it in this
+      script because sometimes this will be called without first calling build.sh
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+   
+   <target name="updatePropView">
+      <stopwatch name="updateview.time" action="start"/>
+      <trycatch property="uptFailed" reference="uptfailed">
+      <try>
+         <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+         <echo message="    STEP 1 : Updating properties file view for ${env_name}    "/>
+         <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+         <mkdir dir="${op.logs.dir}" />
+         <ccupdate viewpath="${op.pf.view.dir}"
+               graphical="false"
+               log="${op.pf.viewlog.file}-${starttime}.log"
+               overwrite="${op.uptoverwritehijack}"
+               currenttime="${op.uptcurrenttime}"
+               rename="${op.uptrenamehijack}"
+         />
+         <echo message="!!! Property Update view done !!!"/>
+      </try> 
+      <catch>
+         <echo message="XXX Updating of Properties View Failed	${uptFailed} XXX"/>
+      </catch>
+   </trycatch>
+   <stopwatch name="updateview.time" action="total"/>
+   </target>
+   <!--
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          Generate properties.jar.
+          Based on op.online${env_name}pf.pullfromstream, generates properties.jar
+          Based on environment name, keeps framework.properties outside.
+          We do not need to update the view of the properties file because build.sh 
+            updates the properties view when it is loading the latest build.xml
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+    
+   <target name="propJarCreate">
+      <propertycopy name="pullFromStream"				from="op.online${env_name}pf.pullfromstream"/>
+      <if>
+         <equals arg1="${pullFromStream}" arg2="true"/>
+         <then>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <echo message="          Generating properties.jar for ${env_name}           "/>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <mkdir  dir="${op.pf.view.dir}/${op.pf.view.subdir}/${env_name}/online"/>
+            <delete>
+               <fileset dir="${op.pf.view.dir}/${op.pf.view.subdir}/${env_name}/online" includes="**/*" />
+            </delete>
+            <stopwatch name="genPropFile.time" action="start"/>
+            <trycatch property="genPropFailed" reference="genPropFailed">
+               <try>
+                  <jar destfile="${op.pf.view.dir}/${op.pf.view.subdir}/${env_name}/online/properties.jar"
+                     basedir="${op.pf.view.dir}/${op.pf.view.subdir}/${env_name}"
+                     includes="*.properties,**/framework/logging.properties,**/META-INF/MANIFEST.mf,**/us/**"
+                  />
+                  <propertycopy name="clusterList"    from="op.online${env_name}clustermembers.list"/>
+                  <for list="${clusterList}" param="clusterMember">
+                     <sequential>
+                        <copy todir="${op.pf.view.dir}/${op.pf.view.subdir}/${env_name}/online">
+                           <fileset dir="${op.pf.view.dir}/${op.pf.view.subdir}/${env_name}" includes="**/@{clusterMember}/*" />
+                        </copy>
+                     </sequential>
+                  </for>        
+               </try>
+               <catch>
+                  <echo message="XXX Generating Properties File Failed ${genPropFailed} XXX"/>
+               </catch>
+               <finally>
+                  <if> 
+                     <isset property="genPropFailed"/> 
+                     <then> 
+                        <antcall target="notifymail">
+                           <param name="mail.subject" value="${op.genpffail.subj}"/>
+                           <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                           <param name="mail.message" value="${op.genpffail.msg}${starttime}"/>
+                        </antcall>
+                        <property name="uptdone" value="Failed"/>
+                        <fail if="genPropFailed" message="Error in Generating properties.jar"/> 
+                     </then> 
+                     <else> 
+                        <property name="uptdone" value="Success. "/>
+                        <sleep seconds="5"/>
+                     </else> 
+                  </if >   
+               </finally > 
+            </trycatch>
+            <stopwatch name="genPropFile.time" action="total"/>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <echo message="         DONE Generating properties.jar for ${env_name}       "/>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+         </then>
+         <else>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <echo message="        NOT Generating properties.jar for ${env_name}         "/>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+         </else>
+      </if>
+   </target>
+   <!--
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          END Generate properties.jar.
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+   <!--
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          propJarDeploy checks to see if an environment is clustered or not then calls
+            propJarCopy for each environment.
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+       
+   -->
+   <target name="propJarDeploy" depends="propJarCreate">
+      <propertycopy name="pullFromStream"				from="op.online${env_name}pf.pullfromstream"/>
+      <if>
+         <equals arg1="${pullFromStream}" arg2="true"/>
+         <then>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <echo message="            Copy properties files for ${env_name}             "/>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <propertycopy name="prop_file_dir"	from="op.online${env_name}pf.dir"/>
+            <propertycopy name="onlineuser"					from="op.online${env_name}user.name"/>
+            <propertycopy name="onlinehostname" from="op.online${env_name}clustersserver.name"/>
+            <propertycopy name="washome" from="op.online${env_name}was.home"/>
+            <propertycopy name="servername" from="op.online${env_name}server.name"/>
+            <propertycopy name="clusterList"    from="op.online${env_name}clustermembers.list"/>
+            <propertycopy name="onlinenode"   from="op.online${env_name}node.name"/>
+            <echo message="Copying properties.jar to ${onlineuser}@${onlinehostname}:${prop_file_dir}"/>
+            <echo message="scp -r ${op.pf.view.dir}/${op.pf.view.subdir}/${env_name}/online/* ${onlineuser}@${onlinehostname}:${prop_file_dir}"/>
+            <echo message="ssh ${onlineuser}@${onlinenode} ${bp.pf.changeperm.command} ${prop_file_dir}"/>
+            <shellscript shell="bash" dir="${op.logs.dir}">
+               scp -r ${op.pf.view.dir}/${op.pf.view.subdir}/${env_name}/online/* ${onlineuser}@${onlinehostname}:${prop_file_dir}
+               ssh ${onlineuser}@${onlinenode} ${bp.pf.changeperm.command} ${prop_file_dir}
+            </shellscript>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <echo message="          END Copy properties files for ${env_name}           "/>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+         </then>
+      </if>
+   </target>
+   <!--
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          END Copy properties.jar to server
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+   <!--
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         Copy batch properties files from view to build dir
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+   <target name="propBatchBuild">
+      <propertycopy name="pullFromStream"				from="bp.${env_name}pf.pullfromstream"/>
+                  <if>
+         <equals arg1="${pullFromStream}" arg2="true"/>
+                     <then>
+            <propertycopy name="destEnv" from="bp.${env_name}batchsub.dir"/>
+            <echo message="propBatchBuild.copyto dir =>  ${bp.pf.dir}"/>
+            <echo message="propBatchBuild.fileset dir => ${bp.pf.view.dir}/${bp.pf.view.subdir}/${destEnv}"/>
+            <copy todir="${bp.pf.dir}">
+               <fileset dir="${bp.pf.view.dir}/${bp.pf.view.subdir}/${destEnv}"/>
+            </copy>
+         </then>
+      </if>
+   </target>
+   <!--
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         END Copy batch properties files from view to build dir
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+   
+   <target name="propBatchDeploy">
+      <propertycopy name="pullFromStream"				from="bp.${env_name}pf.pullfromstream"/>
+	<echo message="pullFromStream = ${pullFromStream}"/>
+      <if>
+         <equals arg1="${pullFromStream}" arg2="true"/>
+         <then>
+            <propertycopy name="serverDestDir"           from="bp.${env_name}batchpath.dir"/>
+            <propertycopy name="batchpath"			from="bp.${env_name}batchpath.dir"/>
+            <propertycopy name="batchpropslogin"		from="bp.${env_name}batchsvr.login"/>
+            <propertycopy name="cleanupscriptpath"    from="bp.${env_name}batchpath.dir"/>
+            <propertycopy name="batchsubdir"		from="bp.${env_name}batchservers.list"/>
+            <echo message="propBatchDeploy copy properties to ${batchpropslogin}:${serverDestDir}/props/framework/ !!!" />
+            <echo message="propBatchDeploy copy properties from dir => ${op.pf.view.dir}/batch/${batchsubdir}"/> 
+            <scp todir="${batchpropslogin}:${serverDestDir}/props" keyfile="${user.home}/.ssh/id_dsa" passphrase="" trust="true" failonerror="false">
+               <fileset dir="${op.pf.view.dir}/batch/${batchsubdir}">
+                  <include name="*.properties"/>
+                  <exclude name="logging.properties"/>	       
+               </fileset>	                   
+            </scp> 
+            <echo message="propBatchDeploy copy logging.properties to ${batchpropslogin}:${serverDestDir}/props/framework/ !!!" />
+            <echo message="propBatchDeploy copy logging.properties from dir => ${op.pf.view.dir}/batch/${batchsubdir}"/> 
+            <scp todir="${batchpropslogin}:${serverDestDir}/props/framework/" keyfile="${user.home}/.ssh/id_dsa" passphrase="" trust="true" failonerror="false">
+               <fileset dir="${op.pf.view.dir}/batch/${batchsubdir}/framework">
+                  <include name="logging.properties"/>	       
+               </fileset>	       
+            </scp>
+            <!-- ER 71066 START -->
+            <echo message="propBatchDeploy copy TIERS.properties to ${batchpropslogin}:${serverDestDir}/cv/script/ !!!" />
+            <echo message="propBatchDeploy copy TIERS.properties from dir => ${op.pf.view.dir}/batch/${batchsubdir}"/> 
+            <scp todir="${batchpropslogin}:${serverDestDir}/cv/script/" keyfile="${user.home}/.ssh/id_dsa" passphrase="" trust="true" failonerror="false">
+               <fileset dir="${op.pf.view.dir}/batch/${batchsubdir}">
+                  <include name="TIERS.properties"/>	       
+               </fileset>	       
+            </scp>
+            <!-- ER 71066 END -->
+            <shellscript shell="bash" dir="${op.scripts.dir}">
+               ssh ${batchpropslogin} "echo \"${cleanupscriptpath}/fw/script/remCtrlMFromProps.ksh\";${cleanupscriptpath}/fw/script/remCtrlMFromProps.ksh;echo \"chmod -R 755 ${serverDestDir}/cv/script/TIERS.properties\";chmod -R 755 ${serverDestDir}/cv/script/TIERS.properties;echo \"${bp.pf.changeperm.command} ${serverDestDir}/props\";${bp.pf.changeperm.command} ${serverDestDir}/props"
+            </shellscript>
+         </then>
+      </if>
+   </target>
+   
+   <!-- 
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         Ofcourse "updateview" target will update the source code, but it would be waste of time
+         if it runs thruough compile and deploy process even if there is no files updated.
+         So created a small perl script which will parse the log files created while updating view
+         and if its finds any update things in log file it will open a property file at props.dir and
+         write a property into it which make the decession of wheather to continue with compile and 
+         deploy process or not
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+   
+   <target name="updateview" depends="init,batchinit">
+   <!--
+   ER 70716
+   I'm removing the update view because we have migrated to the new stream structure.
+   Jordan Klein's PERL script will create a baseline & rebase the stream which will
+   update the view at the same time.
+   
+   I don't have time to remove this call from all methods so I'm just commenting 
+   out the contents making it an empty method
+   -->
+   <!--
+      <stopwatch name="updateview.time" action="start"/>
+      <trycatch property="uptFailed" reference="uptfailed">
+         <try>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <echo message="  STEP 1 : Updating ${view_name} view for ${env_name}	    	"/>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <mkdir dir="${op.logs.dir}" />
+            <ccupdate	viewpath="${op.view.dir}"
+               log="${op.viewlog.file}-${starttime}.log"
+               rename="${op.uptrenamehijack}"	
+               failonerr="${op.uptfailonerror}"
+               currenttime="${op.uptcurrenttime}"	
+               preservetime="${op.uptpreservetime}"
+               overwrite="${op.uptoverwritehijack}" > 
+            </ccupdate>
+            <exec dir="${op.scripts.dir}" executable="${op.update.script}">
+               <arg line="${op.viewlog.file}-${starttime}.log  ${op.compileflag.file} ${env_name}Compile ${op.props.dir} ${view_name}"/>
+            </exec>
+            <echo message="!!! ${env_name} Update view done !!!"/> 
+            <antcall target="updatePropView"/>
+         </try> 
+         <catch>
+            <echo message="XXX Updating of ${view_name} View Failed	${uptFailed} XXX"/>
+         </catch>
+         <finally>
+            <if > 
+               <isset property="uptFailed"/> 
+               <then > 
+                  <antcall target="notifymail">
+                     <param name="mail.subject" value="${op.uptviewfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.uptviewfail.msg}${starttime}"/>
+                  </antcall>
+                  <property name="uptdone" value="Failed"/>
+                  <fail if="uptFailed" message="Error in Updating View"/> 
+               </then> 
+               <else> 
+                  <property name="uptdone" value="Success. "/>
+                  <sleep seconds="5"/>
+               </else> 
+            </if > 
+         </finally > 
+      </trycatch>
+      <stopwatch name="updateview.time" action="total"/>
+      <propertyfile file="${op.bldreport.props}"      comment="Harmony Build Report">
+         <entry key="${view_name}update"	           value="${uptdone}"/>
+         <entry key="${view_name}updatetime"	   value="${updateview.time}"/>
+         <entry key="${env_name}onlinebuildstarttime"  value="${starttime}"/>
+      </propertyfile>
+      -->
+   </target>
+
+   <target name="compile" depends="init,checkforcompile"/>
+	
+   <!-- 
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         "checkforcompile" target reads the property file created in updateview target to decide,
+         wheather to continue with compile or not. If its find the right property as true, it will
+         continue with the compilation. Ialso provided a logic to do a build at remote machine, this
+         will be handy when the build machine is being fully utilized.
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+
+   <target name="checkforcompile" >
+      <echo message="checkforcompile ST.time = ${starttime}"/>
+      <stopwatch name="checkforcompile.time" action="start"/>
+      <!--
+      <loadproperties srcFile="${op.compileflag.file}"/>
+      <condition property="startcompile">
+         <isset property="${env_name}Compile"/>
+      </condition>
+      <if>
+         <equals arg1="${startcompile}" arg2="true"/>
+         <then>
+         -->
+            <switch value="${op.remotebuild.flag}">
+               <case value="true">
+                  <echo message="!!! View Sync started beween local and Remote(${op.remoteserver.name}) !!!"/>
+                  <exec executable="rsync">
+                     <arg line="${op.rsyncmd.option} ${op.rsyn.uptviewfrom} ${op.rsyn.uptviewto}"/>
+                  </exec>
+                  <remoteant machine="${op.remoteserver.name}" >
+                     <runant  antfile="${op.remotebuild.file}"  target="${op.remote.target}">
+                        <property name="env_name" 	          	value="${env_name}" 		/>
+                        <property name="starttime" 	value="${starttime}"/>
+                        <property name="view_name" 			value="${view_name}"/>
+                     </runant>
+                  </remoteant>
+               </case>
+               <default>
+                  <echo message="!!! Cont.. with local build !!!"/>
+                  <if>
+                     <equals arg1="${is_ws_build}" arg2="true"/>	             	             
+                     <then>
+                        <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                        <echo message="  Build TIERS with web services	    	"/>
+                        <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                        <antcall target="createlayerear_ws"/>
+                     </then>
+                     <else>
+                        <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                        <echo message="  Build Regular TIERS	    	"/>
+                        <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                        <antcall target="createlayerear"/>	
+                     </else>
+                  </if>
+               </default>
+            </switch>
+            <!--
+         </then>
+         <else>
+            <echo message="XXX Nofiles for Compilation for ${env_name} started at ${starttime} XXX"/>
+            <antcall target="notifymail">
+               <param name="mail.subject" value="${op.nobld.subj}"/>
+               <param name="mail.logfile" value=""/>
+               <param name="mail.message" value="${op.nobld.msg}${starttime}"/>
+            </antcall>
+            <fail message="No files were updated. Build Stopped."/> 
+         </else>
+      </if> 
+      -->
+      <stopwatch name="checkforcompile.time" action="total"/>
+   </target>
+   
+   <target name="remotecompile" depends="init,compileparallel" >
+      <echo message="!!! Syncs remote created jars/ears to local !!!"/>
+      <exec executable="rsync">
+         <arg line="${op.rsyncmd.option} ${op.rsyn.jarearfrom} ${op.rsyn.jarearto}"/>
+      </exec>
+      <shutdown/>
+      <property name="ocdone" value="Success. "/>
+   </target>
+   
+   <target name="localcompile" depends="compileparallel">
+      <property name="ocdone" value="Success. "/>
+   </target>
+	
+
+   <!-- 
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         "compileparallel" target will give us the option of compiling parallely, online and batch,
+         that will reduce the compile time atlease 50%, if we have build machine with good configuration
+         we can enable this flag.
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+   <target name="compileparallel" >
+      <echo message="compileparallel ST.time = ${starttime}"/>
+      <if>
+         <isset property="${op.pcompile.flag}"/>
+         <then>
+            <parallel>
+               <echo message="!!! Cont., parallel compile !!!"/>
+               <antcall target="createlayerear"/>
+               <antcall target="compilebatch"/>
+            </parallel>
+         </then>
+         <else>
+            <echo message="!!! Cont., sequence compile !!!"/>
+            <antcall target="createlayerear"/>
+            <!-- <antcall target="compilebatch" /> -->
+         </else>
+      </if>
+   </target>
+   
+   <target name="deploybothparallel">
+      <echo message="deploybothparallel ST.time = ${starttime}"/>
+      <parallel threadcount="5" failonany="on">
+         <echo message="!!! Starting batch deployment of ${env_name} !!!"/>
+         <antcall target="batchdeploy"/>
+         <echo message="!!! Starting online deployment of ${env_name} !!!"/>
+         <antcall target="deployonline"/>
+      </parallel>
+   </target>
+   
+   <target name="deploy">
+      <echo message="deploy ST.time = ${starttime}"/>
+      <if>
+         <equals arg1="${env_name}" value="${op.prodenv.switch}"/>
+         <then>
+            <antcall target="callbatch"/>
+         </then>
+         <else>
+            <antcall target="deploybothparallel"/>
+         </else>
+      </if>
+   </target>
+   
+
+	
+   <target name="cleanlayer" depends="init">
+      <echo message="cleanlayer ST.time = ${starttime}"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	/>
+      <echo message="!!! STEP 2.A: ${env_name} Online Compile Starts Here !!!"	/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"	/>
+      <delete file="${op.ear.dir}/${op.ear.name}"/>
+      <delete dir="${op.layer.classes}"/>
+      <delete dir="${op.layerjar.dir}"/>
+      <mkdir dir="${op.layer.classes}"/>
+      <mkdir dir="${op.tfwclass.dir}"/>
+      <mkdir dir="${op.ccdclass.dir}"/>
+      <mkdir dir="${op.boclass.dir}"/>
+      <mkdir dir="${op.beanclass.dir}"/>
+      <mkdir dir="${op.webclass.dir}"/>
+      <mkdir dir="${op.trackwsclass.dir}"/>	   
+      <mkdir  dir="${op.layerjar.dir}"/>
+      <mkdir dir="${op.bakupear.dir}"/>	   
+   </target>
+   
+   <target name="layercompile" depends="cleanlayer">
+      <echo message="layercompile ST.time = ${starttime}"/>
+      <stopwatch name="lccompile.time" action="start"/>
+      <trycatch property="ocFailed" reference="ocerror" >
+         <try>
+            <for list="${op.layercompile.list}" param="layermodule">
+               <sequential>
+                  <echo message="!!! Compiling @{layermodule} !!!"/>
+                  <javac  srcdir="${op.@{layermodule}.src}"	           destdir="${op.@{layermodule}class.dir}"
+                     includes="${op.@{layermodule}.includes}"	   excludes="${op.@{layermodule}.excludes}"
+                     failonerror="${op.layercompile.failonerror}"  nowarn="${op.layercompilewarn.switch}"
+                     debug="${op.@{layermodule}debug.switch}"      deprecation="${op.layercompiledeprecation.switch}"
+                     verbose="${op.@{layermodule}verbose.switch}"  fork="${op.layercompilefork.switch}"
+                     memoryInitialSize="${op.layercompilememoryInitialSize.switch}"
+                     memoryMaximumSize="${op.layercompilememoryMaximumSize.switch}">
+                     <classpath refid="project.build.classpath"/>
+                  </javac>
+                  <jar destfile="${op.@{layermodule}bjar.name}" update="true">
+                     <fileset dir="${op.@{layermodule}class.dir}"/>
+                     <fileset dir="${op.@{layermodule}dd.dir}"/>
+                  </jar>
+                  <parallel>
+                     <jar destfile="${op.@{layermodule}jar.name}" update="true" >
+                        <fileset dir="${op.@{layermodule}classes.dir}"/>
+                        <manifest>
+                           <attribute name="${op.layermanifest.classpath}"  value="${op.cpmanifest.value}"/>
+                        </manifest>
+                     </jar>
+                  </parallel> 
+               </sequential>
+            </for>
+            <jar destfile="${op.bojar.name}" update="true" >
+               <fileset dir="${op.track01src}" includes="${op.boincludetojar.files}"/>
+            </jar>
+            <jar destfile="${op.webbjar.name}" 	basedir="${op.webclasspathtojar.dir}" update="true"/> 
+         </try >
+         <catch > 
+            <echo message="XXX ${view_name} Online Compilation Failed:${ocFailed} XXX"/> 
+         </catch>
+         <finally > 
+            <if > 
+               <isset property="ocFailed"/> 
+               <then > 
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.lccompilefail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.lccompilefail.msg}${starttime}"/>
+                  </antcall>
+                  <property name="lcdone" value="Failed"/>
+                  <fail if="ocFailed" message="Error in Compilation"/> 
+               </then> 
+               <else> 
+                  <property name="lcdone" value="Success. "/>
+                  <echo message="!!! ${view_name} Compilation done !!!"/>
+               </else> 
+            </if > 
+         </finally > 
+      </trycatch>
+      <stopwatch name="lccompile.time" action="total"/>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${view_name}onlinecompile"		value="${lcdone}"/>
+         <entry key="${view_name}onlinecompiletime"	value="${lccompile.time}"/>
+      </propertyfile>
+   </target>
+
+   <target name="layercompile_ws" depends="cleanlayer">
+      <echo message="layercompile_ws ST.time = ${starttime}"/>
+      <stopwatch name="lccompile.time" action="start"/>
+      <trycatch property="ocFailed" reference="ocerror" >
+         <try >
+            <antcall target="setBUILDproperties"/>  
+            <for list="${op.layercompile_ws.list}" param="layermodule">
+               <sequential>
+                  <echo message="!!! Compiling @{layermodule} !!!"/>
+                  <javac  srcdir="${op.@{layermodule}.src}"	           destdir="${op.@{layermodule}class.dir}"
+                     includes="${op.@{layermodule}.includes}"	   excludes="${op.@{layermodule}.excludes}"
+                     failonerror="${op.layercompile.failonerror}"  nowarn="${op.layercompilewarn.switch}"
+                     debug="${op.@{layermodule}debug.switch}"      deprecation="${op.layercompiledeprecation.switch}"
+                     verbose="${op.@{layermodule}verbose.switch}"  fork="${op.layercompilefork.switch}"
+                     memoryInitialSize="${op.layercompilememoryInitialSize.switch}"
+                     memoryMaximumSize="${op.layercompilememoryMaximumSize.switch}">
+                     <classpath refid="project.build.classpath"/>
+                  </javac>
+                  <jar destfile="${op.@{layermodule}bjar.name}" update="true">
+                     <fileset dir="${op.@{layermodule}class.dir}"/>
+                     <fileset dir="${op.@{layermodule}dd.dir}"/>
+                  </jar>
+                  <parallel>
+                     <jar destfile="${op.@{layermodule}jar.name}" update="true" >
+                        <fileset dir="${op.@{layermodule}classes.dir}"/>
+                        <manifest>
+                           <attribute name="${op.layermanifest.classpath}"  value="${op.cpmanifest_ws.value}"/>
+                        </manifest>
+                     </jar>
+                  </parallel> 
+               </sequential>
+            </for>
+            <jar destfile="${op.bojar.name}" update="true" >
+               <fileset dir="${op.track01src}" includes="${op.boincludetojar.files}"/>
+            </jar>
+            <jar destfile="${op.webbjar.name}" 	basedir="${op.webclasspathtojar.dir}" update="true"/> 
+            <jar destfile="${op.webwsbjar.name}" 	basedir="${op.webwsclasspathtojar.dir}" update="true"/> 	         
+         </try >
+         <catch > 
+            <echo message="XXX ${view_name} Online Compilation Failed:${ocFailed} XXX"/> 
+         </catch>
+         <finally > 
+            <if > 
+               <isset property="ocFailed"/> 
+               <then > 
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.lccompilefail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.lccompilefail.msg}${starttime}"/>
+                  </antcall>
+                  <property name="lcdone" value="Failed"/>
+                  <fail if="ocFailed" message="Error in Compilation"/> 
+               </then> 
+               <else> 
+                  <property name="lcdone" value="Success. "/>
+                  <echo message="!!! ${view_name} Compilation done !!!"/>
+               </else> 
+            </if > 
+         </finally > 
+      </trycatch>
+      <stopwatch name="lccompile.time" action="total"/>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${view_name}onlinecompile"		value="${lcdone}"/>
+         <entry key="${view_name}onlinecompiletime"	value="${lccompile.time}"/>
+      </propertyfile>
+   </target>
+   
+   
+   
+   
+   <target name="get_rel_num">
+      <propertyregex property="rel_num" input="${view_name}" regexp="TIERS_([\d]+\.\d\.\d\.\d)_[A-Z]+" select="\1" defaultValue="${view_name}"/>
+      <propertyfile file="${op.bldreport.props}"      comment="Harmony Build Report">
+         <entry key="${view_name}onlinereleasenum"	           value="${rel_num}"/>
+      </propertyfile>
+   </target>
+   <!--
+      1) Copy TIERS_entity/tiersWeb/WebContent/BUILD.properties.template
+         to TIERS_entity/tiersWeb/WebContent/BUILD.properties
+      2) In TIERS_entity/tiersWeb/WebContent/BUILD.properties, replace the variables with the value.
+         BUILDNUMBER=@BUILDNUMBER@
+         BUILDSTREAM=@BUILDSTREAM@
+         BUILDTIME=@BUILDTIME@
+         BASELINENUM=@BASELINENUM@
+   -->
+   <target name="setBUILDproperties" depends="init, get_rel_num">
+      <echo message="setBUILDproperties ST.time = ${starttime}"/>
+      
+      
+      <copy file="${op.tiersjsp.dir}/BUILD.properties.template" tofile="${op.tiersjsp.dir}/BUILD.properties" overwrite="true"/>
+      <replace file="${op.tiersjsp.dir}/BUILD.properties" value="N/A">
+         <replacefilter token="@BUILDNUMBER@" value="${rel_num}"/>
+         <replacefilter token="@BUILDSTREAM@" value="${view_name}"/>
+         <replacefilter token="@BUILDTIME@" value="${starttime}"/>
+         <replacefilter token="@BASELINENUM@" value="${baseline_num}"/>
+      </replace>
+      <!-- 
+         Modify the build_report.xml also so we can access this directly.
+      -->
+      <available file="${op.tierswebcontent.dir}/build_report_template.xml" property="xml.exists"/>
+      <if>
+         <equals arg1="${xml.exists}" arg2="true"/>
+         <then>
+            <copy file="${op.tierswebcontent.dir}/build_report_template.xml" tofile="${op.tierswebcontent.dir}/build_report.xml" overwrite="true"/>
+            <replace file="${op.tierswebcontent.dir}/build_report.xml" value="N/A">
+               <replacefilter token="@RELEASENUM@" value="${rel_num}"/>
+               <replacefilter token="@BUILDSTREAM@" value="${view_name}"/>
+               <replacefilter token="@BUILDTIME@" value="${starttime}"/>
+               <replacefilter token="@BASELINENUM@" value="${baseline_num}"/>
+            </replace>
+         </then>
+      </if>
+   </target>
+   
+   <target name="rmiclayer" depends="layercompile, rmiconly"/>
+   <target name="rmiclayer_ws" depends="layercompile_ws, rmiconly_ws"/>
+
+   <target name="rmiconly">
+      <echo message="rmiconly ST.time = ${starttime}"/>
+      <stopwatch name="rmic.time" action="start"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <echo message="!!! STEP 2.B: ${view_name} RMIC Generation Starts Here !!!"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <trycatch property="rmicFailed" reference="rmicfail">
+         <try>
+            <for list="${op.layerrmic.list}" param="rmicmodule">
+               <sequential>
+                  <echo message="!!! RMIC for @{rmicmodule} !!!"/>
+                  <wsEJBdeploy	inputjar="${op.@{rmicmodule}bjar.name}"	outputjar="${op.@{rmicmodule}jar.name}"
+                     washome="${op.was.home}"		workingdirectory="${op.layerjar.dir}/tmp" 
+                     failonerror="${op.rmic.failonerror}"	noWarnings="${op.rmic.warning}"
+                     noInform="${op.rmic.information}"	quiet="${op.rmic.quiteflag}"
+                     classpathref="project.build.classpath">
+                  </wsEJBdeploy>
+               </sequential>
+            </for> 
+         </try>
+         <catch>
+            <echo message="XXX Error while doing - ${view_name} RMIC:${rmicFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="rmicFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.rmicfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.rmicfail.msg}${starttime}"/>
+                  </antcall>
+                  <property name="rmicdone" value="Failed"/>
+                  <fail if="rmicFailed" message="Error in RMIC Compilation"/>
+               </then>
+               <else>
+                  <property name="rmicdone" value="Success. "/>
+                  <echo message="!!! ${view_name} RMIC done !!!"/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="rmic.time" action="total"/>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${view_name}onlinermic"		value="${rmicdone}"/>
+         <entry key="${view_name}onlinermictime"	value="${rmic.time}"/>
+      </propertyfile>
+      <sleep minutes="2"/>
+   </target>
+
+   <target name="rmiconly_ws">
+      <echo message="rmiconly_ws ST.time = ${starttime}"/>
+      <stopwatch name="rmic.time" action="start"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <echo message="!!! STEP 2.B: ${view_name} RMIC Generation Starts Here !!!"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <trycatch property="rmicFailed" reference="rmicfail">
+         <try>
+            <for list="${op.layerrmic_ws.list}" param="rmicmodule">
+               <sequential>
+                  <echo message="!!! RMIC for @{rmicmodule} !!!"/>
+                  <wsEJBdeploy	inputjar="${op.@{rmicmodule}bjar.name}"	outputjar="${op.@{rmicmodule}jar.name}"
+                     washome="${op.was.home}"		workingdirectory="${op.layerjar.dir}/tmp" 
+                     failonerror="${op.rmic.failonerror}"	noWarnings="${op.rmic.warning}"
+                     noInform="${op.rmic.information}"	quiet="${op.rmic.quiteflag}"
+                     classpathref="project.build.classpath">
+                  </wsEJBdeploy>
+               </sequential>
+            </for> 
+         </try>
+         <catch>
+            <echo message="XXX Error while doing - ${view_name} RMIC:${rmicFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="rmicFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.rmicfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.rmicfail.msg}${starttime}"/>
+                  </antcall>
+                  <property name="rmicdone" value="Failed"/>
+                  <fail if="rmicFailed" message="Error in RMIC Compilation"/>
+               </then>
+               <else>
+                  <property name="rmicdone" value="Success. "/>
+                  <echo message="!!! ${view_name} RMIC done !!!"/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="rmic.time" action="total"/>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${view_name}onlinermic"		value="${rmicdone}"/>
+         <entry key="${view_name}onlinermictime"	value="${rmic.time}"/>
+      </propertyfile>
+      <sleep minutes="2"/>
+   </target>
+
+	<target name="createlayerear" depends="init,rmiclayer,earonly,jartemplate" if="rmicdone"/>
+	<target name="createlayerear_ws" depends="init,rmiclayer_ws,earonly_ws,jartemplate" if="rmicdone"/>
+   
+   <target name="earonly">
+      <echo message="earonly ST.time = ${starttime}"/>
+      <stopwatch name="createear.time" action="start"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <echo message="!!! STEP 2.C: - ${view_name} Packing of EAR Starts Here !!!"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <trycatch property="earFailed" reference="earfail" >
+         <try>
+            <ear destfile="${op.ear.dir}/${op.ear.name}" appxml="${op.layerappxml.name}">
+               <fileset dir="${op.layerjar.dir}"          includes="${op.jarstoEAR.files}"/>
+               <fileset dir="${op.externaljar.dir}"       includes="${op.extjarstoEAR.files}"/>
+               <fileset dir="${op.othertiers.dir}"        includes="${op.othertiersjarstoEAR.files}"/>
+               <fileset dir="${op.layerdd.dir}/j2ee/"/>
+               <manifest>
+                  <attribute name="${op.layermanifest.classpath}"  value="${op.cpmanifest.value}"/>
+               </manifest>
+            </ear>
+            <copy todir="${op.ear.dir}">
+               <fileset dir="${op.ear.dir}" includes="stage3.ear"/>
+               <mapper type="glob" from="*" to="*.${starttime}"/>
+            </copy>	   
+         </try>
+         <catch>
+            <echo message="XXX ${view_name} EAR Creation Failed:${earFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="earFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.earfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.earfail.msg}${starttime}"/>
+                  </antcall>
+                  <property name="eardone" value="Failed"/>
+                  <fail if="earFailed" message="Error in EAR Creation"/>
+               </then>
+               <else>
+                  <property name="eardone" value="Success. "/>
+                  <echo message="!!! ${view_name}Packing of ear done !!!"/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="createear.time" action="total"/>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${view_name}onlineear"		value="${eardone}"/>
+         <entry key="${view_name}onlineeartime"	value="${createear.time}"/>
+      </propertyfile>
+   </target>	 
+ 
+   <target name="earonly_ws">
+      <echo message="earonly_ws ST.time = ${starttime}"/>
+      <stopwatch name="createear.time" action="start"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <echo message="!!! STEP 2.C: - ${view_name} Packing of EAR Starts Here !!!"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <trycatch property="earFailed" reference="earfail" >
+         <try>
+            <ear destfile="${op.ear.dir}/${op.ear.name}" appxml="${op.layerappxml_ws.name}">
+               <fileset dir="${op.layerjar.dir}"          includes="${op.jarstoEAR_ws.files}"/>
+               <fileset dir="${op.externaljar.dir}"       includes="${op.extjarstoEAR.files}"/>
+               <fileset dir="${op.othertiers.dir}"        includes="${op.othertiersjarstoEAR.files}"/>
+               <fileset dir="${op.layerdd.dir}/j2ee_ws/"/>
+               <manifest>
+                  <attribute name="${op.layermanifest.classpath}"  value="${op.cpmanifest_ws.value}"/>
+               </manifest>
+            </ear>
+            <copy todir="${op.ear.dir}">
+               <fileset dir="${op.ear.dir}" includes="stage3.ear"/>
+               <mapper type="glob" from="*" to="*.${starttime}"/>
+            </copy>
+         </try>
+         <catch>
+            <echo message="XXX ${view_name} EAR Creation Failed:${earFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="earFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.earfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.earfail.msg}${starttime}"/>
+                  </antcall>
+                  <property name="eardone" value="Failed"/>
+                  <fail if="earFailed" message="Error in EAR Creation"/>
+               </then>
+               <else>
+                  <property name="eardone" value="Success. "/>
+                  <echo message="!!! ${view_name}Packing of ear done !!!"/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="createear.time" action="total"/>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${view_name}onlineear"		value="${eardone}"/>
+         <entry key="${view_name}onlineeartime"	value="${createear.time}"/>
+      </propertyfile>
+   </target>	 
+	
+   <target name="jartemplate">
+      <echo message="jartemplate ST.time = ${starttime}"/>
+      <delete file="${op.ear.dir}/${op.template.jar.name}"/>	    
+      <jar destfile="${op.ear.dir}/${op.template.jar.name}" update="true" >
+         <fileset dir="${op.template.src.dir}"/>
+      </jar>	 
+   </target>
+		
+   <!-- 
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      "deployonline" target to deploy various different appservers. This target would help to 
+      deploy more than one appservers from the same stream,and deploy is done in parallel, so within
+      the same time we can deploy the apps more than one server. Also taken care of if the servers
+      are in same node it will go in sequential, 
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   -->
+   <target name="deployonline" depends="init,predeploy,deleteCache,deployStaticContent,propJarDeploy">
+		<echo message="deployonline ST.time = ${starttime}"/>
+      <propertycopy name="onlineserverlist"	from="op.online${env_name}appserver.list"/>
+      <propertycopy name="onlineserverlist1"	from="op.online${env_name}appserver1.list"/>
+      <trycatch property="deployFailed" reference="dofail">
+         <try>
+<!--         
+            <propertycopy name="secureServer"	from="op.online${env_name}server.secure"/>
+            <switch value="${secureServer}">
+               <case value="true">
+-->               
+            <propertycopy name="cellName"	from="op.online${env_name}cell.name"/>
+            <propertycopy name="clusterName"	from="op.online${env_name}vh.name"/>
+            <propertycopy name="appName"	from="op.online${env_name}app.name"/>
+            <propertycopy name="userName" from="op.online${env_name}user.name"/>
+            <propertycopy name="hostName" from="op.online${env_name}host.name"/>
+            <echo message="Copy EAR to WICA dir so WICA can deploy"/>
+            <echo message="scp  ${op.ear.dir}/${op.ear.name} ${op.wica.user}@${op.wica.host}:${op.wica.ear.dir}/${cellName}/clusters/${clusterName}/apps/media/${appName}.ear"/>
+            <shellscript shell="bash" dir="${op.logs.dir}">
+               scp  ${op.ear.dir}/${op.ear.name} ${op.wica.user}@${op.wica.host}:${op.wica.ear.dir}/${cellName}/clusters/${clusterName}/apps/media/${appName}.ear
+            </shellscript>
+            <echo message="Call WICA Deploy"/>
+            <shellscript shell="bash" dir="${op.scripts.dir}">                
+               echo "ssh -l ${userName} ${hostName} \"chmod 775 ${op.wica.path}/logs/* 2>/dev/null\""
+               ssh -l ${op.wica.user} ${hostName} "chmod 775 ${op.wica.path}/logs/* 2>/dev/null"
+               echo "ssh -l ${op.wica.user} ${op.wica.host} \"bash -c 'export WICA_HOME=${op.wica.path} ; ${op.wica.script} -e ${op.project.name} -c ${cellName} -u ${clusterName} -a ${appName} -t install_app'\""
+               ssh -l ${op.wica.user} ${op.wica.host} "bash -c 'export WICA_HOME=${op.wica.path} ; ${op.wica.script} -e ${op.project.name} -c ${cellName} -u ${clusterName} -a ${appName} -t install_app'"                  
+               echo "ssh -l ${userName} ${hostName} \"chmod 775 ${op.wica.path}/logs/* 2>/dev/null\""
+               ssh -l ${op.wica.user} ${hostName} "chmod 775 ${op.wica.path}/logs/* 2>/dev/null"
+               echo "Sleeping 300 seconds after deploying EAR"
+               sleep 300
+            </shellscript>
+         </try>
+         <catch>
+            <echo message="XXX Online Deploy Error:${doFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="deployFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.earfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.earfail.msg}${starttime}"/>
+                  </antcall>
+                  <property name="eardone" value="Failed"/>
+                  <fail if="doFailed" message="Error in EAR Deployment"/>
+               </then>
+               <else>
+                  <property name="oddone" value="Success. "/>
+                  <stopwatch name="deployonline.time" action="total"/>
+                  <antcall target="restartserver"/>
+                  <propertyfile	file="${op.bldreport.props}"    comment="Harmony Build Report">
+                     <entry key="${env_name}onlinedeploy"		value="${oddone}"/>
+                     <entry key="${env_name}onlinedeploytime"	value="${deployonline.time}"/>
+                  </propertyfile>
+                  <sleep seconds="5"/>
+                  <antcall target="onlinebuildreport"/>
+                  <echo message="!!! ${view_name} Deployment of EAR / App Start done !!!"/>
+               </else>
+            </if>
+            <record name="${op.logs.dir}/${starttime}-online.log" action="stop" loglevel="${op.recordlog.level}"/>
+         </finally>
+      </trycatch>		
+   </target>
+
+   
+   
+   <target name="restartserver"  depends="init">
+      <echo message="restartserver ST.time = ${starttime}"/>
+      <propertycopy name="onlinehostserver"				from="op.online${env_name}server.name"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <echo message="!!! STEP 4: ${onlinehostserver} Server Restart Starts Here !!!"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <stopwatch name="svrrestart.time" action="start"/>
+      <antcall target="propJarDeploy"/>
+      <trycatch property="svrrstFailed" reference="svrrstfailed">
+         <try>
+<!--
+            <switch value="${onlineclusterswitch}">
+               <case value="Yes">
+-->
+                  <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                  <echo message="!!! ReStarting ${onlinehostserver} !!!"/>
+                  <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                  <propertycopy name="cellName"	from="op.online${env_name}cell.name"/>
+                  <propertycopy name="clusterName"	from="op.online${env_name}vh.name"/>
+                  <propertycopy name="appName"	from="op.online${env_name}app.name"/>
+                  <propertycopy name="userName" from="op.online${env_name}user.name"/>
+                  <propertycopy name="hostName" from="op.online${env_name}host.name"/>
+                  <propertycopy name="username" from="op.online${env_name}user.name"/>
+                  <shellscript shell="bash" dir="${op.scripts.dir}">
+                     echo "Stopping ${clusterName} Cluster"
+                     echo "ssh -l ${op.wica.user} ${op.wica.host} \"bash -c 'export WICA_HOME=${op.wica.path} ; ${op.wica.script} -e ${op.project.name} -c ${cellName} -u ${clusterName} -t stop_cluster'\""
+                     ssh -l ${op.wica.user} ${op.wica.host} "bash -c 'export WICA_HOME=${op.wica.path} ; ${op.wica.script} -e ${op.project.name} -c ${cellName} -u ${clusterName} -t stop_cluster'"
+                     echo "ssh -l ${userName} ${hostName} \"chmod 775 ${op.wica.path}/logs/* 2>/dev/null\""
+                     ssh -l ${userName} ${hostName} "chmod 775 ${op.wica.path}/logs/* 2>/dev/null"
+                     echo "Starting ${clusterName} Cluster"
+                     echo "ssh -l ${op.wica.user} ${op.wica.host} \"bash -c 'export WICA_HOME=${op.wica.path} ; ${op.wica.script} -e ${op.project.name} -c ${cellName} -u ${clusterName} -t start_cluster_silent'\""
+                     ssh -l ${op.wica.user} ${op.wica.host} "bash -c 'export WICA_HOME=${op.wica.path} ; ${op.wica.script} -e ${op.project.name} -c ${cellName} -u ${clusterName} -t start_cluster_silent'"
+                     echo "ssh -l ${userName} ${hostName} \"chmod 775 ${op.wica.path}/logs/* 2>/dev/null\""
+                     ssh -l ${userName} ${hostName} "chmod 775 ${op.wica.path}/logs/* 2>/dev/null"
+                  </shellscript>
+                  <echo message="!!!!!!!!!!!!!${onlinehostserver} Restart Done!!!!!!!!!!!!!"/>
+<!--           
+               </case>
+               <default>
+                  <wsAdmin	washome="${op.was.home}" 		host="${onlinehostname}" 
+                     port="${onlinehostport}" 		conntype="${onlineconntype}"
+                     script="${op.restartscript.name}">
+                        <arg value="${onlinehostcell}"/>	
+                        <arg value="${onlinehostnode}"/>	
+                        <arg value="${onlinehostserver}"/>	
+                        <arg value="${onlinehostapplication}"/> 	
+                  </wsAdmin>
+               </default>
+            </switch>
+-->        
+         </try>
+         <catch>
+            <echo message="XXX ${onlinehostserver} Server Restart Failed:${svrrstFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="svrrstFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.emailmsg.header} ${op.svrrestartfail.subj} from view ${view_name}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.svrrestartfail.msg} ${starttime} to ${env_name}"/>
+                  </antcall>
+                  <property name="rtsvrdone" value="Failed"/>
+                  <fail if="svrrstFailed" message="Server Restart Failed"/>
+               </then>
+               <else>
+                  <property name="rtsvrdone" value="Success. "/>
+                  <echo message="!!! ${onlinehostserver} Server Restart Done !!!"/>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.emailmsg.header} ${op.svrrestartsuccess.subj} from view ${view_name}"/>
+                     <param name="mail.message" value="http://${onlinedns}/SELoginAccess.jsp"/>
+                  </antcall>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="svrrestart.time" action="total"/>
+      <sleep seconds="25"/>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${env_name}onlineserverstart"		value="${rtsvrdone}"/>
+         <entry key="${env_name}onlineserverstarttime"	value="${svrrestart.time}"/>
+      </propertyfile>
+   </target>
+   
+   
+   
+   <target name="predeploy">
+      <echo message="predeploy ST.time = ${starttime}"/>
+      <property name="envname" value="${env_name}"/>
+      <tstamp>
+         <format property="obuildST.time" pattern="${op.datetime.format}"/> 
+      </tstamp>
+      <propertycopy name="onlinehostcell"				from="op.online${env_name}cell.name"/>
+      <propertycopy name="onlinehostname"				from="op.online${env_name}host.name"/>
+      <propertycopy name="onlinehostxmldir"  			from="op.online${env_name}hostxml.dir"/>
+      <propertycopy name="onlinehostport"				from="op.online${env_name}host.port"/>
+      <propertycopy name="onlinehostnode"				from="op.online${env_name}node.name"/>
+      <propertycopy name="onlinehostserver"				from="op.online${env_name}server.name"/>
+      <propertycopy name="onlinedns"				       from="op.online${env_name}dns.name"/>
+      <propertycopy name="onlineclustersserver"			from="op.online${env_name}clustersserver.name"/>
+      <propertycopy name="onlinehostapplication" 			from="op.online${env_name}app.name"/>
+      <propertycopy name="onlinehostvirtualhost"			from="op.online${env_name}vh.name"/>
+      <propertycopy name="onlineconntype"				from="op.online${env_name}conn.type"/>
+      <propertycopy name="onlinewashome"				from="op.online${env_name}was.home"/>
+      <propertycopy name="onlinedmgrhome"				from="op.online${env_name}dmgr.home"/>
+      <propertycopy name="onlineuser"					from="op.online${env_name}user.name"/>
+      <propertycopy name="onlineserverlogin"				from="op.online${env_name}svr.login"/>
+      <propertycopy name="onlinewebserver"				from="op.online${env_name}webserver.switch"/>
+      <propertycopy name="onlinewebserverlist"			from="op.online${env_name}webserver.list"/>
+      <propertycopy name="onlinewebserverpath"			from="op.online${env_name}webserver.dir"/>
+      <propertycopy property="onlineserverstatus"			from="op.${env_name}onlineserverstatus.cmd"/>
+      <propertycopy property="stoponlineserver"			from="op.${env_name}onlineserverstop.cmd"/>
+      <propertycopy property="startonlineserver"			from="op.${env_name}onlineserverstart.cmd"/>
+      <propertycopy property="onlineclustermemlist"		from="op.online${env_name}clustermembers.list"/>
+      <propertycopy property="onlineclusterswitch"			from="op.online${env_name}cluster.switch"/>
+      <propertycopy property="onlinehostcluster"			from="op.online${env_name}cluster.name"/>
+      <propertycopy property="onlinehosttemplatedest"		from="op.online${env_name}templatedest"/>		
+      <propertycopy name="onlinenode"                    from="op.online${env_name}node.name"/>
+      <stopwatch name="predeploy.time" action="start"/>
+      <echo message="chmod -R 755 ${op.ear.dir}"/>
+      <shellscript shell="bash" dir="${op.logs.dir}">
+         chmod -R 755 ${op.ear.dir}
+      </shellscript>
+      <stopwatch name="predeploy.time" action="total"/>	
+      <sleep seconds="5"/> 
+   </target>
+   
+   <!--
+    deployStaticContent copies the XML, HTML, & JS & CO template files from the build box to the server.
+   -->
+   <target name="deployStaticContent" depends="predeploy">
+      <echo message="deployStaticContent ST.time = ${starttime}"/>
+
+      <trycatch property="deployStaticFailed" reference="depstaticfail">
+         <try>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <echo message="!!! STEP 3.A: ${onlinehostserver}  Static Content Deployment  Starts Here !!!"/>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <switch value="${onlinewebserver}">
+               <case value="true">
+                  <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                  <echo message="!!! STEP 3.A.1: ${onlinehostserver} XML Deployment  Starts Here !!!"/>
+                  <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                  <for list="${onlineclustersserver}" param="appservers">
+                     <sequential>
+                        <echo message="!!! Deploying XMLs Content to @{appservers}:${onlinehostxmldir} !!!"/>
+                        <exec dir="${op.scripts.dir}" executable="rsync" >
+                           <arg line=" ${op.rsyncmd.option} ${op.deployxmlfrom.dir} ${onlineuser}'@'@{appservers}:${onlinehostxmldir}"/>
+                        </exec>
+                     </sequential>
+                  </for>
+                  <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                  <echo message="!!! STEP 3.A.2: ${onlinehostserver} HTML Deployment  Starts Here !!!"/>
+                  <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                  <for list="${onlinewebserverlist}" param="webservers">
+                     <sequential>
+                        <echo message="!!! Deploying Static Content to @{webservers} !!!"/>
+                        <shellscript shell="bash" dir="${op.scripts.dir}">
+                           rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/css/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/css
+                           rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/html/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/html
+                           rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/js/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/js
+                           rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/training/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/training
+                           rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/cgi-bin/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/cgi-bin
+                           rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/CPMCI/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/CPMCI
+                           rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/images/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/images
+                           rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/build_report.xml ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/build_report.xml
+                           ssh ${onlineuser}'@'@{webservers} chmod 775 ${onlinewebserverpath}/cgi-bin/unzip
+                        </shellscript>
+                     </sequential>
+                  </for>
+                  <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                  <echo message="!!! STEP 3.A.3: ${onlinehostserver} CO Template Deployment  Starts Here !!!"/>
+                  <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                  <for list="${onlineclustersserver}" param="appservers">
+                     <sequential>
+                        <echo message="!!! Deploying Templates to @{appservers}:${onlinehosttemplatedest} !!!"/>
+                        <exec dir="${op.scripts.dir}" executable="rsync" >
+                           <arg line=" ${op.rsyncmd.option} ${op.template.src.dir} ${onlineuser}'@'@{appservers}:${onlinehosttemplatedest}"/>
+                        </exec>
+                     </sequential>
+                  </for>
+               </case>
+               <default>
+                  <echo message="!!! Deploying XMLs Content to ${onlinehostnode}:${onlinehostxmldir} !!!"/>
+                  <exec dir="${op.scripts.dir}" executable="rsync" >
+                     <arg line=" ${op.rsyncmd.option} ${op.deployxmlfrom.dir} ${onlineuser}@${onlinehostname}:${onlinehostxmldir}"/>
+                  </exec>
+                  <echo message="!!! Deploying Templates to ${onlinehostnode}:${onlinehosttemplatedest} !!!"/>
+                  <exec dir="${op.scripts.dir}" executable="rsync" >
+                     <arg line=" ${op.rsyncmd.option} ${op.template.src.dir} ${onlineuser}@${onlinehostname}:${onlinehosttemplatedest}"/>
+                  </exec>
+                  <echo message="!!! Deploying Static Content to @{webservers} !!!"/>
+                  <shellscript shell="bash" dir="${op.scripts.dir}">
+                     rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/css/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/css
+                     rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/html/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/html
+                     rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/js/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/js
+                     rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/training/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/training
+                     rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/cgi-bin/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/cgi-bin
+                     rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/CPMCI/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/CPMCI
+                     rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/images/ ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/images
+                     rsync ${op.rsyncmd.option} ${op.webstaticcontent.dir}/build_report.xml ${onlineuser}'@'@{webservers}:${onlinewebserverpath}/build_report.xml
+                     ssh ${onlineuser}'@'@{webservers} chmod 775 ${onlinewebserverpath}/cgi-bin/unzip
+                  </shellscript>
+               </default> 
+            </switch> 
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+            <echo message="!!! STEP 3.A: ${onlinehostserver}  Static Content Deployment is Complete!!!"/>
+            <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+         </try>
+         <catch>
+            <echo message="!!! StaticDeploy Failed:${deployStaticFailed} !!!"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="deployStaticFailed"/>
+               <then>
+                  <antcall target="notifymail">
+                     <param name="mail.subject" value="${op.emailmsg.header}${env_name}${op.predeployfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.predeployfail.msg}${starttime}"/>
+                  </antcall>
+                  <property name="predepdone" value="Failed"/>
+                  <fail if="deployStaticFailed" message="Deployment Failed at predeploy"/>
+               </then>
+               <else>
+                  <property name="predepdone" value="Success. "/>
+                  <echo message="!!! ${onlinehostname} Sync XML and Static Deployment Done !!!"/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+   </target>
+   
+   <!--
+    deployTemplates is being set up to only deploy CO templates to online.
+    This will allow us to update online templates without redeploying the entire app.
+   -->
+   <target name="deployTemplates">
+      <echo message="deployTemplates ST.time = ${starttime}"/>
+      <propertycopy name="onlineclustersserver"			from="op.online${env_name}clustersserver.name"/>
+      <propertycopy property="onlinehosttemplatedest"		from="op.online${env_name}templatedest"/>		
+      <propertycopy name="onlineuser"					from="op.online${env_name}user.name"/>
+      <for list="${onlineclustersserver}" param="appservers">
+         <sequential>
+            <echo message="!!! Deploying Templates to @{appservers}:${onlinehosttemplatedest} !!!"/>
+            <exec dir="${op.scripts.dir}" executable="rsync" >
+               <arg line=" ${op.rsyncmd.option} ${op.template.src.dir} ${onlineuser}'@'@{appservers}:${onlinehosttemplatedest}"/>
+            </exec>
+         </sequential>
+      </for>
+   </target>
+   
+   <target name="deleteCache" depends="predeploy">
+      <echo message="ssh ${onlineuser}@${onlinenode} rm -fr ${onlinewashome}/temp/${onlinehostnode}/${onlinehostserver}/${onlinehostapplication}/stage3tiersWeb.war/*"/>
+      <shellscript shell="bash" dir="${op.logs.dir}">
+               ssh ${onlineuser}@${onlinenode} rm -fr ${onlinewashome}/temp/${onlinehostnode}/${onlinehostserver}/${onlinehostapplication}/stage3tiersWeb.war/*
+      </shellscript>
+   </target>
+<!--
+    THIS PORTION IS BEING COMMENTED OUT BECAUSE WE HAVE MIGRATED TO WICA. 
+    THUS, WE ARE NO LONGER RELYING ON ANT TO DO THE DEPLOYMENT OR THE APP START.
+    IT IS NOW WICA'S JOB.
+
+   <target name="deployapps" depends="init,predeploy">
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <echo message="!!! STEP 3.B: ${onlinehostserver} Online Deployment Starts Here !!!"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <stopwatch name="deployonline.time" action="start"/>
+      <propertycopy name="secureEnv" from="op.online${env_name}webserver.secure"/>
+      <trycatch property="odFailed" reference="oderror">
+         <try>
+            <switch value="${onlineclusterswitch}">
+               <case value="Yes">
+                  <echo message="!!! Cluster Deployment Requested !!!"/>
+                  <switch value="${secureEnv}">
+                     <case value="true">
+                        <wsAdmin    washome="${op.was.home}"          host="${onlinehostname}" user="wpsbind" password="wpsbind"
+                           port="${onlinehostport}"          conntype="${onlineconntype}"
+                           script="${op.clusterdeployscript.name}" >
+                              <arg value="${onlinehostcell}"/>      
+                              <arg value="${onlinehostcluster}"/>
+                              <arg value="${op.ear.dir}"/>   
+                              <arg value="${op.ear.name}"/>
+                              <arg value="${onlinehostapplication}"/>      
+                              <arg value="${onlinehostvirtualhost}"/>
+                              <arg value="${onlinehostnode}"/>
+                        </wsAdmin>
+                     </case>
+                     <case value="false">
+                        <wsAdmin	washome="${op.was.home}" 		host="${onlinehostname}" 
+                           port="${onlinehostport}" 		conntype="${onlineconntype}"
+                           script="${op.clusterdeployscript.name}" >
+                              <arg value="${onlinehostcell}"/> 	
+                              <arg value="${onlinehostcluster}"/>
+                              <arg value="${op.ear.dir}"/>	
+                              <arg value="${op.ear.name}"/>
+                              <arg value="${onlinehostapplication}"/> 	
+                              <arg value="${onlinehostvirtualhost}"/>
+                              <arg value="${onlinehostnode}"/>
+                        </wsAdmin>
+                     </case>                  
+                  </switch>
+               </case>
+               <default>
+                  <echo message="!!! Single server Deployment Requested !!!"/>
+                  <wsAdmin	washome="${op.was.home}" 	host="${onlinehostname}" 
+                     port="${onlinehostport}" 	conntype="${onlineconntype}"
+                     script="${op.deployscript.name}" >
+                        <arg value="${onlinehostcell}"/>	
+                        <arg value="${onlinehostnode}"/>	
+                        <arg value="${onlinehostserver}"/>	
+                        <arg value="${onlinehostapplication}"/> 	
+                        <arg value="${op.ear.dir}"/>	
+                        <arg value="${op.ear.name}"/>
+                        <arg value="${onlinehostvirtualhost}"/>
+                  </wsAdmin>
+               </default>
+            </switch>
+         </try>
+         <catch>
+            <echo message="XXX ${onlinehostserver} Online Deployment Failed:${odFailed} XXX"/> 
+         </catch>
+         <finally>
+            <if>
+               <isset property="odFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.emailmsg.header}${env_name}${op.deployfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.deployfail.msg}.This build was started at ${starttime}" />
+                  </antcall>
+                  <property name="oddone" value="Failed"/>
+                  <fail if="odFailed" message="Deployment Failed"/>
+               </then>
+               <else>
+                  <property name="oddone" value="Success. "/>
+                  <stopwatch name="deployonline.time" action="total"/>
+                  <antcall target="restartserver"/>
+                  <propertyfile	file="${op.bldreport.props}"    comment="Harmony Build Report">
+                     <entry key="${env_name}onlinedeploy"		value="${oddone}"/>
+                     <entry key="${env_name}onlinedeploytime"	value="${deployonline.time}"/>
+                  </propertyfile>
+                  <sleep seconds="5"/>
+                  <antcall target="onlinebuildreport"/>
+                  <echo message="!!! ${onlinehostserver} Online Deployment Done !!!"/> 
+               </else> 
+            </if>
+         </finally> 
+      </trycatch>
+   </target>
+   <target name="restartserver" >
+      <propertycopy name="onlinehostserver"				from="op.online${env_name}server.name"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <echo message="!!! STEP 4: ${onlinehostserver} Server Restart Starts Here !!!"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <stopwatch name="svrrestart.time" action="start"/>
+      <antcall target="propJarDeploy"/>
+      <trycatch property="svrrstFailed" reference="svrrstfailed">
+         <try>
+            <switch value="${onlineclusterswitch}">
+               <case value="Yes">
+                  <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+                  <echo message="!!! ReStarting ${onlinehostserver} !!!"/>
+                  <propertycopy name="clustername"				from="op.online${env_name}clustersserver.name"/>
+                  <propertycopy name="startServer"          from="op.${env_name}onlineserverstart.cmd"/>
+                  <propertycopy name="stopServer"          from="op.${env_name}onlineserverstop.cmd"/>
+                  <propertycopy name="username" from="op.online${env_name}user.name"/>
+                  <shellscript shell="bash" dir="${op.scripts.dir}">
+                     echo "!!! Starting Cluster Members  in a minute!!!"
+                     ssh ${username}@${clustername}.txaccess.net ${stopServer} 
+                     sleep 30
+                     ssh ${username}@${clustername}.txaccess.net ${startServer} 
+                     sleep 300
+                  </shellscript>
+                  <echo message="!!!!!!!!!!!!!${onlinehostserver} Restart Done!!!!!!!!!!!!!"/>
+               </case>
+               <default>
+                  <wsAdmin	washome="${op.was.home}" 		host="${onlinehostname}" 
+                     port="${onlinehostport}" 		conntype="${onlineconntype}"
+                     script="${op.restartscript.name}">
+                        <arg value="${onlinehostcell}"/>	
+                        <arg value="${onlinehostnode}"/>	
+                        <arg value="${onlinehostserver}"/>	
+                        <arg value="${onlinehostapplication}"/> 	
+                  </wsAdmin>
+               </default>
+            </switch>
+         </try>
+         <catch>
+            <echo message="XXX ${onlinehostserver} Server Restart Failed:${svrrstFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="svrrstFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.emailmsg.header} ${op.svrrestartfail.subj} from view ${view_name}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="${op.svrrestartfail.msg} ${starttime} to ${env_name}"/>
+                  </antcall>
+                  <property name="rtsvrdone" value="Failed"/>
+                  <fail if="svrrstFailed" message="Server Restart Failed"/>
+               </then>
+               <else>
+                  <property name="rtsvrdone" value="Success. "/>
+                  <echo message="!!! ${onlinehostserver} Server Restart Done !!!"/>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${op.emailmsg.header} ${op.svrrestartsuccess.subj} from view ${view_name}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${starttime}-online.log"/>
+                     <param name="mail.message" value="http://${onlinedns}/SELoginAccess.jsp"/>
+                  </antcall>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="svrrestart.time" action="total"/>
+      <sleep seconds="25"/>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${env_name}onlineserverstart"		value="${rtsvrdone}"/>
+         <entry key="${env_name}onlineserverstarttime"	value="${svrrestart.time}"/>
+      </propertyfile>
+   </target>
+
+-->
+   <target name="batchinit">
+      <tstamp>
+         <format property="batchbuildST.time" pattern="${op.datetime.format}"/>
+      </tstamp>
+      <echo message="!!! Batch Build started at ${batchbuildST.time} !!!"/>
+      <propertyfile file="${op.bldreport.props}"    	comment="Harmony Build Report">
+         <entry key="${env_name}batchbuildstarttime" 	value="${batchbuildST.time}"/>
+      </propertyfile>
+      <record name="${op.logs.dir}/${batchbuildST.time}-batch.log" action="start" loglevel="${op.recordlog.level}"/>
+   </target>
+	
+   <target name="callbatch">
+      <echo message="!!! Call batch team oncall at ${bp.batchcontact.num} !!!"/>
+      <echo message="!!! when you get confirmation from batch team !!!"/>
+   </target>
+			
+ 	<target name="compilebatch" depends="batchinit,batchcompile,createbatchjar"/>
+
+   <target name="batchcleanup">
+      <stopwatch name="batchcleanup.time" action="start" />
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <echo message="!!! STEP 5 : ${env_name} Batch Compilation Starts Here !!!"/>
+      <echo message="!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"/>
+      <delete dir="${bp.batchsrc.dir}" includeemptydirs="true" failonerror="false"/>
+      <mkdir dir="${bp.batchsrc.dir}"/>
+      <stopwatch name="batchcleanup.time" action="total"/>
+      <sleep seconds="10"/>
+   </target>
+
+   <target name="batchsrccopy" depends="batchcleanup">
+      <stopwatch name="batchsrccopy.time" action="start"/>
+      <trycatch property="batchsrccopyFailed" reference="batchsrccopyfail" >
+         <try>
+            <propertycopy name="batchsrccopy.tracks"				from="bp.batchsrccopy.tracks"/> 
+            <for list="${batchsrccopy.tracks}" param="batchtrack">
+            <!--
+            <for list="${bp.batchsrccopy.tracks}" param="batchtrack">
+            -->
+               <sequential>
+                  <echo message="!!! Copying Batch related source for @{batchtrack} and excluding ${bp.@{batchtrack}excludes} !!!"/>
+                  <copy todir="${bp.batchsrc.dir}" verbose="${bp.srccpy.versbose}" failonerror="${bp.srccpy.failonerror}">
+                     <fileset dir="${bp.@{batchtrack}}" excludes="${bp.@{batchtrack}excludes}"/> 
+                  </copy>
+               </sequential>
+            </for>
+         </try>
+         <catch>
+            <echo message="XXX ${env_name} Batch Source Copy Failed:${batchsrccopyFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="batchsrccopyFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${bp.batchsrccopyfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${batchbuildST.time}-batch.log"/>
+                     <param name="mail.message" value="${bp.batchsrccopyfail.msg}${batchbuildST.time}"/>
+                  </antcall>
+                  <property name="batchsrccopydone" value="Failed"/>
+                  <fail if="batchsrccopyFailed" message="Batch Source Copy Failed"/>
+               </then>
+               <else>
+                  <property name="batchsrccopydone" value="Success. "/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="batchsrccopy.time" action="total"/>
+      <sleep seconds="10"/>
+   </target>
+	
+   <target name="cleanforbatchcompile" depends="batchsrccopy">
+      <stopwatch name="cleanforbatchcompile.time" action="start"/>
+      <trycatch property="cleanforbcFailed" reference="cleanforbcfail" >
+         <try>
+            <for list="${bp.cleanforbatchcompiledel.packages}" param="batchdeletepackage">
+               <sequential>
+                  <delete includeemptydirs="true" failonerror="${bp.cleanforbatchcompile.failonerror}" verbose="${bp.cleanforbatchcompile.verbose}">
+                     <fileset dir="${bp.@{batchdeletepackage}package.dir}" includes="${bp.@{batchdeletepackage}del.includes}"/>
+                  </delete>
+               </sequential>
+            </for>
+            <mkdir dir="${bp.dcutilpackage.dir}"/>
+            <mkdir dir="${bp.driverpackage.dir}"/>
+            <for list="${bp.cleanforbatchcompilecopy.packages}" param="batchcopypackage">
+               <sequential>
+                  <copy todir="${bp.@{batchcopypackage}package.dir}" verbose="${bp.cleanforbatchcompile.verbose}">
+                     <fileset dir="${bp.@{batchcopypackage}cccq.dir}" includes="${bp.@{batchcopypackage}copy.includes}"/> 
+                  </copy>													
+               </sequential>
+            </for>
+            <delete includeemptydirs="true" failonerror="${bp.cleanoldbatchclass.failonerror}" dir="${bp.batchclass.dir}"/>
+            <mkdir dir="${bp.batchclass.dir}"/>
+         </try>
+         <catch>
+            <echo message="!!! ${env_name} Cleanfor Batch Compile Failed:${cleanforbcFailed} !!!"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="cleanforbcFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${bp.cleanforbcfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${batchbuildST.time}-batch.log"/>
+                     <param name="mail.message" value="${bp.cleanforbcfail.msg}${batchbuildST.time}"/>
+                  </antcall>
+                  <property name="cleanforbcdone" value="Failed"/>
+                  <fail if="cleanforbcFailed" message="Clean for Batch Compilation failed"/>
+               </then>
+               <else>
+                  <property name="cleanforbcFailed" value="Success. "/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="cleansrcforbatchcompile.time" action="total"/>
+      <sleep seconds="10"/>
+   </target> 
+		
+	<!-- <target name="batchcompile" depends="cleanforbatchcompile">   -->
+   <target name="batchcompile" depends="batchsrccopy">
+      <stopwatch name="batchcompile.time" action="start"/>
+      <mkdir dir="${bp.batchclass.dir}"/>
+      <trycatch property="bcFailed" reference="bcerror">
+         <try>
+            <javac	srcdir="${bp.batchsrc.dir}"	     destdir="${bp.batchclass.dir}" nowarn="${bp.batchcompile.nowarn}"
+               debug="${bp.batchcompile.debug}"     debuglevel="${bp.batchdebug.level}"
+               verbose="${bp.batchcompile.verbose}" fork="${bp.batchcompile.fork}"	 
+               failonerror="${bp.batchcompile.failonerror}"
+               memoryinitialsize="${bp.batchcompile.memoryInitialSize}"
+               memorymaximumsize="${bp.batchcompile.memoryMaximumSize}">
+               <classpath refid="project.3party.jars"/>
+            </javac>
+            <sleep seconds="25"/>
+         </try>
+         <catch>
+            <echo message="XXX ${env_name} Batch Compile Failed:${bcFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="bcFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${bp.bccompilefail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${batchbuildST.time}-batch.log"/>
+                     <param name="mail.message" value="${bp.bccompilefail.msg}${batchbuildST.time}"/>
+                  </antcall>
+                  <property name="bcdone" value="Failed"/>
+                  <fail if="bcFailed" message="Batch Compilation failed"/>
+               </then>
+               <else>
+                  <echo message="!!! Batch Compilation Success. !!!"/>
+                  <stopwatch name="batchcompile.time" action="total"/>
+                  <property name="bcdone" value="Success. "/>
+               </else>
+            </if>	
+         </finally>
+      </trycatch>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${view_name}batchcompile"		value="${bcdone}"/>
+         <entry key="${view_name}batchcompiletime"	value="${batchcompile.time}"/>
+      </propertyfile>
+   </target>
+	
+   <target name="initbatchjar" >
+      <stopwatch name="initbatchjar.time" action="start" />
+      <trycatch property="initbatchjarFailed" reference="initbatchjarfail">
+         <try>
+            <copy file="${bp.rulsengineprop.file}" todir="${bp.rulsepropcopy.dir}"/>
+            <for list="${bp.initbatchjarexport.list}" param="jarexport">
+               <sequential>
+	           <echo message="!!! Copying Batch related source for @{jarexport} !!!"/>
+                  <mkdir dir="${bp.@{jarexport}sequential.dir}"/>
+               </sequential>
+            </for>
+            <delete dir="${bp.batchjar.dir}"/>
+            <mkdir dir="${bp.batchjar.dir}"/>
+         </try>
+         <catch>
+            <echo message="XXX ${env_name} Batch InitJar Failed:${initbatchjarFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="initbatchjarFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${bp.initbatchjarfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${batchbuildST.time}-batch.log"/>
+                     <param name="mail.message" value="${bp.initbatchjarfail.msg}${batchbuildST.time}"/>
+                  </antcall>
+                  <fail if="initbatchjarFailed" message="Batch JAR failed"/>
+               </then>
+               <else>
+                  <echo message="!!! ${env_name} Batch jar init Success. !!!"/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="initbatchjar.time" action="total"/>
+      <sleep seconds="10"/>
+   </target>
+		
+   <target name="createbatchjar" depends="initbatchjar">	
+      <stopwatch name="batchjarcreate.time" action="start"/>
+      <trycatch property="batchjarFailed" reference="batchjarfail" >
+         <try>
+            <for list="${bp.exportjar.list}" param="exportfunjar">
+               <sequential>
+	           <echo message="!!! Copying Batch related Classes for @{exportfunjar} JAR !!!"/>
+                  <delete dir="${bp.jartmpdest.dir}/us"/>
+                  <mkdir dir="${bp.@{exportfunjar}jartmpdest1.dir}"/>
+                  <copy todir="${bp.@{exportfunjar}jartmpdest1.dir}" overwrite="true">
+                     <fileset dir="${bp.@{exportfunjar}jarclasses1.dir}"/>
+                  </copy>
+                  <copy todir="${bp.@{exportfunjar}jartmpdest2.dir}" overwrite="true">
+                     <fileset dir="${bp.@{exportfunjar}jarclasses2.dir}"/>
+                  </copy>
+                  <copy todir="${bp.@{exportfunjar}jartmpdest3.dir}" overwrite="true">
+                     <fileset dir="${bp.@{exportfunjar}jarclasses3.dir}"/>
+                  </copy>
+                  <jar destfile="${bp.batchjar.dir}/@{exportfunjar}.jar" basedir="${bp.jartmpdest.dir}"/>
+               </sequential>
+            </for>
+            <for list="${bp.exportjar.list2}" param="exportfunjar">
+               <sequential>
+                  <echo message="!!! Copying Batch related Classes for @{exportfunjar} JAR !!!"/>
+                  <delete dir="${bp.jartmpdest.dir}/us"/>
+                  <mkdir dir="${bp.@{exportfunjar}jartmpdest1.dir}"/>
+                  <copy todir="${bp.@{exportfunjar}jartmpdest1.dir}" overwrite="true">
+                     <fileset dir="${bp.@{exportfunjar}jarclasses1.dir}"/>
+                  </copy>
+                  <copy todir="${bp.@{exportfunjar}jartmpdest2.dir}" overwrite="true">
+                     <fileset dir="${bp.@{exportfunjar}jarclasses2.dir}"/>
+                  </copy>
+                  <copy todir="${bp.@{exportfunjar}jartmpdest3.dir}" overwrite="true">
+                     <fileset dir="${bp.@{exportfunjar}jarclasses3.dir}"/>
+                  </copy>
+                  <copy todir="${bp.@{exportfunjar}jartmpdest4.dir}" overwrite="true">
+                     <fileset dir="${bp.@{exportfunjar}jarclasses4.dir}"/>
+                  </copy>         
+                   <copy todir="${bp.@{exportfunjar}jartmpdest5.dir}" overwrite="true">
+                      <fileset dir="${bp.@{exportfunjar}jarclasses5.dir}"/>
+                   </copy>
+                  <jar destfile="${bp.batchjar.dir}/@{exportfunjar}.jar" basedir="${bp.jartmpdest.dir}"/>
+               </sequential>
+            </for>
+         </try>
+         <catch>
+            <echo message="XXX ${env_name} Batch JAR Failed:	${batchjarFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="batchjarFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${bp.bcjarfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${batchbuildST.time}-batch.log"/>
+                     <param name="mail.message" value="${bp.bcjarfail.msg}${batchbuildST.time}"/>
+                  </antcall>
+                  <property name="bjardone" value="Failed"/>
+                  <fail if="batchjarFailed" message="Batch JAR failed"/>
+               </then>
+               <else>
+                  <property name="bjardone" value="Success. "/>
+                  <echo message="!!! Batch Compilation Done !!!"/>
+                  <stopwatch name="batchjarcreate.time" action="total"/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${view_name}batchjarcreation"		value="${bjardone}"/>
+         <entry key="${view_name}batchjarcreationtime"	value="${batchjarcreate.time}"/>
+      </propertyfile>
+      <sleep seconds="10"/>
+   </target>
+
+   <target name="createbatchjaronly">	
+      <stopwatch name="batchjarcreate.time" action="start"/>
+      <trycatch property="batchjarFailed" reference="batchjarfail" >
+         <try>
+            <for list="${bp.exportjar.list}" param="exportfunjar">
+               <sequential>
+	           <echo message="!!! Copying Batch related Classes for @{exportfunjar} JAR !!!"/>
+                  <delete dir="${bp.jartmpdest.dir}/us"/>
+                  <mkdir dir="${bp.@{exportfunjar}jartmpdest1.dir}"/>
+                  <copy todir="${bp.@{exportfunjar}jartmpdest1.dir}" overwrite="true">
+                     <fileset dir="${bp.@{exportfunjar}jarclasses1.dir}"/>
+                  </copy>
+                  <copy todir="${bp.@{exportfunjar}jartmpdest2.dir}" overwrite="true">
+                     <fileset dir="${bp.@{exportfunjar}jarclasses2.dir}"/>
+                  </copy>
+                  <copy todir="${bp.@{exportfunjar}jartmpdest3.dir}" overwrite="true">
+                     <fileset dir="${bp.@{exportfunjar}jarclasses3.dir}"/>
+                  </copy>
+                  <jar destfile="${bp.batchjar.dir}/@{exportfunjar}.jar" basedir="${bp.jartmpdest.dir}"/>
+               </sequential>
+            </for>
+         </try>
+         <catch>
+            <echo message="XXX ${env_name} Batch JAR Failed:	${batchjarFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="batchjarFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${bp.bcjarfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${batchbuildST.time}-batch.log"/>
+                     <param name="mail.message" value="${bp.bcjarfail.msg}${batchbuildST.time}"/>
+                  </antcall>
+                  <property name="bjardone" value="Failed"/>
+                  <fail if="batchjarFailed" message="Batch JAR failed"/>
+               </then>
+               <else>
+                  <property name="bjardone" value="Success. "/>
+                  <echo message="!!! Batch Compilation Done !!!"/>
+                  <stopwatch name="batchjarcreate.time" action="total"/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${view_name}batchjarcreation"		value="${bjardone}"/>
+         <entry key="${view_name}batchjarcreationtime"	value="${batchjarcreate.time}"/>
+      </propertyfile>
+      <sleep seconds="10"/>
+   </target>
+
+   <target name="batchdeploy" depends="batchinit,propBatchDeploy,checkforproduction">
+      <record name="${op.logs.dir}/${batchbuildST.time}-batch.log" action="stop" loglevel="${op.recordlog.level}"/>
+   </target>
+	
+   <target name="checkforproduction">
+      <stopwatch name="bdeploy.time" action="start"/>
+      <propertycopy name="batchserverslist"	from="bp.${env_name}batchservers.list"/>
+      <if>
+         <equals arg1="${env_name}" arg2="${bp.isthisprod.env}"/>
+         <then>
+            <echo message="Regular Production Build Requested"/>
+            <for list="${batchserverslist}" param="batchserver">
+               <sequential>
+                  <antcall target="prodbatchbuild">
+                     <param name="batchservername" value="@{batchserver}"/>
+                  </antcall>
+               </sequential>
+            </for>
+         </then>
+         <else>
+            <for list="${batchserverslist}" param="batchserver" parallel="true" keepgoing="true">
+               <sequential>
+                  <echo message="!!! Starting deployment to @{batchserver} !!!"/>
+                  <antcall target="doregularbatchbuild">
+                     <param name="batchservername" value="@{batchserver}"/>
+                  </antcall>
+               </sequential>
+            </for>
+         </else>
+      </if>
+      <sleep seconds="10"/>
+   </target>
+	
+   <target name="prodbatchbuild"     depends="removebatchemgjars,batchjarsdeploy,batchscriptsdeploy">
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${env_name}batchdeploy"		value="${bdeploydone}"/>
+         <entry key="${env_name}batchdeploytime"	value="${bdeploy.time}"/>
+      </propertyfile>
+   </target>
+	
+   <target name="doregularbatchbuild"      depends="removebatchemgjars,batchjarsdeploy,batchscriptsdeploy,runcleanupscript">
+      <stopwatch name="bdeploy.time" action="total"/>
+      <condition property="batchsuccchk">
+         <isset property="cleanupscriptrun"/>
+      </condition>
+      <if>
+         <equals arg1="${batchsuccchk}" arg2="Failed"/>
+         <then>
+            <echo message="batch build failed"/>
+         </then>
+         <else>
+            <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+               <entry key="${env_name}batchdeploy"		value="${bdeploydone}"/>
+               <entry key="${env_name}batchdeploytime"	value="${bdeploy.time}"/>
+            </propertyfile>
+            <antcall target="batchbuilt"/>   
+            <antcall target="asofdate"/>
+            <antcall target="batchbuildreport"/>
+         </else>
+      </if>
+   </target>
+
+   <target name="removebatchemgjars">
+      <stopwatch name="bemgjar.time" action="start"/>
+      <property name="envname" 				value="${batchservername}"/>
+      <propertycopy name="batchhost"			from="bp.${env_name}batchhost.name"/>
+      <propertycopy name="batchuser"			from="bp.${env_name}batchhost.user"/>
+      <propertycopy name="batchserverlogin"		from="bp.${env_name}batchsvr.login"/>
+      <propertycopy name="batchpath"			from="bp.${env_name}batchpath.dir"/>
+      <propertycopy name="batchconfigxmltodestdir"	from="bp.${env_name}batchxmlconfig.dir"/>
+      <propertycopy name="batchrulesxmltodestdir"	from="bp.${env_name}batchxmlrules.dir"/>
+      <propertycopy name="cleanupscriptname"		from="bp.${env_name}batchcleanup.name"/>
+      <propertycopy name="asofdate"		              from="bp.${env_name}asofdate.name"/> 
+      <propertycopy name="batchremoveemgjarcmd"		from="bp.${env_name}batchrmemgjar.command"/> 
+      <propertycopy name="batchfullbuild"		from="bp.${env_name}batchfullbuild.flag"/> 	 
+      <propertycopy name="envspecificpropscopyfromdir"   from="bp.${env_name}envspecificpropscopyfrom.dir"/>
+      <propertycopy name="changegroup.command"   	from="bp.${env_name}changegroup.command"/>	     	     
+      <sshexec host="${batchhost}"  username="${batchuser}" keyfile="${user.home}/.ssh/id_dsa" passphrase="Seceret" command="${batchremoveemgjarcmd}" failonerror="false"/>
+      <stopwatch name="bemgjar.time" action="total"/>
+   </target>
+	
+   <target name="batchjarsdeploy" depends="copyxmltobatch,copyjarstobatch,copyexternallib"/>
+
+   <target name="copyxmltobatch">
+      <stopwatch name="bxmlcopy.time" action="start"/>
+      <trycatch property="copybatchxmlFailed" reference="copybatchxmlfail">
+         <try>
+            <for list="${bp.batchxml.tocopy}" param="xmltocpy">
+               <sequential>
+                  <echo message="!!! Copying Batch xml @{xmltocpy}.xml to ${batchhost} !!!"/>
+                  <exec dir="${bp.scripts.dir}" executable="rsync" >
+                     <arg line="${bp.rsyncmd.option} ${bp.batchxmlconfig.dir}/@{xmltocpy}.xml ${batchserverlogin}:${batchconfigxmltodestdir}"/>
+                  </exec>
+               </sequential>
+            </for>
+            <exec dir="${bp.scripts.dir}" executable="rsync" >
+               <arg line=" ${bp.rrsyncmd.option} ${bp.batchrulesxml.dir} ${batchserverlogin}:${batchrulesxmltodestdir}"/>
+            </exec>
+         </try>
+         <catch>
+            <echo message="!!! ${env_name} Batch XML Deploy Failed:${copybatchxmlFailed} !!!"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="copybatchxmlFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${bp.emailmsg.header}${env_name}${bp.batchxmlfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${batchbuildST.time}-batch.log"/>
+                     <param name="mail.message" value="${bp.batchxmlfail.msg}${batchbuildST.time}"/>
+                  </antcall>
+                  <fail if="copybatchxmlFailed" message="Batch XML Copy failed"/> 
+               </then>
+               <else>
+                  <echo message="!!! ${env_name} Copying batch XML done !!!"/>
+               </else>
+            </if>
+         </finally>	
+      </trycatch>
+      <stopwatch name="bxmlcopy.time" action="total"/>
+      <sleep seconds="10"/>
+   </target>
+	
+   <target name="copyjarstobatch">
+      <stopwatch name="bjardeploy.time" action="start"/>
+      <trycatch property="batchjarcopyFailed" reference="batchjarcopyfail">
+         <try>
+            <for list="${bp.jartocopydest.list}" param="jartocpy">
+               <sequential>
+                  <echo message="!!! Coping Batch jar @{jartocpy} !!!"/>
+                  <exec dir="${bp.scripts.dir}" executable="rsync" >
+                     <arg line=" ${bp.rsyncmd.option} ${bp.batchjar.dir}/@{jartocpy}.jar ${batchserverlogin}:${batchpath}/${bp.@{jartocpy}jarcopyto.dest}"													     />
+                  </exec>
+               </sequential>
+            </for>
+            <echo message="!!! Syncing Templates !!!"/>
+            <!--
+            <exec dir="${bp.scripts.dir}" executable="rsync" >
+               <arg line=" ${bp.rsyncmd1.option} ${bp.specialcocopyfrom.dir} ${batchserverlogin}:${batchpath}/${bp.specialcocopy.dest}"/>
+            </exec>
+            -->
+            <shellscript shell="bash" dir="${op.scripts.dir}">
+               rsync ${bp.rsyncmd1.option} ${bp.specialcocopyfrom.dir}* ${batchserverlogin}:${batchpath}/${bp.specialcocopy.dest}
+            </shellscript>
+            <!--
+            <exec dir="${bp.scripts.dir}" executable="rsync" >
+               <arg line=" ${bp.rsyncmd1.option} ${bp.copdf.dir} ${batchserverlogin}:${batchpath}/${bp.batchsvrcopdf.dir}"/>
+            </exec>
+            -->
+            <shellscript shell="bash" dir="${op.scripts.dir}">
+               rsync ${bp.rsyncmd1.option} ${bp.copdf.dir}* ${batchserverlogin}:${batchpath}/${bp.batchsvrcopdf.dir}
+            </shellscript>
+            <!--
+            <exec dir="${bp.scripts.dir}" executable="rsync" >
+               <arg line=" ${bp.rsyncmd1.option} ${bp.cofontscopyfrom.dir} ${batchserverlogin}:${batchpath}/${bp.batchsvrfonts.dir}"/>
+            </exec>
+            -->
+            <shellscript shell="bash" dir="${op.scripts.dir}">
+               rsync ${bp.rsyncmd1.option} ${bp.cofontscopyfrom.dir}* ${batchserverlogin}:${batchpath}/${bp.batchsvrfonts.dir}
+            </shellscript>
+         </try>
+         <catch>
+            <echo message="XXX ${env_name} Batch JAR Deploy Failed:${batchjarcopyFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="batchjarcopyFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${bp.emailmsg.header}${env_name}${bp.batchjarfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${batchbuildST.time}-batch.log"/>
+                     <param name="mail.message" value="${bp.batchjarfail.msg}${batchbuildST.time}"/>
+                  </antcall>
+                  <fail if="batchjarcopyFailed" message="Batch JAR Copy failed"/> 
+               </then>
+               <else>
+                  <echo message="!!! ${env_name} Copying batch JARs Done !!!"/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="bjardeploy.time" action="total"/>
+      <sleep seconds="10"/>
+   </target>
+   
+   <target name="copyexternallib">
+      <scp todir="${batchserverlogin}:${batchpath}/${bp.externallib.dest}" keyfile="${user.home}/.ssh/id_dsa" passphrase="Seceret" failonerror="false">
+         <fileset dir="${bp.externallibcopyfrom.dir}"/>
+      </scp>   
+   </target>
+   
+ 	<target name="batchscriptsdeploy" depends="copybatchscripts,changepermission"/>
+   
+   <target name="copybatchscripts">
+      <stopwatch name="bscriptdeploy.time" action="start"/>
+      <propertycopy name="batchpath"			from="bp.${env_name}batchpath.dir"/>
+      <propertycopy name="batchserverlogin"  from="bp.${env_name}batchsvr.login"/>
+      <trycatch property="batchscriptcopyFailed" reference="batchscriptcopyfail">
+         <try>
+            <for list="${bp.scriptstocopy.list}" param="scripttocpy">
+               <sequential>										  
+                  <echo message="!!! Copying Batch Script @{scripttocpy} !!!"/>
+                  <if>
+                     <equals arg1="@{scripttocpy}" arg2="fw"/>
+                     <then>
+                        <propertycopy name="copyFwProps" from="bp.${env_name}fwscript.pullfromstream"/>
+                        <echo message="copyFwProps = ${copyFwProps}"/>
+                        <if>
+                           <equals arg1="${copyFwProps}" arg2="true"/>
+                           <then>
+                              <echo message="rsync ${bp.rsyncmd.option} ${bp.@{scripttocpy}scriptssrc.dir}* ${batchserverlogin}:${batchpath}/@{scripttocpy}/script/"/>
+                              <shellscript shell="bash" dir="${op.scripts.dir}">
+                                 rsync ${bp.rsyncmd.option} ${bp.@{scripttocpy}scriptssrc.dir}* ${batchserverlogin}:${batchpath}/@{scripttocpy}/script/
+                              </shellscript>
+                           </then>
+                        </if>
+                     </then>
+                     <else>
+                        <echo message="rsync ${bp.rsyncmd.option} ${bp.@{scripttocpy}scriptssrc.dir}* ${batchserverlogin}:${batchpath}/@{scripttocpy}/script/"/>
+                        <shellscript shell="bash" dir="${op.scripts.dir}">
+                           rsync ${bp.rsyncmd.option} ${bp.@{scripttocpy}scriptssrc.dir}* ${batchserverlogin}:${batchpath}/@{scripttocpy}/script/
+                        </shellscript>
+                     </else>
+                  </if>
+               </sequential>
+            </for>
+            <exec dir="${bp.scripts.dir}" executable="rsync" >
+               <arg line=" ${bp.rrsyncmd.option} ${bp.bopscriptssrc.dir} ${batchserverlogin}:${batchpath}/${bp.bopscriptto.dest}"/>
+            </exec> 
+            <echo message="!!! Copying Batch Script to ${bp.bopscriptto.dest} !!!"/>
+            <exec dir="${bp.scripts.dir}" executable="rsync" >
+               <arg line=" ${bp.rrsyncmd.option} ${bp.bopscriptssrc.dir} ${batchserverlogin}:${batchpath}/${bp.bopscriptto.dest}"/>
+            </exec> 
+            <switch value="${batchfullbuild}">
+               <case value="Yes">
+                  <echo message="FULL BATCH BUILD REQUESTED " />
+                  <exec dir="${bp.scripts.dir}" executable="rsync" >
+                     <arg line=" ${bp.rrsyncmd.option} ${bp.inldrscriptssrc.dir} ${batchserverlogin}:${batchpath}/${bp.inldrcopyto.dest}"/>
+                  </exec>
+                  <exec dir="${bp.scripts.dir}" executable="rsync" >
+                     <arg line=" ${bp.rrsyncmd.option} ${bp.syncsortscriptssrc.dir} ${batchserverlogin}:${batchpath}/${bp.syncsortcopyto.dest}"/>
+                  </exec>
+                  <exec dir="${bp.scripts.dir}" executable="rsync" >
+                     <arg line=" ${bp.rrsyncmd.option} ${bp.cvldrscriptssrc.dir} ${batchserverlogin}:${batchpath}/${bp.cvldrcopyto.dest}"/>
+                  </exec>
+               </case>
+               <default/>
+            </switch>
+         </try>
+         <catch>
+            <echo message="XXX ${env_name} Batch Scripts Deploy Failed:${batchscriptcopyFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="batchscriptcopyFailed"/>
+               <then>
+                  <antcall target="notifymail" >
+                     <param name="mail.subject" value="${bp.emailmsg.header}${env_name}${bp.batchscriptfail.subj}"/>
+                     <param name="mail.logfile" value="${op.logs.dir}/${batchbuildST.time}-batch.log"/>
+                     <param name="mail.message" value="${bp.batchscriptfail.msg}${batchbuildST.time}"/>
+                  </antcall>
+                  <property name="bdeploydone" value="Failed"/>
+                  <fail if="batchscriptcopyFailed" message="Batch Script Copy failed"/> 
+               </then>
+               <else>
+                  <property name="bdeploydone" value="Success. "/>
+                  <echo message="!!! ${env_name} Copying batch Scripts Done !!!"/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="bscriptdeploy.time" action="total"/>
+   </target>
+		
+   <target name="changepermission" depends="batchinit">
+      <stopwatch name="bchgperm.time" action="start"/>
+      <trycatch property="chgpermFailed" reference="chgpermfail">
+         <try>
+            <echo message="!!! Changing permisson for directory XMLs !!!"/>
+            <sshexec host="${batchhost}" username="${batchuser}" keyfile="${user.home}/.ssh/id_dsa" command="${changegroup.command} ${batchconfigxmltodestdir}/*" failonerror="${bp.changeper.failonerror}"/>
+            <sshexec host="${batchhost}" username="${batchuser}" keyfile="${user.home}/.ssh/id_dsa" command="${changegroup.command} ${batchrulesxmltodestdir}/*" 	failonerror="${bp.changeper.failonerror}"/>
+            <for list="${bp.jartocopydest.list}" param="jartocpy">
+               <sequential>
+                  <echo message="!!! Changing Batch jar @{jartocpy} Permisssion !!!"/>
+                  <shellscript shell="bash" dir="${op.scripts.dir}">
+                     ssh ${batchserverlogin} ${changegroup.command} ${batchpath}/${bp.@{jartocpy}jarcopyto.dest}
+                  </shellscript> 
+               </sequential> 
+            </for>
+            <echo message="ssh ${batchserverlogin} ${bp.changeperm.command} ${batchpath}/*/${bp.changeperm.dir}*"/>
+            <echo message="ssh ${batchserverlogin} ${changegroup.command} ${batchpath}/*/${bp.changegroup.dir}*"/>
+            <shellscript shell="bash" dir="${op.scripts.dir}">
+               ssh ${batchserverlogin} ${bp.changeperm.command} ${batchpath}/*/${bp.changeperm.dir}*
+               ssh ${batchserverlogin} ${changegroup.command} ${batchpath}/*/${bp.changegroup.dir}*
+            </shellscript>
+            <!--
+            <for list="${bp.changemod.list}" param="changeperm">
+               <sequential>
+                  <echo message="!!! Changing permisson for directory @{changeperm} !!!"/>
+                  <echo message="ssh ${batchserverlogin} ${bp.changeperm.command} ${batchpath}/@{changeperm}/${bp.changeperm.dir}*"/>
+                  <echo message="ssh ${batchserverlogin} ${changegroup.command} ${batchpath}/@{changeperm}/${bp.changegroup.dir}*"/>
+                  <shellscript shell="bash" dir="${op.scripts.dir}">
+                     ssh ${batchserverlogin} ${bp.changeperm.command} ${batchpath}/@{changeperm}/${bp.changeperm.dir}*
+                     ssh ${batchserverlogin} ${changegroup.command} ${batchpath}/@{changeperm}/${bp.changegroup.dir}*
+                  </shellscript>
+               </sequential>
+            </for>
+            -->
+         </try>
+         <catch>
+            <echo message="XXX ${envvname} Changing permisson Failed: ${chgpermFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="chgpermFailed"/>
+               <then>
+                  <echo message="XXX ${chgpermFailed} XXX"/>
+               </then>
+               <else>
+                  <property name="bchgpermdone" value="Success. "/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="bchgperm.time" action="total"/>
+   </target>
+	
+   <target name="runcleanupscript" depends="batchinit">
+      <stopwatch name="bcleanupscript.time" action="start"/>
+      <trycatch property="cleanupFailed" reference="cleanupfail">
+         <try>
+            <propertycopy name="copyFwProps" from="bp.${env_name}fwscript.pullfromstream"/>
+            <propertycopy name="batchSubDir" from="bp.${env_name}batchsub.dir"/>
+            <if>
+               <equals arg1="${copyFwProps}" arg2="true"/>
+               <then>
+			<propertycopy name="cleanupScriptName" from="bp.${env_name}batchcleanup.name"/>
+			<propertycopy name="cleanupScriptPath" from="bp.${env_name}fwscriptpath"/>
+			<echo message="
+                     ssh ${batchserverlogin} find ${batchpath}/${cleanupScriptPath} -type f -name '${cleanupScriptName}' -exec perl -pi -e 's/\015\012/\012/g' {} \;"/>
+                  <echo message="ssh ${batchserverlogin} ${batchpath}/${cleanupScriptPath}/${cleanupscriptname} ${batchSubDir}"/>
+                  <shellscript shell="bash" dir="${op.scripts.dir}">
+                     ssh ${batchserverlogin} "find ${batchpath}/${cleanupScriptPath} -type f -name '${cleanupScriptName}' -exec perl -pi -e 's/\015\012/\012/g' {} \;"
+                     ssh ${batchserverlogin} chmod -R 775 ${batchpath}/${cleanupScriptPath}/${cleanupScriptName}
+                     ssh ${batchserverlogin} ${batchpath}/${cleanupScriptPath}/${cleanupscriptname} ${batchSubDir}
+                     ssh ${batchserverlogin} ${batchpath}/${cleanupScriptPath}/changepermissions.ksh ${batchSubDir}
+                     ssh ${batchserverlogin} ${batchpath}/${cleanupScriptPath}/changecontentspermissions.ksh ${batchSubDir}
+                  </shellscript>
+               </then>
+               <else>
+			<echo message="ssh ${batchserverlogin} ${batchpath}/${cleanupscriptname}"/>
+                  <shellscript shell="bash" dir="${op.scripts.dir}">
+                     ssh ${batchserverlogin} ${batchpath}/${cleanupscriptname}
+                  </shellscript>
+               </else>
+            </if>
+         </try>
+         <catch>
+            <echo message="XXX ${envvname} Batch CleanupScript Failed:${cleanupFailed} XXX"/>
+         </catch>
+         <finally>
+            <if>
+               <isset property="cleanupFailed"/>
+               <then>
+                  <property name="cleanupscriptrun" value="Failed"/>
+               </then>
+               <else>
+                  <property name="cleanupscriptrun" value="Success. "/>
+                  <stopwatch name="bcleanupscript.time" action="total"/>
+               </else>
+            </if>
+         </finally>
+      </trycatch>
+      <stopwatch name="bcleanupscript.time" action="total"/>
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${env_name}batchcleanupscript"		value="${cleanupscriptrun}"/>
+         <entry key="${env_name}batchcleanupscripttime"	value="${bcleanupscript.time}"/>
+      </propertyfile>				
+   </target>
+	
+   <target name="batchbuilt" depends="batchinit">
+      <antcall target="notifymail" >
+         <param name="mail.subject" value="${bp.emailmsg.header}${env_name} ${bp.batchbldsucc.subj}"/>
+         <param name="mail.message" value="${bp.batchbldsucc.msg} ${batchbuildST.time}" />
+      </antcall> 
+   </target>
+
+   <target name="asofdate" depends="batchinit">
+      <shellscript shell="bash" dir="${op.scripts.dir}" outputproperty="asofdateOutput">
+         ssh ${batchserverlogin} ${batchpath}/${asofdate}
+      </shellscript>
+      <condition property="isAsOfDateOK">
+         <contains string="${asofdateOutput}" substring="Success" casesensitive="false"/>
+      </condition>
+      <if>
+         <isset property="isAsOfDateOK"/>
+         <then>
+            <property name="emailNoticeForAsOfDate" value="As of Date Script Ran Successfully"/>
+            <echo message="${emailNoticeForAsOfDate}"/>
+            <antcall target="notifymail" >
+               <param name="mail.subject" value="${bp.emailmsg.header}${env_name}${bp.batchasofdatesuccess.subj}"/>
+               <param name="mail.logfile" value="${op.logs.dir}/${batchbuildST.time}-batch.log"/>
+               <param name="mail.message" value="${bp.batchasofdatesuccess.msg} ${batchbuildST.time}" />
+            </antcall>  
+            <echo message="${emailNoticeForAsOfDate}"/>
+         </then>
+         <else>
+            <property name="emailNoticeForAsOfDate" value="As of Date Script Failed"/>
+            <echo message="${emailNoticeForAsOfDate}"/>
+            <antcall target="notifymail" >
+               <param name="mail.subject" value="${bp.emailmsg.header}${env_name}${bp.batchasofdatefail.subj}"/>
+               <param name="mail.message" value="${bp.batchasofdatefail.msg} ${batchbuildST.time}" />
+            </antcall>  
+            <echo message="${emailNoticeForAsOfDate}"/>
+         </else>
+      </if>              
+   </target>  
+
+   <target name="onlinebuildreport" depends="init,get_rel_num">
+      <tstamp>
+         <format property="onlinebuildED.time" pattern="${op.datetime.format}"/>
+      </tstamp>
+      <property file="${basedir}/props/${view_name}Compile.properties" prefix="oop"/>
+      <!--
+      Because Jordan's script does not keep a list of what files are updated, I'm commenting this part out.
+      <loadfile property="fileslist" srcfile="${basedir}/tiersapps/${view_name}/logs/uptfiles.txt"/>
+      -->
+      <propertyfile	file="${op.bldreport.props}" comment="Harmony Build Report">
+         <entry key="${env_name}onlinepatchnumber"     default="0" type="int" operation="+" value="1"/>
+         <entry key="${env_name}onlinebuildstarttime"   value="${starttime}"/>
+         <entry key="${env_name}onlinebuildendtime"     value="${onlinebuildED.time}"/>
+         <entry key="${view_name}batchreleasenum"  value="${build_number}"/>
+      </propertyfile>	
+      <copy file="${op.templates.dir}/${op.bldrpthtml.template}" tofile="${op.bldreports.dir}/online-${starttime}.html" overwrite="true"/>
+      <replace file="${op.bldreports.dir}/online-${starttime}.html" propertyFile="${op.bldreport.props}" value="value not found in bldreport.properties"> 
+         <replacefilter token="@OBAT@" 	   			value="Online"/>
+         <replacefilter token="@env@" 	   			value="${env_name}"/>
+         <replacefilter token="@BPN@"  				property="${env_name}onlinepatchnumber"/> 	
+         <replacefilter token="@BN@"  				property="${view_name}onlinereleasenum"/>
+         <replacefilter token="@BT@" 				property="${env_name}onlinebuildstarttime"/>
+         <replacefilter token="@UPT@"  				property="${view_name}update"/>
+         <replacefilter token="@UPTT@"   			       property="${view_name}updatetime"/>
+         <replacefilter token="@C@"  				property="${view_name}onlinecompile"/>
+         <replacefilter token="@CT@"   				property="${view_name}onlinecompiletime"/>
+         <replacefilter token="@R@"  				property="${view_name}onlinermic"/>
+         <replacefilter token="@RT@"   				property="${view_name}onlinermictime"/>
+         <replacefilter token="@E@"  				property="${view_name}onlineear"/>
+         <replacefilter token="@ET@"   				property="${view_name}onlineeartime"/>
+         <replacefilter token="@D@"   				property="${env_name}onlinedeploy"/>
+         <replacefilter token="@DT@"   				property="${env_name}onlinedeploytime"/>
+         <replacefilter token="@S@"   				property="${env_name}onlineserverstart"/>
+         <replacefilter token="@ST@"   				property="${env_name}onlineserverstarttime"/>
+         <replacefilter token="@CL@"   				value="Not Applicable"/>
+         <replacefilter token="@CLT@" 				value=""/>
+         <replacefilter token="@BET@"   				property="${env_name}onlinebuildendtime"/>
+         <replacefilter token="@EURL@"   			       property="${env_name}onlineurl"/>
+         <!--<replacefilter token="@UPTF@"   			       value="${fileslist}"/>-->
+         <replacefilter token="@BV@"   				value="${view_name}"/>
+         <replacefilter token="@UPTFN@"   			       value="${oop.updatedFiles}"/>
+         <replacefilter token="@NODE@"   			       value="${onlinehostname}"/>
+         <replacefilter token="@SERV@"   			       value="${onlinehostserver}"/>
+      </replace>
+      <!--
+      <echo message="!!! Not attaching view log file !!!" />
+      <mail mailhost="${op.email.host}" mailport="${op.email.port}" 
+         messagemimetype="text/html" tolist="${op.email.tolist}" 
+         subject="${op.emailmsg.header}${env_name}${op.deploysucc.subj}"   
+         messagefile="${op.bldreports.dir}/online-${starttime}.html">
+            <from address="${op.email.from}"/>
+      </mail>
+      -->
+   </target>   
+   
+   <target name="batchbuildreport" depends="batchinit,get_rel_num">	
+      <tstamp>
+         <format property="batchbuildED.time" pattern="${op.datetime.format}"/>
+      </tstamp>
+      <property file="${basedir}/props/${env_name}Compile.properties" prefix="oop"/>
+      <!--
+      Because Jordan's script does not keep a list of what files are updated, I'm commenting this part out.
+      <loadfile property="fileslist" srcfile="${basedir}/tiersapps/${view_name}/logs/uptfiles.txt"/>
+      -->
+      <propertyfile file="${op.bldreport.props}" comment="Harmony Build Report">	
+         <entry key="${env_name}batchpatchnumber" 	default="0" type="int" operation="+" value="1"/>
+         <entry key="${env_name}batchbuildstarttime"	value="${batchbuildST.time}"/>
+         <entry key="${env_name}batchbuildendtime" 	value="${batchbuildED.time}"/>
+         <entry key="${view_name}batchreleasenum"  value="${build_number}"/>
+      </propertyfile>
+      <copy file="${op.templates.dir}/${op.bldrpthtml.template}" tofile="${op.bldreports.dir}/batch-${batchbuildST.time}.html" overwrite="true"/>
+      <replace file="${op.bldreports.dir}/batch-${batchbuildST.time}.html"  value="value not found in bldreport.properties" propertyFile="${op.bldreport.props}">
+         <replacefilter token="@OBAT@" 	   	value="Batch"/>
+         <replacefilter token="@env@" 	   		value="${env_name}"/>
+         <replacefilter token="@BPN@"  		property="${env_name}batchpatchnumber"/>     
+         <replacefilter token="@BN@"  			property="${view_name}batchreleasenum"/>
+         <replacefilter token="@BT@"  			property="${env_name}batchbuildstarttime"/>
+         <replacefilter token="@UPT@"  		property="${view_name}update"/>
+         <replacefilter token="@UPTT@"   		property="${view_name}updatetime"/>
+         <replacefilter token="@C@"  			property="${view_name}batchcompile"/>
+         <replacefilter token="@CT@"  			property="${view_name}batchcompiletime"/>
+         <replacefilter token="@R@"  			property="${view_name}batchRMIC"/>
+         <replacefilter token="@RT@"   		property="${view_name}batchRMICtime"/>
+         <replacefilter token="@E@"  			property="${view_name}batchjarcreation"/>
+         <replacefilter token="@ET@"  			property="${view_name}batchjarcreationtime"/>
+         <replacefilter token="@D@"   			property="${env_name}batchdeploy"/>
+         <replacefilter token="@DT@"   		property="${env_name}batchdeploytime"/>
+         <replacefilter token="@S@"   			value="NotApplicable"/>
+         <replacefilter token="@ST@"   		value=""/>
+         <replacefilter token="@CL@"   		property="${env_name}batchcleanupscript"/>
+         <replacefilter token="@CLT@" 			property="${env_name}batchcleanupscripttime"/>
+         <replacefilter token="@BET@"   		property="${env_name}batchbuildendtime"/>
+         <replacefilter token="@EURL@"   		value="${batchpath}"/>
+         <!--<replacefilter token="@UPTF@"   		value="${fileslist}"/>-->
+         <replacefilter token="@BV@"   		value="${view_name}"/>
+         <replacefilter token="@UPTFN@"   		value="${oop.updatedFiles}"/>
+         <replacefilter token="@NODE@"   		value="${batchhost}"	/>
+         <replacefilter token="@SERV@"   		value=""/>
+      </replace>
+      <!--
+      <echo message="!!! Not attaching view log file !!!"/>
+      <mail mailhost="${bp.email.host}"	mailport="${bp.email.port}" 
+         messagemimetype="text/html"    tolist="${bp.email.tolist}"
+         subject="${bp.emailmsg.header}${env_name}${bp.batchbldsucc.subj}"   
+         messagefile="${bp.bldreports.dir}/batch-${batchbuildST.time}.html" >
+            <from address="${bp.email.from}"/>
+      </mail>
+      -->
+   </target>
+
+   <target name="trackinit">
+      <delete dir="${op.trackwiseclasses.dir}" failonerror="false"/> 
+      <delete dir="${op.trackwisejar.dir}" failonerror="false"/>
+      <mkdir dir="${op.trackwiseclasses.dir}"/> 
+      <mkdir dir="${op.trackwisejar.dir}"/>
+   </target>
+
+   <target name="buildtrackwise" depends="trackinit">
+      <for list="${op.trackwise.list}" param="track">
+         <sequential>
+            <delete dir="${op.online.dir}/trackwiseclasses/${op.@{track}.name}"/>
+            <mkdir dir="${op.online.dir}/trackwiseclasses/${op.@{track}.name}"/>
+            <javac srcdir="${op.@{track}.src}" destdir="${op.trackwiseclasses.dir}/${op.@{track}.name}"
+               excludes="**/_EJS*,**/EJSRemote*,**/EJSState*,**/*_Stub*"
+               memoryInitialSize = "83886080" 
+               memoryMaximumSize = "1238860800"
+               debug="true"
+               fork = "true">
+                  <classpath refid="project.build.classpath"/>		
+            </javac> 
+            <copy todir="${op.trackwiseclasses.dir}/${op.@{track}.name}">
+               <fileset dir="${op.@{track}.src}" includes="**/*.java,**/*.properties"/>
+            </copy> 
+            <jar jarfile="${op.trackwisejar.dir}/${op.@{track}.name}.jar" basedir="${op.trackwiseclasses.dir}/${op.@{track}.name}"/>	
+         </sequential>
+      </for>
+   </target>  
+
+   <target name="javaDocGen" depends="get_rel_num">
+      <delete file="/var/apache/htdocs/JavaDocs_${build_number}_${view_name}"/>
+      <delete dir="${op.online.dir}/javadoc"/>
+      <mkdir dir="${op.online.dir}/javadoc"/>
+      <for list="${op.trackwise.list}" param="track">
+         <sequential>
+            <echo message="!!! javadoc... @{track} !!!"/>
+            <mkdir dir="${op.online.dir}/javadoc/@{track}"/>
+            <javadoc destdir="${op.online.dir}/javadoc/@{track}"
+               maxmemory="512M" 
+               windowtitle="TIERS ${build_number} ${view_name} API"
+               useexternalfile="yes"
+               breakiterator="yes">
+               <fileset dir="${op.@{track}.src}" defaultexcludes="yes">
+                  <include name="us/**/*.java"/>
+                  <exclude name="us/**/*Home.*"/>
+                  <exclude name="us/**/EJS.*"/>
+               </fileset>
+            </javadoc>
+         </sequential>
+      </for>
+      <shellscript shell="bash" dir="${op.scripts.dir}">
+         ln -s ${op.online.dir}/javadoc /var/apache/htdocs/JavaDocs_${build_number}_${view_name}
+      </shellscript>
+   </target>  
+</project>
+

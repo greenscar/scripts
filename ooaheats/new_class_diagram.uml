@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_pbbOcGy-Ed2t4YneC4UFaw" name="Cookbook">
+  <elementImport xmi:id="_pcT_QGy-Ed2t4YneC4UFaw">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_pcXCkGy-Ed2t4YneC4UFaw">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_pcXCkWy-Ed2t4YneC4UFaw">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_pcXCkmy-Ed2t4YneC4UFaw">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <elementImport xmi:id="__fVa8G4FEd2Sq-zgw6t0aw"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_sG1r0Gy-Ed2t4YneC4UFaw" name="Cookbook"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_t6kTQGy-Ed2t4YneC4UFaw" name="Recipe"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_8mbqwGy-Ed2t4YneC4UFaw" name="Ingredient"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BMjhUGy_Ed2t4YneC4UFaw" name="Step"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Rr1-QGy_Ed2t4YneC4UFaw" name="Measurement"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_m3cAAGzEEd2u0bGxdz9y7w" name="Category">
+    <ownedAttribute xmi:id="_oYdt4GzEEd2u0bGxdz9y7w" name="descr" aggregation="composite"/>
+    <ownedAttribute xmi:id="_oZ8UkGzEEd2u0bGxdz9y7w" name="id" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_KaBHsGzFEd2u0bGxdz9y7w" name="implements"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Tmv1IG4GEd2Sq-zgw6t0aw" name="contains" memberEnd="_TmwcMG4GEd2Sq-zgw6t0aw _TmxDQm4GEd2Sq-zgw6t0aw">
+    <ownedEnd xmi:id="_TmwcMG4GEd2Sq-zgw6t0aw" name="src" type="_sG1r0Gy-Ed2t4YneC4UFaw" association="_Tmv1IG4GEd2Sq-zgw6t0aw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TmxDQW4GEd2Sq-zgw6t0aw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TmxDQG4GEd2Sq-zgw6t0aw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_TmxDQm4GEd2Sq-zgw6t0aw" name="dst" type="_t6kTQGy-Ed2t4YneC4UFaw" aggregation="shared" association="_Tmv1IG4GEd2Sq-zgw6t0aw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TmxqUG4GEd2Sq-zgw6t0aw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TmxDQ24GEd2Sq-zgw6t0aw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Package>

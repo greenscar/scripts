@@ -1,0 +1,7 @@
+what,kind,bundleId,bundleVersion,description,time
+opened,editor,com.aptana.ide.server.portal,1.2.7.024747,com.aptana.ide.server.portal.ui.MyAptanaEditor,1249000796981
+started,bundle,com.aptana.ide.editors,1.2.7.024747,com.aptana.ide.editors,1249000797098
+started,bundle,com.aptana.ide.scripting,1.2.7.024747,com.aptana.ide.scripting,1249000797098
+started,bundle,com.aptana.ide.search,1.2.7.024747,com.aptana.ide.search,1249000797424
+started,bundle,org.eclipse.eclipsemonkey,1.2.7.024747,org.eclipse.eclipsemonkey,1249000803553
+started,bundle,org.eclipse.eclipsemonkey.lang.javascript,1.2.7.024747,org.eclipse.eclipsemonkey.lang.javascript,1249000803675

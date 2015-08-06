@@ -1,0 +1,101 @@
+#Excel file name and full path
+userProvisionInputFilepath=/TIERS/IPT/se/data/TIERSUsersTest.xls
+
+#Excel cell order (Cell number starts at 0)
+UserType=0
+Prefix=1
+First=2
+Middle=3
+Last=4
+Suffix=5
+Gender=6
+Email=7
+Phone=8
+Extension=9
+Fax=10
+UserIdPrefix=11
+UserId=12
+TamRole=13
+CHIPAccess=14
+PrimaryLocation=15
+TiersRole=16
+RoleLocations=17
+RptAccessLevel=18
+EmpNumber=19
+BjnNumber=20
+MailCode=21
+ExpLevelCd=22
+JobTitle=23
+EmployeeType=24
+Unit=25
+Languages=26
+Programs=27
+TOAs=28
+AssociatedOffices=29
+ZipCodes=30
+Counties=31
+Facilities=32
+BeginDt=33
+EndDt=34
+Maxeieid=35
+MaxeieRole=36
+MaxeieAccessType=37
+MaxeieOrg=38
+Maxechipid=39
+MaxechipRole=40
+MaxechipAccessType=41
+MaxechipOrg=42
+
+#Excel Data Row start Number (Row starts from 0. Skip the header rows)
+dataRowStartNumber=2
+
+#Output Excel File Name (run date and .xls will be added at runtime: <fileName>_date.xls)
+userProvisionOutputFilepath=/TIERS/IPT/se/data/UserProvisionReport
+
+#To disable TAM user creation, set the following value to false
+createTAMuser=true
+
+#Default TAM password
+defaultTAMpassword=changeme123
+
+#To enable(true)/disable(false) TIERS/MOR creation (<UserType>_MOR_Required)
+createTiersUser=true
+TAA_MOR_Required=true
+Internal_MOR_MOR_Required=true
+Internal_No_MOR_MOR_Required=false
+External_MOR_Required=false
+
+#To disable email notification, set the following value to false
+sendEmail=true
+
+#Email Properties
+EmailHost=IEDAMW011
+EmailFrom=security.notifications@txaccess.com
+EmailSubject=TAA Application Account Information
+
+#Email Text Variable Identifier for UserId and Password
+VariableIdentifier=?
+
+#TAA Users Email Text (<UserType>_Email_text)
+TAA_Email_Text=Here are your State Portal and TIERS login credentials -\n\nUser ID: ?\nPassword: ?\n\nBe sure to change your password as soon as you log in. You must choose a password that is at least 8 characters long, has at least 2 numbers and no consecutive repeating letters.\n\nThanks,\nTexas ACCESS Alliance.
+
+#State Internal Users Email Text
+Internal_Email_Text=Here are your State Portal and TIERS login credentials -\n\nUser ID: ?\nPassword: ?\n\nBe sure to change your password as soon as you log in. You must choose a password that is at least 8 characters long, has at least 2 numbers and no consecutive repeating letters.\n\nIn addition, please have your supervisor create your account in the TIERS Managed Office Resources (MOR). You will not have access to TIERS until your supervisor creates your account in TIERS MOR.\n\nThanks,\nTexas ACCESS Alliance.
+
+#State External Users Email Text
+External_Email_Text=Here are your State Portal and TIERS login credentials -\n\nUser ID: ?\nPassword: ?\n\nBe sure to change your password as soon as you log in. You must choose a password that is at least 8 characters long, has at least 2 numbers and no consecutive repeating letters.\n\nThanks,\nTexas ACCESS Alliance.
+
+#State Internal_No_MOR Users Email Text
+Internal_No_MOR_Email_Text=Here are your State Portal and TIERS login credentials -\n\nUser ID: ?\nPassword: ?\n\nBe sure to change your password as soon as you log in. You must choose a password that is at least 8 characters long, has at least 2 numbers and no consecutive repeating letters.\n\nThanks,\nTexas ACCESS Alliance.
+
+#State Internal_MOR Users Email Text
+Internal_MOR_Email_Text=Here are your State Portal and TIERS login credentials -\n\nUser ID: ?\nPassword: ?\n\nBe sure to change your password as soon as you log in. You must choose a password that is at least 8 characters long, has at least 2 numbers and no consecutive repeating letters.\n\nIn addition, please have your supervisor create your account in the TIERS Managed Office Resources (MOR). You will not have access to TIERS until your supervisor creates your account in TIERS MOR.\n\nThanks,\nTexas ACCESS Alliance.
+
+#Maxeie DB Connection Parameters
+driver=oracle.jdbc.driver.OracleDriver
+Maxeie_URL=jdbc:oracle:thin:@iedadu103.txaccess.net:1532:maxq2
+Maxeie_USER=TAAUSERPROV
+Maxeie_PASSWORD=TAAUSERPROV_maxqa2
+
+#Maxeie user properties
+default_org = TAA Staff

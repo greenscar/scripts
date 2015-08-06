@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<!-- (c) Copyright by Phurnace Software, 2008 All Rights Reserved. -->
+
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+<template>
+        <!-- Environment initialization
+            PH_OUTPUT      Location of Phurnace output.txt file
+        -->
+        <env name="PH_OUTPUT" value="$PHURNACEDIR\output.txt"/>
+    </template>
+<interface>
+        <run command="add_ph_bom" params="D0000010 $BF_TAG" dir="/" timeout="360"/>
+</interface>
+<command name="add_ph_bom">
+   <execute>
+      cat $PHOUTPUT | grep Log4j
+   </execute>
+   <resultsblock>
+      <!-- Isolate important information from Phurnace output log -->
+      <!-- works for websphere <match pattern="Log4jExporter.java\:84\) - (.+?)\s(.+?)$"> -->
+      <match pattern="Log4jExporter\ -\ (.+)\s{5}(installed)\s{5}(.+)\s{5}(.+)$">
+         <bom category="PhurnaceInstall" section="install">
+             <field name="mbean" text="$1"/>
+             <field name="result" text="$2"/>
+             <field name="attribute" text="$3"/>
+             <field name="newvalue" text="$4"/>
+         </bom>
+      </match>
+      <match pattern="Log4jExporter\ -\ (.+)\s{5}(updated)\s{5}(.+)\s{5}(.+)\s{5}(.+)\s{5}(.+)$">
+         <bom category="PhurnaceUpdate" section="update">
+             <field name="mbean" text="$1"/>
+             <field name="operation" text="$2"/>
+             <field name="type" text="$3"/>
+             <field name="attribute" text="$4"/>
+             <field name="prevvalue" text="$5"/>
+             <field name="newvalue" text="$6"/>
+         </bom>
+      </match>
+   </resultsblock>
+</command>
+
+<!-- Reports a brief summary of the mbean changes that are included in this deployment. -->
+
+<bomformat category="PhurnaceInstall" title="Phurnace Install">
+   <section name="install">
+       <field order="1" name="mbean" title="MBean"/>
+       <field order="2" name="result" title="Result"/>
+       <field order="3" name="attribute" title="Attribute"/>
+       <field order="4" name="newvalue" title="NewValue"/>
+   </section>
+</bomformat>
+<bomformat category="PhurnaceUpdate" title="Phurnace Updates">
+   <section name="update">
+       <field order="1" name="mbean" title="MBean"/>
+       <field order="2" name="operation" title="Operation"/>
+       <field order="3" name="type" title="Type"/>
+       <field order="4" name="attribute" title="Attribute"/>
+       <field order="5" name="prevvalue" title="Prev Value"/>
+       <field order="6" name="newvalue" title="New Value"/>
+   </section>
+</bomformat>
+</PROJECT_INTERFACE>
+

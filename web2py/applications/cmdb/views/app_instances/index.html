@@ -1,0 +1,37 @@
+
+{{extend 'layout.html'}}
+<h1>App Instances</h1>
+<table border="1px">
+   <tr>
+      <th>Edit</th>
+      <th>{{=A('CUSTOMER', _href=URL(r=request, args="client"))}}</th>
+      <th>{{=A('GROUP', _href=URL(r=request, args="group_name"))}}</th>
+      <th>{{=A('PROCESS', _href=URL(r=request, args="service_name"))}}</th>
+      <th>{{=A('APP', _href=URL(r=request, args="app_name"))}}</th>
+      <th>{{=A('SERVER', _href=URL(r=request, args="mbean"))}}</th>
+      <th>DB</th>
+      <th>Alive Check</th>
+   </tr>
+   {{ x = 0 }}
+   {{for instance in instances:}}
+   {{if x % 2 == 0:}}
+   <tr class="grey">
+   {{else:}}
+   <tr>
+   {{pass}}
+   {{ x = x + 1 }}
+      {{=TD(A('EDIT', _href=URL(r=request, f='edit', args=instance.app_instances.id)))}}
+      {{=TD(instance.customers.name)}}
+      {{=TD(instance.groups.name)}}
+      {{=TD(instance.processes.name)}}
+      {{=TD(instance.apps.name)}}
+      {{=TD(instance.servers.name)}}
+      {{=TD(instance.dbs.name)}}
+      {{if instance.apps.alive_check != "":}}
+      {{=TD(A('Alive Check', _href="http://" + instance.servers.name + ".sea1.com:" + instance.process_instances.http_port + "/" + instance.apps.alive_check, _target='new'))}}
+      {{else:}}
+      {{=TD("")}}
+      {{pass}}
+   </tr>
+   {{pass}}
+</table>

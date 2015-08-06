@@ -1,0 +1,13 @@
+timeout.length		= 60
+timeout.frequency	= 0
+
+dbms.userId 		=TIERS3ATRNTEST2CON
+dbms.password 		=G05pur5G0
+
+ 
+context.factory 	= com.ibm.websphere.naming.WsnInitialContextFactory
+dbms.source 		= jdbc/tiers3DS
+dbms.provider 		= iiop:///
+
+dbms.driver 		= oracle.jdbc.driver.OracleDriver
+dbms.url 		= jdbc:oracle:thin:@iedadu002:1521:trtstolt

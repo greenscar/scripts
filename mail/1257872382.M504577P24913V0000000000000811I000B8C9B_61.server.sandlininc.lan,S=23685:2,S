@@ -1,0 +1,277 @@
+Return-Path: <james@caffeinewebdesign.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id F2CED9006A
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 08:08:43 -0500 (CDT)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Bj0Itc7k0cvA for <james@sandlininc.com>;
+	Sat, 23 Aug 2008 08:08:32 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 36FCB906D9
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 07:56:05 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Sat, 23 Aug 2008 07:47:43 -0500
+Received: from sandlininc.com [74.55.232.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Sat, 23 Aug 2008 07:56:05 -0500 (CDT)
+Received: from cpe-66-68-52-223.austin.res.rr.com ([66.68.52.223]:63032 helo=[10.0.0.9])
+	by maxserv.yourhostdns.com with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.69)
+	(envelope-from <james@caffeinewebdesign.com>)
+	id 1KWsWm-00054e-Lj
+	for james@sandlininc.com; Sat, 23 Aug 2008 07:47:43 -0500
+Resent-From: James Sandlin <james@caffeinewebdesign.com>
+Resent-To: james@sandlininc.com
+Resent-Date: Sat, 23 Aug 2008 07:47:24 -0500
+Resent-Message-Id: <48B006DC.1060206@caffeinewebdesign.com>
+Resent-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.16) Gecko/20080724 Thunderbird/2.0.0.16
+X-Mozilla-Keys:                                                                                 
+Received: from sendmail.mwave.com ([12.155.231.199] helo=sendmail1.ansoncomp.com)
+	by johnny.yourhostdns.com with esmtp (Exim 4.68)
+	(envelope-from <bounce@mwave.com>)
+	id 1IckKh-0005oV-Py
+	for james@caffeinewebdesign.com; Tue, 02 Oct 2007 12:10:51 -0400
+Received: from SENDMAILDB ([192.168.100.63]) by sendmail1.ansoncomp.com with Microsoft SMTPSVC(6.0.3790.3959);
+	 Tue, 2 Oct 2007 09:16:39 -0700
+From: mwave.com Promotions<promotion@mwave.com>
+To: james@caffeinewebdesign.com
+Message-Id: <20071002091639.38139@mwave.com>
+Subject: Mwave Hot Deals
+Date: Tue, 2 Oct 2007 09:16:39 -0700
+MIME-Version: 1.0
+X-UNIQUEID: james@caffeinewebdesign.com
+Reply-To: shopping@mwave.com
+Content-Type: multipart/alternative; boundary="AlternativeBoundary.22222222.22222222"
+X-OriginalArrivalTime: 02 Oct 2007 16:16:39.0315 (UTC) FILETIME=[9CC95E30:01C8050F]
+
+--AlternativeBoundary.22222222.22222222
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 8bit
+
+
+
+--AlternativeBoundary.22222222.22222222
+Content-Type: text/html; charset="ISO-8859-1"
+Content-Transfer-Encoding: 8bit
+
+<html>
+<head>
+<title>Mwave Hot Deals</title>
+<style>
+.mainlink	{font-family:arial; font-size:12px; font-weight:normal;}
+.textlink	{font-family:arial; font-size:12px; font-weight:normal;}
+.maintext	{font-family:arial; font-size:12px; font-weight:normal;}
+.maintitle	{font-family:arial; font-size:14px; font-weight:bold;}
+.price		{font-family:arial; font-size:11px; font-weight:bold; color:#cc0000;}
+#specboxon 	{border:1px solid #D6DAFF;
+		 padding:3px;
+		 background: #ffffff;}
+.btitle 	{ font-family:verdana;font-size:15px;font-weight:bold;color:#1B478F;}
+.bttext 	{ font-family:verdana;font-size:12px;color:#1B478F;font-weight:normal;line-height:16px; }
+.btext 		{ font-family:verdana;font-size:12px;font-weight:bold;color:#1B478F; }
+.ptext 		{ font-family:Arial;font-size:11px;font-weight:bold;color:#EABD07; }
+.rtext 		{ font-family:Arial;font-size:11px;font-weight:bold;color:#cc0000; }
+.smtext 	{ font-family:Arial;font-size:9px;font-weight:bold;color:#000000; }
+
+</style>
+</head>
+<BODY BGCOLOR="#FFFFFF" TOPMARGIN="0">
+<table WIDTH="640" style="border:0px solid #cccccc;" CELLSPACING="0" CELLPADDING="5" ALIGN="CENTER"  bgcolor="#ffffff">
+<tr><td nowrap VALIGN=center align=center>
+<table border="0" width="640" cellspacing="0" cellpadding="3" align=center style="border-collapse: collapse" bordercolor="#111111" bgcolor="#ffffff">
+<tr><td nowrap VALIGN=center align=center><A href="http://www.mwave.com/mwave/skuinc.hmx?sku=index.hmx&promo=MP"><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/emhead640.jpg" width="640" height="68" border="0" alt="Mwave.com Newsletter"></a></td>
+</tr></table>
+<table WIDTH="624" BORDER="0" CELLSPACING="0" CELLPADDING="0" ALIGN="CENTER"  bgcolor="#ffffff">
+<Tr><td valign=top>
+<table border="0" width="640" cellpadding="0" cellspacing="0" align=center bgcolor="#ffffff">
+<tr><td width="10%" nowrap align=center class=etitlep height="15"><!-- ImageReady Slices (Untitled-1) -->
+<img src="http://www.mwave.com/mwave/images/email/emmenu.gif" width="640" height="24" border="0" alt="" usemap="#emmenu_Map">
+<map name="emmenu_Map">
+<area shape="rect" alt="Clearance" coords="553,7,619,16" href="http://www.mwave.com/mwave/skuinc.hmx?sku=dosearchcr.hmx&promo=MP" target="_top">
+<area shape="rect" alt="Instant Rebates" coords="431,7,432,16" href="http://www.mwave.com/mwave/skuinc.hmx?sku=dosearchmd.hmx&promo=MP" target="_top">
+<area shape="rect" alt="Instant Rebates" coords="434,7,478,16" href="http://www.mwave.com/mwave/skuinc.hmx?sku=dosearchmd.hmx&promo=MP" target="_top">
+<area shape="rect" alt="Instant Rebates" coords="482,7,526,16" href="http://www.mwave.com/mwave/skuinc.hmx?sku=dosearchmd.hmx&promo=MP" target="_top">
+<area shape="rect" alt="Hot Sellers" coords="331,7,355,16" href="http://www.mwave.com/mwave/skuinc.hmx?sku=viewproductstop.hmx&promo=MP" target="_top">
+<area shape="rect" alt="Hot Sellers" coords="358,7,399,16" href="http://www.mwave.com/mwave/skuinc.hmx?sku=viewproductstop.hmx&promo=MP" target="_top">
+<area shape="rect" alt="Free Shipping Items" coords="218,7,241,16" href="http://www.mwave.com/mwave/Viewproduct.asp?PID=FREESH" target="_top">
+<area shape="rect" alt="Free Shipping Items" coords="245,7,294,16" href="http://www.mwave.com/mwave/Viewproduct.asp?PID=FREESH" target="_top">
+<area shape="rect" alt="Goto Mwave Catalog" coords="11,7,64,16" href="http://www.mwave.com/mwave/skuinc.hmx?sku=main.hmx&promo=MP" target="_top">
+<area shape="rect" alt="Bargain Basement" coords="83,7,132,16" href="http://www.mwave.com/mwave/skuinc.hmx?sku=barbase.hmx&promo=MP" target="_top">
+<area shape="rect" alt="Bargain Basement" coords="137,7,185,16" href="http://www.mwave.com/mwave/skuinc.hmx?sku=barbase.hmx&promo=MP" target="_top">
+<area shape="rect" alt="Bargain Basement" coords="187,7,194,16" href="http://www.mwave.com/mwave/skuinc.hmx?sku=barbase.hmx&promo=MP" target="_top">
+</map>
+<!-- End ImageReady Slices --></td>
+</tr>
+</table>
+
+<table border="0" width="640" cellspacing="0" cellpadding="0" align=center>
+<tr>
+<td valign=top align=center><font face="arial" size="1" color="#000000">
+** You are receiving this e-mail from mwave.com because you have requested to receive our latest promotions and discounts via e-mail. If you do not wish to receive future promotions, please visit the following link to be removed:
+<a href="http://www.mwave.com/mwave/emailremove.asp?email=james@caffeinewebdesign.com&pgid=process">Remove E-mail</a> ** If you have any questions, please e-mail <a href="mailto:shopping@mwave.com">shopping@mwave.com</a> or <a href="mailto:service@mwave.com">service@mwave.com</a>. Please do not reply to this e-mail.</font><br><br></td>
+</tr></table>
+
+
+
+
+<table width="640" border="0" cellspacing="5" cellpadding="0" align="center">
+
+<!---- 1st Row---->
+<tr>
+<td width="25%" id='specboxon' align='center' valign='top'><a href='http://www.mwave.com/mwave/skuinc.hmx?sku=3756055&promo=MP'><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/3756055.jpg" border="0" width="100" height="100" alt="Logitech Quickcam Fusion USB Webcam"></a><br />
+<a href='http://www.mwave.com/mwave/skuinc.hmx?sku=3756055&promo=MP' class='mainlink'><font size="2">Logitech Quickcam Fusion USB Webcam</a></font><Br>
+<font size="1" color="#cc0000"><span class=price>$11 Mwave Discount<br>$40 Mail-in Rebate<br>Super Deal! $69.00</span></font></td>
+
+<td width="25%" id='specboxon' align=center valign='top'><a href='http://www.mwave.com/mwave/skuinc.hmx?sku=3868642&promo=MP'><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/3868642.jpg" border="0" width="100" height="100" alt="Plantronics CS55 1.9GHZ Wireless Headset Office System"></a><br />
+<a href='http://www.mwave.com/mwave/skuinc.hmx?sku=3868642&promo=MP' class='mainlink'><font size="2">Plantronics CS55 1.9GHZ Wireless Headset Office System</a></font><Br>
+<font size="1" color="#cc0000"><span class=price>$10 Mwave Discount<br>Super Low Price! $169.87</span></font></td>
+
+<td width="25%" id='specboxon' align=center valign='top'><a href='http://www.mwave.com/mwave/skuinc.hmx?sku=3533562&promo=MP'><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/3533562.jpg" border="0" width="100" height="100" alt="Logitech 505Watt Speaker System w/Digital Dolby"></a><br />
+<a href='http://www.mwave.com/mwave/skuinc.hmx?sku=3533562&promo=MP' class='mainlink'><font size="2">Logitech 505Watt Speaker System w/Digital Dolby</a></font><Br>
+<font size="1" color="#cc0000"><span class=price>$10 Mwave Discount<br>New Low Price! $267.84</span></font></td>
+
+<td width="25%" id='specboxon' align=center valign=top><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA69920&promo=MP"><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/aa69920.jpg" border="0" width="100" height="100" alt="Sony SATA 18X DVD-RW & 12X Ram Drive w/SW"><br>
+<a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA69920&promo=MP" class=mainlink><font size="2">Sony SATA 18X DVD-RW & 12X Ram Drive w/SW</a></font><Br>
+<font size="1" color="#cc0000"><span class=price>New Product! $31.90</span></font></td>
+</tr>
+<!---- 2nd Row---->
+
+<tr>
+<td width="25%" id='specboxon' align=center valign='top'><a href='http://www.mwave.com/mwave/skuinc.hmx?sku=AA70180&promo=MP'><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/aa70180.jpg" border="0" width="100" height="100" alt="Fuchiteck ATSC Set-Top HDTV TV Tuner 1080i"></a><br />
+<a href='http://www.mwave.com/mwave/skuinc.hmx?sku=AA70180&promo=MP' class='mainlink'><font size="2">Fuchiteck ATSC Set-Top HDTV TV Tuner 1080i</a></font><Br>
+<font size="1" color="#cc0000"><span class=price>$20 Instant Discount<br>Now Only! $115.00</span></font></td>
+
+<td width="25%" id='specboxon' align='center' valign='top'><a href='http://www.mwave.com/mwave/skuinc.hmx?sku=aa71764&promo=MP'><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/AA71764.jpg" border="0" width="100" height="100" alt="KDS 24-inch Widescreen LCD Monitor w/1920x1200 Display"></a><br />
+<a href='http://www.mwave.com/mwave/skuinc.hmx?sku=aa71764&promo=MP' class='mainlink'><font size="2">KDS 24-inch Widescreen LCD Monitor w/1920x1200 Display</a></font><Br>
+<font size="1" color="#cc0000"><span class=price>FREE HDMI Cable! $399.90</span></font></td>
+
+<td width="25%" id='specboxon' align='center' valign='top'><a href='http://www.mwave.com/mwave/skuinc.hmx?sku=ba24287&promo=MP'><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/ba24287.jpg" border="0" width="100" height="100" alt="Thermaltake Aguila Mid Tower Case w/No Power Supply"></a><br />
+<a href='http://www.mwave.com/mwave/skuinc.hmx?sku=ba24287&promo=MP' class='mainlink'><font size="2">Thermaltake Aguila Mid Tower Case w/No Power Supply</a></font><Br>
+<font size="1" color="#cc0000"><span class=price>$60 Mail-In Rebate<br>Low Price! $139.00</span></font></td>
+
+<td width="25%" id='specboxon' align='center' valign='top'><a href='http://www.mwave.com/mwave/skuinc.hmx?sku=ba24076&promo=MP'><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/BA24076.jpg" border="0" width="100" height="100" alt="OCZ 2GB Memory Kit (1GB x 2) DDR2 Dimm w/Reaper HPC"></a><br />
+<a href='http://www.mwave.com/mwave/skuinc.hmx?sku=ba24076&promo=MP' class='mainlink'><font size="2">OCZ 2GB Memory Kit (1GB x 2) DDR2 Dimm w/Reaper HPC</a></font><Br>
+<font size="1" color="#cc0000"><span class=price>$40 Mail-In Rebate<br>Now Only! $102.50</span></font></td>
+</tr>
+
+<!--- 3rd Row--->
+<tr>
+<td width="25%" id='specboxon' align='center' valign='top'><a href='http://www.mwave.com/mwave/skuinc.hmx?sku=ba24105&promo=MP'><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/ba24105.jpg" border="0" width="100" height="100" alt="Shuttle AMD Athlon 64 Bare System w/nVidia GeForce 7025 Chipset"></a><br />
+<a href='http://www.mwave.com/mwave/skuinc.hmx?sku=ba24105&promo=MP' class='mainlink'><font size="2">Shuttle AMD Athlon 64 Bare System w/nVidia GeForce 7025 Chipset</a></font><Br>
+<font size="1" color="#cc0000"><span class=price>Nice Deal! $209.00</span></font></td>
+
+<!--Free Shipping Deals-->
+
+<td width="25%" id='specboxon' align='center' valign='top'><a href='http://www.mwave.com/mwave/skuinc.hmx?sku=BA23477&promo=MP'><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/BA23477.jpg" border="0" width="100" height="100" alt="Enermax Phoenix ATX Mid-Tower Case w/o PSU"></a><br />
+<a href='http://www.mwave.com/mwave/skuinc.hmx?sku=BA23477&promo=MP' class='mainlink'><font size="2">Enermax Phoenix ATX Mid-Tower Case w/o PSU</a></font><Br>
+<font size="1" color="#cc0000"><span class=price>FREE GROUND SHIPPING!<BR>Now Only! $75.00</span></font></td>
+
+<td width="25%" id='specboxon' align=center valign=top><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=BA23940&promo=MP"><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/ba23940.jpg" border="0" width="100" height="100" alt="Enermax Infiniti ATX SLI Certified Power Supply"><br>
+<a href="http://www.mwave.com/mwave/skuinc.hmx?sku=BA23940&promo=MP" class=mainlink><font size="2">Enermax Infiniti ATX SLI Certified Power Supply</a></font><Br>
+<font size="1" color="#cc0000"><span class=price>FREE GROUND SHIPPING<br>Great Price! $199.00</span></font></td>
+
+<td width="25%" id='specboxon' align=center valign=top><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=3971522&promo=MP"><img src="http://i59.photobucket.com/albums/g309/mwavemarketing/3971522.jpg" border="0" width="100" height="100" alt="Ricoh SP Color Laser MFP Printer/Copier/Fax/Scanner"></a><br>
+<a href="http://www.mwave.com/mwave/skuinc.hmx?sku=3971522&promo=MP" class=mainlink><font size="2">Ricoh SP Color Laser MFP Printer/Copier/Fax/Scanner</a></font><br>
+<font size="1" color="#cc0000"><span class=price>FREE GROUND SHIPPING!<BR>$50 Mwave Discount<br>Limited Offer! $599.00</span></font></td>
+</tr>
+
+</table>
+<!----------------Exclusive Coupon ----------------------------------->
+<br><table WIDTH="640" cellpadding="0" cellspacing="0" BORDER="0" align="center" bgcolor="#ffffff">
+
+<tr><td width="100%"><font size="2"><span class=maintitle><b>MWAVE FORUMS!</b></span>
+<br><span class=maintext>Be sure to check out our forums on mwave.com! A place where you'll find great information! Get <b>technical and non-technical advice</b>, <b>ask product questions</b>, and <b>post your own product experiences</b> and share your knowledge with other mwave customers like yourself. <br><b>Click here to check out our new :</b> <a href="http://forum.mwave.com"><img src="http://www.mwave.com/mwave/images/email/forumlogo.gif" BORDER="0" width="200" height="24" align=absmiddle alt="forum.mwave.com"></a></span></font></td></tr>
+</table>
+<Br>
+<table WIDTH="640" height="32" cellpadding="0" cellspacing="0" BORDER="0" bgcolor="#ffffff" align=center>
+<tr><td nowrap width="100%"><span class=maintitle><b>Mwave Rewards!  <i>EXCLUSIVE</i> - Email Coupons!</b></span></td>
+</tr>
+</table>
+<table width="640" border="0" cellspacing="0" cellpadding="0" align=center>
+
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA71556&promo=MP" class=textlink><font size="2">Olevia 232T 32-inch High Definition LCD 1080i HDTV $559.00</a></font></td></tr>
+<tr><td valign=top height="25"><font size="2"><span class=price>$20 OFF!</span><span class=maintext> with Coupon Code: <b>OLE20E28</b> - Expires: 10/05/07</a></span></font></td></tr>
+<tr><td valign=top height="25"><font size="2"><span class=price>PRICE AFTER REBATE! $539.00!</span></tr></td>
+
+
+<tr><td><small>*All Coupons are available for a limited time only! Quantities may be limited!</small></td></tr>
+<tr><td height="5"> </td></tr></table>
+<p>
+
+<!------------------Clearance --------------------->
+
+<table WIDTH="640" height="32" cellpadding="0" cellspacing="0" BORDER="0" bgcolor="#ffffff" align=center>
+<tr><td nowrap width="100%"><span class=maintitle><b>Clearance</b></span> - <A href="http://www.mwave.com/mwave/skuinc.hmx?sku=dosearchcr.hmx&promo=MP" class=textlink>See more Clearance Items</a></span></td>
+</tr>
+</table>
+<table width="640" border="0" cellspacing="0" cellpadding="0" align=center>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA46240&promo=MP" class=textlink><font size="2">DATASTOR URRCIP REMOTE REBOOT CARD $74.00</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=CA48030&promo=MP" class=textlink><font size="2">SEAGATE 320GB ST3320620A UATA100 7200RPM 16MB $56.00</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA67850&promo=MP" class=textlink><font size="2">HOMEDICS DOUBLE SHIATSU MASSAGING CUSHION $109.90</A></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=3000697&promo=MP" class=textlink><font size="2">ALURATEK 4-PORT USB KVM SWITCH W/ USB & 4 CABLES $152.95</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=BA22426&promo=MP" class=textlink><font size="2">I STAR TC-580PD3 580W ATX 12V UL & FCC POWER SUPPLY $75.00</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA65840&promo=MP" class=textlink><font size="2">FUCHITECK 7-inch DIGITAL PHOTO FRAME w/REMOTE CONTROL $69.90</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=CC69193&promo=MP" class=textlink><font size="2">IBM 2.0GHZ 1MB L3 CACHE UPGRADE W/XEON PROCESSOR MP $99.00</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=CC34861&promo=MP" class=textlink><font size="2">HP 2.12 GBPS PCI-X 2-CHANNEL LC MULTI-MODE FIBRE CHANNEL $699.00</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA52550&promo=MP" class=textlink><font size="2">WESTINGHOUSE 5.6-inch DIGITAL PHOTO FRAME w/3 FRAME COVERS $89.90</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA66110&promo=MP" class=textlink><font size="2">FIEON 2.5-inch MP3/MP4 MULTI-MEDIA PLAYER 1GB w/VOICE RECODER $95.00</a></font></td></tr>
+<tr><td><small>*All items are available on a first come, first serve basis. Limited quantities are available.</small></td></tr>
+<tr><td height="5"> </td></tr></table>
+<p>
+<table WIDTH="640" height="32" cellpadding="0" cellspacing="0" BORDER="0" bgcolor="#ffffff" align="center">
+<tr><td nowrap width="100%"><span class=maintitle><b>More Hot Deals...</b></span></td>
+</tr>
+</table>
+<table width="640" border="0" cellspacing="0" cellpadding="0" align=center>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=BA24262&promo=MP" class=textlink><font size="2">PATRIOT 2GB KIT (1GB x 2) PC2-8500 DDR2 DIMM $143.00</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=BA08605&promo=MP" class=textlink><font size="2">CRUCIAL 512MB PC2700 333MHZ CL2.5 184-PIN DDR $24.50</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA71888&promo=MP" class=textlink><font size="2">HITACHI 1TB ENTERPRISE SATA2 HARD DRIVE 3.0GB/S $389.00</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA71752&promo=MP" class=textlink><font size="2">PIONEER BLU-RAY SATA COMBO DVD RW+ BLU-RAY PLAYER W/SW $279.90</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=BA21255&promo=MP" class=textlink><font size="2">KINGSTON KVR333X64C25/1G 1024MB PC2700 333MHZ CL2.5 DDR DIMM $52.50</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=BA24133&promo=MP" class=textlink><font size="2">GIGABYTE GA-G31MX-S2 MATX MOTHERBOARD W/INTEL G31 CHIPSET $78.00</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=BA24258&promo=MP" class=textlink><font size="2">SHUTTLE SG31G2-BK INTEL G31 CHIPSET CORE 2 DUO BARE SYSTEM $251.50</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=4411529&promo=MP" class=textlink><font size="2">SAMSUNG 21.6-INCH LCD MONITOR WIDESCREEN W/1680X1050 DISPLAY $245.00</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA71764&promo=MP" class=textlink><font size="2">KDS K-24MDWB 24-INCH Widescreen LCD MONITOR W/1920x1200 DISPLAY $399.90</a></font></td></tr>
+<tr><td valign=top height="25"><a href="http://www.mwave.com/mwave/skuinc.hmx?sku=AA71062&promo=MP" class=textlink><font size="2">ONCOURSE OCN6 5000 NORTH AMERICA DELUXE EDITION GPS SOFTWARE $99.90</a></font></td></tr>
+</table>
+
+<table width="640" border="0" cellspacing="0" cellpadding="0" align=center>
+<tr><td height="1" bgcolor="#000000"><img src="http://www.mwave.com/mwave/spacer.gif" border="0" height="1"></td></tr>
+<tr><td height="5"> </td></tr>
+<tr><td valign=top>
+<table WIDTH="640" cellpadding="0" cellspacing="0" BORDER="0" align="center">
+<tr><td nowrap width="100%"><span class=maintext><font size="2"><b>Need Help? Here are some important links:</b><Br><Br>
+Business Hours / Contact Information <a href="http://www.mwave.com/mwave/contactus.asp?">View our Contact Information</a><Br><Br>
+View or Update <a href="https://www.mwave.com/mwave/customerprofile.asp?">Mwave Account.</a><Br><Br>
+Check <a href="https://www.mwave.com/mwave/OrderStatusCHK.asp?">Order Status / History.</a></font>
+</td></tr></table>
+</td></tr>
+<tr><td height="5"> </td></tr>
+<tr><td height="1" bgcolor="#000000"><img src="http://www.mwave.com/mwave/spacer.gif" border="0" height="1"></td></tr>
+<tr><td height="5"> </td></tr>
+<tr>
+<td valign=top align=center class=maintext>
+** You are receiving this e-mail from mwave.com because you have requested to receive our latest promotions and discounts via e-mail. If you do not wish to receive future promotions, please visit the following link to be removed:
+<a href="http://www.mwave.com/mwave/emailremove.asp?email=james@caffeinewebdesign.com&pgid=process">Remove E-mail</a> ** If you have any questions, please e-mail <a href="mailto:shopping@mwave.com">shopping@mwave.com</a> or <a href="mailto:service@mwave.com">service@mwave.com</a>. Please do not reply to this e-mail.</span></td>
+</tr></table>
+
+<p><span class=maintext>
+<small>Copyright© 2007 Mwave.com All rights reserved. * Please note that these specials are while supplies last. Prices and availability are subject to change without notice. Typographical errors are subject to correction. All trademarks and logos are property of their respective owners.</small></span>
+<br><br>
+</td>
+</tr></table>
+
+</td></tr></table>
+
+</td></tr></table>
+</body>
+</html>
+
+
+
+--AlternativeBoundary.22222222.22222222--
+
+

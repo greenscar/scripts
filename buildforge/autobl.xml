@@ -1,0 +1,101 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <env name="SOURCE_STREAM"     value="required"/>
+      <env name="PVOB"              value="required"/>
+      <env name="BF_SERVER"         value="required"/>
+      <env name="BF_ROOT"           value="required"/>
+      <env name="BF_USER_EMAIL"     value="required"/>
+      <env name="BL_DEV"            value="required"/>
+      <env name="BL_SIT"            value="required"/>
+      <env name="BL_UAT"            value="required"/>
+   </template>
+   
+   <interface>
+      <run command="autobl" params="$B $SOURCE_STREAM $BF_ROOT $BL_DEV $BL_SIT $BL_UAT" server="$BF_SERVER" dir="/" timeout="600"/>
+          
+      <adduser group="mail_recipients" user="james.sandlin@hhsc.state.tx.us"/>
+      
+      <ontempenv name="errors" state="hastext">
+         <step result="FAIL"/>
+      </ontempenv>
+
+      
+      
+      <ontempenv name="errors" state="empty">
+			<!-- No changes, fail the build, default behaviour is pass -->
+			<step result="FAIL"/>
+		</ontempenv>
+		
+      <!-- Set some notifications for when the build completes -->
+		<onproject result="fail">
+			<notify group="mail_recipients" subject="Build $BF_TAG (${CurDate}) Canceled due to no code changes." message="${NoChanges}"/>
+		</onproject>
+		<onproject result="pass">
+			<notify group="mail_recipients" subject="Build $BF_TAG ERRORS." message="ERRORS\n${errors}"/>
+		</onproject>
+      
+           
+      <onproject result="fail">
+         <notify group="mail_recipients" subject="${BF_TAG} passed" message="Baseline of ${testlvl} set to ${NEWBL}"/>
+      </onproject>
+      
+      <onproject result="pass">
+         <notify group="mail_recipients" subject="${BF_TAG} passed" message="Baseline of ${testlvl} set to ${NEWBL}"/>
+      </onproject>
+   </interface>
+   
+   
+   <command name="autobl">
+      <execute>
+         ${BF_ROOT}autobl.pl --bftag "$1" --srcstream "$2" --bfroot "$3" --bldev $4 --blsit $5 --bluat $6
+      </execute>
+      <resultsblock>
+         <match pattern="^([A-Z]+)_OLDBL=(.+)$">
+            <bom category="build_report" section="baselines">
+               <field name="testlvl" text="$1"/>
+               <field name="oldbl" text="$2"/>
+            </bom>
+            <setenv name="testlvl" value="$1"/>
+            <setenv name="OLDBL" value="$2"/>
+         </match>      
+         <match pattern="^([A-Z]+)_NEWBL=(.+)$">
+            <bom category="build_report" section="baselines">
+               <field name="newbl" text="$2"/>
+            </bom>
+            <setenv name="testlvl" value="$1"/>
+            <setenv name="NEWBL" value="$2"/>
+            <setenv group="[ADAPTOR]" name="BL_${1}" value="$2"/>
+         </match>
+         <match pattern="^LOCAL - NO REBASE NEEDED$">
+            <setenv name="testlvl" value="LOCAL"/>
+         </match>
+         <match pattern="^(\w+\ MUST\ BE\ REBASED\ BEFORE\ \w+)$">
+            <setenv name="errors" value="$1\n" type="temp append\n"/>
+         </match>
+         <match pattern="^(NO REBASE NEEDED)$">
+			   <setenv name="errors" value="$1\n" type="temp append\n"/>
+         </match>
+         <match pattern="(Not ownercleartool)">
+			   <setenv name="errors" value="$1\n" type="temp append\n"/>
+         </match>
+         <match pattern="^(RC=.*)$">
+			   <setenv name="errors" value="$1\n" type="temp append\n"/>
+         </match>
+         <match pattern="^(The view.+does not exist!)$">
+			   <setenv name="errors" value="$1\n" type="temp append\n"/>
+         </match>
+         <match pattern="^(\d)$">
+            <setenv name="errors" value="$1\n" type="temp append\n"/>
+         </match>
+      </resultsblock>
+   </command>   
+   
+   <bomformat category="build_report" title="Baseline Report">
+      <section name="baselines">
+         <field order="1" name="testlvl" title="Test Level"/>
+         <field order="2" name="oldbl" title="Old Baseline"/>
+         <field order="3" name="newbl" title="New Baseline"/>
+      </section>
+   </bomformat>
+</PROJECT_INTERFACE>

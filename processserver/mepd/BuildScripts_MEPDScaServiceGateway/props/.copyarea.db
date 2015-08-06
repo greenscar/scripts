@@ -1,0 +1,9 @@
+ClearCase CopyAreaDB|4
+EA_mepd1\BuildScripts_MEPDScaServiceGateway\props
+2
+5
+14:Endpoints.properties|1|11fae2a225b|2348|1e3244f7|1e3c4718241a43129e1f7be4a5611444|0
+15:ssl.client.properties|1|11fae2a348c|a7c|b7344760|4e5934e54bd64192a16ca2aa54a1b697|0
+11:import.properties|1|11fae2a22a9|1cd|fcc5ae24|962a22d055d246aa9bff007c5c6e7250|0
+10:input.properties|1|11fae2a342e|2c9|353903de|f350fa40e1854fd7a31229aa21dc1904|0
+12:taskdef.properties|1|11fae2a33ef|45|9fe219fb|56142dee74384693b87f5f7c6b0c85eb|0

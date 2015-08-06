@@ -1,0 +1,8 @@
+ClearCase CopyAreaDB|4
+EA_mepd1\BuildScripts_MEPDScaServiceGateway\lib
+2
+4
+b:sdo-int.jar|1|11fae2a8fcb|1291|d725af20|34158a5e450d4e5b88862867622bf5f1|0
+19:ServiceRegistryClient.jar|1|11fae2aa893|51f639|5d77e82a|b08f8b8424af4efca5b4c36894bf59c8|0
+e:xercesImpl.jar|1|11fae2aae21|125c76|ea065edf|f1f50317a6714754930034fde96c3b29|0
+2b:com.ibm.ws.webservices.thinclient_6.1.0.jar|1|11fae2a8f2f|db8be8|27e30700|627ad87794514dd3875f00695ed05089|0

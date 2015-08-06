@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 element(s) from project &apos;DETS&apos;&#x0A;- Original project: &apos;DETS&apos;&#x0A;- Original elements:&#x0A;     admin.uml&#x0A;     admin.umlact" description="Delete elements" element1="uml/prop_file_data/admin.uml" element2="uml/prop_file_data/admin.umlact" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="2" stamp="1241557938711" subPackages="false" version="1.0"/>
+</session>

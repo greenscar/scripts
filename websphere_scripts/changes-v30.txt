@@ -1,0 +1,54 @@
+3.0 (25apr2007):
+- added support for "installOption" into .targets (because .targets is read before install is performed)
+- SCRIPTS changed: getTargets, deploy-install-configure, ear-install-validate-uninstall-list 
+- dist\AdderEAR-pilot.targets:  added sample installOptions 
+- changed log-fail-highlight.jacl to return -1 on fail-on-error (similar to Jython returns msg)
+
+2.0b (19mar2007):
+- Restored ATTRIB-show-set and ATTRIB-file (jacl+jython) to final 2.0 versions
+2.0a (15sep2006):
+- Restored \dist AdderEAR .ear+.targets+.settings (dropped in 2.0)
+- NOTE: accidently regressed ATTRIB-show-set and ATTRIB-file to pre-v2.0 version
+  (expected "WebModuleName" rather than "ModuleName" in setting file)
+
+2.0 (10Jan2006) Jacl Changes (Jython scripts were all new):
+- NODES-pairs-unique.jacl: corrected creation of $nodeContainedServers
+- APP-list-start-stop-test-exists.jacl: corrected Start/StopApplicationOnNodesAndServers
+- deploy-install-configure.jacl: corrected handling of update (for existing and non-existing application)
+- ATTRIB-setTargets.jacl: changed setting of mappings to use more correct syntax
+- AutomatedDeploy.jacl: several code changes (envar handling)
+- Definitions.jacl: added true+false (used in getTargets.jacl and APP-list-start-stop-test-exists.jacl
+- ATTRIB-show-set.jacl: removed unneeded modules[0] from getModuleID
+      API: removed getModuleID "WebModuleDeployment" (works for any module)
+- dist\AdderEAR-pilot.settings: API: "ModuleName" (works for WAR or EJB)
+
+1.3 (09May2005) updates TestDeployl.sh to remove unused JACLWASROOT
+1.3 (22apr2005) Misc:
+- TestDeploy.bat/.sh and automatedDeploy.xml: removed DEPLOY_WAS, optional DistDir
+- automatedDeploy.xml: removed DEPLOY_WAS param, DistDir optional
+1.3 (22apr2005) JACL Scripts:
+- automatedDeploy.jacl: removed DEPLOY_WAS, optional DistDir, uses getEnvars
+- APP-list-start-stop-test-exists.jacl: socket exception checks, fixed GET HTTP/1.1
+- ATTRIB-setTargets.jacl: API:setTargets+setModuleMappings: added 'appFile' parameter,
+      major restructure, uses WAS-5.0 compatible "AdminApp taskInfo"
+- deploy-install-configure.jacl: API: added "appPath" as calling parameter to setTargets
+      added "update" code into proc "installAndConfigureApps"
+- getEnvars.jacl: NEW. reads -Dxxxxx envars (was.install.root, user.dir)
+- log-fail-highlight.jacl: implemented proc getEnvar (-Dxxx JRE envars)
+- NODES-pairs-unique.jacl: determineUniqueNodesContainedServers uses "lreplace" instead of code loop
+
+1.2 (14jan2005) Misc:
+- TestDeploy.bat/.sh and automatedDeploy.xml: reorder parameters
+- TestDeployBase.bat: "cd /c"
+- replaced AutoDeploy.doc/ppt with deployment1-publish.pdf+deployment2-publish.pdf
+1.2 (14jan2005) JACL Scripts:
+- automatedDeploy.jacl: reorder params
+- APP-list-start-stop-test-exists.jacl: implemented readWebpage, major changes to start/stop applications and testApps
+- deploy-install-configure.jacl: fixed (removed) duplicated appends of testURLs and testResponses
+- deploy-prepareNodes.jacl: fixed multiple EARs, fixed start/stop apps using $appsNodesServers per app
+- deploy.jacl: fixed multiple EARs (start/stop apps on servers using $appsNodesServers)
+- getTargets.jacl: fixed multiple EARs, return testURLs (not list of testURLs)
+- log-fail-highlight.jacl: stub for proc getEnvar (for future invocation change)
+
+1.1 (17nov2004):
+- initial version (shipped 10dec2004)

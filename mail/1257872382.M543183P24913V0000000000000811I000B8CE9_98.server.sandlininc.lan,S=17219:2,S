@@ -1,0 +1,225 @@
+Return-Path: <james@caffeinewebdesign.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 05FF990062
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 08:37:25 -0500 (CDT)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9XJb-hAbunVF for <james@sandlininc.com>;
+	Sat, 23 Aug 2008 08:37:24 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id B7DF990657
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 07:53:47 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Sat, 23 Aug 2008 07:44:44 -0500
+Received: from sandlininc.com [74.55.232.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Sat, 23 Aug 2008 07:53:47 -0500 (CDT)
+Received: from cpe-66-68-52-223.austin.res.rr.com ([66.68.52.223]:61757 helo=[10.0.0.9])
+	by maxserv.yourhostdns.com with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.69)
+	(envelope-from <james@caffeinewebdesign.com>)
+	id 1KWsTx-0004kG-6J
+	for james@sandlininc.com; Sat, 23 Aug 2008 07:44:44 -0500
+Resent-From: James Sandlin <james@caffeinewebdesign.com>
+Resent-To: james@sandlininc.com
+Resent-Date: Sat, 23 Aug 2008 07:44:33 -0500
+Resent-Message-Id: <48B00631.5060104@caffeinewebdesign.com>
+Resent-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.16) Gecko/20080724 Thunderbird/2.0.0.16
+X-Mozilla-Keys:                                                                                 
+Received: from smtp04.newegg.com ([216.52.208.142])
+	by maxserv.yourhostdns.com with esmtp (Exim 4.68)
+	(envelope-from <info@newegg.com>)
+	id 1JOvqk-0002e3-6H
+	for james@caffeinewebdesign.com; Tue, 12 Feb 2008 08:11:06 -0600
+Received: from smtp03.newegg.com ([10.1.37.52]) by smtp04.newegg.com with InterScan Message Security Suite; Tue, 12 Feb 2008 05:02:29 -0800
+Received: from S7JOB01 ([10.1.41.113]) by smtp03.newegg.com with InterScan Message Security Suite; Tue, 12 Feb 2008 05:02:27 -0800
+Received: from mail pickup service by S7JOB01 with Microsoft SMTPSVC;
+	 Tue, 12 Feb 2008 05:02:28 -0800
+thread-index: Achtd4VNCbzkcJEjQg6Htafjt/LllQ==
+Thread-Topic: Your Newegg.com Invoice#   32909299
+From: <info@newegg.com>
+To: <james@caffeinewebdesign.com>
+Subject: Your Newegg.com Invoice#   32909299
+Date: Tue, 12 Feb 2008 05:02:28 -0800
+Message-ID: <12fc01c86d77$854dbfa0$7129010a@buyabs.corp>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_12FD_01C86D34.772A7FA0"
+X-Mailer: Microsoft CDO for Windows 2000
+Content-Class: urn:content-classes:message
+Importance: normal
+Priority: normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.1830
+X-OriginalArrivalTime: 12 Feb 2008 13:02:28.0552 (UTC) FILETIME=[8554C480:01C86D77]
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_12FD_01C86D34.772A7FA0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+ <http://www.newegg.com/images/newegg_small.gif> 	Invoice 32909299
+  	
+ 	 Your Sales Order Number:88834306    
+Order Date:02/09/2008	Order Total: $20.94 
+ 	
+ 	Billing Information	Shipping Information	
+Name	James Sandlin	Name	James Sandlin	
+Company		Company		
+Address	6311 Latigo Pass 	Address	6311 Latigo Pass 	
+City	Austin	City	Austin	
+State	TX	State	TX	
+Zip Code	78749	Zip Code	78749	
+Credit Card Type	VISA	Nighttime Telephone #	503-887-8510	
+Your Customer ID	468658	Day Telephone #	503-887-8510	
+Shipping Method	UPS 3 DAYS	Invoice Date	2/11/2008 8:35:16 PM	
+Item	Description	Quantity
+Unit Price
+Extended Price
+30-996-058 	DC CASE CANON PSC-55 RTL 	1
+$17.99
+$17.99
+	Canon (800)-848-4123	 	
+ 	 	  	  	
+Subtotal
+$17.99
+Tax
+$0.00
+Shipping and Handling charge
+$2.95
+Amount Paid
+$20.94
+ 	
+ 	Tracking your Order:	1Z51V2520230142769
+<http://www.newegg.com/CustomerService/TrackOrder.asp?Trackingnumber=1Z5
+1V2520230142769> 	
+ 	 	
+Special ordered items are not refundable. All refunds require a 15%
+restocking fee. No refunds given after 30 days, NO CPU REFUNDS AFTER 7
+DAYS, no exceptions. Unless otherwise specified, all products carry
+Newegg.com's standard warranty (1 year). Open Box products do NOT carry
+any Newegg.com warranty policy and cannot be refunded or exchanged. Do
+not remove any labels from parts or your Newegg.com warranty will be
+voided. Any damaged items must be reported within 7 days of delivery. 
+
+PLEASE NOTE: 
+ - If you need to return an item to Newegg, please obtain an RMA by
+contacting Customer Service at (800) 390-1119 or clicking "My Account"
+on our web page.
+ - Please save all packaging and accessories. All original equipment,
+components, manuals, cables, documents and packaging must be returned
+with your item in order for Newegg.com to process your RMA.
+
+ 	
+ 	
+
+
+Keeping you in the know, 
+
+Newegg.com Customer Care 
+http://www.newegg.com 
+Once you know, you Newegg. 
+
+Sent from Newegg's Automated email information system. Please do not
+reply. 
+
+HELPFUL LINKS: 
+Print Help And FAQ 's: http://www.newegg.com/CustomerService/FAQHome.asp
+Our Contact Information:
+http://www.newegg.com/CustomerService/ContactUs.asp 
+Update Account:
+https://secure.newegg.com/NewVersion/MyAccount/AccountModify.asp 
+(please update your account address information before requesting any
+RMA's) 
+
+
+------=_NextPart_000_12FD_01C86D34.772A7FA0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+<html>
+<head>
+<title>Invoice</title>
+</head>
+<body bgcolor="white" MARGINHEIGHT="1" MARGINWIDTH="1" leftMargin="1" topMargin="1">
+<font size="5" color="#0000FF"> </font>
+<table width="678" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="3">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="140"><img src=http://www.newegg.com/images/newegg_small.gif width="140" height="56" border="0"></td>
+<td width="381">
+<div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="3"><b><font color="#cc6600">Invoice 32909299</font></b></font></div>
+</td>
+<td width="154">&nbsp; </td>
+</tr></table>
+</td></tr>
+<tr><td height="21" width="17">&nbsp;</td>
+<td height="21" width="644">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><tr><td width="50%" valign="top"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Your Sales Order Number:88834306 &nbsp;&nbsp; <br>Order Date:02/09/2008</font></b></td><td width="50%"><div align="right" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Order Total:</b> $20.94 </font></div></tr></tr>
+</table></td><td height="21" width="27">&nbsp;</td></tr>
+<tr><td height="21" width="17">&nbsp;</td><td height="21" width="644">
+<table width="100%" border="1" cellspacing="0" cellpadding="0" >
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr bgcolor="#546554"><td colspan="2" bgcolor="#546554"><font size="2" face="Arial, Helvetica" color="#FFFFFF"><b>Billing Information</b></font></td><td colspan="2"><font size="2" face="Arial, Helvetica" color="#FFFFFF"><b>Shipping Information</b></font></td></tr>
+<tr><td width="144" bgcolor="#DEDFCE" valign="top"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Name</font></td><td width="156" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">James Sandlin</font></td><td width="146" bgcolor="#DEDFCE" valign="top"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Name</font></td><td width="166" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">James Sandlin</font></td></tr>
+<tr><td width="144" bgcolor="#DEDFCE" valign="top"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Company</font></td><td width="156" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"></font></td><td width="146" bgcolor="#DEDFCE" valign="top"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Company</font></td><td width="166" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"></font></td></tr>
+<tr><td width="144" bgcolor="#DEDFCE" valign="top"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Address</font></td><td width="156" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">6311 Latigo Pass  </font></td><td width="146" bgcolor="#DEDFCE" valign="top"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Address</font></td><td width="166" valign="top"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">6311 Latigo Pass  </font></td></tr>
+<tr><td width="144" bgcolor="#DEDFCE"><font size="2" face="Geneva, Arial, Helvetica, san-serif">City</font></td><td width="156"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Austin</font></td><td width="146" bgcolor="#DEDFCE"><font size="2" face="Geneva, Arial, Helvetica, san-serif">City</font></td><td width="166"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Austin</font></td></tr>
+<tr><td width="144" bgcolor="#DEDFCE"><font size="2" face="Geneva, Arial, Helvetica, san-serif">State</font></td><td width="156"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">TX</font></td><td width="146" bgcolor="#DEDFCE"><font size="2" face="Geneva, Arial, Helvetica, san-serif">State</font></td><td width="166"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">TX</font></td></tr>
+<tr><td width="144" bgcolor="#DEDFCE"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Zip Code</font></td><td width="156"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">78749</font></td><td width="146" bgcolor="#DEDFCE"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Zip Code</font></td><td width="166"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">78749</font></td></tr>
+<tr><td width="144" bgcolor="#DEDFCE"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Credit Card Type</font></td><td width="156"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">VISA</font></td><td width="146" bgcolor="#DEDFCE"><font face="Geneva, Arial, Helvetica, san-serif" size="2">Nighttime Telephone #</font></td><td width="166"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">503-887-8510</font></td></tr>
+<tr><td width="144" bgcolor="#DEDFCE"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Your Customer ID</font></td><td width="156"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">468658</font></td><td width="146" bgcolor="#DEDFCE"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Day Telephone #</font></td><td width="166"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">503-887-8510</font></td></tr>
+<tr><td width="144" bgcolor="#DEDFCE"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Shipping Method</font></td><td width="156"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">UPS 3 DAYS</font></b></td><td width="146" bgcolor="#DEDFCE"><font size="2" face="Geneva, Arial, Helvetica, san-serif">Invoice Date</font></td><td width="166"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">2/11/2008 8:35:16 PM</font></td></tr>
+</table>
+<table border="0" width="678" cellspacing="0" cellpadding="0">
+<tr><td width="98" bgcolor="#546554" height="10"><font face="Arial, Helvetica" color="#FFFFFF"><b><font size="2">Item</font></b></font></td><td width="314" bgcolor="#546554" height="10"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FFFFFF"><b>Description</b></font></td><td width="58" bgcolor="#546554" height="10"><div align="right"><font face="Arial, Helvetica" color="#FFFFFF"><b><font size="2">Quantity</font></b></font></div></td><td width="66" bgcolor="#546554" height="10"><div>
+<div align="right"><font size="2" face="Arial, Helvetica" color="#FFFFFF"><b>Unit Price</b></font></div></div></td>
+<td width="104" bgcolor="#546554" height="10"><div><div align="right"><font size="2" face="Arial, Helvetica" color="#FFFFFF"><b>Extended Price</b></font></div></div></td></tr>
+<tr bgcolor="#EDF2EC"><td width="98"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">30-996-058    </font></td>
+<td width="314"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">DC CASE CANON PSC-55 RTL </font></td>
+<td width="58"><div align="right"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">1</font></div></td>
+<td width="66"><div align="right"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">$17.99</font></div></td>
+<td width="104"><div align="right"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">$17.99</font></div></td>
+</tr><tr bgcolor="#EDF2EC"><td width="98"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"></font></td><td width="314"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><i>Canon (800)-848-4123</i></font></td><td width="58"><div align="right"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"></font></div></td>
+<td width="66"><div align="right"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"></font></div></td>
+<td width="104">&nbsp;</td><tr>
+
+
+<tr><td width="98">&nbsp;</td><td width="314">&nbsp;</td><td width="58">&nbsp; </td><td width="66"><div align="right"></div></td><td width="104">&nbsp; </td></tr>
+<tr><td colspan="4"><div align="right"><font face="Arial, Helvetica"><b><font size="2">Subtotal</font></b></font></div></td><td width="104"><div align="right"><font size="2" face="Arial, Helvetica">$17.99</font></div></td></tr>
+<tr><td colspan="4"><div align="right"><font face="Arial, Helvetica"><b><font size="2">Tax</font></b></font></div></td><td width="104"><div align="right"><font size="2" face="Arial, Helvetica">$0.00</font></div></td></tr>
+<td colspan="4"><div align="right"><font face="Arial, Helvetica"><b><font size="2">Shipping and Handling charge</font></b></font></div></td><td width="104"><div align="right"><font size="2" face="Arial, Helvetica">$2.95</font></div></td></tr>
+<tr><td colspan="4"><div align="right"><font face="Arial, Helvetica"><b><font size="3">Amount Paid</font></b></font></div></td><td width="104"><div align="right"><font size="2" face="Arial, Helvetica">$20.94</font></div></td></tr>
+<tr><td colspan="5"><div align="left"><font face="Arial, Helvetica"><b><font size="2"></font></b></font></div><div align="right"><font size="2" face="Arial, Helvetica"></font></div></td></tr>
+</table></td></tr></table>
+</td><td height="21" width="17">&nbsp;</td></tr><tr> <td height="13" width="17">&nbsp;</td><td height="13" width="644"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
+<td width="43%"><font face="Verdana, Arial, Helvetica, sans-serif"><b><font size="2" color="#FF0000">Tracking your Order:</font></b></font></td><td width="57%"><a href="http://www.newegg.com/CustomerService/TrackOrder.asp?Trackingnumber=1Z51V2520230142769" target="_blank">1Z51V2520230142769</a></td></tr>
+<tr><td width="43%">&nbsp;</td><td width="57%">&nbsp;</td></tr>
+<tr><td colspan="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Special ordered items are not refundable. All refunds require a 15% restocking fee. No refunds given after 30 days, NO CPU REFUNDS AFTER 7 DAYS, no exceptions. Unless otherwise specified, all products carry Newegg.com's standard warranty (1 year). Open Box products do NOT carry any Newegg.com warranty policy and cannot be refunded or exchanged. Do not remove any labels from parts or your Newegg.com warranty will be voided. Any damaged items must be reported within 7 days of delivery.
+<p><b>PLEASE NOTE: <BR/>&nbsp;-&nbsp;If you need to return an item to Newegg, please obtain an RMA by contacting Customer Service at (800) 390-1119 or clicking &quot;My Account&quot; on our web page.<BR/>&nbsp;-&nbsp;Please save all packaging and accessories. All original equipment, components, manuals, cables, documents and packaging must be returned with your item in order for Newegg.com to process your RMA.</b></p>
+</font>
+	    
+</td></tr>
+</table></td><td height="13" width="17">&nbsp;</td></tr>
+<tr><td height="14" colspan="3">&nbsp;</td></tr></table>
+<br><br>Keeping you in the know,
+<br><br>Newegg.com Customer Care
+<br><a href="http://www.newegg.com" target="_blank">http://www.newegg.com</a>
+<br>Once you know, you Newegg.
+<br><br>Sent from Newegg's Automated email information system.  Please do not reply.
+<br><br>HELPFUL LINKS:
+<br>Print Help And FAQ 's: <a href="http://www.newegg.com/CustomerService/FAQHome.asp" target="_blank">http://www.newegg.com/CustomerService/FAQHome.asp</a>
+<br>Our Contact Information: <a href="http://www.newegg.com/CustomerService/ContactUs.asp" target="_blank">http://www.newegg.com/CustomerService/ContactUs.asp</a>
+<br>Update Account: <a href="https://secure.newegg.com/NewVersion/MyAccount/AccountModify.asp" target="_blank">https://secure.newegg.com/NewVersion/MyAccount/AccountModify.asp</a>
+<br>(please update your account address information before requesting any RMA's)
+<br><font size="5" color="#0000FF"> </font></body></html>
+------=_NextPart_000_12FD_01C86D34.772A7FA0--
+

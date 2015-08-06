@@ -1,0 +1,39 @@
+James and John,
+
+ 
+
+Here is the cset.pl script that can be used to “undo” activities and some other things as well.  To use, you need to unzip it to whatever directory you want.  It will create a directory called CSET_ICP.  Inside there, you need to run the “Start Here.html” file.  It will give you full instructions on how to use the perl script.  It also has the perl script embedded into the documentation pages.  When you get to the page that has it, it’ll tell you to right-click the link and select “Save As”.  You should save it to a directory that you will easily remember, such as cscripts.  To run it, you would run it with “ccperl cscriptscset.pl options”.  You typically need to run the script from within a view directory, inside the VOB directory (any of the TIERS tracks, for example).
+
+ 
+
+The nice thing is that the script does not checkin whatever changes it makes.  You have to do that yourself, so you can test it’s functionality without having to commit changes to ClearCase.  For example, when I ran it yesterday to undo the activity in APTMT, James and I used the version tree browser to compare the new version with the previous to make sure that it did what it was supposed to.
+
+ 
+
+Also, the script will require that you have already created an activity and set it in the view that you’re working in.
+
+ 
+
+Please don’t give this to regular developers unless you really trust them not to mess up.  The script can do a lot, but can also do unintended things if you’re not careful.  For example, if you undo an activity, undoing that undo won’t work.
+
+ 
+
+Let me know if you have any questions.
+
+ 
+
+-- 
+
+Jordan Klein
+
+Lead ClearCase Administrator
+
+Texas ACCESS Alliance
+
+Work 512-533-3371, Mobile 512-947-2163
+
+AIM  jordantxaccess
+
+jordan.m.klein@txaccess.com
+
+ 

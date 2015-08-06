@@ -1,0 +1,15 @@
+SECURITY=/TIERS/IPT/fw/java/xml/config/security.xml
+MANAGEMENT=/TIERS/IPT/fw/java/xml/config/management.xml
+SERVICES=/TIERS/IPT/fw/java/xml/config/services.xml
+BUSINESS=/TIERS/IPT/fw/java/xml/config/business.xml
+PRESENTATION=/TIERS/IPT/fw/java/xml/config/presentation.xml
+PERSISTENCE=/TIERS/IPT/fw/java/xml/config/persistence.xml
+REFERENCE=/TIERS/IPT/fw/java/xml/config/references.xml
+REF_XML_PATH=/TIERS/IPT/fw/java/xml/references/
+admin-services=/TIERS/IPT/fw/java/xml/config/admin-services.xml
+LOGPATH=/TIERS/IPT/tierslogs/
+
+#Mail properties
+hostName=AUSMIS36
+#Mail properties
+hostName=AUSMIS36

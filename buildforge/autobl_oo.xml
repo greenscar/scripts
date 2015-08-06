@@ -1,0 +1,169 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <env name="VIEW_NAME"     value="STP_75.0.0.0_DEV"/>
+      <env name="PVOB"              value="DC_Projects"/>
+      <env name="BF_SERVER"         value="iedaau020"/>
+      <env name="BF_ROOT"           value="/home/wasadmin"/>
+      <env name="BF_USER_EMAIL"     value="james.sandlin@hhsc.state.tx.us"/>
+		<env name="CUR_DATE"          value="required" />
+      <env name="DO_REBASE"         value="YES"/>
+   </template>
+   
+   <interface>      
+		<adduser group="MyChangers" user="james.sandlin@hhsc.state.tx.us"/>
+      <!--
+      <adduser group="MyChangers" user="Raghurajan.Gurunathan@hhsc.state.tx.us"/>
+      -->
+      <adduser group="MyChangers" user="${BF_USER}"/>
+      
+      <setenv name="NEWBL" value="" type="temp"/>
+      <setenv name="qcnums" value="" type="temp"/>
+      
+      <run command="autobl" params="$B $VIEW_NAME" server="$BF_SERVER" dir="/autobl" timeout="600"/>
+      
+      <run command="setqcperms" server="$BF_SERVER" dir="/autobl" timeout="600"/>
+      
+      <ontempenv name="errors" state="hastext">
+			<step result="fail"/>
+		</ontempenv>
+      
+      
+		<onproject result="fail">
+			<notify group="MyChangers" subject="Build $BF_TAG ($CurDate) Failed." message="${errors}"/>
+		</onproject>
+      
+      
+   </interface>
+   
+   <command name="check_test_lvl">
+      <execute>
+         echo '$1'
+      </execute>
+      <resultsblock>
+         <match pattern="(LOCAL)">
+            <setenv name="DO_REBASE" value="NO" type="temp"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="setqcperms">
+      <execute>
+         echo $qcnums
+      </execute>
+      <resultsblock>
+         <match pattern="or (.*) or">
+            <setenv name="qclist" value="$1"/>
+         </match
+         <match pattern="or (.*)">
+            <setenv name="qclist" value="$1"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="autobl">
+      <execute>
+         cd ${BF_ROOT}HHSC_Ratdoc_Int/HHSC_Ratdoc/build_and_deploy/scripts/autobl
+         cqperl autobloo.pl
+         #cd /home/wasadmin/autobl
+         #cqperl test.pl
+      </execute>
+      <resultsblock>
+         <match pattern="^release_num=(.*)\^itg_num=(.*)\^qc_num=(.*)\^team=(.*)\^actid=(.*)\^ucm_stream=(.*)\^timestamp=(.*)\^owner=(.*)\^headline=(.*)$">
+            <bom category="report" section="activities">
+               <field name="releasenum" text="$1"/>
+               <field name="itgnum" text="$2"/>
+               <field name="qcnum" text="$3"/>
+               <field name="team" text="$4"/>
+               <field name="actid" text="$5"/>
+               <field name="stream" text="$6"/>
+               <field name="timestamp" text="$7"/>
+               <field name="owner" text="$8"/>
+               <field name="headline" text="$9"/>
+            </bom>
+            <setenv name="qcnums" value="$3" type="temp append or "/>
+         </match>
+         <match pattern="^OLDBL=(.+)\^NEWBL=((.+?)\^)(.*)release_num=(.*)\^itg_num=(.*)\^qc_num=(.*)\^team=(.*)\^actid=(.*)\^ucm_stream=(.*)\^timestamp=(.*)\^owner=(.*)\^headline=(.*)$">
+            <setenv name="OLDBL" value="$1" type="temp"/>
+            <setenv name="NEWBL" value="$3" type="temp"/>
+            <bom category="baselines" section="baselines">
+               <field name="oldbl" text="$1"/>
+               <field name="newbl" text="$3"/>
+            </bom>
+            <bom category="report" section="activities">
+               <field name="releasenum" text="$5"/>
+               <field name="itgnum" text="$6"/>
+               <field name="qcnum" text="$7"/>
+               <field name="team" text="$8"/>
+               <field name="actid" text="$9"/>
+               <field name="stream" text="$10"/>
+               <field name="timestamp" text="$11"/>
+               <field name="owner" text="$12"/>
+               <field name="headline" text="$13"/>
+            </bom>
+            <setenv name="qcnums" value="$7" type="temp append or "/>
+            <setenv name="newbl" value="$1"/>
+            <setenv name="oldbl" value="$3"/>
+            <!--
+            <run command="loadactdetails" params="$4" server="$BF_SERVER" dir="/autobl" timeout="600"/>
+            -->
+         </match>
+         <!--
+         <match pattern="^OLDBL=(.+)\^NEWBL=((.+?)\^)">
+            <setenv name="OLDBL" value="$1"/>
+            <setenv name="NEWBL" value="$2" type="temp"/>
+            <bom category="baselines" section="baselines">
+               <field name="oldbl" text="$1"/>
+               <field name="newbl" text="$3"/>
+            </bom>
+            <setenv name="newbl" value="$1"/>
+            <setenv name="oldbl" value="$2"/>
+         </match>      
+         <match pattern="^LOCAL - NO REBASE NEEDED$">
+            <field name="testlvl" text="LOCAL"/>
+            <setenv name="DO_REBASE" value="NO"/>
+         </match>
+         <match pattern="^(ERROR:.*)">
+            <setenv name="errors" value="$1\n" type="temp append\n"/>
+            <setenv name="DO_REBASE" value="NO"/>
+            <bom category="error_report" section="errors">
+               <field name="error" text="$1"/>
+            </bom>
+         </match>
+         -->
+         <match pattern="^(WARNING:.*)">
+            <!--
+			   <setenv name="errors" value="$1\n" type="temp append\n"/>
+            -->
+            <setenv name="DO_REBASE" value="NO"/>
+            <bom category="error_report" section="errors">
+               <field name="error" text="$1"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+	<!-- The bomformat sets up the BuildForge BOM display for the information we gather during this interface execution -->
+	<!-- A category is a top level expandable item -->
+	<bomformat category="report" title="Source Changes">
+		<!-- A section defines the columns for blocks of information, a new row of information is added 
+			each time the last field (by order number) in a block is populated with new information -->
+		<section name="activities">
+         <field order="1" name="releasenum" title="Release Num"/>
+         <field order="2" name="itgnum" title="ITG Num"/>
+         <field order="3" name="qcnum" title="QC Num"/>
+         <field order="4" name="team" title="Team"/>
+			<field order="5" name="actid" title="CQ ID"/>
+			<field order="6" name="stream" title="Stream"/>
+			<field order="7" name="timestamp" title="Timestamp"/>
+			<field order="8" name="project" title="CC Project"/>
+         <field order="10" name="owner" title="Owner"/>
+         <field order="11" name="headline" title="Headline"/>
+		</section>
+   </bomformat>
+   <bomformat category="baselines" title="Baseline Report">
+      <section name="baselines">
+         <field order="1" name="oldbl" title="Old BL"/>
+         <field order="2" name="newbl" title="New BL"/>
+      </section>
+   </bomformat>
+</PROJECT_INTERFACE>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_uBjUwDdQEd6nxMDNMPVNiQ" name="Package">
+  <elementImport xmi:id="_uyK5YDdQEd6nxMDNMPVNiQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_uyVRcDdQEd6nxMDNMPVNiQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_uyVRcTdQEd6nxMDNMPVNiQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_uyV4gDdQEd6nxMDNMPVNiQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_PfiGIDi_Ed6nxMDNMPVNiQ" name="PropFile" clientDependency="_7GDDgDjJEd6nxMDNMPVNiQ">
+    <ownedAttribute xmi:id="_3z4IIDjJEd6nxMDNMPVNiQ" name="properties" aggregation="composite"/>
+    <ownedAttribute xmi:id="_WMCZYDjKEd6nxMDNMPVNiQ" name="name" aggregation="composite"/>
+    <ownedAttribute xmi:id="_W0NzsDjKEd6nxMDNMPVNiQ" name="path" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_T8_v8Di_Ed6nxMDNMPVNiQ" name="Property">
+    <ownedAttribute xmi:id="_q6rdkDjIEd6nxMDNMPVNiQ" name="key" aggregation="composite"/>
+    <ownedAttribute xmi:id="_sC1_gDjIEd6nxMDNMPVNiQ" name="value" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_io7NUDjJEd6nxMDNMPVNiQ" name="Application">
+    <ownedAttribute xmi:id="_YV3MoDjKEd6nxMDNMPVNiQ" name="name" aggregation="composite"/>
+    <ownedAttribute xmi:id="_tRyroDjYEd6nxMDNMPVNiQ" name="id" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_kzsbwDjJEd6nxMDNMPVNiQ" name="Environment" clientDependency="_M8iYYDjUEd6nxMDNMPVNiQ">
+    <ownedAttribute xmi:id="_FPgbQDjUEd6nxMDNMPVNiQ" name="name" aggregation="composite"/>
+    <ownedAttribute xmi:id="_xsBbQDjYEd6nxMDNMPVNiQ" name="id" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_7GDDgDjJEd6nxMDNMPVNiQ" name="properties" supplier="_T8_v8Di_Ed6nxMDNMPVNiQ" client="_PfiGIDi_Ed6nxMDNMPVNiQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BMYvoDjKEd6nxMDNMPVNiQ" name="Release">
+    <ownedAttribute xmi:id="_CGV2cDjKEd6nxMDNMPVNiQ" name="number" aggregation="composite"/>
+    <ownedAttribute xmi:id="_D3sfUDjKEd6nxMDNMPVNiQ" name="date" aggregation="composite"/>
+    <ownedAttribute xmi:id="_v28wADjYEd6nxMDNMPVNiQ" name="id" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_HIycoDjKEd6nxMDNMPVNiQ" name="Link">
+    <ownedAttribute xmi:id="_SeSVQDjKEd6nxMDNMPVNiQ" name="address" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WwolIDjTEd6nxMDNMPVNiQ" name="AppInstance" clientDependency="_Omn7oDjUEd6nxMDNMPVNiQ _UuYkEDjUEd6nxMDNMPVNiQ _FHy0QDjVEd6nxMDNMPVNiQ _Y2a7ADjVEd6nxMDNMPVNiQ _AW0jIDjWEd6nxMDNMPVNiQ _EykDwDjYEd6nxMDNMPVNiQ _FZyb0DjYEd6nxMDNMPVNiQ">
+    <ownedAttribute xmi:id="_hbkEgDjYEd6nxMDNMPVNiQ" name="source_stream" aggregation="composite"/>
+    <ownedAttribute xmi:id="_jYENcDjYEd6nxMDNMPVNiQ" name="baseline" aggregation="composite"/>
+    <ownedAttribute xmi:id="_kmDDgDjYEd6nxMDNMPVNiQ" name="deployment_date" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_M8iYYDjUEd6nxMDNMPVNiQ" name="contains" supplier="_WwolIDjTEd6nxMDNMPVNiQ" client="_kzsbwDjJEd6nxMDNMPVNiQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_Omn7oDjUEd6nxMDNMPVNiQ" name="instance of" supplier="_io7NUDjJEd6nxMDNMPVNiQ" client="_WwolIDjTEd6nxMDNMPVNiQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_UuYkEDjUEd6nxMDNMPVNiQ" name="address" supplier="_HIycoDjKEd6nxMDNMPVNiQ" client="_WwolIDjTEd6nxMDNMPVNiQ"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_FHy0QDjVEd6nxMDNMPVNiQ" name="propertyFiles" supplier="_PfiGIDi_Ed6nxMDNMPVNiQ" client="_WwolIDjTEd6nxMDNMPVNiQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_Y2a7ADjVEd6nxMDNMPVNiQ" name="release num" supplier="_BMYvoDjKEd6nxMDNMPVNiQ" client="_WwolIDjTEd6nxMDNMPVNiQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2zkrQDjVEd6nxMDNMPVNiQ" name="Service">
+    <ownedAttribute xmi:id="_3oL_EDjVEd6nxMDNMPVNiQ" name="name" aggregation="composite"/>
+    <ownedAttribute xmi:id="_4XackDjVEd6nxMDNMPVNiQ" name="sub_url" aggregation="composite"/>
+    <ownedAttribute xmi:id="_62mb0DjVEd6nxMDNMPVNiQ" name="provider_app" aggregation="composite"/>
+    <ownedAttribute xmi:id="_8S-TMDjVEd6nxMDNMPVNiQ" name="consumer_app" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_AW0jIDjWEd6nxMDNMPVNiQ" name="services" supplier="_2zkrQDjVEd6nxMDNMPVNiQ" client="_WwolIDjTEd6nxMDNMPVNiQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_B9SfwDjYEd6nxMDNMPVNiQ" name="MQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Cm0k8DjYEd6nxMDNMPVNiQ" name="DBSchema">
+    <ownedAttribute xmi:id="_m39bwDjYEd6nxMDNMPVNiQ" name="id" aggregation="composite"/>
+    <ownedAttribute xmi:id="_ne0AYDjYEd6nxMDNMPVNiQ" name="url" aggregation="composite"/>
+    <ownedAttribute xmi:id="_oFEIEDjYEd6nxMDNMPVNiQ" name="user" aggregation="composite"/>
+    <ownedAttribute xmi:id="_pH6FIDjYEd6nxMDNMPVNiQ" name="version" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_EykDwDjYEd6nxMDNMPVNiQ" name="uses" supplier="_B9SfwDjYEd6nxMDNMPVNiQ" client="_WwolIDjTEd6nxMDNMPVNiQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_FZyb0DjYEd6nxMDNMPVNiQ" name="uses" supplier="_Cm0k8DjYEd6nxMDNMPVNiQ" client="_WwolIDjTEd6nxMDNMPVNiQ"/>
+</uml:Package>

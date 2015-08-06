@@ -1,0 +1,37 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <!-- Template section, these are parsed out of the final xml and used to populate an 
+      existing environment group if an instance of this interface is linked with a project.
+      However, use the list below to help identify the variables needed to run this interface
+      if you are integrating it during a regular BuildForge step.
+      -->
+      <env name="BF_SERVER"   value="iedaau020_wasadmin"/>
+      <env name="TEST_APP"    value=""/>
+   </template>
+   
+   <interface>
+      <run command="clean_system_outs" params="$TEST_APP" server="$BF_SERVER" timeout="600"/>
+   </interface>
+   
+   <command name="clean_system_outs">
+      <execute>
+         echo $TEST_APP
+         C:\WINDOWS\system32\cscript.exe D:\BFAgent\QCDefectUpdate\StatusUpdate.vbs "test scenario"
+      </execute>
+      <resultsblock>
+         <match pattern="((\d),)*">
+            <bom category="defects" section="IDS">
+               <field name="id" text="$1"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>   
+   
+   <bomformat category="defects" title="Defect Fixes Included in Build">
+      <section name="IDS" expandable="true">
+         <field order="1" name="id" title="QC Defect Num"/>         
+      </section>
+   </bomformat>
+</PROJECT_INTERFACE>
+

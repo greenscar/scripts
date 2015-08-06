@@ -1,0 +1,48 @@
+[% META title = 'Environment Report' -%]
+<h1>[% envt.name %] App Instances</h1>
+<form name="addapps" method="post"" action="[% c.uri_for(c.controller.action_for('instances_edit_process'), [envt.id]) %]">
+
+<table class="envreport">
+   <tr>
+      <th>Select</th>
+      <th>Application</th>
+      <th>Link</th>
+      <th>Link Public</th>
+   </tr>
+   [% FOREACH a IN apps -%]
+      <tr>
+         <td>
+         <input type="checkbox" name="[%a.id%]_check"
+            [% FOREACH i IN envt.r2instances -%]
+               [% IF i.application.name == a.name %]
+                  checked
+               [% END -%]
+            [% END -%]
+         />
+         </td>
+         <td class="appname">
+            [% a.name %]
+         </td>
+         <td  class="applink">
+            <input type="text" name="[%a.id%]_link"
+            [% FOREACH i IN envt.r2instances -%]
+               [% IF i.application.name == a.name %]
+                  value="[% i.link %]" 
+               [% END -%]
+            [% END -%]
+            class="applink"/>
+         </td>
+         <td>
+         <input type="checkbox" name="[%a.id%]_public"
+            [% FOREACH i IN envt.r2instances -%]
+               [% IF i.application.name == a.name AND i.link_public == 1 %]
+                  checked
+               [% END -%]
+            [% END -%]
+         />
+         </td>
+      </tr>
+   [% END -%]
+<table>
+<input type="submit" value="Submit"/>
+</form>

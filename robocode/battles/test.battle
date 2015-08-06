@@ -1,0 +1,8 @@
+#Battle Properties
+#Fri Jul 06 13:28:24 CDT 2007
+robocode.battle.numRounds=1
+robocode.battle.gunCoolingRate=0.1
+robocode.battleField.width=1000
+robocode.battle.rules.inactivityTime=450
+robocode.battle.selectedRobots=jgs.Bot1,jgs.Bot2
+robocode.battleField.height=800

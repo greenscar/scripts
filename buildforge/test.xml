@@ -1,0 +1,101 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <env name="VIEW_NAME"     value="required"/>
+      <env name="PVOB"              value="required"/>
+      <env name="BF_SERVER"         value="required"/>
+      <env name="BF_ROOT"           value="required"/>
+      <env name="BF_USER_EMAIL"     value="required"/>
+		<env name="CUR_DATE"          value="required" />
+      <env name="DO_REBASE"         value="YES"/>
+   </template>
+   
+   <interface>      
+		<adduser group="MyChangers" user="james.sandlin@hhsc.state.tx.us"/>
+      <!--
+      <adduser group="MyChangers" user="Raghurajan.Gurunathan@hhsc.state.tx.us"/>
+      -->
+      <adduser group="MyChangers" user="${BF_USER}"/>
+      
+      <setenv name="NEWBL" value="" type="temp"/>
+      <setenv name="errors" value="" type="temp"/>
+      
+      
+      <run command="autobl" params="$B $VIEW_NAME" server="$BF_SERVER" dir="/autobl" timeout="600" condition="true('$DO_REBASE' eq 'YES')"/>
+      
+      <ontempenv name="errors" state="hastext">
+			<step result="fail"/>
+		</ontempenv>
+      
+      
+		<onproject result="fail">
+			<notify group="MyChangers" subject="Build $BF_TAG ($CurDate) Failed." message="${errors}"/>
+		</onproject>
+      
+      
+   </interface>
+   
+   <command name="check_test_lvl">
+      <execute>
+         echo '$1'
+      </execute>
+      <resultsblock>
+         <match pattern="(LOCAL)">
+            <setenv name="DO_REBASE" value="NO" type="temp"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="autobl">
+      <execute>
+         cqperl ${BF_ROOT}/autobl/autobl.pl
+      </execute>
+      <resultsblock>
+         <match pattern="^id=(.*)\^ucm_stream=(.*)\^timestamp=(.*)\^project=(.*)\^date=(.*)\^owner=(.*)\^headline=(.*)\^act_type=(.*)\^record_type=(.*)\^release_num=(.*)\^team=(.*)\^itg_num=(.*)\^qc_num=(.*)\^">
+            <bom category="report" section="activities">
+               <field name="releasenum" text="$10"/>
+               <field name="itgnum" text="$12"/>
+               <field name="qcnum" text="$13"/>
+               <field name="team" text="$11"/>
+               <field name="id" text="$1"/>
+               <field name="stream" text="$2"/>
+               <field name="timestamp" text="$3"/>
+               <field name="project" text="$4"/>
+               <field name="date" text="$5"/>
+               <field name="owner" text="$6"/>
+               <field name="headline" text="$7"/>
+               <field name="acttype" text="$8"/>
+               <field name="recordtype" text="$9"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+	
+	<!-- The bomformat sets up the BuildForge BOM display for the information we gather during this interface execution -->
+	<!-- A category is a top level expandable item -->
+	<bomformat category="report" title="Source Changes">
+		<!-- A section defines the columns for blocks of information, a new row of information is added 
+			each time the last field (by order number) in a block is populated with new information -->
+		<section name="activities">
+         <field order="1" name="releasenum" title="Release Num"/>
+         <field order="2" name="itgnum" title="ITG Num"/>
+         <field order="3" name="qcnum" title="QC Num"/>
+         <field order="4" name="team" title="Team"/>
+			<field order="5" name="id" title="ID"/>
+			<field order="6" name="stream" title="Stream"/>
+			<field order="7" name="timestamp" title="Timestamp"/>
+			<field order="8" name="project" title="CC Project"/>
+			<field order="9" name="date" title="Date"/>
+         <field order="10" name="owner" title="Owner"/>
+         <field order="11" name="headline" title="Headline"/>
+         <field order="12" name="acttype" title="Act Type"/>
+         <field order="13" name="recordtype" title="Record Type"/>
+		</section>
+   </bomformat>
+   <bomformat category="baselines" title="Baseline Report">
+      <section name="baselines">
+         <field order="1" name="oldbl" title="Old BL"/>
+         <field order="2" name="newbl" title="New BL"/>
+      </section>
+   </bomformat>
+</PROJECT_INTERFACE>

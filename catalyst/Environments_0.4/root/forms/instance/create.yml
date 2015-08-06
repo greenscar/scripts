@@ -1,0 +1,19 @@
+---
+# Indicator is hte field used to test for form submission
+indicator: submit
+# Start listing the form elements
+elements:
+     
+    # A drop down for ENV2 - dynamically filled from controller
+   - type: Select
+     name: env
+     label: Select Environment
+   
+   - type: Checkboxgroup
+     name: apps
+     label: Select Applications
+   
+   # Submit Button
+   - type: Submit
+     name: submit
+     value: Continue

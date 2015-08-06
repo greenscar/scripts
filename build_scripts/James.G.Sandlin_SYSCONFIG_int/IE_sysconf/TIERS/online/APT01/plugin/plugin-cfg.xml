@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Config ASDisableNagle="false" AcceptAllContent="false" AppServerPortPreference="HostHeader" ChunkedResponse="false" FIPSEnable="false" IISDisableNagle="false" IISPluginPriority="High" IgnoreDNSFailures="false" RefreshInterval="60" ResponseChunkSize="64" VHostMatchingCompat="false">
+   <Log LogLevel="Error" Name="/home/wasapt/WebContent/APT01/plugin/logs/http_plugin.log"/>
+   <Property Name="ESIEnable" Value="true"/>
+   <Property Name="ESIMaxCacheSize" Value="1024"/>
+   <Property Name="ESIInvalidationMonitor" Value="false"/>
+   <VirtualHostGroup Name="default_host">
+      <VirtualHost Name="*:10501"/>
+      <VirtualHost Name="*:81"/>
+      <VirtualHost Name="*:10502"/>
+   </VirtualHostGroup>
+   <VirtualHostGroup Name="apt01-cluster">
+      <VirtualHost Name="*:80"/>
+      <VirtualHost Name="*:443"/>
+      <VirtualHost Name="*:12514"/>
+      <VirtualHost Name="*:12520"/>
+      <VirtualHost Name="tiers-apt01:80"/>
+      <VirtualHost Name="tiers-apt01.txaccess.net:80"/>
+   </VirtualHostGroup>
+   <ServerCluster CloneSeparatorChange="false" LoadBalance="Round Robin" Name="apt01-cluster" PostBufferSize="64" PostSizeLimit="-1" RemoveSpecialHeaders="true" RetryInterval="60">
+      <Server CloneID="11ov7ejeq" ConnectTimeout="0" ExtendedHandshake="false" LoadBalanceWeight="2" MaxConnections="-1" Name="iedaau002_apt01-server2" ServerIOTimeout="0" WaitForContinue="false">
+         <Transport Hostname="iedaau002.txaccess.net" Port="12514" Protocol="http"/>
+         <Transport Hostname="iedaau002.txaccess.net" Port="12520" Protocol="https">
+            <Property Name="keyring" Value="/export/ENV/TIERS/apt/WebSphere/DeploymentManager/etc/plugin-key.kdb"/>
+            <Property Name="stashfile" Value="/export/ENV/TIERS/apt/WebSphere/DeploymentManager/etc/plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <PrimaryServers>
+         <Server Name="iedaau002_apt01-server2"/>
+      </PrimaryServers>
+   </ServerCluster>
+   <ServerCluster CloneSeparatorChange="false" LoadBalance="Round Robin" Name="dmgr_iedaau018Manager_Cluster" PostBufferSize="64" PostSizeLimit="-1" RemoveSpecialHeaders="true" RetryInterval="60">
+      <Server ConnectTimeout="0" ExtendedHandshake="false" MaxConnections="-1" Name="iedaau018Manager_dmgr" ServerIOTimeout="0" WaitForContinue="false"/>
+      <PrimaryServers>
+         <Server Name="iedaau018Manager_dmgr"/>
+      </PrimaryServers>
+   </ServerCluster>
+   <ServerCluster CloneSeparatorChange="false" LoadBalance="Round Robin" Name="server1_iedaau002_Cluster" PostBufferSize="64" PostSizeLimit="-1" RemoveSpecialHeaders="true" RetryInterval="60">
+      <Server ConnectTimeout="0" ExtendedHandshake="false" MaxConnections="-1" Name="iedaau002_server1" ServerIOTimeout="0" WaitForContinue="false">
+         <Transport Hostname="iedaau002.txaccess.net" Port="12501" Protocol="http"/>
+         <Transport Hostname="iedaau002.txaccess.net" Port="12502" Protocol="https">
+            <Property Name="keyring" Value="/export/ENV/TIERS/apt/WebSphere/DeploymentManager/etc/plugin-key.kdb"/>
+            <Property Name="stashfile" Value="/export/ENV/TIERS/apt/WebSphere/DeploymentManager/etc/plugin-key.sth"/>
+         </Transport>
+      </Server>
+      <PrimaryServers>
+         <Server Name="iedaau002_server1"/>
+      </PrimaryServers>
+   </ServerCluster>
+   <UriGroup Name="apt01-cluster_apt01-cluster_URIs">
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/tiersWSWeb/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/jspellhtml2k4/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/tiersWSWebservlet/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/jspellhtml2k4servlet/*"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/FwPulsarServlet"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/InDirectReadServlet"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/ControllerServlet"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/PreloadServlet"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/LoginServlet"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/LeftNavServlet"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/SessionViewer"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/HelpController"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/FwMessageServlet"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/FwIVRServlet"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/ConnectorServlet"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/FwDataBrokerServlet"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/FwLSISServlet"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="*.jsp"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="*.jsv"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="*.jsw"/>
+      <Uri AffinityCookie="JSESSIONID" AffinityURLIdentifier="jsessionid" Name="/servlet/*"/>
+   </UriGroup>
+   <Route ServerCluster="apt01-cluster" UriGroup="apt01-cluster_apt01-cluster_URIs" VirtualHostGroup="apt01-cluster"/>
+   <RequestMetrics armEnabled="false" loggingEnabled="true" rmEnabled="false" traceLevel="HOPS">
+      <filters enable="false" type="URI">
+         <filterValues enable="false" value="/servlet/snoop"/>
+         <filterValues enable="false" value="/webapp/examples/HitCount"/>
+      </filters>
+      <filters enable="false" type="SOURCE_IP">
+         <filterValues enable="false" value="255.255.255.255"/>
+         <filterValues enable="false" value="254.254.254.254"/>
+      </filters>
+   </RequestMetrics>
+</Config>

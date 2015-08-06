@@ -1,0 +1,22 @@
+[%- # Display the deployments -%]
+[%- # TITLE -%]
+[% META title = 'Deploy List' -%]
+<table>
+<tr>
+   <th>Application</th>
+   <th>Environment</th>
+   <th>Baseline</th>
+   <th>Time</th>
+   <th>BF Job</th>
+</tr>
+
+[% FOREACH d IN deployments -%]
+<tr>
+   <td>[% d.applications_id.name %]</td>
+   <td>[% d.environments_id.name %]</td>
+   <td>[% d.baseline %]</td>
+   <td>[% d.timestamp %]</td>
+   <td>[% d.bfjobid %]</td>
+</tr>
+[% END -%]
+<table>

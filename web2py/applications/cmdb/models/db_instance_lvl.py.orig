@@ -1,0 +1,99 @@
+db.define_table('customers',
+   Field('name', 'string', length=45, notnull=True),
+   Field('name_short', 'string', length=45, notnull=True),
+   Field('created_at', 'datetime', default=request.now),
+   Field('updated_at', 'datetime', default=request.now),
+   migrate=False)
+db.customers.name.requires = IS_NOT_EMPTY()
+db.customers.name_short.requires = IS_NOT_EMPTY()
+db.customers.created_at.readable = True
+db.customers.created_at.writable = False
+db.customers.updated_at.readable = True
+db.customers.updated_at.writable = False
+######################
+#
+######################
+db.define_table('process_instances',
+   Field('processes_id', db.processes),
+   Field('servers_id', db.servers),
+   Field('customers_id', db.customers),
+   Field('jmx_port', 'integer'),
+   Field('http_port', 'integer'),
+   Field('active', 'boolean'),
+   Field('created_at', 'datetime', default=request.now),
+   Field('updated_at', 'datetime', default=request.now),
+   migrate=False)
+db.process_instances.processes_id.requires = IS_IN_DB(db, 'processes.id', 'processes.name')
+db.process_instances.servers_id.requries = IS_IN_DB(db, 'servers.id')
+db.process_instances.customers_id.requries = IS_IN_DB(db, 'customers.id', 'customers.name')
+db.process_instances.jmx_port.requires = (IS_NOT_EMPTY(), IS_INT_IN_RANGE(10000,65535))
+db.process_instances.http_port.requires = (IS_NOT_EMPTY(), IS_INT_IN_RANGE(10000,65535))
+db.process_instances.active.requires = IS_NOT_EMPTY()
+db.process_instances.created_at.readable = True
+db.process_instances.created_at.writable = False
+db.process_instances.updated_at.readable = True
+db.process_instances.updated_at.writable = False
+######################
+#
+######################
+db.define_table('vips',
+   Field('name', 'string', length=45, notnull=True),
+   Field('created_at', 'datetime', default=request.now),
+   Field('updated_at', 'datetime', default=request.now),
+   migrate=False)
+db.vips.name.requires = [IS_NOT_EMPTY(), IS_NOT_IN_DB(db, 'vips.name')]
+db.vips.created_at.readable = True
+db.vips.created_at.writable = False
+db.vips.updated_at.readable = True
+db.vips.updated_at.writable = False
+######################
+#
+######################
+db.define_table('vips_2_process_instances',
+   Field('priority', 'integer'),
+   Field('vips_id', db.vips),
+   Field('process_instances_id', db.process_instances),
+   Field('created_at', 'datetime', default=request.now),
+   Field('updated_at', 'datetime', default=request.now),
+   migrate=False)
+db.vips_2_process_instances.priority.requires = (IS_NOT_EMPTY(), IS_INT_IN_RANGE(1, 30))
+db.vips_2_process_instances.vips_id.requires = IS_IN_DB(db, 'vips.id', 'vips.name')
+db.vips_2_process_instances.process_instances_id.requires = IS_IN_DB(db, 'process_instances.id')
+db.vips_2_process_instances.created_at.readable = True
+db.vips_2_process_instances.created_at.writable = False
+db.vips_2_process_instances.updated_at.readable = True
+db.vips_2_process_instances.updated_at.writable = False
+######################
+#
+######################
+db.define_table('db_2_process_instances',
+   Field('dbs_id', db.dbs),
+   Field('process_instances_id', db.process_instances),
+   Field('created_at', 'datetime', default=request.now),
+   Field('updated_at', 'datetime', default=request.now),
+   migrate=False)
+db.db_2_process_instances.dbs_id.requires = IS_IN_DB(db, 'dbs.id')
+db.db_2_process_instances.process_instances_id.requires = IS_IN_DB(db, 'process_instances.id')
+db.db_2_process_instances.created_at.readable = True
+db.db_2_process_instances.created_at.writable = False
+db.db_2_process_instances.updated_at.readable = True
+db.db_2_process_instances.updated_at.writable = False
+######################
+#
+######################
+db.define_table('app_instances',
+   Field('apps_id', db.apps),
+   Field('process_instances_id', db.process_instances),
+   Field('active', 'boolean'),
+   Field('created_at', 'datetime', default=request.now),
+   Field('updated_at', 'datetime', default=request.now),
+   migrate=False)
+db.app_instances.apps_id.requires = IS_IN_DB(db, 'apps.id')
+db.app_instances.process_instances_id.requires = IS_IN_DB(db, 'process_instances.id')
+db.app_instances.created_at.readable = True
+db.app_instances.created_at.writable = False
+db.app_instances.updated_at.readable = True
+db.app_instances.updated_at.writable = False
+######################
+#
+######################

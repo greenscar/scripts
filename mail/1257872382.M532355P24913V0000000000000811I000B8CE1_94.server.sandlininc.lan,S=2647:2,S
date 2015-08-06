@@ -1,0 +1,51 @@
+Return-Path: <james@caffeinewebdesign.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 32DF890069
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 08:32:54 -0500 (CDT)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Bf7HGdXHaqwy for <james@sandlininc.com>;
+	Sat, 23 Aug 2008 08:32:54 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id EE09390534
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 07:44:15 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Sat, 23 Aug 2008 07:37:56 -0500
+Received: from sandlininc.com [74.55.232.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Sat, 23 Aug 2008 07:44:15 -0500 (CDT)
+Received: from cpe-66-68-52-223.austin.res.rr.com ([66.68.52.223]:62833 helo=[10.0.0.9])
+	by maxserv.yourhostdns.com with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.69)
+	(envelope-from <james@caffeinewebdesign.com>)
+	id 1KWsNO-0003tJ-Qn
+	for james@sandlininc.com; Sat, 23 Aug 2008 07:37:56 -0500
+Resent-From: James Sandlin <james@caffeinewebdesign.com>
+Resent-To: james@sandlininc.com
+Resent-Date: Sat, 23 Aug 2008 07:37:51 -0500
+Resent-Message-Id: <48B0049F.5000603@caffeinewebdesign.com>
+Resent-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.16) Gecko/20080724 Thunderbird/2.0.0.16
+X-Mozilla-Keys:                                                                                 
+Received: from root by maxserv.yourhostdns.com with local (Exim 4.68)
+	(envelope-from <root@maxserv.yourhostdns.com>)
+	id 1K1Wkv-0002CN-By
+	for james@caffeinewebdesign.com; Wed, 28 May 2008 20:16:37 -0500
+To: james@caffeinewebdesign.com
+From: james@caffeinewebdesign.com
+Subject: Mailbox Size Warning (full)
+Message-Id: <E1K1Wkv-0002CN-By@maxserv.yourhostdns.com>
+Date: Wed, 28 May 2008 20:16:37 -0500
+
+The mailbox aubri@caffeinewebdesign.com is full or very close to full.
+
+You should remove some emails from the box as soon as possible to prevent losing any future mail.  
+
+This mailbox is currently 89.60% (27523.76/30720.00 Megs) full.
+
+You can adjust the quota for this mailbox here: https://mail.caffeinewebdesign.com:2083/frontend/x3/mail/editquota.html?email=aubri&domain=caffeinewebdesign.com&redirectdomain=caffeinewebdesign.com
+
+!! Do not respond to this message. Your reply will go nowhere. !!
+

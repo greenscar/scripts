@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+
+<!-- Build file to demonstrate parsing/iteration of modulerefs file -->
+
+<project default="buildAll" >
+
+   <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+  <property environment="buildenv" />
+  <property name="automation.home" value="${buildenv.AUTOMATION_HOME}" />
+  <property name="clearcase.view" value="${buildenv.CLEARCASE_VIEW}" />
+  <property name="lib.clearcase.view" value="${buildenv.LIB_CLEARCASE_VIEW}" />
+  <property name="log.dir" value="${buildenv.LOGDIR}" />
+  <property name="module.list" value="${buildenv.MODULE_LIST}" />
+  <property name="output.dir.zip" value="${buildenv.OUTPUT_DIR_ZIP}" />
+  <property name="output.dir.ear" value="${buildenv.OUTPUT_DIR_EAR}" />
+  <property name="service.deploy" value="${buildenv.SERVICEDEPLOY}" />
+  <property name="source.dir" value="${buildenv.SOURCE}" />
+                     
+  <target name="buildAll" depends="clean,init"  description="Builds all integration modules">
+      <foreach list="${module.list}" 
+               target="buildModule"
+               param="module.name"
+      	       delimiter=","/>
+  	
+  	  </target>
+
+  <target name="clean" description="Deletes following directories: SCA module Source Dir, SCA module Zip Dir, SCA module EAR Dir">
+     <echo message="Delete folders: ${source.dir} ${output.dir.zip} ${output.dir.ear}" />
+     <delete dir="${source.dir}"/>
+     <delete dir="${output.dir.zip}"/>
+     <delete dir="${output.dir.ear}"/>
+  </target>
+
+  <target name="init" description="Creates following directories: SCA module Source Dir, SCA module Zip Dir, SCA module EAR Dir">
+      <echo message="Create folders: ${source.dir} ${output.dir.zip} ${output.dir.ear}" />
+      <mkdir dir="${source.dir}"/>
+     <mkdir dir="${output.dir.zip}"/>
+     <mkdir dir="${output.dir.ear}"/>
+      <!-- <ccupdate viewpath="${clearcase.view}" graphical="false" overwrite="true" currenttime="true" rename="false"/>-->
+  </target>
+
+  <target name="buildModule" description="Builds the selected Integration module">
+     <property name="project.name" value="${module.name}" />
+     <echo message="Build module: ${module.name}" />          
+     <antcall target="getProject" />
+     <antcall target="createZip" />
+     <antcall target="createEAR" />
+  </target>
+
+  <target name="getProject" description="Copy projects in SCA module Source Dir from ClearCase View Dir">
+        <echo message="Copy ${project.name} To ${source.dir}" />
+        <!-- Copy the updated view to the new directory -->
+        
+        <if>
+	       <equals arg1="${project.name}" arg2="SharedServicesLib" />
+	       <then>
+	       		<copy todir="${source.dir}\${project.name}">
+			      <fileset dir="${lib.clearcase.view}\${project.name}"/>
+        		</copy>
+	       </then>
+        <else>
+        <copy todir="${source.dir}\${project.name}">
+           <fileset dir="${clearcase.view}\${project.name}"/>
+        </copy>
+        </else>
+        </if>
+  </target>
+
+   <target name="getDependencyList" description="Get the list of dependencies for the selected Integration module">
+     <echo message="Get the list of dependencies for module: ${module.name}" />  
+     <loadfile property="dependency.list" srcFile="${source.dir}/${module.name}/modulerefs.txt" />
+  </target>
+
+  <target name="getDependencies" depends="getDependencyList" description="Invoke the target 'getProject' for every dependent project of the selected integration module">
+     <echo message="Get the projects from the following list: ${dependency.list}" />  
+     <!--<var name="project.name" unset="true"/>-->
+     <foreach list="${dependency.list}" 
+              target="getProject"
+	          param="project.name"
+              delimiter="?"/>
+  </target>
+
+   <target name="createZip" depends="getDependencies" description="Create ZIP of the selected Integration module">
+      <echo message="Create zip for the module: ${module.name}" />
+ 	  <!--<propertyregex property="dependency.includes"
+                 input="${dependency.list}"
+	             regexp="\?"
+	             replace="\/\*\*," />   includes="${module.name}/**/**/*,${dependency.includes}"-->
+      <zip destfile="${output.dir.zip}/${module.name}.zip"
+              basedir="${source.dir}" 
+	           />
+	           <delete dir="${source.dir}"/>
+	           <mkdir dir="${source.dir}"/>
+   </target>
+
+   <target name="createEAR" description="Create EAR of the selected Integration module">
+      <echo message="Run service deploy for ${module.name}" />
+      <!-- Run service deploy command to generate an ear file to deploy to a WebSphere Process Server -->
+      <exec dir="${automation.home}" executable="${service.deploy}" output="${log.dir}\${module.name}.log" failonerror="false" resultproperty="servicedeploy.rc" >
+          	<arg line=" ${output.dir.zip}/${module.name}.zip -outputApplication ${output.dir.ear}/${module.name}.ear -cleanStagingModules -noj2eedeploy" />
+  	 </exec>  
+
+     <if>
+        <and>
+                <equals arg1="${servicedeploy.rc}" arg2="0" />
+                <available file="${module.name}.ear" filepath="${output.dir.ear}"/>
+        </and>
+       <then>
+                <echo message="${module.name}.ear was created without error" />
+                <echo message="${module.name}.ear was created without error ${line.separator}" file="${log.dir}\results.log" append="true" />
+       </then>
+       <else>
+              <echo message="${module.name}.ear has a problem refer to ${log.dir}\${module.name}.log for details of the problem " />
+             <echo message="${module.name}.ear has a problem refer to ${log.dir}\${module.name}.log for details of the problem ${line.separator}" file="${log.dir}\results.log" append="true" />
+       </else>
+     </if>
+   </target>
+
+</project>

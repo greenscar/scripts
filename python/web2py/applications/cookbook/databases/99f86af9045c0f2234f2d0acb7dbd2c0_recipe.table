@@ -1,0 +1,26 @@
+(dp1
+S'category'
+p2
+S'INT, INDEX category__idx (category), FOREIGN KEY (category) REFERENCES category(id) ON DELETE CASCADE'
+p3
+sS'description'
+p4
+S'VARCHAR(256)'
+p5
+sS'title'
+p6
+S'VARCHAR(512)'
+p7
+sS'date'
+p8
+S'DATE'
+p9
+sS'id'
+p10
+S'INT AUTO_INCREMENT NOT NULL'
+p11
+sS'instructions'
+p12
+S'LONGTEXT'
+p13
+s.

@@ -1,0 +1,29 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+		<!-- Template section, these are parsed out of the final xml and used to populate an 
+		existing environment group if an instance of this interface is linked with a project.
+		However, use the list below to help identify the variables needed to run this interface
+		if you are integrating it during a regular BuildForge step.
+		-->
+
+      <env name="BF_SERVER"         value="required"/>
+      <env name="testlvl"              value="abc"/>
+      <env name="LOCAL"              value="LOCAL"/>
+	</template>
+   
+	<interface>
+		<!-- cc_baselineactivities is detailed below but is basically the entry point into the command set to gather change info" -->
+      
+      <run command="echolocal" params="${testlvl} ${LOCAL}" server="$BF_SERVER" dir="/" timeout="360" condition="false(abc eq abc)"/>
+   </interface>
+   
+   <command name="echolocal">
+      <execute>
+         print "testlvl = " $1
+         print "LOCAL = " $2
+      </execute>
+      <resultsblock/>
+   </command>
+ 
+</PROJECT_INTERFACE>

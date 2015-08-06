@@ -1,0 +1,25 @@
+---
+indicator: submit
+elements:
+   - type: Text
+     name: Environment
+     label: Environment
+     model_config:
+        read_only: 1
+     attributes:
+        title: The environment you are modifying
+   
+   - type: Select
+     name: apps
+     label: Applications
+     # Convert the drop-down to a multi-select list
+     multiple: 1
+     # Display 5 entries (user can scroll to see others)
+     size: 5
+     constraints:
+        - Integer
+   
+   # The submit button
+   - type: Submit
+     name: submit
+     value: Submit

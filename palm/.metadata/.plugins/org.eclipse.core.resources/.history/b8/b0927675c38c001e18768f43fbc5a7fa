@@ -1,0 +1,12 @@
+function StageAssistant () {
+}
+/*
+ * The setup method calls the timerView-assistant.setup method
+ */
+StageAssistant.prototype.setup = function () {
+	this.controller.pushScene("timerView");
+};
+
+// StageAssistant.prototype.cleanup = function () {
+// };
+

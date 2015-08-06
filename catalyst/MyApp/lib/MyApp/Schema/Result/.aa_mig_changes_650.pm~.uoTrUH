@@ -1,0 +1,49 @@
+package Environments::Schema::Result::AA_MIG_CHANGES_650;
+
+use strict;
+use warnings;
+
+use base 'DBIx::Class';
+
+__PACKAGE__->load_components("InflateColumn::DateTime", "Core");
+__PACKAGE__->table("AA_MIG_CHANGES_650");
+__PACKAGE__->add_columns(
+   "TIERS_ID",
+   {
+      data_type => "VARCHAR2",
+      default_value => undef,
+      is_nullable => 1,
+      size => 20
+   },
+   "START_DT",
+   {
+      data_type => "DATE",
+      is_nullable => 1,
+   },
+   "END_DT",
+   {
+      data_type => "DATE",
+      is_nullable => 1,
+   },
+   "VERSION",
+   {
+      data_type => "NUMBER",
+      default_value => undef,
+      is_nullable => 1,
+      size => 38
+   },
+   "LOGFILE",
+   { 
+      data_type => "VARCHAR2",
+      default_value => undef,
+      is_nullable => 1,
+      size => 100
+   },
+   "BUILD_NUM",
+   {
+      data_type => "NUMBER",
+      default_value => undef,
+      is_nullable => 1,
+      size => 38
+   }
+);

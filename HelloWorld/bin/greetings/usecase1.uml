@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="__V4zEGycEd2AuKVpuozjrA">
+  <elementImport xmi:id="__ajQoGycEd2AuKVpuozjrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="__arMcGycEd2AuKVpuozjrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="__arMcWycEd2AuKVpuozjrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="__arMcmycEd2AuKVpuozjrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_BFB1cGydEd2AuKVpuozjrA" name="Aubri"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_DgvC4GydEd2AuKVpuozjrA" name="Create Recipe"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_GEFJYGydEd2AuKVpuozjrA" name="Modify Recipe"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_H1YH4GydEd2AuKVpuozjrA" name="View Recipe"/>
+</uml:Package>

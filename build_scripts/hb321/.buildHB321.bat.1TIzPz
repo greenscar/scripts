@@ -1,0 +1,59 @@
+@echo off
+
+rem -----------------------------------------------------------------------------------------
+rem This file is used to set up the necessary variables to run build automation.
+rem Run runbuild.bat from the same directory.
+rem -----------------------------------------------------------------------------------------
+
+rem ANT Home Dir
+set ANT_HOME=C:\Tools\apache-ant-1.7.1
+               
+rem Set JAVA_HOME to JDK path
+set JAVA_HOME=C:\IBM\SDP70\jdk
+
+rem WebSphere Process Server Home Dir
+SET WPS_HOME=C:\IBM\SDP70\runtimes\bi_v61
+rem Root directory of the automation scripts and workspaces (usually /Automation)
+SET AUTOMATION_HOME=C:\BuildScript
+
+rem ClearCase view directory 
+SET CLEARCASE_VIEW=C:\views\vnandrambakkam01_EA_HB321_73_2_x_x\EA_hb321
+
+rem SharedService ClearCase view directory 
+SET LIB_CLEARCASE_VIEW=C:\views\vnandrambakkam01_EA_Common_73_2_x_x\EA_comn
+
+rem The list of integration modules to build
+SET MODULE_LIST=AcceptApplicationProc,HANDScaServiceGateway,PasswordChangeProc,PersistDocumentProc,TrackRequestsProc,ValidateApplicationProc,ValidateTrackingRulesProc
+
+rem Add ant-contrib.jar to CLASSPATH                                                  
+set CLASSPATH=%CLASSPATH%;%AUTOMATION_HOME%\ant-contrib.jar
+
+
+rem -----------------------------------------------------------------------------------------
+rem
+rem The values for the following variables need not be changed.
+rem
+rem -----------------------------------------------------------------------------------------
+
+rem Date in the format YYYYMMDD
+SET TODAYS_DATE=%DATE:~10%%DATE:~4,2%%DATE:~7,2%%TIME:~0,2%%TIME:~3,2%%TIME:~6,2%
+
+rem The directory where the log files will be written
+SET LOGDIR=%AUTOMATION_HOME%\dailybuilds\%TODAYS_DATE%
+
+rem Directory on local machine where ZIPs will be created 
+SET OUTPUT_DIR_ZIP=%AUTOMATION_HOME%\dailybuilds\%TODAYS_DATE%\ZIP
+
+rem Directory on local machine where EARs will be created 
+SET OUTPUT_DIR_EAR=%AUTOMATION_HOME%\dailybuilds\%TODAYS_DATE%\EAR
+
+rem Add ANT build tools to PATH
+set PATH=%PATH%;%ANT_HOME%\bin
+
+rem serviceDeploy path and file name
+SET SERVICEDEPLOY=%WPS_HOME%\bin\servicedeploy.bat
+
+rem Contents from ClearCase view are copied to src directory
+SET SOURCE=%AUTOMATION_HOME%\dailybuilds\%TODAYS_DATE%\SRC
+
+ant %* 

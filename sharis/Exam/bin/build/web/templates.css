@@ -1,0 +1,95 @@
+<STYLE TYPE="text/css">
+body {text-align: center; background-color: #FFFFFF;}
+input.question{width: 400px;}
+input.examName{width: 300px;}
+
+h3.gradersComment{ font-size: 20px;
+            color: red;
+            border-width: thick;
+            border-style: double; 
+            border-color: black; 
+            padding: 0.5em;
+            width: 50%; 
+            margin-top: +25px;
+            margin-bottom: +5px;
+            text-align: center;
+          }
+h3.header { /*font-size: 20px;
+            color: black;
+            border-width: thick;
+            border-style: double; 
+            border-color: black; 
+            padding: 0.5em;
+            width: 50%; */
+            margin-top: +25px;
+            margin-bottom: +5px;
+            text-align: center;
+          }
+
+th {text-align: center; font: bold; font-size: 18pt;  background: #103010; color: #FFFF05; padding: 0.5em;}
+td {vertical-align: top; /*border-style: inset;  border-color: purple; border-width: thin;*/}
+td.comment{vertical-align: top; border-style: inset;  border-color: black; border-width: thin;}
+table.entry{width: 700px; margin-left: auto; margin-right: auto; border: 0px solid green;}
+.entry_red_bold{width: 700px; margin-left: auto; margin-right: auto;text-align:left; color:RED; font-size:12pt; font-weight: bold; text-decoration:none}
+.entry_black{width: 700px; margin-left: auto; margin-right: auto;text-align:left; color:BLACK; font-size:12pt; font-weight: normal; text-decoration:none}
+
+table.sectionHeader{width: 700px; margin-left: auto; margin-right: auto; text-align: center; border: 1px solid white;}
+.red_bold{width: 700px; margin-left: auto; margin-right: auto; text-align: center; color: RED; border: 1px solid red;}
+.black{width: 700px; margin-left: auto; margin-right: auto; text-align: center; color: BLACK; border: 1px solid white;}
+	
+table.header{width: 400px; margin: 0 auto; border: 3px; border-style: solid; border-color: #103010;}
+.header_red_bold{  width: 400px; margin: 0 auto; border: 3px; border-style: solid; border-color: red}
+.header_black{     width: 400px; margin: 0 auto; border: 3px; border-style: solid; border-color: black}
+
+textarea.header{height: 40px; width: 520px; margin-left: auto; margin-right: auto;}
+textarea.essay{height: 250px; width: 650px; margin-left: auto; margin-right: auto;}
+textarea.matching{height: 45px; width: 300px; margin-left: auto; margin-right: auto;}
+textarea.multChoice{height: 40px; width: 500px; margin-left: auto; margin-right: auto;}
+textarea.description{height: 40px; width: 650px; margin-left: auto; margin-right: auto;}
+text.examName{width: 40px;}
+		
+   A {color:BLACK;  font-size: 12pt; font-weight: bold; text-decoration:none; border:none; padding:0}
+	A:link{color:BLACK;  font-size: 12pt; font-weight: bold;text-decoration:none; border:none; padding:0}
+	A:hover{color:RED;  font-size: 12pt; font-weight: bold;text-decoration:none; border:none}
+	
+	A.test_list{color:YELLOW; font-size:12pt; font-weight: normal;text-decoration:none}
+	A.test_list:link{color:BLACK; font-size:12pt; font-weight: normal;text-decoration:none}
+	A.test_list:hover{color:RED; font-size:12pt; font-weight: normal;text-decoration:none}
+	
+   A.table_header{color:#FFFF05; font-size:18pt; font-weight: normal;text-decoration:none}
+	A.table_header:link{color:#FFFF05; font-size:18pt; font-weight: normal;text-decoration:none}
+	A.table_header:hover{color:RED; font-size:18pt; font-weight: normal;text-decoration:none}
+
+a.submitExam {
+	width:200px;
+	text-align:center;
+	text-decoration:none;
+	border-color:black;
+	border-width:2px;
+	border-style:solid;
+	margin:0px 10px 10px 10px;
+	float:left;
+   color:#black;
+}
+a.submitExam:hover {     
+
+	width:200px;
+	text-align:center;
+	text-decoration:none;
+	border-color:#FF0000;
+	border-width:2px;
+	border-style:solid;
+	margin:0px 10px 10px 10px;
+	float:left;
+   color:#FF0000;
+}
+div.arialtwelve
+{
+	font-size:12px;
+	font-family:arial;
+	font-weight:bold;
+	margin:0px 0px 0px 0px;	
+	text-align:center;
+}
+</STYLE>
+

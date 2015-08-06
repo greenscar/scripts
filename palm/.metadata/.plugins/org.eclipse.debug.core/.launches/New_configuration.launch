@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="com.palm.pdt.ui.launch.type">
+<stringAttribute key="PROJECT" value=""/>
+<stringAttribute key="com.palm.pdt.targetId" value="emulator"/>
+</launchConfiguration>

@@ -1,0 +1,52 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <!-- Template section, these are parsed out of the final xml and used to populate an 
+      existing environment group if an instance of this interface is linked with a project.
+      However, use the list below to help identify the variables needed to run this interface
+      if you are integrating it during a regular BuildForge step.
+      -->
+      <env name="CS_WORKING_DIR" value="MyProject\MyDirectory"/>
+      <env name="CS_JAR" value="lib\checkstyle-all-4.2.jar"/>
+      <env name="CS_CHECK_DIR" value="src"/>
+      <env name="CS_CONF_FILE" value="checkstyle.xml"/>
+      <env name="CS_EXTRA_FLAGS" value=""/>
+   </template>
+   
+   <!-- parse a source directory and report on any checkstyle violations -->
+   <interface>
+      <run command="check_errors" params="$CS_JAR $CS_WORKING_DIR $CS_CHECK_DIR $CS_CONF_FILE $CS_EXTRA_FLAGS" server="$BF_SERVER" dir="/$BF_PROJECTNAME_PHYS/$BF_TAG" timeout="360"/>
+      <ontempenv name="Errors" state="hastext">
+         <!-- No checkstyle error, pass the build, default behaviour is fail -->
+         <step result="FAIL"/>
+      </ontempenv>
+   </interface>
+   
+   <command name="check_errors">
+      <execute>
+         cd
+         cd $BF_TAG\$VOB\$MODULE
+         java -jar $1 -r $3 -c $4 $5
+      </execute>
+      <resultsblock>
+         <match pattern="^(.*?):(.*?):(.*?): (.*?)$">
+            <bom category="Checkstyle" section="checkstyle">
+               <field name="File" text="$1"/>
+               <field name="Line" text="$2"/>
+               <field name="Column" text="$3"/>
+               <field name="Message" text="$4"/>
+            </bom>
+            <setenv name="Errors" value="$1: $4" type="temp append\n"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <bomformat category="Checkstyle" title="Java Checkstyle Results">
+      <section name="checkstyle">
+         <field order="1" name="File"/>
+         <field order="2" name="Line"/>
+         <field order="3" name="Column"/>
+         <field order="4" name="Message"/>
+      </section>
+   </bomformat>
+</PROJECT_INTERFACE>

@@ -1,0 +1,155 @@
+
+Whois Server Version 2.0
+
+Domain names in the .com and .net domains can now be registered
+with many different competing registrars. Go to http://www.internic.net
+for detailed information.
+
+
+   Domain Name: IHW.COM
+   Registrar: PSI-USA, INC. DBA DOMAIN ROBOT
+   Whois Server: whois.psi-usa.info
+   Referral URL: http://www.psi-usa.info
+   Name Server: NS1.CUNET.DE
+   Name Server: NS2.CUNET.DE
+   Status: clientDeleteProhibited
+   Status: clientTransferProhibited
+   Status: clientUpdateProhibited
+   Updated Date: 06-jun-2007
+   Creation Date: 06-jun-1996
+   Expiration Date: 05-jun-2008
+
+>>> Last update of whois database: Fri, 13 Jul 2007 04:47:18 UTC <<<
+
+NOTICE: The expiration date displayed in this record is the date the 
+registrar's sponsorship of the domain name registration in the registry is 
+currently set to expire. This date does not necessarily reflect the expiration 
+date of the domain name registrant's agreement with the sponsoring 
+registrar.  Users may consult the sponsoring registrar's Whois database to 
+view the registrar's reported date of expiration for this registration.
+
+TERMS OF USE: You are not authorized to access or query our Whois 
+database through the use of electronic processes that are high-volume and 
+automated except as reasonably necessary to register domain names or 
+modify existing registrations; the Data in VeriSign Global Registry 
+Services' ("VeriSign") Whois database is provided by VeriSign for 
+information purposes only, and to assist persons in obtaining information 
+about or related to a domain name registration record. VeriSign does not 
+guarantee its accuracy. By submitting a Whois query, you agree to abide 
+by the following terms of use: You agree that you may use this Data only 
+for lawful purposes and that under no circumstances will you use this Data 
+to: (1) allow, enable, or otherwise support the transmission of mass 
+unsolicited, commercial advertising or solicitations via e-mail, telephone, 
+or facsimile; or (2) enable high volume, automated, electronic processes 
+that apply to VeriSign (or its computer systems). The compilation, 
+repackaging, dissemination or other use of this Data is expressly 
+prohibited without the prior written consent of VeriSign. You agree not to 
+use electronic processes that are automated and high-volume to access or 
+query the Whois database except as reasonably necessary to register 
+domain names or modify existing registrations. VeriSign reserves the right 
+to restrict your access to the Whois database in its sole discretion to ensure 
+operational stability.  VeriSign may restrict or terminate your access to the 
+Whois database for failure to abide by these terms of use. VeriSign 
+reserves the right to modify these terms at any time. 
+
+The Registry database contains ONLY .COM, .NET, .EDU domains and
+Registrars.
+%
+% =============
+% PSI-USA, Inc.
+% =============
+%
+% This is the PSI-USA, Inc. WHOIS server.
+%
+% All requests are logged.
+%
+% Requesting IP: 72.255.19.226
+% Requesting URL: http://whois.psi-usa.info
+% Requesting Object: domain ihw.com
+% Timestamp: 2007-07-13 06:48:30
+%
+% You can see the policy that you agree by submitting a query to this server:
+% whois -h whois.psi-usa.info POLICY
+
+
+domain:                      ihw.com
+status:                      LOCK
+owner-c:                     LULU-509648
+admin-c:                     LULU-509719
+tech-c:	                     LULU-509714
+zone-c:                      LULU-509714
+nserver:                     NS1.CUNET.DE
+nserver:                     NS2.CUNET.DE
+created:                     1996-06-06 00:00:00
+expire:                      2008-06-05 00:00:00 (registry time)
+changed:                     2007-06-07 02:54:05
+
+[owner-c] handle:            509648
+[owner-c] type:              PERSON
+[owner-c] title:             
+[owner-c] fname:             Software Outsourcing Consulting
+[owner-c] lname:             GmbH
+[owner-c] org:               Software Outsourcing Consulting GmbH
+[owner-c] address:           Henschelstr. 3
+[owner-c] city:              Muenchen
+[owner-c] pcode:             81249
+[owner-c] country:           DE
+[owner-c] state:             DE
+[owner-c] phone:             +49-123-45678
+[owner-c] fax:               +49-000-000
+[owner-c] email:             info@ihw.com
+[owner-c] protection:        B
+[owner-c] updated:           2005-03-14 13:27:02
+
+[admin-c] handle:            509719
+[admin-c] type:              PERSON
+[admin-c] title:             
+[admin-c] fname:             Andreas
+[admin-c] lname:             Kisslinger
+[admin-c] org:               IHW - Industrie- und Handelswerbung GmbH
+[admin-c] address:           Henschelstr. 3
+[admin-c] city:              Muenchen
+[admin-c] pcode:             81829
+[admin-c] country:           DE
+[admin-c] state:             DE
+[admin-c] phone:             +49-123-45678
+[admin-c] fax:               +49-000-000
+[admin-c] email:             admin-c@ihw.com
+[admin-c] protection:        B
+[admin-c] updated:           2005-03-14 13:27:02
+
+[tech-c] handle:             509714
+[tech-c] type:               PERSON
+[tech-c] title:              
+[tech-c] fname:              ip and more
+[tech-c] lname:              Hostmaster
+[tech-c] org:                ip&more GmbH
+[tech-c] address:            -
+[tech-c] city:               Muenchen
+[tech-c] pcode:              D-80809
+[tech-c] country:            DE
+[tech-c] state:              DE
+[tech-c] phone:              +49-893-503920
+[tech-c] fax:                +49-893-5039299
+[tech-c] email:              hostmaster@ipandmore.de
+[tech-c] protection:         B
+[tech-c] updated:            2005-05-13 15:26:56
+
+[zone-c] handle:             509714
+[zone-c] type:               PERSON
+[zone-c] title:              
+[zone-c] fname:              ip and more
+[zone-c] lname:              Hostmaster
+[zone-c] org:                ip&more GmbH
+[zone-c] address:            -
+[zone-c] city:               Muenchen
+[zone-c] pcode:              D-80809
+[zone-c] country:            DE
+[zone-c] state:              DE
+[zone-c] phone:              +49-893-503920
+[zone-c] fax:                +49-893-5039299
+[zone-c] email:              hostmaster@ipandmore.de
+[zone-c] protection:         B
+[zone-c] updated:            2005-05-13 15:26:56
+
+

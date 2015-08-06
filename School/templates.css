@@ -1,0 +1,10 @@
+<STYLE TYPE="text/css">
+body {text-align: center; background-color: #FFFF66;}
+input.question{width: 400px;}
+h3.header {text-align: center;}
+th {text-align: center; font: bold; font-size: 18pt;  background: #103010; color: #FFFF05; padding: 0.5em;}
+table.question{width: 630px; margin-left: auto; margin-right: auto;/* border:2px solid blue;*/}
+table.header{width: 400px; margin: 0 auto; border: 3px; border-style: solid; border-color: #103010;}
+textarea.header{height: 40; width: 520; margin-left: auto; margin-right: auto;}
+td {/*border:2px solid green; */vertical-align:top;}
+</STYLE>

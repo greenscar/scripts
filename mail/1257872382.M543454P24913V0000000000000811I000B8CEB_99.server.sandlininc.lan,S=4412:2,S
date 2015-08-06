@@ -1,0 +1,85 @@
+Return-Path: <james@caffeinewebdesign.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 4C4C990062
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 08:37:33 -0500 (CDT)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0Jp63adl9kjB for <james@sandlininc.com>;
+	Sat, 23 Aug 2008 08:37:33 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 8060C90635
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 07:52:35 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Sat, 23 Aug 2008 07:44:09 -0500
+Received: from sandlininc.com [74.55.232.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Sat, 23 Aug 2008 07:52:35 -0500 (CDT)
+Received: from cpe-66-68-52-223.austin.res.rr.com ([66.68.52.223]:61575 helo=[10.0.0.9])
+	by maxserv.yourhostdns.com with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.69)
+	(envelope-from <james@caffeinewebdesign.com>)
+	id 1KWsTQ-0004fH-P6
+	for james@sandlininc.com; Sat, 23 Aug 2008 07:44:09 -0500
+Resent-From: James Sandlin <james@caffeinewebdesign.com>
+Resent-To: james@sandlininc.com
+Resent-Date: Sat, 23 Aug 2008 07:44:08 -0500
+Resent-Message-Id: <48B00618.1030600@caffeinewebdesign.com>
+Resent-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.16) Gecko/20080724 Thunderbird/2.0.0.16
+X-Mozilla-Keys:                                                                                 
+Received: from mpscfw.uboc.com ([216.52.215.232] helo=mail6.uboc.com)
+	by maxserv.yourhostdns.com with esmtps (TLSv1:AES256-SHA:256)
+	(Exim 4.68)
+	(envelope-from <select.benefit@uboc.com>)
+	id 1JURE9-0003OI-6s
+	for james@caffeinewebdesign.com; Wed, 27 Feb 2008 12:42:01 -0600
+Received: from mail6.uboc.com (localhost.localdomain [127.0.0.1])
+	by localhost (Postfix) with SMTP id A337D22C0049
+	for <james@caffeinewebdesign.com>; Wed, 27 Feb 2008 10:41:56 -0800 (PST)
+Received: from itg-mpsc-von03 (vontu [10.150.124.80])
+	by mail6.uboc.com (Postfix) with SMTP id 8AA4722C003C
+	for <james@caffeinewebdesign.com>; Wed, 27 Feb 2008 10:41:56 -0800 (PST)
+Received: from stip-mpsc-smtp2.uboc.com (unknown [10.150.169.231])
+	by mail2.uboc.com (Postfix) with ESMTP id 815EB1020006
+	for <james@caffeinewebdesign.com>; Wed, 27 Feb 2008 10:41:56 -0800 (PST)
+Received: from selectbenefit.com ([10.35.7.162])
+          by stip-mpsc-smtp2.uboc.com (Lotus Domino Release 6.5.3FP1)
+          with SMTP id 2008022710415588-10557 ;
+          Wed, 27 Feb 2008 10:41:55 -0800 
+From: "SelectBenefit Online Customer Support" <select.benefit@uboc.com>
+To: james@caffeinewebdesign.com
+Subject: Transaction Pending
+X-MIMETrack: Itemize by SMTP Server on MP240-SMTP02/ENT/UBOC(Release 6.5.3FP1|December
+ 15, 2004) at 02/27/2008 10:41:55 AM,
+	Serialize by Router on MP240-SMTP02/ENT/UBOC(Release 6.5.3FP1|December 15, 2004) at
+ 02/27/2008 10:41:56 AM,
+	Serialize complete at 02/27/2008 10:41:56 AM
+Date: Wed, 27 Feb 2008 10:41:55 -0800
+Message-ID: <OFF6832615.DB73F422-ON882573FC.0066B744@uboc.com>
+X-Vontu: Pass
+
+James,
+
+Your Web Only Statements change has been submitted.
+Please note your transaction number and request date:
+
+Transaction Number: WB080227-108659
+Request Date & Time: 02/27/2008 10:41 AM
+
+You may view the details of your pending transaction by logging onto www.selectbenefit.com. You may also call 1-800-678-PLAN for more information.
+
+Note: If you would prefer to receive future transaction confirmations only on the web site, please go to the "Preferences" page of your account on www.selectbenefit.com to turn off e-mail notices.
+
+******************************************************************************
+This communication (including any attachments) may contain privileged or
+confidential information intended for a specific individual and purpose, 
+and is protected by law.  If you are not the intended recipient, you should
+delete this communication and/or shred the materials and any attachments and
+are hereby notified that any disclosure, copying, or distribution of this
+communication, or the taking of any action based on it, is strictly prohibited.
+
+Thank you.
+
+

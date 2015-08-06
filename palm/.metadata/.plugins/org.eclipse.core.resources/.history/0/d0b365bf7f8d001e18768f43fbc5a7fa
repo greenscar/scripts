@@ -1,0 +1,30 @@
+<div id="timer-view-Scene">
+
+	<div class="palm-header">
+		<div class="palm-header-center">Timer on a Stick</div>
+	</div>
+	<div class="palm-header-spacer"></div>
+
+	<table id="timerTable" class="timer-table" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			<div id="hours" class="picker" x-mojo-element="IntegerPicker"></div>
+		</td>
+		<td><br />:</td>
+		<td>
+			<div id="minutes" class="picker" x-mojo-element="IntegerPicker"></div>
+		</td>
+		<td><br />:</td>
+		<td>
+			<div id="seconds" class="picker" x-mojo-element="IntegerPicker"></div>
+		</td>
+	</tr>
+	</table>
+
+	<div class="timer-display-wrapper">
+		<div id="timerDisplay" class="timer-display">00:00:00</div>
+	</div>
+
+	<div x-mojo-element="Button" id="startButton"></div>
+	<div x-mojo-element="Button" id="stopButton"></div>
+</div>

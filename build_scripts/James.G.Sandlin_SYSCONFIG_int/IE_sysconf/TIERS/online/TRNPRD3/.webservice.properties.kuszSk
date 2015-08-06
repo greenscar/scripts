@@ -1,0 +1,4 @@
+ALERTS.WEBSERVICE=iedaau011:10080
+DEPROVISION.WEBSERVICE=http://trnprd3.txaccess.net/tiersWSWeb/services/UserProvisioningService
+APPT_SCHEDULER_GENERIC_USER_EMP_ID=4470
+APPT_SCHEDULER_GENERIC_USER_ID=taagenericuser

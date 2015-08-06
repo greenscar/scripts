@@ -1,0 +1,209 @@
+<project name="buildAll" basedir=".">
+
+   <property file="${basedir}/props/taskdef.properties"/>
+   <property file="${basedir}/props/mepd.properties" prefix="mepd"/>
+   
+	<path id="prj.class.path">
+		<fileset dir=".">
+			<include name="${basedir}/lib/*.jar" />
+		</fileset>		
+	</path>
+	<!--
+	<property file="${basedir}/props/taskdef.properties"/>
+   -->
+   
+   <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+      <classpath>
+         <pathelement location="${basedir}/lib/ant-contrib-0.6.jar"/>
+      </classpath>
+   </taskdef>
+	<taskdef name="servicedeploy" classname="${was.ServiceDeployTask}" >
+		 <classpath>
+		   <pathelement path="${was.home}/lib/*.jar"/>	   
+		 </classpath>
+	</taskdef>
+
+	 <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	      
+	  <property environment="buildenv" />
+     <property name="home.procserver" value="${buildenv.PROC_SERVER_HOME}"/>
+     <property name="home.java" value="${buildenv.JAVA_HOME}"/>
+     
+     <!--
+     
+	  <property name="automation.home" value="${buildenv.AUTOMATION_HOME}" />
+	  <property name="clearcase.view" value="${buildenv.CLEARCASE_VIEW}" />
+	  <property name="lib.clearcase.view" value="${buildenv.LIB_CLEARCASE_VIEW}" />
+	  <property name="work.dir" value="${buildenv.WORK_DIR}" />
+	  <property name="module.list" value="${buildenv.MODULE_LIST}" />
+	  <property name="output.dir.zip" value="${buildenv.OUTPUT_DIR_ZIP}" />
+	  <property name="output.dir.ear" value="${buildenv.OUTPUT_DIR_EAR}" />
+	  <property name="service.deploy" value="${buildenv.SERVICEDEPLOY}" />
+	  <property name="source.dir" value="${buildenv.SOURCE}" />
+	                
+	  <target name="buildAll" depends="clean,init"  description="Builds all integration modules">
+		      <foreach list="${module.list}" 
+	               target="buildModule"
+	               param="module.name"
+	      	       delimiter=","/>
+	  	
+	  	  </target>
+	-->
+	  <target name="clean" description="Deletes following directories: SCA module Source Dir, SCA module Zip Dir, SCA module EAR Dir">
+	   <echo message="Delete folders: ${mepd.output.dir.source} ${mepd.output.dir.zip} ${mepd.output.dir.ear}" />
+      <for list="${mepd.output.dir.source},${mepd.output.dir.zip},${mepd.output.dir.ear},${mepd.output.dir.automation}" param="output.dir">
+         <sequential>
+            <delete>
+               <fileset dir="@{output.dir}" includes="**/*"/>
+            </delete>
+         </sequential>
+      </for>
+      <!--
+         <echo message="Delete folders: ${mepd.output.dir.source} ${output.dir.zip} ${output.dir.ear}" />
+	     <delete dir="${mepd.output.dir.source}"/>
+	     <delete dir="${output.dir.zip}"/>
+	     <delete dir="${output.dir.ear}"/>
+      -->
+	  </target>
+	
+	  <target name="init" description="Creates following directories: SCA module Source Dir, SCA module Zip Dir, SCA module EAR Dir">
+	   <echo message="Create folders: ${mepd.output.dir.source} ${mepd.output.dir.zip} ${mepd.output.dir.ear} ${mepd.output.dir.automation}" />
+      <for list="${mepd.output.dir.source},${mepd.output.dir.zip},${mepd.output.dir.ear},${mepd.output.dir.automation}" param="output.dir">
+         <sequential>
+            <mkdir dir="@{output.dir}"/>
+         </sequential>
+      </for>  
+     <!--
+     <echo message="Create folders: ${mepd.output.dir.source} ${output.dir.zip} ${output.dir.ear}" />
+	      <mkdir dir="${mepd.output.dir.source}"/>
+	     <mkdir dir="${output.dir.zip}"/>
+	     <mkdir dir="${output.dir.ear}"/>
+	     -->
+	     
+	  </target>
+	
+	  <target name="buildModule" description="Builds the selected Integration module">
+	     <property name="project.name" value="${module.name}" />
+	     <echo message="Build module: ${module.name}" />          
+	     <antcall target="copyCodeToWorkingDir" />
+	     <antcall target="createZip" />
+	     <antcall target="createEAR" />
+	  </target>
+	
+	  <target name="copyCodeToWorkingDir" description="Copy projects in SCA module Source Dir from ClearCase View Dir">
+	        <echo message="Copy ${project.name} To ${mepd.output.dir.source}" />
+	        <if>
+	        	<or>
+		       <equals arg1="${project.name}" arg2="SharedServicesLib" />
+		       <equals arg1="${project.name}" arg2="SharedUtilProj" />
+		       </or>
+		       <then>
+               <exec executable="/opt/csw/bin/rsync" failonerror="true">
+                  <arg value="-r"/>
+                  <arg value="-delete"/>
+                  <arg value="${mepd.cc.view.shared}/${project.name}"/>
+                  <arg value="${mepd.output.dir.source}"/>
+               </exec>
+             <!--
+		       		<copy todir="${mepd.output.dir.source}\${project.name}">
+				      <fileset dir="${lib.clearcase.view}\${project.name}"/>
+	        		</copy>
+               -->
+		       </then>
+	        <else>
+               <exec executable="/opt/csw/bin/rsync" failonerror="true">
+                  <arg value="-r"/>
+                  <arg value="-delete"/>
+                  <arg value="${mepd.cc.view}/${project.name}"/>
+                  <arg value="${mepd.output.dir.source}"/>
+               </exec>
+               <!--
+                 <copy todir="${mepd.output.dir.source}\${project.name}">
+                    <fileset dir="${clearcase.view}\${project.name}"/>
+                 </copy>
+               -->
+	        </else>
+	        </if>
+	  </target>
+	
+	   <target name="getDependencyList" description="Get the list of dependencies for the selected Integration module">
+	     <echo message="Get the list of dependencies for module: ${module.name}" />  
+	     <loadfile property="dependency.list" srcFile="${mepd.output.dir.source}/${module.name}/modulerefs.txt" />
+      <echo message="${module.name} depends on: ${dependency.list}"/>
+	  </target>
+	
+	  <target name="getDependencies" depends="getDependencyList" description="Invoke the target 'copyCodeToWorkingDir' for every dependent project of the selected integration module">
+	     <echo message="Get the projects from the following list: ${dependency.list}" />  
+	       <foreach list="${dependency.list}" 
+	              	  target="copyCodeToWorkingDir"
+		          param="project.name"
+	              delimiter="?"/>
+	  </target>
+	
+	   <target name="createZip" depends="getDependencies" description="Create ZIP of the selected Integration module">
+	      <echo message="Create zip for the module: ${module.name}" />
+         <zip destfile="${output.dir.zip}/${module.name}.zip"
+              basedir="${mepd.output.dir.source}" 
+              />
+              <delete>
+               <fileset dir="${mepd.output.dir.source}" includes="**/*"/>
+              </delete>
+               <!--
+              <delete dir="${mepd.output.dir.source}"/>
+              <mkdir dir="${mepd.output.dir.source}"/>
+              -->
+	   </target>
+	
+	   <target name="createEAR" description="Create EAR of the selected Integration module">
+      <echo message="Run service deploy for ${module.name}" />
+      <echo message="scaModule=${mepd.output.dir.zip}/${module.name}.zip"/>
+      <echo message="outputApplication=${mepd.output.dir.ear}/${module.name}.ear"/>
+      <echo message="workingDirectory=${mepd.output.dir.automation}"/>
+      <echo message="build.script.dir=${mepd.build.script.dir}"/>
+      <echo message="service.deploy=${mepd.service.deploy}"/>
+       <!-- Run service deploy command to generate an ear file to deploy to a WebSphere Process Server -->
+      <!--
+      NOTE: To call serviceDeploy, we had to first modify the servicedeploy.sh file 
+            adding -XX:MaxPermSize=256m to the JVM_OPTIONS
+            Final value: JVM_OPTIONS="-XX:MaxPermSize=256m -Xms256M -Xmx512M -Dwas.home=$WAS_HOME"
+      -->
+      <!--
+         Option in exec which I removed so output goes to stdout
+         output="${mepd.output.dir.log}/${module.name}.log"
+      <exec dir="${mepd.build.script.dir}"
+         executable="${mepd.service.deploy}"
+         failonerror="false"
+         resultproperty="servicedeploy.rc">
+         <arg line=" ${mepd.output.dir.zip}/${module.name}.zip
+              -outputApplication ${mepd.output.dir.ear}/${module.name}.ear
+              -workingDirectory ${mepd.output.dir.automation}
+              -cleanStagingModules -noj2eedeploy"/>
+      </exec>
+      -->
+      <!--
+         The ANT call to servicedeploy is below. For an unknown reason, when executing
+         servicedeploy using the call below on iedaau020, the system hangs as it did 
+         before we added the MaxPermSize=256m argument to serviceDepoy.sh file.
+         The call below does exactly the same thing as the exec call above.
+      -->
+         
+         <servicedeploy scaModule="${mepd.output.dir.zip}/${module.name}.zip"
+         ignoreErrors="false"
+         outputApplication="${mepd.output.dir.ear}/${module.name}.ear"
+         workingDirectory="${mepd.output.dir.automation}"
+         noJ2eeDeploy="false"
+         cleanStagingModules="true"/>
+      <!--
+	      <echo message="Run service deploy for ${module.name}" />
+	      	         	<mkdir dir="${work.dir}"/>
+		 		<servicedeploy scaModule="${output.dir.zip}/${module.name}.zip"
+		 			ignoreErrors="false"
+		 			outputApplication="${output.dir.ear}/${module.name}.ear"
+		 			workingDirectory="${work.dir}"
+		 			noJ2eeDeploy="false"
+					cleanStagingModules="true"/>
+				<delete dir="${work.dir}"/>
+			     -->
+	   </target>
+	
+</project>

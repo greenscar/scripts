@@ -1,0 +1,21 @@
+.timer-display-wrapper {
+	padding: 10px 0;
+}
+.timer-display {
+	font-size: 72px;
+	font-family: "Coconut-CondensedMedium";
+	font-weight: bold;
+	text-align: center;
+	padding: 5px 0;
+	color: white;
+	background-color: black;
+}
+
+.timer-table td {
+	text-align: center;
+}
+.timer-table td .picker {
+	text-align: center;
+	/* doesn't really work. */
+}
+

@@ -1,0 +1,22 @@
+(dp1
+S'body'
+p2
+S'LONGTEXT'
+p3
+sS'image_id'
+p4
+S'INT, INDEX image_id__idx (image_id), FOREIGN KEY (image_id) REFERENCES image(id) ON DELETE CASCADE'
+p5
+sS'email'
+p6
+S'VARCHAR(512)'
+p7
+sS'id'
+p8
+S'INT AUTO_INCREMENT NOT NULL'
+p9
+sS'author'
+p10
+S'VARCHAR(512)'
+p11
+s.

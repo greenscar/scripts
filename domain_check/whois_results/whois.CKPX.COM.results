@@ -1,0 +1,120 @@
+
+Whois Server Version 2.0
+
+Domain names in the .com and .net domains can now be registered
+with many different competing registrars. Go to http://www.internic.net
+for detailed information.
+
+
+   Domain Name: CKPX.COM
+   Registrar: GANDI SAS
+   Whois Server: whois.gandi.net
+   Referral URL: http://www.gandi.net
+   Name Server: NS1.RGIX.NET.DELETED.GANDI.NET
+   Name Server: NS2.RGIX.NET.DELETED.GANDI.NET
+   Status: clientTransferProhibited
+   Updated Date: 05-jun-2007
+   Creation Date: 10-may-2005
+   Expiration Date: 10-may-2008
+
+>>> Last update of whois database: Wed, 25 Jul 2007 14:29:34 UTC <<<
+
+NOTICE: The expiration date displayed in this record is the date the 
+registrar's sponsorship of the domain name registration in the registry is 
+currently set to expire. This date does not necessarily reflect the expiration 
+date of the domain name registrant's agreement with the sponsoring 
+registrar.  Users may consult the sponsoring registrar's Whois database to 
+view the registrar's reported date of expiration for this registration.
+
+TERMS OF USE: You are not authorized to access or query our Whois 
+database through the use of electronic processes that are high-volume and 
+automated except as reasonably necessary to register domain names or 
+modify existing registrations; the Data in VeriSign Global Registry 
+Services' ("VeriSign") Whois database is provided by VeriSign for 
+information purposes only, and to assist persons in obtaining information 
+about or related to a domain name registration record. VeriSign does not 
+guarantee its accuracy. By submitting a Whois query, you agree to abide 
+by the following terms of use: You agree that you may use this Data only 
+for lawful purposes and that under no circumstances will you use this Data 
+to: (1) allow, enable, or otherwise support the transmission of mass 
+unsolicited, commercial advertising or solicitations via e-mail, telephone, 
+or facsimile; or (2) enable high volume, automated, electronic processes 
+that apply to VeriSign (or its computer systems). The compilation, 
+repackaging, dissemination or other use of this Data is expressly 
+prohibited without the prior written consent of VeriSign. You agree not to 
+use electronic processes that are automated and high-volume to access or 
+query the Whois database except as reasonably necessary to register 
+domain names or modify existing registrations. VeriSign reserves the right 
+to restrict your access to the Whois database in its sole discretion to ensure 
+operational stability.  VeriSign may restrict or terminate your access to the 
+Whois database for failure to abide by these terms of use. VeriSign 
+reserves the right to modify these terms at any time. 
+
+The Registry database contains ONLY .COM, .NET, .EDU domains and
+Registrars.
+% GANDI Registrar whois database for .COM, .NET, .ORG., .INFO, .BIZ, .NAME
+%
+% Access and use restricted pursuant to French law on personal data.
+% Copy of whole or part of the data without permission from GANDI
+% is strictly forbidden.
+% The sole owner of a domain is the entity described in the relevant
+% 'domain:' record.
+% Domain ownership disputes should be settled using ICANN's Uniform Dispute
+% Resolution Policy: http://www.icann.org/udrp/udrp.htm
+% For inquiries about 'by policy' protection, please check directly
+% with the appropriate registry (Eurid, AFNIC)
+%
+% Acces et utilisation soumis a la legislation francaise sur
+% les donnees personnelles.
+% Copie de tout ou partie de la base interdite sans autorisation de GANDI.
+% Le possesseur d'un domaine est l'entite decrite dans
+% l'enregistrement 'domain:' correspondant.
+% Un desaccord sur la possession d'un nom de domaine peut etre resolu
+% en suivant la Uniform Dispute Resolution Policy de l'ICANN:
+% http://www.icann.org/udrp/udrp.htm
+% Pour obtenir les informations en status 'Protected by policy', contactez
+% directement le registre concerne (Eurid, AFNIC)
+%
+% Date: 2007/07/25 16:30:09
+
+
+domain:		CKPX.COM
+owner-name:	ckpx
+owner-address:	51, Ch du vieux chêne
+owner-address:	38240
+owner-address:	MEYLAN
+owner-address:	France
+admin-c:	CC2358-GANDI
+tech-c:		GM473-GANDI
+bill-c:		CC2358-GANDI
+nserver:	ns1.rgix.net.deleted.gandi.net 82.146.34.38
+nserver:	ns2.rgix.net.deleted.gandi.net 82.146.39.134
+reg_created:	2005-05-10 16:35:53
+expires:	2008-05-10 16:35:53
+created:	2006-05-09 07:55:13
+changed:	2007-06-05 15:29:35
+
+person:		ckpx com
+nic-hdl:	CC2358-GANDI
+address:	ckpx com
+address:	51, Ch du vieux chêne
+address:	38240
+address:	MEYLAN
+address:	France
+phone:		+33.476185291
+e-mail:		4f376396ab70ac4e744d415c096cbdb7-cc2358@contact.gandi.net
+lastupdated:	2006-07-03 10:04:01
+
+person:		Gerard MITCHELL
+nic-hdl:	GM473-GANDI
+address:	1148, rue rebecca
+address:	G1Y 3P8
+address:	Cap-Rouge
+address:	Quebec
+address:	Canada
+phone:		+01.4186540386
+fax:		+01.4186540886
+e-mail:		d3dad5cda59da04cf3632b62d993b307-gm473@contact.gandi.net
+lastupdated:	2006-07-03 10:04:01
+
+

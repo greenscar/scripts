@@ -1,0 +1,27 @@
+[% IF env%]
+   [% META title = 'Deploy List' -%]
+   <table border="1">
+   <tr>
+      <th>Application</th>
+      <th>Environment</th>
+      <th>Baseline</th>
+      <th>Time</th>
+      <th>BF Job</th>
+   </tr>
+   
+   [% FOREACH d IN deployments -%]
+   <tr>
+      <td>[% d.instance.application.name %]</td>
+      <td>[% d.instance.environment.name %]</td>
+      <td>[% d.baseline %]</td>
+      <td>[% d.timestamp %]</td>
+      <td>[% d.bf_job %]</td>
+   </tr>
+   [% END -%]
+   <table>
+[% ELSE %]
+   [% META title = 'Select App / Envt to Report' %]
+   [%# Render the HTML::FormFu Form %]
+   <H3> Please select the Application and/or Environment you would like to report</H3>
+   [% form %]
+[% END %]

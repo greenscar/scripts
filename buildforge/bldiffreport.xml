@@ -1,0 +1,155 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+		<!-- Template section, these are parsed out of the final xml and used to populate an 
+		existing environment group if an instance of this interface is linked with a project.
+		However, use the list below to help identify the variables needed to run this interface
+		if you are integrating it during a regular BuildForge step.
+		-->
+		<env name="CurDate"              value=".date %d-%b-%y.%H:%M:%S" />
+		<env name="SOURCE_STREAM"        value="required" />
+		<env name="PVOB"                 value="snbx_project" />
+		<env name="BF_SERVER"            value="BFServerName" />
+      <env name="BF_ROOT"              value="required"/>
+      <env name="BF_USER_EMAIL"        value="required"/>
+      <env name="testlvl"              value="Defined by autobl"/>
+	</template>
+   
+	<!-- The 'ByBaseline' entry point will create a new baseline inside your source, and will then diff between the 
+	newly crated baseline, and the baseline created during the previous build of the project -->
+	<interface>
+		<!-- The internal variable 'Changing' is used to store an email template that we will dynamically generate -->
+		<setenv name="Changing" value="Source Changes for this Build:\n" type="temp"/>
+		<setenv name="NoChanges" value="There are no Source Changes for this Build.\n" type="temp"/>
+		
+		<adduser group="MyChangers" user="$BF_USER_EMAIL"/>
+		<!-- cc_baselineactivities is detailed below but is basically the entry point into the command set to gather change info" -->
+      <run command="cc_baselineactivities" params="$OLDBL $NEWBL $SOURCE_STREAM $PVOB" server="$BF_SERVER" dir="/" timeout="360" condition="false($testlvl eq $LOCAL)"/>
+		<!-- Here we test to see if we have any changes, 'Changes' should have some data if a change was found -->
+		<ontempenv name="Changes" state="empty">
+			<!-- No changes, fail the build, default behaviour is pass -->
+			<step result="FAIL"/>
+		</ontempenv>
+		
+      <!-- Set some notifications for when the build completes -->
+		<onproject result="fail">
+			<notify group="MyChangers" subject="Build $BF_TAG (${CurDate}) Canceled due to no code changes." message="${NoChanges}"/>
+		</onproject>
+		<onproject result="pass">
+			<notify group="MyChangers" subject="Build $BF_TAG (${CurDate}) Passed." message="${Changing}${Changes}"/>
+		</onproject>
+	</interface>
+   <!-- 
+      This command lists the activities that occurred between two baselines, 
+		it then calls cc_actdescribe to gather further details about the activities -->
+	<command name="cc_baselineactivities">
+		<execute>
+         cd $3
+         cleartool diffbl -act $1@\$4 $2@\$4
+		</execute>
+		<resultsblock>
+			<match pattern="^[->]>\s+([^\s].*?)\s.*$">
+				<run command="cc_actdescribe" params="$SOURCE_STREAM $1" server="$BF_SERVER" dir="/" timeout="360"/>
+			</match>
+		</resultsblock>
+	</command>
+	<!-- This command gathers details about an activity and logs pertinent information to the BuildForge BOM -->
+	<command name="cc_actdescribe">
+		<execute>
+         cd $1
+         cleartool lsact -l $2
+		</execute>
+		<resultsblock>
+			<!-- look for something resempling an activity identifier -->
+			<match pattern="^activity\s&quot;(.*?)&quot;$">
+				<bom category="Source" section="activities">
+					<field name="id" text="$1"/>
+				</bom>
+			</match>
+			<!-- look for an activity owner -->
+			<match pattern="owner:\s(.*?\\|)(.*?)$">
+				<bom category="Source" section="activities">
+					<field name="owner" text="${1}${2}"/>
+				</bom>
+				<!-- add the user to our list of people who contributed changes to this build -->
+				<adduser group="MyChangers" user="$2"/>
+			</match>
+			<!-- look for some stream information -->
+			<match pattern="stream:\s(.*?)$">
+				<bom category="Source" section="activities">
+					<field name="stream" text="$1"/>
+				</bom>
+			</match>
+			<!-- See if we get a title for this activity -->
+			<match pattern="title:\s(.*?)$">
+				<bom category="Source" section="activities">
+					<field name="title" text="$1"/>
+				</bom>
+			</match>
+			<!-- This identifies any file/directory changes within the activity -->
+			<match pattern="^\s+([\\/].*?)\@\@(.*?\d)$">
+				<bom category="Source" section="changeset">
+					<field name="version" text="$1@@$2"/>
+				</bom>
+				<!-- add the information to our email template -->
+				<setenv name="Changes" value="$1\@\@$2" type="temp append\n"/>
+				<!-- and then run cc_diff to log the differences associated with this changed object -->
+				<run command="cc_diff" params="$SOURCE_STREAM $1 $2" server="$BF_SERVER" dir="/" timeout="360"/>
+			</match>
+			<!-- Log clearquest info if we get a record -->
+			<match pattern="clearquest record id:\s(.*?)$">
+				<bom category="Source" section="clearquestinfo">
+					<field name="cqid" text="$1"/>
+				</bom>
+			</match>
+			<match pattern="clearquest record State:\s(.*?)$">
+				<bom category="Source" section="clearquestinfo">
+					<field name="cqstate" text="$1"/>
+				</bom>
+			</match>
+		</resultsblock>
+	</command>
+	<!-- The cc_diff command does a generic clearcase diff, logging the full output of the diff in the BuildForge BOM -->
+	<command name="cc_diff">
+		<execute>
+         cd $1 
+         cleartool diff -pred -diff_format &quot;$2@@$3&quot;
+		</execute>
+		<resultsblock>
+			<match pattern=".+">
+				<bom category="Source" section="diff">
+					<field name="diff" text="$_"/>
+				</bom>
+			</match>
+		</resultsblock>
+	</command>
+	<!-- The bomformat sets up the BuildForge BOM display for the information we gather during this interface execution -->
+	<!-- A category is a top level expandable item -->
+	<bomformat category="Source" title="Source Changes">
+		<!-- A section defines the columns for blocks of information, a new row of information is added 
+			each time the last field (by order number) in a block is populated with new information -->
+		<section name="changes">
+			<field order="1" name="file" title="File/Dir Name"/>
+			<field order="2" name="version" title="Version"/>
+			<field order="3" name="date" title="Date"/>
+			<field order="4" name="user" title="User"/>
+			<field order="5" name="comment" title="Comment"/>
+		</section>
+		<section name="activities">
+			<field order="1" name="id" title="Activity"/>
+			<field order="2" name="owner" title="Owner"/>
+			<field order="3" name="stream" title="Stream"/>
+			<field order="4" name="title" title="Title"/>
+		</section>
+		<section name="changeset">
+			<field order="1" name="version" title="Change set version"/>
+		</section>
+		<section name="clearquestinfo">
+			<field order="1" name="cqid" title="ClearQuest record ID"/>
+			<field order="2" name="cqstate" title="ClearQuest record state"/>
+		</section>
+		<section name="diff">
+			<field name="diff" title="Change Details"/>
+		</section>
+	</bomformat>
+</PROJECT_INTERFACE>

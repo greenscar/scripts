@@ -1,0 +1,155 @@
+
+Whois Server Version 2.0
+
+Domain names in the .com and .net domains can now be registered
+with many different competing registrars. Go to http://www.internic.net
+for detailed information.
+
+
+   Domain Name: CIXE.COM
+   Registrar: PSI-USA, INC. DBA DOMAIN ROBOT
+   Whois Server: whois.psi-usa.info
+   Referral URL: http://www.psi-usa.info
+   Name Server: DNS1.EXASOL.COM
+   Name Server: DNS2.EXASOL.COM
+   Status: clientDeleteProhibited
+   Status: clientTransferProhibited
+   Status: clientUpdateProhibited
+   Updated Date: 14-feb-2007
+   Creation Date: 13-feb-2003
+   Expiration Date: 13-feb-2008
+
+>>> Last update of whois database: Wed, 25 Jul 2007 13:45:50 UTC <<<
+
+NOTICE: The expiration date displayed in this record is the date the 
+registrar's sponsorship of the domain name registration in the registry is 
+currently set to expire. This date does not necessarily reflect the expiration 
+date of the domain name registrant's agreement with the sponsoring 
+registrar.  Users may consult the sponsoring registrar's Whois database to 
+view the registrar's reported date of expiration for this registration.
+
+TERMS OF USE: You are not authorized to access or query our Whois 
+database through the use of electronic processes that are high-volume and 
+automated except as reasonably necessary to register domain names or 
+modify existing registrations; the Data in VeriSign Global Registry 
+Services' ("VeriSign") Whois database is provided by VeriSign for 
+information purposes only, and to assist persons in obtaining information 
+about or related to a domain name registration record. VeriSign does not 
+guarantee its accuracy. By submitting a Whois query, you agree to abide 
+by the following terms of use: You agree that you may use this Data only 
+for lawful purposes and that under no circumstances will you use this Data 
+to: (1) allow, enable, or otherwise support the transmission of mass 
+unsolicited, commercial advertising or solicitations via e-mail, telephone, 
+or facsimile; or (2) enable high volume, automated, electronic processes 
+that apply to VeriSign (or its computer systems). The compilation, 
+repackaging, dissemination or other use of this Data is expressly 
+prohibited without the prior written consent of VeriSign. You agree not to 
+use electronic processes that are automated and high-volume to access or 
+query the Whois database except as reasonably necessary to register 
+domain names or modify existing registrations. VeriSign reserves the right 
+to restrict your access to the Whois database in its sole discretion to ensure 
+operational stability.  VeriSign may restrict or terminate your access to the 
+Whois database for failure to abide by these terms of use. VeriSign 
+reserves the right to modify these terms at any time. 
+
+The Registry database contains ONLY .COM, .NET, .EDU domains and
+Registrars.
+%
+% =============
+% PSI-USA, Inc.
+% =============
+%
+% This is the PSI-USA, Inc. WHOIS server.
+%
+% All requests are logged.
+%
+% Requesting IP: 72.255.115.170
+% Requesting URL: http://whois.psi-usa.info
+% Requesting Object: domain cixe.com
+% Timestamp: 2007-07-25 15:46:35
+%
+% You can see the policy that you agree by submitting a query to this server:
+% whois -h whois.psi-usa.info POLICY
+
+
+domain:                      cixe.com
+status:                      LOCK
+owner-c:                     LULU-450750
+admin-c:                     LULU-450750
+tech-c:	                     LULU-450750
+zone-c:                      LULU-450855
+nserver:                     DNS1.EXASOL.COM
+nserver:                     DNS2.EXASOL.COM
+created:                     2003-02-13 05:25:12
+expire:                      2008-02-13 00:00:00 (registry time)
+changed:                     2007-02-15 02:56:19
+
+[owner-c] handle:            450750
+[owner-c] type:              PERSON
+[owner-c] title:             Herr
+[owner-c] fname:             Michael
+[owner-c] lname:             Gutzmann
+[owner-c] org:               EXASOL GmbH
+[owner-c] address:           Neumeyerstr. 48
+[owner-c] city:              Nuernberg
+[owner-c] pcode:             90411
+[owner-c] country:           DE
+[owner-c] state:             Bayern
+[owner-c] phone:             +49-911-2526249
+[owner-c] fax:               +49-911-2526241
+[owner-c] email:             itservice@exasol.com
+[owner-c] protection:        B
+[owner-c] updated:           2004-08-13 09:35:40
+
+[admin-c] handle:            450750
+[admin-c] type:              PERSON
+[admin-c] title:             Herr
+[admin-c] fname:             Michael
+[admin-c] lname:             Gutzmann
+[admin-c] org:               EXASOL GmbH
+[admin-c] address:           Neumeyerstr. 48
+[admin-c] city:              Nuernberg
+[admin-c] pcode:             90411
+[admin-c] country:           DE
+[admin-c] state:             Bayern
+[admin-c] phone:             +49-911-2526249
+[admin-c] fax:               +49-911-2526241
+[admin-c] email:             itservice@exasol.com
+[admin-c] protection:        B
+[admin-c] updated:           2004-08-13 09:35:40
+
+[tech-c] handle:            450750
+[tech-c] type:              PERSON
+[tech-c] title:             Herr
+[tech-c] fname:             Michael
+[tech-c] lname:             Gutzmann
+[tech-c] org:               EXASOL GmbH
+[tech-c] address:           Neumeyerstr. 48
+[tech-c] city:              Nuernberg
+[tech-c] pcode:             90411
+[tech-c] country:           DE
+[tech-c] state:             Bayern
+[tech-c] phone:             +49-911-2526249
+[tech-c] fax:               +49-911-2526241
+[tech-c] email:             itservice@exasol.com
+[tech-c] protection:        B
+[tech-c] updated:           2004-08-13 09:35:40
+
+[zone-c] handle:             450855
+[zone-c] type:               PERSON
+[zone-c] title:              ARRAY(0x45593564)
+[zone-c] fname:              ARRAY(0x45593618)
+[zone-c] lname:              ARRAY(0x45593600)
+[zone-c] org:                ARRAY(0x4559210c)
+[zone-c] address:            Roonstr. 27
+[zone-c] city:               ARRAY(0x45583190)
+[zone-c] pcode:              90429
+[zone-c] country:            DE
+[zone-c] state:              ARRAY(0x45593c00)
+[zone-c] phone:              +49-911-30950000
+[zone-c] fax:                +49-911-30950089
+[zone-c] email:              kunze@ip-exchange.de
+[zone-c] protection:         B
+[zone-c] updated:            2005-04-25 11:01:57
+
+

@@ -1,0 +1,148 @@
+#
+# Author: Barry Searle
+#
+# (C) Copyright IBM Corp. 2004,2006 - All Rights Reserved.
+# DISCLAIMER:
+# The following source code is sample code created by IBM Corporation.
+# This sample code is not part of any standard IBM product and is provided
+# to you solely for the purpose of assisting you in the development of your
+# applications. The code is provided 'AS IS', without warranty or condition
+# of any kind. IBM shall not be liable for any damages arising out of your
+# use of the sample code, even if IBM has been advised of the possibility of
+# such damages.
+#
+# Change History:
+# 2.0 (10feb2006) code cleanup, corrected creation of $nodeContainedServers
+# 1.3 (22apr2005) determineUniqueNodesContainedServers uses "lreplace" instead of code loop
+# 1.1 (17nov2004) initial shipped version
+#
+
+
+proc PreValidateNodesAndServers { uniqueNodesContainedServers} {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        if { [llength $uniqueNodesContainedServers]==0 } {
+                fail $ERROR_ "PreValidateNodesAndServers: No nodes/servers/clusters specified"
+        }
+        foreach nodeContainedServers $uniqueNodesContainedServers {
+                set nodeName                    [lindex $nodeContainedServers 0]
+                PreValidateNode                 $nodeName
+                set containedServers    [lindex $nodeContainedServers 1]
+                foreach serverName      $containedServers {
+                        PreValidateServer       $nodeName $serverName
+                }
+        }
+        highlight $MAJOR_ "PreValidateNodesAndServersAndClusters DONE."
+}
+
+proc PreValidateNode { nodeName } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        set nodeID [$AdminConfig  getid  /Node:$nodeName/]
+        if { [llength $nodeID]==0 } {
+                set msg "PreValidateNode: failed for node=$nodeName (invalid nodeName)"
+                fail $msg
+        }
+        set ndSync [$AdminControl completeObjectName type=NodeSync,node=$nodeName,*]
+        if { ($ndSync=="") } then {
+                fail "PreValidateNode: failed for nodeName=$nodeName (could not access $nodeName)"
+        }
+        set nodeAgent [$AdminConfig getid /Node:$nodeName/Server:nodeagent/]
+        if { ($nodeAgent=="") } then {
+                fail "PreValidateNode: failed for nodeName=$nodeName (nodeAgent STOPPED)"
+        } else {
+                log $VERBOSE_ "PreValidateNode OK nodeName=$nodeName"
+        }
+}
+
+proc PreValidateServer { nodeName serverName } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        set serverID [$AdminConfig  getid  /Node:$nodeName/Server:$serverName/]
+        if { [llength $serverID]==0 } {
+                set msg "PreValidateServer: failed for server=$serverName node=$nodeName (invalid serverName)"
+                fail $msg
+        }
+        set serverID [$AdminControl completeObjectName node=$nodeName,name=$serverName,type=Server,*]
+        if { [llength $serverID]==0 } {
+                set msg "PreValidateServer: cannot access node=$nodeName server=$serverName (server STOPPED)"
+                log $WARNING_ $msg
+        } else {
+                log $VERBOSE_ "PreValidateSrvr OK serverName=$serverName nodeName=$nodeName"
+        }
+}
+
+proc PreValidateCluster { clusterName  } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        set clusterID [$AdminConfig getid /ServerCluster:$clusterName/]
+        if { [llength $clusterID]==0 } {
+                set msg "PreValidateServer: failed for clusterName=$clusterName (invalid clusterName)"
+                fail $msg
+        }
+        set clusterID [$AdminControl completeObjectName name=$clusterName,*]
+        if { [llength $clusterID]==0 } {
+                set msg "PreValidateServer: cannot access clusterName=$clusterName (cluster STOPPED)"
+                log $WARNING_ $msg
+        } else {
+                set state [$AdminControl getAttribute $clusterID state]
+                log $VERBOSE_ "PreValidateCluster OK clusterName=$clusterName state=$state"
+        }
+}
+
+proc getNodeServerPairs { clusters } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        set nodeServerPairs  [list]
+        foreach cluster $clusters {
+                set cluster_id [$AdminConfig getid /ServerCluster:$cluster/]
+                set members [$AdminConfig list ClusterMember $cluster_id]
+                foreach member $members {
+                        set node   [$AdminConfig showAttribute $member nodeName]
+                        set server [$AdminConfig showAttribute $member memberName]
+                        log $DEBUG_ "getNodeServerPairs: cluster=$cluster contains node=$node server=$server"
+                        set nodeServerPair [list $node $server]
+                        lappend nodeServerPairs $nodeServerPair
+                }
+        }
+        log $DEBUG_ "getNodeServerPairs: returning nodeServerPairs=$nodeServerPairs"
+        return $nodeServerPairs
+}
+
+proc determineUniqueNodesContainedServers { nodeServerPairs } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        log $DEBUG_ "determineUniqueNodesContainedServers: nodeServerPairs=$nodeServerPairs"
+        set     nodesContainedServers  [list]
+        foreach nodeServer $nodeServerPairs {
+                set nodeName   [lindex $nodeServer 0]
+                set serverName [lindex $nodeServer 1]
+                set nodeIndex 0
+                foreach uniquenodeContainedServers $nodesContainedServers {
+                        set uniquenode [lindex $uniquenodeContainedServers 0]
+                        if { $uniquenode==$nodeName } {
+                                set containedServers [lindex $uniquenodeContainedServers 1]
+                                foreach server $containedServers {
+                                        if { $server==$serverName } {
+                                                set serverName ""
+                                                break
+                                        }
+                                }
+                                if { $serverName != "" } {
+                                        lappend containedServers $serverName
+                                        set nodeContainedServers [list $nodeName $containedServers]
+                                        log $DEBUG_ "determineUniqueNodesContainedServers: Replacing node=$nodeName with NEW containedServers=$containedServers"
+                                        set nodesContainedServers [lreplace $nodesContainedServers $nodeIndex $nodeIndex "$nodeContainedServers"]
+                                        log $DEBUG_ "determineUniqueNodesContainedServers: New nodesContainedServers=$nodesContainedServers"
+                                }
+                                set nodeName ""
+                                break
+                        }
+                        incr nodeIndex 1
+                }
+                if { $nodeName != "" && $serverName != "" } {
+                        set nodeContainedServers [list $nodeName [list $serverName]]
+                        log $DEBUG_ "determineUniqueNodesContainedServers: new node=$nodeName new server=$serverName"
+                        lappend nodesContainedServers $nodeContainedServers
+                }
+        }
+        foreach nodeContainedServers $nodeContainedServers {
+                log $VERBOSE_ "determineUniqueNodesContainedServers: nodeContainedServers=$nodeContainedServers"
+        }
+        log $DEBUG_ "determineUniqueNodesContainedServers: returning LIST nodesContainedServers=$nodesContainedServers"
+        return $nodesContainedServers
+}

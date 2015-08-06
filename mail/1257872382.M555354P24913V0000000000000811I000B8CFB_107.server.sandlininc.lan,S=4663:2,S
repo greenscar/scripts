@@ -1,0 +1,101 @@
+Return-Path: <james@caffeinewebdesign.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 542DF9006E
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 08:44:12 -0500 (CDT)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vk-tUwNaM+sG for <james@sandlininc.com>;
+	Sat, 23 Aug 2008 08:44:03 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 7CB50901E6
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 07:51:33 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Sat, 23 Aug 2008 07:42:38 -0500
+Received: from sandlininc.com [74.55.232.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Sat, 23 Aug 2008 07:51:33 -0500 (CDT)
+Received: from cpe-66-68-52-223.austin.res.rr.com ([66.68.52.223]:60873 helo=[10.0.0.9])
+	by maxserv.yourhostdns.com with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.69)
+	(envelope-from <james@caffeinewebdesign.com>)
+	id 1KWsRy-0004QE-A3
+	for james@sandlininc.com; Sat, 23 Aug 2008 07:42:38 -0500
+Resent-From: James Sandlin <james@caffeinewebdesign.com>
+Resent-To: james@sandlininc.com
+Resent-Date: Sat, 23 Aug 2008 07:42:39 -0500
+Resent-Message-Id: <48B005BF.1050105@caffeinewebdesign.com>
+Resent-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.16) Gecko/20080724 Thunderbird/2.0.0.16
+X-Mozilla-Keys: $label1                                                                         
+Received: from mpscfw.uboc.com ([216.52.215.232] helo=mail6.uboc.com)
+	by maxserv.yourhostdns.com with esmtps (TLSv1:AES256-SHA:256)
+	(Exim 4.68)
+	(envelope-from <SBPLCS@SelectBenefit.com>)
+	id 1JmWZQ-0001ex-TF
+	for james@caffeinewebdesign.com; Thu, 17 Apr 2008 11:02:44 -0500
+Received: from mail6.uboc.com (localhost.localdomain [127.0.0.1])
+	by localhost (Postfix) with SMTP id ADF9022C006F
+	for <james@caffeinewebdesign.com>; Thu, 17 Apr 2008 09:02:40 -0700 (PDT)
+Received: from Exchange2.cnatrust.net (unknown [10.35.7.125])
+	by mail6.uboc.com (Postfix) with ESMTP id 6034322C00A0
+	for <james@caffeinewebdesign.com>; Thu, 17 Apr 2008 09:02:40 -0700 (PDT)
+Content-class: urn:content-classes:message
+MIME-Version: 1.0
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+X-MimeOLE: Produced By Microsoft Exchange V6.5
+Subject: Retirement Plan Statement availability notification from SelectBenefit
+Date: Thu, 17 Apr 2008 09:00:09 -0700
+Message-ID: <D0A25AB4E09FB947A83FDA5E2CCFA8210269585C@Exchange2.cnatrust.net>
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+Thread-Topic: Retirement Plan Statement availability notification from SelectBenefit
+Thread-Index: AcigpBx9ph6/XwZmTFyHUYzMH4W7Ig==
+From: "SelectBenefit-Notice" <SBPLCS@SelectBenefit.com>
+To: <james@caffeinewebdesign.com>
+
+Dear Participant:
+
+Your latest on-line statement is ready for viewing.
+
+You can access your statement by visiting www.selectbenefit.com. Log in by =
+entering your user name and password. Click on "Statements" (under "Summary=
+" on the left side of the page) and select the statement for the quarter th=
+at you want t
+o view.
+
+You have the right to request and obtain, free of charge, a paper version o=
+f your quarterly benefit statement.
+
+Please call the Participant Service Center at 1-800-678-7526 to request a p=
+aper statement or if you have any questions about accessing your benefit st=
+atements. Representatives are available to assist you Monday through Friday=
+ from 5 am t
+o 6 pm (Pacific Time), except on Bank holidays.
+
+You are receiving this notification because you elected to view your statem=
+ents on-line. If you wish instead to start receiving statements by mail, yo=
+u can revoke this election on-line at www.selectbenefit.com or by contactin=
+g the Partic
+ipant Service Center at 1-800-678-7526.
+
+Regards,
+
+SelectBenefit Administration
+
+Note: Please do not reply to this e-mail.
+
+-----------------------------------------------------------------
+This message is intended solely for the use of the
+addressee(s) named above, and may contain confidential
+and/or privileged information. If you are not the intended
+recipient, please be aware that any disclosure, copying,
+distribution, or use of the contents of this message, in
+whole or in part, is prohibited. If you have received this
+message in error, please notify TruSource by sending an
+email message to postmaster@trusource.com.
+
+

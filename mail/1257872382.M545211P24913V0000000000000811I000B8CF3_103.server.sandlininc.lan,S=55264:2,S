@@ -1,0 +1,1409 @@
+Return-Path: <james@caffeinewebdesign.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 3248A90069
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 08:38:45 -0500 (CDT)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WwRfS9iUxVRL for <james@sandlininc.com>;
+	Sat, 23 Aug 2008 08:38:38 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 91D1D90608
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 07:52:22 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Sat, 23 Aug 2008 07:43:27 -0500
+Received: from sandlininc.com [74.55.232.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Sat, 23 Aug 2008 07:52:22 -0500 (CDT)
+Received: from cpe-66-68-52-223.austin.res.rr.com ([66.68.52.223]:61184 helo=[10.0.0.9])
+	by maxserv.yourhostdns.com with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.69)
+	(envelope-from <james@caffeinewebdesign.com>)
+	id 1KWsSg-0004YX-TQ
+	for james@sandlininc.com; Sat, 23 Aug 2008 07:43:27 -0500
+Resent-From: James Sandlin <james@caffeinewebdesign.com>
+Resent-To: james@sandlininc.com
+Resent-Date: Sat, 23 Aug 2008 07:43:16 -0500
+Resent-Message-Id: <48B005E4.3010400@caffeinewebdesign.com>
+Resent-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.16) Gecko/20080724 Thunderbird/2.0.0.16
+X-Mozilla-Keys:                                                                                 
+Received: from ausc60pc101.us.dell.com ([143.166.85.206]:37972)
+	by maxserv.yourhostdns.com with esmtps (TLSv1:AES256-SHA:256)
+	(Exim 4.68)
+	(envelope-from <automated_email@dell.com>)
+	id 1JYNqI-0000jr-Qc
+	for james@caffeinewebdesign.com; Sun, 09 Mar 2008 10:53:42 -0500
+Message-Id: <6m337g$i58e1k@ausc60pc101.us.dell.com>
+X-IronPort-AV: E=Sophos;i="4.25,469,1199685600"; 
+   d="scan'208,217";a="609499188"
+mime-version: 1.0
+from: "Dell Inc." <dell_automated_email@dell.com>
+sender: "Dell Automated Email" <automated_email@dell.com>
+to: james@caffeinewebdesign.com
+reply-to: "Dell Inc." <dell_automated_email@dell.com>
+date: 9 Mar 2008 10:53:43 -0500
+subject: =?utf-8?B?RGVsbCBPcmRlciBIYXMgQmVlbiBBY2tub3dsZWRnZWQgZm9yIERlbGwgUHVyY2hhc2UgSUQ6IDIwMDAzMDMwNDMyNzU=?=
+content-type: multipart/alternative;
+ boundary=--boundary_358254_520bdd8f-df92-4064-920c-cad6db8e3fc5
+
+
+----boundary_358254_520bdd8f-df92-4064-920c-cad6db8e3fc5
+content-type: text/html; charset=utf-8
+content-transfer-encoding: 7bit
+
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Dell Inc.</title>
+  </head>
+  <body leftmargin="0" topmargin="0" bgcolor="FFFFFF">
+    <table border="0" cellpadding="0" cellspacing="0" width="560">
+      <tr>
+        <td height="1"></td>
+      </tr>
+      <tr>
+        <td height="3"></td>
+      </tr>
+      <tr>
+        <td bgcolor="F7F7F7" height="3"></td>
+      </tr>
+    </table>
+    <table bgcolor="EEEEEE" border="0" cellpadding="0" cellspacing="0" height="28" width="560">
+      <td height="28" width="123"><a href="http://www.dell.com"><img border="0" alt="Shop at Dell" src="http://img.dell.com/images/global/gms/ose/en_dell.gif"></a></td>
+      <td>
+        <td>
+          <font color="0068C9" face="Arial,Helvetica" size="2"><b>USA 
+        </b><img border="0" src="http://i.dell.com/images/global/masthead/smlflags/us.gif"><br><b>Small Business</b></font>
+        </td>
+      </td>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="560">
+      <tr>
+        <td border="0" bgcolor="F7F7F7" height="3"></td>
+      </tr>
+      <tr>
+        <td border="0" bgcolor="FFFFFF" height="3"></td>
+      </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="560">
+      <tr>
+        <td bgcolor="9DD7FF" width="1"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr bgcolor="9DD7FF" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="00ABFB" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="0099FB" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0087E7" height="16">
+              <td align="center"><a style="text-decoration:none" href="http://support.dell.com/support/topics/global.aspx/support/en/order_support"><font color="FFFFFF" face="Arial,Helvetica" size="2"><b>Customer Service</b></font></a></td>
+            </tr>
+            <tr bgcolor="007AD7" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0066F0" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="767479" height="1">
+              <td></td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="767479" width="1"></td>
+        <td bgcolor="9DD7FF" width="1"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr bgcolor="9DD7FF" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="00ABFB" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="0099FB" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0087E7" height="16">
+              <td align="center"><a style="text-decoration:none" href="http://support.dell.com/support/topics/global.aspx/support/rebates/en/rebate_center?"><font color="FFFFFF" face="Arial,Helvetica" size="2"><b>Rebates</b></font></a></td>
+            </tr>
+            <tr bgcolor="007AD7" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0066F0" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="767479" height="1">
+              <td></td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="767479" width="1"></td>
+        <td bgcolor="9DD7FF" width="1"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr bgcolor="9DD7FF" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="00ABFB" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="0099FB" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0087E7" height="16">
+              <td align="center"><a style="text-decoration:none" href="http://www1.us.dell.com/content/topics/global.aspx/policy/en/policy?~section=010"><font color="FFFFFF" face="Arial,Helvetica" size="2"><b>Warranty
+</b></font></a></td>
+            </tr>
+            <tr bgcolor="007AD7" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0066F0" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="767479" height="1">
+              <td></td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="767479" width="1"></td>
+        <td bgcolor="9DD7FF" width="1"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr bgcolor="9DD7FF" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="00ABFB" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="0099FB" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0087E7" height="16">
+              <td align="center"><a style="text-decoration:none" href="http://support.dell.com/support/index.aspx?"><font color="FFFFFF" face="Arial,Helvetica" size="2"><b>Technical Support</b></font></a></td>
+            </tr>
+            <tr bgcolor="007AD7" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0066F0" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="767479" height="1">
+              <td></td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="767479" width="1"></td>
+        <td bgcolor="9DD7FF" width="1"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr bgcolor="9DD7FF" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="00ABFB" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="0099FB" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0087E7" height="16">
+              <td align="center"><a style="text-decoration:none" href="http://membership.dell.com/myaccount/main.aspx"><font color="FFFFFF" face="Arial,Helvetica" size="2"><b>My Account</b></font></a></td>
+            </tr>
+            <tr bgcolor="007AD7" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0066F0" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="767479" height="1">
+              <td></td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="767479" width="1"></td>
+        <td bgcolor="9DD7FF" width="1"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr bgcolor="9DD7FF" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="00ABFB" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="0099FB" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0087E7" height="16">
+              <td align="center"><a style="text-decoration:none" href="http://support.dell.com/support/topics/global.aspx/support/dellcare/en/contact_us?c=us&amp;l=en&amp;s=gen&amp;~ck=mn"><font color="FFFFFF" face="Arial,Helvetica" size="2"><b>Contact Us</b></font></a></td>
+            </tr>
+            <tr bgcolor="007AD7" height="2">
+              <td></td>
+            </tr>
+            <tr bgcolor="0066F0" height="1">
+              <td></td>
+            </tr>
+            <tr bgcolor="767479" height="1">
+              <td></td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="767479" width="1"></td>
+      </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="560">
+      <tr>
+        <td align="center" height="40" width="560"><img border="0" height="40" width="340" src="http://img.dell.com/images/global/gms/ose/en_order_acknowledged.jpg"></td>
+      </tr>
+      <tr>
+        <td align="center" height="82"><font face="Arial" size="2">
+                    Thank you for your recent purchase with Dell. It has been received and is being reviewed. The <b>Order Status</b> bar below shows the current state of your order.<br/>
+                    <br/>
+                    <b>What's Next?</b> You will receive an Order Confirmed email shortly with your customer number, order number(s), estimated ship date and final purchase amount.<br/>
+                </font>
+
+
+</td>
+      </tr>
+      <tr>
+        <td align="center"><img alt="Order Status" border="0" height="70" width="340" src="http://img.dell.com/images/global/gms/ose/en_status_acknowledged.jpg"></td>
+      </tr>
+      <tr>
+        <td bgcolor="5A5A5A" colspan="2" height="2" width="100%"></td>
+      </tr>
+      <tr>
+        <td bgcolor="7A7A7A" colspan="2" height="1" width="100%"></td>
+      </tr>
+      <tr>
+        <td bgcolor="979797" colspan="2" height="1" width="100%"></td>
+      </tr>
+      <tr>
+        <td bgcolor="B4B4B4" colspan="2" height="1" width="100%"></td>
+      </tr>
+      <tr>
+        <td bgcolor="CFCFCF" colspan="2" height="1" width="100%"></td>
+      </tr>
+      <tr>
+        <td bgcolor="E6E6E6" colspan="2" height="1" width="100%"></td>
+      </tr>
+      <tr>
+        <td bgcolor="FFFFFF" colspan="2" height="1" width="100%"></td>
+      </tr>
+      <tr>
+        <td colspan="2" height="4"></td>
+      </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="560">
+      <tr>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/shade_box_t_l.gif" border="0" height="5" width="5"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" height="5" width="550">
+            <tr>
+              <td bgcolor="999999" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="DFECFA" height="4"></td>
+            </tr>
+          </table>
+        </td>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/shade_box_t_r.gif" border="0" height="5" width="5"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" height="19" width="1"></td>
+        <td bgcolor="DFECFA" height="19" width="4"></td>
+        <td bgcolor="DFECFA" height="19" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="550">
+            <tr>
+              <td>
+                <font color="0066CC" face="Arial" size="2"><b>Order Information</b></font>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="DFECFA" height="19" width="4"></td>
+        <td bgcolor="999999" height="19" width="1"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" colspan="5" height="1"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" width="1"></td>
+        <td width="4"></td>
+        <td width="550">
+          <table cellpadding="0" cellspacing="0" border="0" width="550">
+            <tr>
+              <td border="0" colspan="2" height="5"></td>
+            </tr>
+            <tr>
+              <td width="25%" valign="top">
+                <font face="Arial" size="2"><b>Order Date:</b></font>
+              </td>
+              <td valign="top">
+                <font face="Arial" size="2">03/09/2008</font>
+              </td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="7"></td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <font face="arial" size="2"><b>Dell Purchase ID:</b><br><font face="arial" color="0066cc" size="1"><a href="http://support.dell.com/support/topics/global.aspx/support/dellcare/en/dell_purchase_id">What is Dell Purchase ID?</a></font>
+                </font>
+              </td>
+              <td valign="top">
+                <font face="arial" size="2">2000303043275</font>
+              </td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="5"></td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="5"></td>
+            </tr>
+          </table>
+        </td>
+        <td width="4"></td>
+        <td bgcolor="999999" width="1"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/vertical_shadow_box_b_l.gif" border="0" height="12" width="5"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="550">
+            <tr>
+              <td bgcolor="FFFFFF" height="4"></td>
+            </tr>
+            <tr>
+              <td bgcolor="999999" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="5A5A5A" height="2"></td>
+            </tr>
+            <tr>
+              <td bgcolor="7A7A7A" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="979797" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="B4B4B4" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="CFCFCF" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="E6E6E6" height="1"></td>
+            </tr>
+          </table>
+        </td>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/vertical_shadow_box_b_r.gif" border="0" height="12" width="5"></td>
+      </tr>
+      <tr>
+        <td colspan="2" height="4"></td>
+      </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="560">
+      <tr>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/shade_box_t_l.gif" border="0" height="5" width="5"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" height="5" width="550">
+            <tr>
+              <td bgcolor="999999" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="DFECFA" height="4"></td>
+            </tr>
+          </table>
+        </td>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/shade_box_t_r.gif" border="0" height="5" width="5"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" height="19" width="1"></td>
+        <td bgcolor="DFECFA" height="19" width="4"></td>
+        <td bgcolor="DFECFA" height="19" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="550">
+            <tr>
+              <td>
+                <font color="0066CC" face="Arial" size="2"><b>Payment Information</b></font>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="DFECFA" height="19" width="4"></td>
+        <td bgcolor="999999" height="19" width="1"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" colspan="5" height="1"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" width="1"></td>
+        <td width="4"></td>
+        <td width="550">
+          <table cellpadding="0" cellspacing="0" border="0" width="550">
+            <tr>
+              <td border="0" colspan="2" height="5"></td>
+            </tr>
+            <tr>
+              <td width="35%" valign="top">
+                <font face="Arial" size="2"><b>Billing Contact:</b></font>
+              </td>
+              <td valign="top">
+                <font face="Arial" size="2">James  Sandlin
+<br />Sandlin Consulting, Inc
+<br /></font>
+              </td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="7"></td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <font face="Arial" size="2"><b>Billing Phone Number:</b></font>
+              </td>
+              <td valign="top">
+                <font face="Arial" size="2">(503) 887-8510
+(work)
+
+<br /></font>
+              </td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="7"></td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <font face="Arial" size="2"><b>Billing Address:</b></font>
+              </td>
+              <td valign="top">
+                <font face="Arial" size="2">6311 Latigo Pass
+<br />Austin, TX  78749</font>
+              </td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="7"></td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <font face="Arial" size="2"><b>Payment Method:</b></font>
+              </td>
+              <td valign="top">
+                <font face="Arial" size="2">Pay with one credit/debit card online<br /></font>
+              </td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="4"></td>
+            </tr>
+            <tr>
+              <td bgcolor="999999" width="100%" border="0" colspan="2" height="1"></td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="7"></td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <font face="Arial" size="2"><b>Total Charges:</b></font>
+              </td>
+              <td valign="top">
+                <font face="Arial" size="2"><b>$1,608.60</b><br></font>
+              </td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="5"></td>
+            </tr>
+          </table>
+        </td>
+        <td width="4"></td>
+        <td bgcolor="999999" width="1"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/vertical_shadow_box_b_l.gif" border="0" height="12" width="5"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="550">
+            <tr>
+              <td bgcolor="FFFFFF" height="4"></td>
+            </tr>
+            <tr>
+              <td bgcolor="999999" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="5A5A5A" height="2"></td>
+            </tr>
+            <tr>
+              <td bgcolor="7A7A7A" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="979797" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="B4B4B4" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="CFCFCF" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="E6E6E6" height="1"></td>
+            </tr>
+          </table>
+        </td>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/vertical_shadow_box_b_r.gif" border="0" height="12" width="5"></td>
+      </tr>
+      <tr>
+        <td colspan="2" height="4"></td>
+      </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="560">
+      <tr>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/shade_box_t_l.gif" border="0" height="5" width="5"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" height="5" width="550">
+            <tr>
+              <td bgcolor="999999" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="DFECFA" height="4"></td>
+            </tr>
+          </table>
+        </td>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/shade_box_t_r.gif" border="0" height="5" width="5"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" height="19" width="1"></td>
+        <td bgcolor="DFECFA" height="19" width="4"></td>
+        <td bgcolor="DFECFA" height="19" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="550">
+            <tr>
+              <td>
+                <font color="0066CC" face="Arial" size="2"><b>Shipping Information</b></font>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="DFECFA" height="19" width="4"></td>
+        <td bgcolor="999999" height="19" width="1"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" colspan="5" height="1"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" width="1"></td>
+        <td width="4"></td>
+        <td width="550">
+          <table cellpadding="0" cellspacing="0" border="0" width="550">
+            <tr>
+              <td border="0" colspan="2" height="5"></td>
+            </tr>
+            <tr>
+              <td width="35%" valign="top">
+                <font face="Arial" size="2"><b>Delivery Contact:</b></font>
+              </td>
+              <td valign="top">
+                <font face="Arial" size="2">James  Sandlin
+<br />Sandlin Consulting, Inc
+<br /></font>
+              </td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="7"></td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <font face="Arial" size="2"><b>Delivery Phone Number:</b></font>
+              </td>
+              <td valign="top">
+                <font face="Arial" size="2">(503) 887-8510
+(work)
+
+<br /></font>
+              </td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="7"></td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <font face="Arial" size="2"><b>Delivery Address:</b></font>
+              </td>
+              <td valign="top">
+                <font face="Arial" size="2">6311 Latigo Pass
+<br>Austin, TX  78749</font>
+              </td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="7"></td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <font face="Arial" size="2"><b>Shipping Method:</b></font>
+              </td>
+              <td valign="top">
+                <font face="Arial" size="2">3-5 Day Delivery</font>
+              </td>
+            </tr>
+            <tr>
+              <td border="0" colspan="2" height="5"></td>
+            </tr>
+          </table>
+        </td>
+        <td width="4"></td>
+        <td bgcolor="999999" width="1"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/vertical_shadow_box_b_l.gif" border="0" height="12" width="5"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="550">
+            <tr>
+              <td bgcolor="FFFFFF" height="4"></td>
+            </tr>
+            <tr>
+              <td bgcolor="999999" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="5A5A5A" height="2"></td>
+            </tr>
+            <tr>
+              <td bgcolor="7A7A7A" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="979797" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="B4B4B4" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="CFCFCF" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="E6E6E6" height="1"></td>
+            </tr>
+          </table>
+        </td>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/vertical_shadow_box_b_r.gif" border="0" height="12" width="5"></td>
+      </tr>
+      <tr>
+        <td colspan="2" height="4"></td>
+      </tr>
+    </table>
+    <table cellspacing="0" cellpadding="0" border="0" width="550"></table>
+    <table border="0" cellpadding="0" cellspacing="0" width="560">
+      <tr>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/shade_box_t_l.gif" border="0" height="5" width="5"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" height="5" width="550">
+            <tr>
+              <td bgcolor="999999" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="DFECFA" height="4"></td>
+            </tr>
+          </table>
+        </td>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/shade_box_t_r.gif" border="0" height="5" width="5"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" height="19" width="1"></td>
+        <td bgcolor="DFECFA" height="19" width="4"></td>
+        <td bgcolor="DFECFA" height="19" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="550">
+            <tr>
+              <td>
+                <font color="0066CC" face="Arial" size="2"><b>Order Detail</b></font>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="DFECFA" height="19" width="4"></td>
+        <td bgcolor="999999" height="19" width="1"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" colspan="5" height="1"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" width="1"></td>
+        <td width="4"></td>
+        <td width="550">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td bgcolor="FFFFFF" width="1"></td>
+              <td width="4"></td>
+              <td width="100%">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td height="4"></td>
+                  </tr>
+                  <tr>
+                    <td valign="top"></td>
+                  </tr>
+                </table>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td height="10" width="50%"></td>
+                  </tr>
+                  <tr>
+                    <td width="50%">
+                      <font face="arial" size="2" color="0068C9"><b>Item Description</b></font>
+                    </td>
+                    <td width="15%" align="right">
+                      <font face="arial" size="2" color="0068C9"><b>Unit Price</b></font>
+                    </td>
+                    <td></td>
+                    <td width="15%" align="center">
+                      <font face="arial" size="2" color="0068C9"><b>Quantity</b></font>
+                    </td>
+                    <td width="20%" align="right">
+                      <font face="arial" size="2" color="0068C9"><b>Total Price</b></font>
+                    </td>
+                    <td></td>
+                  </tr>
+                </table>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td colspan="3" bgcolor="#E7E7E7" height="2"></td>
+                  </tr>
+                  <tr>
+                    <td height="10" width="50%"></td>
+                  </tr>
+                </table>
+                <table cellpadding="0" cellspacing="0" width="100%" border="0">
+                  <tr>
+                    <td colspan="4"><img src="http://www.dell.com/images/global/general/spacer.gif" border="0" height="1" width="1"></td>
+                  </tr>
+                  <tr>
+                    <td height="30" width="50%" valign="top">
+                      <font face="Arial" size="2"><b>Latitude D830</b><br>Intel&#174; Core&#153; 2 Duo T7250 (2.00GHz) 2M L2 Cache, 800MHz Dual Core, Genuine Windows&#174; XP Professional, SP2, with media</font>
+                    </td>
+                    <td height="30" width="15%" align="right" valign="top">
+                      <font face="Arial" size="2"><b>
+                                  $1,809.00</b></font>
+                    </td>
+                    <td height="30" width="15%" align="center" valign="top">
+                      <font face="Arial" size="2"><b>1</b></font>
+                    </td>
+                    <td height="30" width="20%" align="right" valign="top">
+                      <font face="Arial" size="2"><b>
+                                  $1,809.00</b></font>
+                    </td>
+                  </tr>
+                </table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td width="20%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">Latitude D830</font>
+                    </td>
+                    <td width="45%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1"><b>Intel&#174; Core&#153; 2 Duo T7250 (2.00GHz) 2M L2 Cache, 800MHz Dual Core</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">
+                                          [223-2269]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">LCDs</font>
+                    </td>
+                    <td width="45%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1"><b>15.4 inch Wide Screen WXGA LCD Panel</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">
+                                          [320-5299]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">Memory</font>
+                    </td>
+                    <td width="45%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1"><b>2.0GB, DDR2-667 SDRAM, 2 DIMMS</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">
+                                          [311-5687]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">Internal Keyboard</font>
+                    </td>
+                    <td width="45%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1"><b>Internal English Keyboard</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">
+                                          [310-8713]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">Graphics</font>
+                    </td>
+                    <td width="45%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1"><b>128MB NVIDIA&#174; Quadro NVS 135M&#153;</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">
+                                          [320-5302]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">Hard Drives</font>
+                    </td>
+                    <td width="45%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1"><b>120GB Hard Drive, 9.5MM, 5400RPM</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">
+                                          [341-4569]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">Touchpad Options</font>
+                    </td>
+                    <td width="45%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1"><b>Standard Touchpad</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">
+                                          [310-8796]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">Floppy Drive</font>
+                    </td>
+                    <td width="45%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1"><b>No Floppy Drive</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">
+                                          [340-8854]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">Operating Systems</font>
+                    </td>
+                    <td width="45%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1"><b>Genuine Windows&#174; XP Professional, SP2, with media</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">
+                                          [310-8798]<br></font>
+                      <font face="Arial" size="1">
+                                          [310-8799]<br></font>
+                      <font face="Arial" size="1">
+                                          [466-6161]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">AC Adapter</font>
+                    </td>
+                    <td width="45%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1"><b>90W A/C Adapter</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">
+                                          [310-7956]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">Media Bay Devices</font>
+                    </td>
+                    <td width="45%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1"><b>24X CD-RW/DVD w/ Cyberlink PowerDVD&#153;</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">
+                                          [313-5043]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">Wireless LAN (802.11)</font>
+                    </td>
+                    <td width="45%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1"><b>Dell Wireless&#153; 1395 802.11g Mini Card</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">
+                                          [430-2799]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">Productivity Software</font>
+                    </td>
+                    <td width="45%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1"><b>Microsoft&#174;  Office 2007 Small Business Edition and Adobe Acrobat 8.1 S</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">
+                                          [410-1099]<br></font>
+                      <font face="Arial" size="1">
+                                          [420-6713]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">System Documentation</font>
+                    </td>
+                    <td width="45%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1"><b>Resource CD - Contains Diagnostics and Drivers</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">
+                                          [310-8798]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">Battery</font>
+                    </td>
+                    <td width="45%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1"><b>9 Cell Primary Battery</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">
+                                          [312-0536]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">Hardware Support Services</font>
+                    </td>
+                    <td width="45%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1"><b>3 year Limited Hardware Warranty with Mail-in Service</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">
+                                          [982-3682]<br></font>
+                      <font face="Arial" size="1">
+                                          [982-7120]<br></font>
+                      <font face="Arial" size="1">
+                                          [986-4409]<br></font>
+                      <font face="Arial" size="1">
+                                          [986-7688]<br></font>
+                      <font face="Arial" size="1">
+                                          [986-7697]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">Security Software</font>
+                    </td>
+                    <td width="45%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1"><b>Norton Internet Security&#153;  2008 36 Month Subscription</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">
+                                          [410-1494]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">Ship Group</font>
+                    </td>
+                    <td width="45%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1"><b>US - System Documentation, Power Cord</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">
+                                          [310-9147]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">Purchase Intent</font>
+                    </td>
+                    <td width="45%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1"><b>Purchase is not intended for resale.</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#DFECFA">
+                      <font face="Arial" size="1">
+                                          [462-4506]<br></font>
+                    </td>
+                  </tr>
+<tr>
+                    <td width="20%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">OS Labels</font>
+                    </td>
+                    <td width="45%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1"><b>Windows XP Label</b><br></font>
+                    </td>
+                    <td align="right" width="15%" bgcolor="#FFFFFF">
+                      <font face="Arial" size="1">
+                                          [466-2909]<br></font>
+                    </td>
+                  </tr>
+</table><br><table cellpadding="0" cellspacing="0" width="100%" border="0">
+                  <tr>
+                    <td width="50%">
+                      <font face="Arial" size="2" color="red">Up to 8.7 hours of battery life</font>
+                    </td>
+                    <td align="right">
+                      <font face="Arial" size="2" color="red">
+                                      - $0.00</font>
+                    </td>
+                  </tr>
+                </table>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+                  <tr>
+                    <td width="50%">
+                      <font face="Arial" size="2" color="red">Save $323 on Select Latitude D830 Notebooks through the Small Business division!</font>
+                    </td>
+                    <td align="right">
+                      <font face="Arial" size="2" color="red">
+                                      - $323.00</font>
+                    </td>
+                  </tr>
+                </table>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+                  <tr>
+                    <td align="right">
+                      <font face="arial, helvetica" size="2">
+                        <table>
+                          <TR>
+                            <TD align="right" width="400">
+                              <FONT face="Arial" size="2"><B>Subtotal:</B></FONT>
+                            </TD>
+                            <TD align="right" width="75">
+                              <FONT face="Arial" size="2"><B>
+                                          $1,486.00</B></FONT>
+                            </TD>
+                          </TR>
+<TR>
+                            <TD align="right" width="400">
+                              <FONT face="Arial" size="2"><B>Shipping and Handling:</B></FONT>
+                            </TD>
+                            <TD align="right" width="75">
+                              <FONT face="Arial" size="2">
+                                            $19.99<br></FONT>
+                            </TD>
+                          </TR>
+<TR>
+                            <TD align="right" width="400">
+                              <FONT face="Arial" size="2" color="red"><b>Shipping Discount:</b></FONT>
+                            </TD>
+                            <TD align="right" width="75">
+                              <FONT face="Arial" size="2" color="red">
+                                  -$19.99<br></FONT>
+                            </TD>
+                          </TR>
+<TR>
+                            <TD align="right" width="400">
+                              <FONT face="Arial" size="2"><B>Sales Tax:</B></FONT>
+                            </TD>
+                            <TD align="right" width="75">
+                              <FONT face="Arial" size="2">
+                                        $122.60</FONT>
+                            </TD>
+                          </TR>
+                          <TR>
+                            <TD align="right" width="400">
+                              <FONT face="Arial" size="2"><B>Total:</B></FONT>
+                            </TD>
+                            <TD align="right" width="75">
+                              <FONT face="Arial" size="2"><B>
+                                          $1,608.60<br></B></FONT>
+                            </TD>
+                          </TR>
+                        </table>
+                      </font>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td width="4"></td>
+              <td bgcolor="999999" width="1"></td>
+            </tr>
+          </table>
+        </td>
+        <td width="4"></td>
+        <td bgcolor="999999" width="1"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/vertical_shadow_box_b_l.gif" border="0" height="12" width="5"></td>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="550">
+            <tr>
+              <td bgcolor="FFFFFF" height="4"></td>
+            </tr>
+            <tr>
+              <td bgcolor="999999" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="5A5A5A" height="2"></td>
+            </tr>
+            <tr>
+              <td bgcolor="7A7A7A" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="979797" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="B4B4B4" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="CFCFCF" height="1"></td>
+            </tr>
+            <tr>
+              <td bgcolor="E6E6E6" height="1"></td>
+            </tr>
+          </table>
+        </td>
+        <td colspan="2"><img src="http://img.dell.com/images/global/gms/ose/vertical_shadow_box_b_r.gif" border="0" height="12" width="5"></td>
+      </tr>
+      <tr>
+        <td colspan="2" height="4"></td>
+      </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="560">
+      <tr>
+        <td border="0" colspan="2" height="2"></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td border="0" colspan="2" height="10"></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <font face="Arial" size="2"><b>Important Things to Know:</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <font face="Arial" size="2">
+            <UL>
+              <LI>Please note that Dell cannot be responsible for pricing or other errors, and reserves the right to cancel any orders arising from such errors.</LI>
+              <LI>Your order is subject to Dell's <a href="http://www1.us.dell.com/content/topics/global.aspx/policy/en/policy?~section=012">Terms and Conditions of Sale</a> which include a binding arbitration provision.</LI>
+              <LI>If your order includes a service contract, please visit our <a href="http://www1.us.dell.com/content/topics/global.aspx/services/en/service_contracts">Service Contracts</a> website for details about your contract.</LI>
+            </UL>
+          </font>
+        </td>
+      </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="560">
+      <tr>
+        <td colspan="2">
+          <font face="Arial" size="2"><b>Thanks again for choosing Dell!</b></font>
+        </td>
+      </tr>
+      <tr>
+        <td border="0" colspan="2" height="4"></td>
+      </tr>
+      <tr>
+        <td bgcolor="999999" border="0" colspan="2" height="1"></td>
+      </tr>
+      <tr>
+        <td border="0" colspan="2" height="4"></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <font color="999999" face="arial" size="1">                  
+                    © 2006 Dell Inc. U.S. only. Dell Inc. is located at One Dell Way, Mail Stop 8129, Round Rock, TX 78682.
+                  </font>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+----boundary_358254_520bdd8f-df92-4064-920c-cad6db8e3fc5
+content-type: text/plain; charset=utf-8
+content-transfer-encoding: 7bit
+
+================================================================================
+DELL USA
+Small Business
+================================================================================================================================================================
+Order Acknowledged
+
+Thank you for your recent order. It has been received and is being reviewed.
+
+What's Next?  You will receive an Order Confirmed email shortly with your
+customer number, order number(s), estimated ship date and final purchase amount.--------------------------------------------------------------------------------
+  Order Information
+--------------------------------------------------------------------------------Order Date: 
+    
+    3/9/2008
+  
+Customer Number: 
+
+Dell Purchase ID: 2000303043275
+
+Order(s):
+
+Order Number        Est. Ship Date
+--------------------------------------------------------------------------------
+  Payment Information
+-------------------------------------------------------------------------------- 
+
+Billing Contact:       James Sandlin
+                       Sandlin Consulting, Inc
+
+Billing Phone Number:  (503) 8878510work
+
+Billing Address:       6311 Latigo Pass
+                       Austin
+                       United States 78749
+
+Payment Method: Pay with one credit/debit card online 
+  
+--------------------------------------------------------------------------------
+Shipping Information
+--------------------------------------------------------------------------------
+Delivery Contact:      James Sandlin
+                       Sandlin Consulting, Inc
+
+Delivery Phone Number: (503) 8878510 work
+
+Delivery Address:      6311 Latigo Pass
+                       Austin
+                       United States 78749
+
+Shipping Method:       3-5 Day Delivery
+
+
+--------------------------------------------------------------------------------
+Order Detail
+--------------------------------------------------------------------------------
+Item Description: 
+----------------------------------------------------
+Latitude D830 - Intel® Core蒂 2 Duo T7250 (2.00GHz) 2M L2 Cache, 800MHz Dual Core, Genuine Windows® XP Professional, SP2, with media
+    Unit Price: $1,809.00
+    Quantity: 1
+    Total Price: $1,809.00
+
+-- Latitude D830 --
+-- Intel® Core蒂 2 Duo T7250 (2.00GHz) 2M L2 Cache, 800MHz Dual Core
+-- [223-2269]
+-----------------------
+-- LCDs --
+-- 15.4 inch Wide Screen WXGA LCD Panel
+-- [320-5299]
+-----------------------
+-- Memory --
+-- 2.0GB, DDR2-667 SDRAM, 2 DIMMS
+-- [311-5687]
+-----------------------
+-- Internal Keyboard --
+-- Internal English Keyboard
+-- [310-8713]
+-----------------------
+-- Graphics --
+-- 128MB NVIDIA® Quadro NVS 135M蒂
+-- [320-5302]
+-----------------------
+-- Hard Drives --
+-- 120GB Hard Drive, 9.5MM, 5400RPM
+-- [341-4569]
+-----------------------
+-- Touchpad Options --
+-- Standard Touchpad
+-- [310-8796]
+-----------------------
+-- Floppy Drive --
+-- No Floppy Drive
+-- [340-8854]
+-----------------------
+-- Operating Systems --
+-- Genuine Windows® XP Professional, SP2, with media
+-- [310-8798]
+-- [310-8799]
+-- [466-6161]
+-----------------------
+-- AC Adapter --
+-- 90W A/C Adapter
+-- [310-7956]
+-----------------------
+-- Media Bay Devices --
+-- 24X CD-RW/DVD w/ Cyberlink PowerDVD蒂
+-- [313-5043]
+-----------------------
+-- Wireless LAN (802.11) --
+-- Dell Wireless蒂 1395 802.11g Mini Card
+-- [430-2799]
+-----------------------
+-- Productivity Software --
+-- Microsoft®  Office 2007 Small Business Edition and Adobe Acrobat 8.1 S
+-- [410-1099]
+-- [420-6713]
+-----------------------
+-- System Documentation --
+-- Resource CD - Contains Diagnostics and Drivers
+-- [310-8798]
+-----------------------
+-- Battery --
+-- 9 Cell Primary Battery
+-- [312-0536]
+-----------------------
+-- Hardware Support Services --
+-- 3 year Limited Hardware Warranty with Mail-in Service
+-- [982-3682]
+-- [982-7120]
+-- [986-4409]
+-- [986-7688]
+-- [986-7697]
+-----------------------
+-- Security Software --
+-- Norton Internet Security蒂  2008 36 Month Subscription
+-- [410-1494]
+-----------------------
+-- Ship Group --
+-- US - System Documentation, Power Cord
+-- [310-9147]
+-----------------------
+-- Purchase Intent --
+-- Purchase is not intended for resale.
+-- [462-4506]
+-----------------------
+-- OS Labels --
+-- Windows XP Label
+-- [466-2909]
+-----------------------
+
+
+-- Up to 8.7 hours of battery life
+- $0.00
+
+-- Save $323 on Select Latitude D830 Notebooks through the Small Business division!
+- $323.00
+
+Subtotal: $1,486.00
+IVA: --
+Shipping and Handling: $19.99
+
+Import Fee: --
+
+Shipping Discount: -$19.99
+
+Total: $1,608.60
+
+
+--------------------------------------------------------------------------------
+Important Things to Know:
+--------------------------------------------------------------------------------
+
+ Please note that Dell cannot be responsible for pricing or other errors,
+and reserves the right to cancel any orders arising from such errors.
+
+ Your order is subject to Dell's Terms and Conditions of Sale
+http://www1.us.dell.com/content/topics/global.aspx/policy/en/policy?~section=012 which include a
+binding arbitration provision.
+   
+ If your order includes a service contract, please visit our Service Contracts website
+http://www1.us.dell.com/content/topics/global.aspx/services/en/service_contracts for details about your contract.
+
+Thanks again for choosing Dell!
+--------------------------------------------------------------------------------© 2007 Dell Inc. U.S. only. Dell Inc. is located at One Dell Way, Mail Stop 8129, Round Rock, TX 78682.
+----boundary_358254_520bdd8f-df92-4064-920c-cad6db8e3fc5--
+
+
+

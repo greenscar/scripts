@@ -1,0 +1,153 @@
+body
+{
+   margin:0px;
+   padding:0px;
+   font-family:verdana, arial, helvetica, sans-serif;
+   /*color:#0099ff;*/
+   color: #FFFFFF;
+   background-color: #412700;
+}
+input
+{
+   background-color: #412700;
+   border: 1px solid #66cc00;
+   color: #0099ff;
+   font-weight: bold;
+}
+input.search
+{
+   background-color: #412700;
+   border: 1px solid #66cc00;
+   color: #0099ff;
+   width: 150px;
+   font-weight: bold;
+}
+select
+{
+   background-color: #412700;
+   border: 1px solid #66cc00;
+   color: #0099ff;
+   font-weight: bold;
+}
+textarea
+{
+   background-color: #412700;
+   border: 1px solid #66cc00;
+   color: #0099ff;
+   font-weight: bold;
+}
+h1
+{
+   margin:0px 0px 15px 0px;
+   padding:0px;
+   font-size:28px;
+   line-height:28px;
+   font-weight:900;
+   color:#0099ff;
+   text-align:center;
+}
+p
+{
+   font:11px/20px verdana, arial, helvetica, sans-serif;
+   margin:0px 0px 16px 0px;
+   padding:0px;
+}
+#Content>p {margin:0px;}
+#Content>p+p {text-indent:30px;}
+
+th
+{
+   color:#FFFFFF;
+   text-decoration:none;
+   font-weight:bold;
+   font-size: 16px;
+   font-family:verdana, arial, helvetica, sans-serif;
+}
+td
+{
+   color:#FFFFFF;
+   text-decoration:none;
+   font-weight:bold;
+   font-size: 13px;
+   font-family:verdana, arial, helvetica, sans-serif;
+   valign: top;
+}
+li
+{
+   color:#FFFFFF;
+   font-weight:bold;
+   font-size: 13px;
+   font-family:verdana, arial, helvetica, sans-serif;
+}
+img
+{
+   border: 0px;
+}
+a {
+   color:#0099ff;
+   font-size:11px;
+   text-decoration:none;
+   font-weight:600;
+   font-family:verdana, arial, helvetica, sans-serif;
+}
+a:link {color:#0099ff;}
+a:visited {color:#0099ff;}
+a:hover {background-color:#412700; color:#66cc00;}
+
+
+td.divider
+{
+   background-color:#FFFFFF; 
+   color:#FFFFFF;
+}
+
+#Header {
+   margin:50px 0px 10px 0px;
+   padding:17px 0px 0px 20px;
+   /* For IE5/Win's benefit height = [correct height] + [top padding] + [top and bottom border widths] */
+   height:33px; /* 14px + 17px + 2px = 33px */
+   border-style:solid;
+   border-color:#66cc00;
+   border-width:2px 0px; /* top and bottom borders: 1px; left and right borders: 0px */
+   line-height:11px;
+   background-color:#412700;
+
+   /* Here is the ugly brilliant hack that protects IE5/Win from its own stupidity. 
+   Thanks to Tantek Celik for the hack and to Eric Costello for publicizing it. 
+   IE5/Win incorrectly parses the "\"}"" value, prematurely closing the style 
+   declaration. The incorrect IE5/Win value is above, while the correct value is 
+   below. See http://glish.com/css/hacks.asp for details. */
+   voice-family: "\"}\"";
+   voice-family:inherit;
+   height:14px; /* the correct height */
+}
+
+/* I've heard this called the "be nice to Opera 5" rule. Basically, it feeds correct 
+length values to user agents that exhibit the parsing error exploited above yet get 
+the CSS box model right and understand the CSS2 parent-child selector. ALWAYS include
+a "be nice to Opera 5" rule every time you use the Tantek Celik hack (above). */
+body>#Header {height:14px;}
+
+#Content {
+   margin:17px 50px 50px 200px;
+   padding:10px;
+   background-color:#412700;
+   border:2px solid #66cc00;
+}
+
+#Menu {
+   position:absolute;
+   top:100px;
+   left:20px;
+   width:172px;
+   padding:10px;
+   background-color:#412700;
+   border:2px solid #66cc00;
+   line-height:17px;
+   /* Again, the ugly brilliant hack. */
+   voice-family: "\"}\"";
+   voice-family:inherit;
+   width:150px;
+}
+/* Again, "be nice to Opera 5". */
+body>#Menu {width:150px;}

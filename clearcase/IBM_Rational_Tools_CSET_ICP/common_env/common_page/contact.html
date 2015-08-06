@@ -1,0 +1,559 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<!-- DW6 -->
+<head>
+<title>IBM Rational software intellectual capital module</title>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+<meta name="Description" content="IBM Rational software intellectual capital module"/>
+<meta name="Abstract" content="IBM Rational software intellectual capital module"/>
+<meta name="Keywords" content="ibm, international business machines, rational, rational sofware, intellectual capital, IC, clearcase, clearquest, rup, rational uinified process, software modeling, software development, xde, rational rose, xde tester, software configuration management"/>
+<meta name="Owner" content="dbellagio@us.ibm.com"/>
+<meta name="Robots" content="noindex,nofollow"/>
+<meta name="Security" content="private"/>
+<meta name="Source" content="IBM Rational sofware"/>
+<meta name="IBM.Country" content="US"/>
+<meta name="DC.Date" scheme="iso8601" content="2004-12-20"/>
+<meta name="DC.Language" scheme="rfc1766" content="en-US"/>
+<meta name="DC.Rights" content="Copyright (c) 2004 by IBM Corporation"/>
+<meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="ZZ999"/>
+<meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="ZZ999"/>
+<meta name="DC.Publisher" content="IBM Corporation - Rational software"/>
+<meta name="IBM.Effective" scheme="W3CDTF" content="2004-01-30"/>
+<meta name="IBM.Industry" scheme="IBM_IndustryTaxonomy" content="ZZ"/>
+<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+<link rel='stylesheet' href='../../common_env/styles/ru_style.css' type='text/css'>
+
+<script language="javascript">
+
+var BrowserType = "";
+var BrowserVersion = "";
+var OperatingSystem = "";
+var flashVersion = 0;
+var feedSubject= parent.navBar.courseDes + " on page " + parent.navBar.returnUrl;
+
+function sendPressed() {
+
+    document.feedback.submit();
+   	return false;
+}
+
+
+function getFlashVersion() {
+	var agent = navigator.userAgent.toLowerCase(); 
+	
+   // NS3 needs flashVersion to be a local variable
+   if (agent.indexOf("mozilla/3") != -1 && agent.indexOf("msie") == -1) {
+      flashVersion = 0;
+   }
+   
+	// NS3+, Opera3+, IE5+ Mac (support plugin array):  check for Flash plugin in plugin array
+	if (navigator.plugins != null && navigator.plugins.length > 0) {
+		var flashPlugin = navigator.plugins['Shockwave Flash'];
+		if (typeof flashPlugin == 'object') { 
+			if (flashPlugin.description.indexOf('7.') != -1) flashVersion = 7;
+			else if (flashPlugin.description.indexOf('6.') != -1) flashVersion = 6;
+			else if (flashPlugin.description.indexOf('5.') != -1) flashVersion = 5;
+			else if (flashPlugin.description.indexOf('4.') != -1) flashVersion = 4;
+			else if (flashPlugin.description.indexOf('3.') != -1) flashVersion = 3;
+		}
+	}
+
+	// IE4+ Win32:  attempt to create an ActiveX object using VBScript
+	else if (agent.indexOf("msie") != -1 && parseInt(navigator.appVersion) >= 4 && agent.indexOf("win")!=-1 && agent.indexOf("16bit")==-1) {
+	   document.write('<scr' + 'ipt language="VBScript"\> \n');
+		document.write('on error resume next \n');
+		document.write('dim obFlash \n');
+		document.write('set obFlash = CreateObject("ShockwaveFlash.ShockwaveFlash.7") \n');
+		document.write('if IsObject(obFlash) then \n');
+		document.write('flashVersion = 7 \n');
+		document.write('else set obFlash = CreateObject("ShockwaveFlash.ShockwaveFlash.6") end if \n');
+		document.write('if flashVersion < 7 and IsObject(obFlash) then \n');
+		document.write('flashVersion = 6 \n');
+		document.write('else set obFlash = CreateObject("ShockwaveFlash.ShockwaveFlash.5") end if \n');
+		document.write('if flashVersion < 6 and IsObject(obFlash) then \n');
+		document.write('flashVersion = 5 \n');
+		document.write('else set obFlash = CreateObject("ShockwaveFlash.ShockwaveFlash.4") end if \n');
+		document.write('if flashVersion < 5 and IsObject(obFlash) then \n');
+		document.write('flashVersion = 4 \n');
+		document.write('else set obFlash = CreateObject("ShockwaveFlash.ShockwaveFlash.3") end if \n');
+		document.write('if flashVersion < 4 and IsObject(obFlash) then \n');
+		document.write('flashVersion = 3 \n');
+		document.write('end if');
+		document.write('</scr' + 'ipt\> \n');
+  }
+		
+	// WebTV 2.5 supports flash 3
+	else if (agent.indexOf("webtv/2.5") != -1) flashVersion = 3;
+
+	// older WebTV supports flash 2
+	else if (agent.indexOf("webtv") != -1) flashVersion = 2;
+
+	// Can't detect in all other cases
+	else {
+		flashVersion = -1;
+	}
+
+	return flashVersion;
+}
+
+getFlashVersion();
+
+// DETECT Browser and Operating system
+// These strings will be set last
+// One of these Boolean variables will be
+// set to true based on the browser name
+var its_ie = false
+var its_ns = false
+var its_opera = false
+var its_webtv = false
+var its_compatible = false
+
+// One of these Boolean variables will be set to 
+// true based on the Internet Explorer version
+var its_ie2 = false
+var its_ie3 = false
+var its_ie4 = false
+var its_ie5 = false
+var its_ie55 = false
+var its_ie6 = false
+var its_ie4plus = false
+var its_ie5plus = false
+var its_ie55plus = false
+var its_ie6plus = false
+
+// One of these Boolean variables will be set to 
+// true based on the Netscape version
+var its_ns2 = false
+var its_ns3 = false
+var its_ns4 = false
+var its_ns6 = false
+var its_ns3plus = false
+var its_ns4plus = false
+var its_ns6plus = false
+
+// One of these Boolean variables will be
+// set to true based on the operating system
+var its_win31 = false
+var its_win95 = false
+var its_win98 = false
+var its_winme = false
+var its_winnt = false
+var its_win2000 = false
+var its_winxp = false
+var its_windows = false
+var its_win32 = false
+var its_mac68k = false
+var its_macppc = false
+var its_macos = false
+var its_linux = false
+var its_other_os = false
+
+// This will be true of the browser supports some kind of DHTML
+var dhtml_ok = false
+
+// Let's work with lowercase letters to keep things simple
+var user_agent = navigator.userAgent.toLowerCase()
+
+// BROWSER NAME
+
+// Use indexOf() to examine the userAgent string
+// for telltale signs of the browser name
+
+if (user_agent.indexOf("opera") != -1) { its_opera = true }
+else if (user_agent.indexOf("webtv") != -1) { its_webtv = true }
+else if (user_agent.indexOf("msie") != -1) { its_ie = true }
+else if (user_agent.indexOf("mozilla") != -1) {
+
+    // For "moziila", we need to rule out some other possibilities, first
+    if ((user_agent.indexOf("compatible") == -1) && 
+        (user_agent.indexOf("spoofer") == -1) && 
+        (user_agent.indexOf("hotjava") == -1)) {
+        its_ns = true
+    }
+    else { its_compatible = true }
+}
+
+// BROWSER VERSION
+
+var major_version = parseInt(navigator.appVersion)
+var full_version = parseFloat(navigator.appVersion)
+var ie_start = user_agent.indexOf("msie")
+
+if (ie_start != -1) {
+    var version_string = user_agent.substring(ie_start + 5)
+    major_version = parseInt(version_string)
+    full_version = parseFloat(version_string)
+}
+
+// INTERNET EXPLORER
+if (its_ie || its_webtv) {
+    if (major_version < 3) { its_ie2 = true }
+    else if (major_version == 3) { its_ie3 = true }
+    else if (major_version == 4) { its_ie4 = true }
+    else if (major_version == 5) { its_ie5 = true }
+    else if (full_version == 5.5) { its_ie55 = true }
+    else if (major_version == 6) { its_ie6 = true }
+
+    if (major_version >= 4) { its_ie4plus = true }
+    if (major_version >= 5) { its_ie5plus = true }
+    if (full_version >= 5.5) { its_ie55plus = true }
+    if (major_version >= 6) { its_ie6plus = true }
+}
+
+// NETSCAPE
+if (its_ns) {
+    if (major_version < 3) { its_ns2 = true }
+    else if (major_version < 4) { its_ns3 = true }
+    else if (major_version == 4) { its_ns4 = true }
+    else if (major_version == 5) { its_ns6 = true }
+
+    if (major_version >= 3) { its_ns3plus = true }
+    if (major_version >= 4) { its_ns4plus = true }
+    if (major_version >= 5) { its_ns6plus = true }
+}
+
+// OPERATING SYSTEM
+
+// Use indexOf() to examine the userAgent string
+// for telltale signs of the operating system
+
+// WINDOWS 3.1
+if ((user_agent.indexOf("windows 3.1") != -1) || 
+    (user_agent.indexOf("win16") != -1) ||
+    (user_agent.indexOf("16bit") != -1) ||
+    (user_agent.indexOf("16-bit") != -1)) { its_win31 = true }
+
+// WINDOWS 95
+else if ((user_agent.indexOf("windows 95") != -1) || 
+         (user_agent.indexOf("win95") != -1)) { its_win95 = true }
+
+// WINDOWS ME
+if (user_agent.indexOf("win 9x 4.90") != -1) { its_winme = true }
+
+// WINDOWS 98
+else if ((user_agent.indexOf("windows 98") != -1) || 
+         (user_agent.indexOf("win98") != -1)) { its_win98 = true }
+
+
+// WINDOWS XP
+else if ((user_agent.indexOf("windows nt 5.1") != -1) || 
+         (user_agent.indexOf("winnt 5.1") != -1)) { its_winxp = true }
+
+// WINDOWS 2000
+else if ((user_agent.indexOf("windows nt 5.0") != -1) || 
+         (user_agent.indexOf("winnt 5.0") != -1)) { its_win2000 = true }
+
+// WINDOWS NT
+else if ((user_agent.indexOf("windows nt") != -1) || 
+         (user_agent.indexOf("winnt") != -1)) { its_winnt = true }
+
+// MAC 680x0
+else if ((user_agent.indexOf("mac") != -1) && 
+        ((user_agent.indexOf("68K") != -1) || 
+         (user_agent.indexOf("68000") != -1))) { its_mac68k = true }
+
+// MAC PowerPC
+else if ((user_agent.indexOf("mac") != -1) && 
+        ((user_agent.indexOf("ppc") != -1) || 
+         (user_agent.indexOf("powerpc") != -1))) { its_macppc = true }
+
+// LINUX
+else if (user_agent.indexOf("linux") != -1) { its_linux = true }
+
+// OTHER OS
+else { its_other_os = true }
+
+// PLATFORM
+
+// Use the operating system booleans to
+// determine the general platform
+
+// MAC OS
+if (its_mac68k || its_macppc) { its_macos = true}
+
+// 32-BIT WINDOWS
+if (its_win95 || its_win98 || its_winme || its_winnt || its_win2000 || its_winxp) {its_win32 = true}
+
+// WINDOWS
+if (its_win31 || its_win32) {its_windows = true}
+
+// DHTML SUPPORT
+if (document.getElementById || document.all || document.layers) {
+    dhtml_ok = true
+} 
+
+//  set BrowserType
+if (its_ie) { BrowserType = "MSIE" }
+else if (its_ns) { BrowserType = "Netscape" }
+else if (its_opera) { BrowserType = "Opera" }
+else if (its_webtv) { BrowserType = "WebTV" }
+else if (its_compatible) { BrowserType = "NN compatible" }
+
+// set BrowserVersion
+if (its_ie2) { BrowserVersion = "2.x" }
+else if (its_ie3) { BrowserVersion = "3.x" }
+else if (its_ie4) { BrowserVersion = "4.x" }
+else if (its_ie5) { BrowserVersion = "5.x" }
+else if (its_ie55) { BrowserVersion = "5.5" }
+else if (its_ie6plus) { BrowserVersion = "6.x or UP" }
+else if (its_ns2) { BrowserVersion = "2.x" }
+else if (its_ns3) { BrowserVersion = "3.x" }
+else if (its_ns4) { BrowserVersion = "4.x" }
+else if (its_ns6plus) { BrowserVersion = "6.x or UP" }
+else { BrowserVersion = full_version }
+
+// set OperatingSystem
+if (its_win31) { OperatingSystem = "Windows 3.x" }
+else if (its_win95) { OperatingSystem = "Windows 95" }
+else if (its_win98) { OperatingSystem = "Windows 98" }
+else if (its_winme) { OperatingSystem = "Windows Me" }
+else if (its_winnt) { OperatingSystem = "Windows NT" }
+else if (its_win2000) { OperatingSystem = "Windows 2000" }
+else if (its_winxp) { OperatingSystem = "Windows XP" }
+else if (its_mac68k) { OperatingSystem = "Mac 680x0" }
+else if (its_macppc) { OperatingSystem = "Mac PowerPC" }
+else if (its_linux) { OperatingSystem = "Linux" }
+else if (its_webtv) { OperatingSystem = "WebTV" }
+else if (its_other_os) { OperatingSystem = "Other operating system" }
+
+</script>
+
+</head>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<table width="800" border="0" cellspacing="0" cellpadding="0">
+
+	<script langauge="javascript">
+
+	document.write("<form name='feedback' action='https://www.ibm.com/cgi-bin/nph-comments' method=post>");
+	document.write("<INPUT type='hidden' name='to' value='" + parent.navBar.feedBackAddress + "'>");
+	document.write("<input type='hidden' name='Feedback_Course ' value=' " + parent.navBar.courseTitle + "'>");
+	document.write("<INPUT type='hidden' name='subject' value='" + feedSubject + "'>");
+	document.write("<INPUT type='hidden' name='reply_url' value='" + parent.navBar.baseLink + "../common_env/common_page/contact_response.htm'>");
+	document.write("<INPUT type='hidden' name='reportpage' value='" + feedSubject + "'>");
+	</script>
+ 
+     <tr>
+        <td><img src="../../common_media/images/0shim.gif" alt="" width="30" height="5"></td>
+        <td><img src="../../common_media/images/0shim.gif" alt="" width="740" height="1"></td>
+        <td><img src="../../common_media/images/0shim.gif" alt="" width="15" height="8"></td>
+  </tr>
+      <tr>
+        <td><img src="../../common_media/images/0shim.gif" alt="" width="30" height="430"></td>
+        <td valign="top">
+           <table width="740" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><img src="../../common_media/images/0shim.gif" alt="" width="130" height="1"></td>
+              <td><img src="../../common_media/images/0shim.gif" alt="" width="5" height="1"></td>
+              <td><img src="../../common_media/images/0shim.gif" alt="" width="180" height="1"></td>
+              <td><img src="../../common_media/images/0shim.gif" alt="" width="20" height="1"></td>
+              <td><img src="../../common_media/images/0shim.gif" alt="" width="100" height="1"></td>
+              <td><img src="../../common_media/images/0shim.gif" alt="" width="5" height="1"></td>
+              <td><img src="../../common_media/images/0shim.gif" alt="" width="300" height="1"></td>
+            </tr>
+			<tr>
+              <td colspan="7"><p>Use this form to ask questions or report problems
+                with this course. If you provide us with your contact information,
+                  you should receive a response from IBM Rational University
+                  within several working days.</p>
+                <p>
+				<script language="javascript">
+				document.write("Course: <b>" + parent.navBar.courseDes + ": " + parent.navBar.courseTitle + "</b><br>");
+				document.write("Reporting Page: <b>" + parent.navBar.returnUrl + "</b>");
+				</script></p></td>
+            </tr>	
+	        <tr>
+              <td colspan="7"><img src="../../common_media/images/0shim.gif" alt="" width="740" height="15"></td>
+            </tr>	
+			<tr>
+              <td height="20" colspan="3" valign="middle" class="bold" bgcolor="eeeeee">&nbsp;1. Problem and Configuration:</td>
+              <td>&nbsp;</td>
+              <td height="20" colspan="3" valign="middle" class="bold" bgcolor="eeeeee">&nbsp;2. Contact Information:</td>
+            </tr>
+            <tr>
+              <td colspan="7"><img src="../../common_media/images/0shim.gif" alt="" width="740" height="6"></td>
+            </tr>	
+            <tr>
+              <td colspan="3">
+             		<table width="315" border="0" cellspacing="0" cellpadding="0">
+            		<tr>
+              			<td><img src="../../common_media/images/0shim.gif" alt="" width="130" height="1"></td>
+              			<td><img src="../../common_media/images/0shim.gif" alt="" width="5" height="1"></td>
+              			<td><img src="../../common_media/images/0shim.gif" alt="" width="180" height="1"></td>
+					</tr>
+					<tr height="26">
+						<td>&nbsp;Type of Problem:</td>
+						<td>&nbsp;</td>
+						<td>
+							<select name="Problem ">
+                  			<option value=" Registration/Access Error">Registration/Access error</option>
+                  			<option value=" Problem with Graphic">Problem with graphic</option>
+                  			<option value=" Questions about Content">Questions about content</option>
+                  			<option value=" 404 error - page not found">404 error - page not found</option>
+                  			<option value=" Spelling/Grammer error">Spelling/Grammar error</option>
+                  			<option value=" Other problem">Other problem</option>							
+                  			<option value=" General Comment" selected>General comment</option>
+                			</select></td>
+					</tr>
+           			<tr>
+              			<td colspan="3"><img src="../../common_media/images/0shim.gif" alt="" width="100" height="4"></td>
+            		</tr>					
+					<tr height="26">
+						<td>&nbsp;Operating System:</td>
+						<td>&nbsp;</td>
+						<td>
+						<script language="javascript">
+			  				if (OperatingSystem != ""){
+			  					document.write("<span class='titleblack'>" + OperatingSystem + "</span>");
+			  					document.write("<input type='hidden' name='OperatingSystem ' value=' " + OperatingSystem + "'>");
+				  			} else {
+			                	document.write("<select name=' OperatingSystem '>");
+             					document.write("<option value=' Windows 98'>Windows 98</option>");
+              					document.write("<option value=' Windows 2000'>Windows 2000</option>");
+              					document.write("<optionvalue=' Windows XP'>Windows XP</option>");
+             					document.write("<option value=' Windows NT'>Windows NT</option>");
+              					document.write("<option value=' Linux'>Linux</option>");
+              					document.write("<optionvalue =' Solaris'>Solaris</option>");
+              					document.write("<option value=' HP-UX'>HP-UX</option>");
+              					document.write("<option value=' Macintosh'>Macintosh</option>");
+              					document.write("<option value=' Undetected' selected>-- Undetected --</option>");
+              					document.write("</select>");
+							}
+						</script>
+						</td>
+					</tr>
+           			<tr>
+              			<td colspan="3"><img src="../../common_media/images/0shim.gif" alt="" width="100" height="4"></td>
+            		</tr>						
+					<tr height="26">
+						<td>&nbsp;Browser:</td>
+						<td>&nbsp;</td>
+						<td>
+						<script language="javascript">
+							if ((BrowserType != "") && (BrowserVersion != "")){
+			  					document.write("<span class='titleblack'>" + BrowserType + " " + BrowserVersion + "</span>");
+  			 					 document.write("<input type='hidden' name='Browser ' value=' " + BrowserType + " " + BrowserVersion + "'>");
+			 				 } else {
+			 					 document.write("<select name=Browser '>");
+             					 document.write("<option value=' Internet Explorer 6'>Internet Explorer 6</option>");
+             					 document.write("<option value=' Netscape 7'>Netscape 7</option>");
+             					 document.write("<option value=' Mozilla 1.5'>Mozilla 1.5</option>");
+             					 document.write("<option value=' Undetected' selected>-- Undetected --</option>");
+             					 document.write("</select>");
+			 				 }
+			  			</script>
+						</td>
+					</tr>
+           			<tr>
+              			<td colspan="3"><img src="../../common_media/images/0shim.gif" alt="" width="100" height="4"></td>
+            		</tr>						
+					<tr height="26">
+						<td>&nbsp;Flash:</td>
+						<td>&nbsp;</td>
+						<td>
+						<script language="javascript">
+			  				if (flashVersion != 0){
+			 					document.write("<span class='titleblack'>Version " + flashVersion + " Detected</span>");
+  			 					document.write("<input type='hidden' name='Flash ' value=' " + flashVersion + "'>");
+			  				} else {
+			  					document.write("<select name='Flash '>");
+					            document.write("<option value=' Flash 3'>Flash 3</option>");
+              					document.write("<option value=' Flash 4'>Flash 4</option>");
+             					document.write("<option value=' Flash 5'>Flash 5</option>");
+              					document.write("<option value=' Flash 6'>Flash 6</option>");
+              					document.write("<option value=' Flash 7'>Flash 7</option>");
+              					document.write("<option value=' Undetected' selected>-- Undetected -- </option>");
+              					document.write("</select>");
+			   				}
+			   			</script>
+						</td>
+					</tr>
+					</table>
+			  </td>		
+              <td>&nbsp;</td>
+              <td colspan="3">
+              		<table width="405" border="0" cellspacing="0" cellpadding="0">
+				  	<tr>
+						<td><img src="../../common_media/images/0shim.gif" alt="" width="100" height="1"></td>
+		              	<td><img src="../../common_media/images/0shim.gif" alt="" width="5" height="1"></td>
+              			<td><img src="../../common_media/images/0shim.gif" alt="" width="300" height="1"></td>
+			  		</tr>
+           			<tr>
+              			<td colspan="3"><img src="../../common_media/images/0shim.gif" alt="" width="100" height="4"></td>
+            		</tr>						
+					<tr height="26">
+						<td>&nbsp;Name:</td>
+						<td>&nbsp;</td>
+						<td><input name="Name " type="text" size="40" maxlength="50" value=" "></td>
+					</tr>	
+           			<tr>
+              			<td colspan="3"><img src="../../common_media/images/0shim.gif" alt="" width="100" height="4"></td>
+            		</tr>						
+					<tr height="26">
+						<td>&nbsp;Email:</td>
+						<td>&nbsp;</td>
+						<td><input name="Email " type="text" size="40" maxlength="50" value=" "></td>
+					</tr>	
+           			<tr>
+              			<td colspan="3"><img src="../../common_media/images/0shim.gif" alt="" width="100" height="4"></td>
+            		</tr>						
+					<tr height="26">
+						<td>&nbsp;Phone:</td>
+						<td>&nbsp;</td>
+						<td><input name="Phone " type="text" size="40" maxlength="50" value=" "></td>
+					</tr>	
+					<tr height="26">
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>												
+					</table>
+			  </td>
+              </tr>
+            <tr>
+              <td colspan="7"><img src="../../common_media/images/0shim.gif" alt="" width="740" height="15"></td>
+            </tr>
+            <tr valign="middle">
+              <td height="20" colspan="7" bgcolor="eeeeee">&nbsp;<span class="bold">3.
+                  If reporting a defect or problem with the course, please indicate
+                  the severity:</span> </td>
+            </tr>
+            <tr>
+              <td colspan="7"><img src="../../common_media/images/0shim.gif" alt="" width="740" height="8"></td>
+            </tr>					
+            <tr>
+              <td colspan="7" align="left">
+                <label><input type="radio" name="Severity " value=" I am NOT able to complete course">
+                <span class="style1">I am <b>NOT</b> able to complete course</span></label>&nbsp;&nbsp;
+                <label><input name="severity " type="radio" value=" I am able to complete course" checked>
+                I am able to complete course</label>
+				<input type='hidden' name='========' value='=========='>              </td>
+            </tr>
+            <tr>
+              <td colspan="7" align="left"><img src="../../common_media/images/0shim.gif" alt="" width="740" height="8"></td>
+            </tr>
+            <tr valign="middle">
+              <td height="20" colspan="7" align="left" class="bold" bgcolor="eeeeee">&nbsp;4.
+                Please enter your comments or questions in the space below. When
+                finished, click Send Feedback:</td>
+            </tr>
+            <tr>
+              <td colspan="7" align="left"><img src="../../common_media/images/0shim.gif" alt="" width="740" height="15"></td>
+            </tr>
+            <tr align="center">
+              <td colspan="7"><textarea name="comment " cols="85" rows="4" value=" "></textarea> </td>
+		 </tr>
+           <tr>
+              <td colspan="7" align="left"><img src="../../common_media/images/0shim.gif" alt="" width="740" height="15"></td>
+            </tr>				
+            <tr align="left">
+              <td colspan="7"><a href='javascript:sendPressed()'><img src="../../common_media/images/submit.gif" width="120" height="21" border="0"/></a>            
+            </tr>
+              </table> 
+        </td>
+        <td><img src="../../common_media/images/0shim.gif" alt="" width="15" height="1"></td>
+      </tr> </form>
+</table> 
+</body>
+</html>

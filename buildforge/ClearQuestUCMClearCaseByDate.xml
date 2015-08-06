@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<!-- (c) Copyright by IBM Corp. and other(s) [2003], 2007 All Rights Reserved. -->
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Defect" INSTANCE="7.021">
+	<template>
+		<!-- Template section, these are parsed out of the final xml and used to populate an 
+		existing environment group if an instance of this interface is linked with a project.
+		However, use the list below to help identify the variables needed to run this interface
+		if you are integrating it during a regular BuildForge step.
+		-->
+		<env name="CurDate" value=".date %d-%b-%y.%H:%M:%S"/>
+		<env name="LAST_RUN" value="1-Jan-05.00:00:00"/>
+		<env name="VIEW" value="my_interface_view"/>
+		<env name="VOB_PATH" value="\AdaptorVob"/>
+		<env name="CQ_USER" value="admin"/>
+		<env name="CQ_PASSWORD" value=""/>
+		<env name="BFSERVER" value="BFServerName"/>
+		<env name="UNIXCLIENT" value="0"/>
+		<env name="_CHAR_NATIVE" value="1" />
+	</template>
+	<!-- The ClearCaseByDate entry point is used to identify clearquest records that have been associated with 
+	clearcase changes since the last run of this particular instance of the interface -->
+	<interface>
+		<!-- In this interface, 'Resolving' and 'Erroring' are two templates that will be used to construct an email post-build -->
+		<setenv name="Resolving" value="- ClearQuest Defect Records associated with this build -\n" type="temp"/>
+		<setenv name="Erroring" value="\n- The following errors occurred while interacting with ClearQuest -\n" type="temp"/>
+
+		<!-- Set some platform specific information -->
+		<setenv name="CdCommand" value="cd /view" type="temp" condition="true($UNIXCLIENT==1)"/>
+		<setenv name="CdCommand" value="pushd \\view" type="temp" condition="true($UNIXCLIENT==0)"/>
+		<setenv name="DirSep" value="/" type="temp" condition="true($UNIXCLIENT==1)"/>
+		<setenv name="DirSep" value="\" type="temp" condition="true($UNIXCLIENT==0)"/>
+		
+		<!-- MyChanges is the start of the list of users to be emailed with change information -->
+		<adduser group="MyChangers" user="cmadmins@mycompany.com"/>
+		<!-- cc_cq_changes is the initial command that will query clearcase for 
+			clearquest defect information, and modify the defect -->
+		<run command="cc_cq_changes" params="$LAST_RUN $VIEW $VOB_PATH" server="$BFSERVER" dir="/" timeout="360"/>
+		<!-- Here we test to see if we have any errors, 'Errors' should have some data if an error was found -->
+		<ontempenv name="Errors" state="hastext">
+			<step result="FAIL"/>
+		</ontempenv>
+		<ontempenv name="Resolved" state="empty">
+			<step result="FAIL"/>
+		</ontempenv>
+		<!-- If there were no errors, then update our environment for the next run -->
+		<onstep result="pass">
+			<setenv group="[ADAPTOR]" name="LAST_RUN" value="$CurDate"/>
+		</onstep>
+		<!-- Set some notifications for when the build completes -->
+		<onproject result="fail">
+			<notify group="MyChangers" subject="Build $BF_TAG ($CurDate) Failed." message="${Resolving}${Resolved}${Erroring}${Errors}"/>
+		</onproject>
+		<onproject result="pass">
+			<notify group="MyChangers" subject="Build $BF_TAG ($CurDate) Passed." message="${Resolving}${Resolved}"/>
+		</onproject>
+	</interface>
+	<!-- Searches the view location for any base cc/cq integrated records (CrmRequest type hyperlinks) -->
+	<command name="cc_cq_changes">
+		<execute>
+cleartool startview $2
+$CdCommand${DirSep}$2 &amp;&amp; cleartool find .$3 -all -cview -version "created_since($1)" -print
+		</execute>
+		<resultsblock>
+			<match pattern="^(.*?)(\@\@.*?\d+)$">
+				<run command="cq_getcrm" params="$VIEW ${1}${2}" server="$BFSERVER" dir="/" timeout="360"/>
+			</match>
+		</resultsblock>
+	</command>
+	<!-- Gathers more information on the ClearQuest hyperlink -->
+	<command name="cq_getcrm">
+		<execute>
+$CdCommand${DirSep}$1 &amp;&amp; cleartool describe -long $2
+		</execute>
+		<resultsblock>
+			<match pattern="\W(.*?)(\@\@.*?\d+)\W">
+				<bom category="ClearCase" section="changes">
+					<field name="vobj" text="${1}${2}"/>
+				</bom>
+			</match>
+			<match pattern="\d+-\d+-.+\s.+\s(.*?)$">
+				<bom category="ClearCase" section="changes">
+					<field name="user" text="$1"/>
+				</bom>
+			</match>
+			<match pattern="^\s+activity:(.*?)\@(.*?)\s+(.*?)$">
+				<bom category="ClearCase" section="changes">
+					<field name="activity" text="${1}"/>
+					<field name="headline" text="${3}"/>
+				</bom>
+				<setenv name="CurAct" value="$1" type="temp"/>
+				<setenv name="$CurAct" value="" type="temp once"/>
+				<run command="cq_resolve" params="$1" server="" dir="/" condition="false($$1==1)"/>
+			</match>
+		</resultsblock>
+	</command>
+	<!-- Executes the integration script 'cq_resolve' to resolve defects in ClearQuest -->
+	<command name="cq_resolve">
+		<integrate>
+cqperl bfcqresolve.pl $1 Fixed "Fixed in build $BF_TAG"
+		</integrate>
+		<resultsblock>
+			<resultsblock beginpattern="^ERROR:">
+				<match pattern="^(.*?)$">
+					<bom category="CQErrors" section="text">
+						<field name="Error" text="$1"/>
+					</bom>
+					<setenv name="Errors" value="$1\n" type="temp append\n"/>
+				</match>
+			</resultsblock>
+			<resultsblock beginpattern="^(?!ERROR:).+">
+				<match pattern="^(.+)$">
+					<bom category="defects" section="resolve_status">
+						<field name="defectid" text="$CurAct"/>
+						<field name="status" text="$1"/>
+					</bom>
+					<setenv name="Resolved" value="$1\n" type="temp append\n"/>
+					<setenv name="$CurAct" value="1" type="temp"/>
+				</match>
+			</resultsblock>
+		</resultsblock>
+	</command>
+	<!-- The bomformat sets up the BuildForge BOM display for the information we gather during this interface execution -->
+	<!-- A category is a top level expandable item -->
+	<bomformat category="ClearCase" title="ClearCase Change Information">
+		<!-- A section defines the columns for blocks of information, a new row of information is added 
+			each time the last field (by order number) in a block is populated with new information -->
+		<section name="changes">
+			<field order="1" name="vobj" title="Vob Object"/>
+			<field order="2" name="user" title="User Id"/>
+			<field order="3" name="activity" title="Activity/Defect Id"/>
+			<field order="4" name="headline" title="Headline"/>
+		</section>
+	</bomformat>
+	<bomformat category="defects" title="ClearQuest Defect Information">
+		<section name="resolve_status">
+			<field order="1" name="defectid" title="DefectId"/>
+			<field order="2" name="status" title="Status"/>
+		</section>
+	</bomformat>
+	<bomformat category="CQErrors" title="ClearQuest Interaction Errors">
+		<section name="text">
+			<field order="1" name="Error" title="Error Details"/>
+		</section>
+	</bomformat>
+</PROJECT_INTERFACE>

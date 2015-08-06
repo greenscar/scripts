@@ -1,0 +1,10 @@
+<table border=1>
+   <tr>
+      <th>ID</th>
+      <th>NAME</th>
+   </tr>
+   <tr>
+      <td>[% envt.id %]</td>
+      <td>[% envt.name %]</td>
+   </tr>
+</table>

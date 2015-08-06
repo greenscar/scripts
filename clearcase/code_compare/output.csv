@@ -1,0 +1,78 @@
+FILE, PATH, ACTIVITY,OWNER, DESCRIPTION,
+DcAddressBO.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\dc,TAA00008683,Chengal.Yerradoddi,SR # 43411 / QC # 3212 , Apartment Number allows for Alpha Numeric _deliver TIERS_Project_AST on 6/23/2006 12:07:58 PM.
+DcVerificationChecklistBO.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\dc,TAA00008683,Chengal.Yerradoddi,SR # 43411 / QC # 3212 , Apartment Number allows for Alpha Numeric _deliver TIERS_Project_AST on 6/23/2006 12:07:58 PM.
+ApplicationBO.java,TIERS_track06\track06EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ar,TAA00008683,Chengal.Yerradoddi,SR # 43411 / QC # 3212 , Apartment Number allows for Alpha Numeric _deliver TIERS_Project_AST on 6/23/2006 12:07:58 PM.
+CvEdMciEdgIndividualDAO.java,TIERS_track09\track09EJB\ejbModule\us\tx\state\dhs\tiers\data\oracle\mci,TAA00006654,Christi.J.Robertson,CV:SR 46883:CJR: Rollback LTC case if TW cases fail to load,
+InterimLoad.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00006655,Christi.J.Robertson,CV:SR 47329:CJR: Check for case conversion before loading MA records,
+EdIndvBudPayExpHelper.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00007335,Christi.J.Robertson,deliver TIERS_Project_AST on 5/22/2006 10:14:08 AM.,
+CEILoadUpdates.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00007335,Christi.J.Robertson,deliver TIERS_Project_AST on 5/22/2006 10:14:08 AM.,
+CV-IC3LB-COR_sort.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007351,Christi.J.Robertson,deliver TIERS_Project_AST on 5/22/2006 11:14:34 AM.,
+EdEligibilityXlation.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00007405,Christi.J.Robertson,deliver TIERS_Project_AST on 5/22/2006 5:03:45 PM.,
+SaveRRCaseData.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00007405,Christi.J.Robertson,deliver TIERS_Project_AST on 5/22/2006 5:03:45 PM.,
+MergeListFiles.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00007820,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:32:52 AM.,
+CV-IC201-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.,
+CV-IC202-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.,
+CV-IC203-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.,
+CV-IC204-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.,
+CV-IC205-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC206-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC207-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC208-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC209-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC301-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC302-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC303-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC304-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC305-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC306-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC307-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC308-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+CV-IC309-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00007821,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:36:17 AM.
+MecmAddressBookXlationAndLoad.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00007822,Christi.J.Robertson,deliver TIERS_Project_AST on 6/2/2006 11:38:46 AM.
+DCUIAUnearnedIncDetails.jsp,TIERS_entity\tiersWeb\WebContent\jsp\dc\income,TAA00007691,david.j.foster,QC2649_Veera_DataCollections_deliver TIERS_Project_AST on 5/30/2006 2:56:56 PM.
+DCRTDTrustResourceDet.jsp,TIERS_entity\tiersWeb\WebContent\jsp\dc\resources,TAA00007696,david.j.foster,QC2700_VeeraS_DataCollection_deliver TIERS_Project_AST on 5/30/2006 4:17:50 PM.
+InactiveClientLoad.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00006734,Haridarshan.Singh,CV:SR 48399:KJK:  Inactive conversion load does not currently load record type CI
+CaseAssignmentDAO.java,TIERS_track09\track09EJB\ejbModule\us\tx\state\dhs\tiers\data\oracle\mci,TAA00008190,Haridarshan.Singh,CV:SR 49067:HS: Another performance tuning change to Case Assignment job
+CaseAssignmentController.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00008190,Haridarshan.Singh,CV:SR 49067:HS: Another performance tuning change to Case Assignment job
+GWSValidate.java,TIERS_track09\track9Common\us\tx\state\dhs\cv\gws,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+MergeFiles.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+CV-GWS01-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+CV-GWS02-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+CV-GWS03-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+CV-GWS04-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+CV-GWS05-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+CV-GWS06-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+CV-GWS07-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+CV-GWS08-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+CV-GWS09-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+CV-GWS10-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00008197,Haridarshan.Singh,CV:SR 46905A:HS: Correct the issues in GWS Validation for multi instancing GWS
+CommonTranslation.java,TIERS_track09\track09EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\cv,TAA00008201,Haridarshan.Singh,CV:SR:48535A:HS Correction to return Value for Handling Invalid Date with 9999 as year,
+CV-MECMX-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,TAA00008319,Haridarshan.Singh,CV:SR 51032A:PR: Automate MECM address book updates,
+IncomeResLoadUpdates.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00008565,Haridarshan.Singh,CV:SR 47331A:DVS:Throw separate exceptions in endDtIncomeResRecords method,
+DcCaseXlation.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00008574,Haridarshan.Singh,CV:SR 48536B:PR: Case load failure due to cert date of CEIT3 translation job,
+CaseEdgeIndvLoad.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,TAA00008689,Haridarshan.Singh,CV:SR 48527A:PR: To correct missing ControlData tag for MCI messages,
+DiagnosisBeginDt.java,TIERS_entity\tiersWeb\JavaSource\us\tx\state\dhs\tiers\presentation\view\pageelements,TAA00007090,John.E.Maddux,SR 34142C - MOD - VineelaG, RichA - deliver TIERS_Project_AST on 5/15/2006 1:35:33 PM.
+DiagnosisEndDt.java,TIERS_entity\tiersWeb\JavaSource\us\tx\state\dhs\tiers\presentation\view\pageelements,TAA00007090,John.E.Maddux,SR 34142C - MOD - VineelaG, RichA - deliver TIERS_Project_AST on 5/15/2006 1:35:33 PM.
+opsdt.xml,TIERS_entity\tiersWeb\WebContent\XML\rules,TAA00007593,John.E.Maddux,rebase TIERS_Project_APT on 5/25/2006 4:32:52 PM.,
+EgDataHandler.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\eg,TAA00007593,John.E.Maddux,rebase TIERS_Project_APT on 5/25/2006 4:32:52 PM.,
+tanfdt.xml,TIERS_entity\tiersWeb\WebContent\XML\rules,TAA00007924,John.E.Maddux,SR 34126_Rollback_MOD_RoopamA_deliver TIERS_Project_AST on 6/5/2006 11:55:40 AM.,
+DCVCLIndividualVerificationChecklist.jsp,TIERS_entity\tiersWeb\WebContent\jsp\dc\dcwrapup,TAA00008642,John.E.Maddux,SR 34132G_MOD_RoopamA_deliver TIERS_Project_AST on 6/21/2006 4:47:16 PM.,
+VCLFinIncomeLoader.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ed,TAA00008642,John.E.Maddux,SR 34132G_MOD_RoopamA_deliver TIERS_Project_AST on 6/21/2006 4:47:16 PM.,
+vcledd.xml,TIERS_entity\tiersWeb\WebContent\XML\rules,TAA00008714,John.E.Maddux,SR 34132H_MOD_RoopamA_deliver TIERS_Project_AST on 6/26/2006 9:28:29 AM.,
+vcldt.xml,TIERS_entity\tiersWeb\WebContent\XML\rules,TAA00008829,John.E.Maddux,SR 34125K_MOD_RalphSBhushanN_deliver TIERS_Project_AST on 6/27/2006 7:12:45 PM.,
+arErrorCodes.js,TIERS_entity\tiersWeb\WebContent\js,TAA00007417,Jordan.M.Klein,deliver TIERS_Project_AST on 5/22/2006 6:22:26 PM.,
+ShApptControllerServiceEJBBean.java,TIERS_trackws\trackwsEJB\ejbModule\us\tx\state\hhsc\ie\integration\business\services\sh,TAA00007089,Naresh.Lalchandani,SR 44355 WSSH LNaresh Using UserId from TLM/BPEL deliver TIERS_Project_AST on 5/15/2006 1:30:00 PM.,
+DCADDMainAddressBook.jsp,TIERS_entity\tiersWeb\WebContent\jsp\dc\miscellaneous,TAA00008454,Naresh.Lalchandani,QC 3130 DC LNaresh Submit Close buttons not viewable deliver TIERS_Project_AST on 6/15/2006 5:34:18 PM.
+EdUtil.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ed,TAA00008681,Oukham.Phommachanh,SR 48599 - ED - BJH - Data Integrity Error 8000_040 - from AST on 6/23/2006 11:20:21 AM.
+IEdEligCodes.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ed,TAA00008681,Oukham.Phommachanh,SR 48599 - ED - BJH - Data Integrity Error 8000_040 - from AST on 6/23/2006 11:20:21 AM.
+EDDataReader.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ed,TAA00008704,Oukham.Phommachanh,SR 44030 - ED - AR - NoticeReasons/DateSpecific - from AST on 6/23/2006 3:47:09 PM.
+UnauthorisedEligDetail.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\eg,TAA00008704,Oukham.Phommachanh,SR 44030 - ED - AR - NoticeReasons/DateSpecific - from AST on 6/23/2006 3:47:09 PM.
+EDDataWriter.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ed,TAA00008713,Oukham.Phommachanh,SR 48042 - ED - OP - Fix EDBC Error - writeEdIndvLtcPendingReason - from AST on 6/26/2006 9:17:50 AM.
+EgUnloader.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\eg,TAA00008713,Oukham.Phommachanh,SR 48042 - ED - OP - Fix EDBC Error - writeEdIndvLtcPendingReason - from AST on 6/26/2006 9:17:50 AM.
+DcDriverSessionEJBBean.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\services\driver,TAA00007113,prakash.chalamala,deliver TIERS_Project_AST on 5/15/2006 5:13:03 PM.
+DcInfoSupplierBO.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\dc,TAA00007614,prakash.chalamala,deliver TIERS_Project_AST on 5/26/2006 11:43:45 AM.
+QueueManagerFactory.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\driver\queue,TAA00007614,prakash.chalamala,deliver TIERS_Project_AST on 5/26/2006 11:43:45 AM.
+DCPRUPRA.jsp,TIERS_entity\tiersWeb\WebContent\jsp\dc\nonfinancial,TAA00007661,Vijay.Anand,QC#2733_DC_Chengal - Non-Financial - PRA- Details_deliver TIERS_Project_AST on 5/27/2006 5:06:53 PM.
+DcValueCustomFilter.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\dc,TAA00008750,Vijay.Anand,QC#3283_DC_Vijay_DcValueCustomFilter display_deliver TIERS_Project_AST on 6/26/2006 6:23:36 PM.
+PendingVerificationCargo.java,TIERS_track04\track04EJB\ejbModule\us\tx\state\dhs\tiers\business\entities\correspondence,TAA00008285,Walker.D.Adams,SR 34132:CO:WDA:Defect 3062 - Fix 1020 VCL defect - 6/12/2006 3:31:51 PM.
+FXX032Assembler.java,TIERS_track04\track04EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\co,TAA00008796,Walker.D.Adams,SR34132:CO:WDA - 6/27/2006 1:16:31 PM.

@@ -1,0 +1,92 @@
+use MyDB::Schema;
+my $schema = MyDB::Schema->connect('dbi:Oracle:host=165.184.34.104;service_name=DTE2;port=1522', 'ENV_MGT', 'envown123');
+
+
+
+my @stage = $schema->resultset('R2instances')->all;
+foreach(@stage)
+{
+   print("inst_id = " . $_->id . "\n");
+}
+
+
+#my @all_books = $schema->resultset('R2instances')->all;
+
+
+print("\n------------------------------\n");
+# WORKS
+#my(@rs) = $schema->resultset('R2instances')->search();
+#
+
+# WORKS
+#my(@rs) = $schema->resultset('R2instances')->search({},
+#                           {
+#                              select => [
+#                                 'env_id',
+#                                 ],
+#                              distinct => 1,
+#                              order_by => 'env_id'
+#                           }
+#                           );
+###while(my $dl = $rs->next)
+#foreach(@rs)
+#{
+#   while (($key, $value) = each(%{$_})){
+#     print $key.", ".$value."\n";
+#   }
+#   print("env_id => " . $_->env_id->env_id . "\n");
+#   print("------------------\n");
+#}
+#
+my(@rs) = $schema->resultset('R2instances')->load_envts_with_instances();
+print("count => " . @rs . "\n");
+foreach(@rs)
+{
+   while (($key, $value) = each(%{$_})){
+     print $key.", ".$value."\n";
+   }
+   print("env_id => " . $_->environment->id . "\n");
+   print("------------------\n");
+}
+my(@test);
+for($i=1; $i<20; $i++)
+{
+   push(@test, $i);
+}
+#my(@test) = [1,2,3,4,5,6,7,8,9,41,42,43,44,45];
+print("------------------------------------------------------\n");
+my(@envrs) = $schema->resultset('R2environments')->search(
+   {
+      id => { 
+         #-not_in => [1, 2,41,42,43]
+         -not_in => \@test
+      },
+      #id => { 'NOT IN' => $envs_with_apps_rs->get_column('id')->as_query }
+   }
+);
+foreach(@envrs)
+{
+   #while (($key, $value) = each(%{$_})){
+   #  print $key.", ".$value."\n";
+   #}
+   print("env_id => " . $_->id . "\n");
+   #print("------------------\n");
+}
+
+
+
+
+exit();
+my(%relnums) = undef;
+
+foreach(@rs)
+{
+   my($subnum) = $_->BUILD_NUM;
+   $subnum =~ /^(\d\d)(\d)/;
+   $subnum = "$1.$2";
+   if(!defined($relnums{$subnum}))
+   {
+      $relnums{$subnum} = $subnum;
+      print("relnums{$subnum} = $subnum\n");
+   }
+}

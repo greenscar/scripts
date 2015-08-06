@@ -1,0 +1,25 @@
+document.write("<div id='botNavBack' style='position:absolute; width:75px; height:1px; z-index:1; left: 850px; top: 2px;  border: 1px none #000000; background-color: #000000; layer-background-color: #000000;' class='menu'>previous</div>");
+document.write("<div id='botNavFwd' style='position:absolute; width:75px; height:1px; z-index:1; left: 930px; top: 2px;  border: 1px none #000000; background-color: #000000; layer-background-color: #000000;' class='menu' align='right'>fwd</div>");
+document.write("<div id='footer' style='position:absolute; width:600px; height:1px; z-index:1; left: 05px; top: 3px;  border: 1px none #000000; background-color: #000000; layer-background-color: #000000;' class='menu'>footer</div>");
+
+var button_sep = "<img src='images/button_sep.gif' width='15' height='18' align='absmiddle' border='0'>";
+
+var footer = footer_1_link;
+	footer += footer_1 + "</a>";
+	footer += button_sep + footer_2_link;
+	footer += footer_2 + "</a>";
+	footer += button_sep + footer_3_link;
+	footer += footer_3 + "</a>";
+	footer += button_sep + footer_4_link;
+	footer += footer_4 + "</a>";	
+	
+document.write("<table></table>");
+document.getElementById("footer").innerHTML = footer;	
+	/*var agt = navigator.userAgent.toLowerCase();
+	if (agt.indexOf('gecko') != -1){
+		//document.write("<div id='title' align='right'; style='position:absolute; width:1000px; height:1; z-index:1; left: 6; top: 12'>");
+		//document.write(mainCourseTitle + "</div>");
+	} 
+	else if (document.all){
+	document.all.footer.innerHTML = footer;
+	}*/

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="__bg58GycEd2AuKVpuozjrA" type="UMLUseCase" name="usecase1.umlusc" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="__6Z1YGycEd2AuKVpuozjrA" type="2001">
+    <children xmi:type="notation:Node" xmi:id="__6accGycEd2AuKVpuozjrA" type="5001"/>
+    <children xmi:type="notation:Node" xmi:id="__6cRoGycEd2AuKVpuozjrA" type="7001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="__6cRoWycEd2AuKVpuozjrA" collapsed="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="__6cRomycEd2AuKVpuozjrA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="__6cRo2ycEd2AuKVpuozjrA"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="__6Z1YWycEd2AuKVpuozjrA" fontName="Lucida Grande"/>
+    <element xmi:type="uml:Package" href="../greetings/usecase1.uml#__V4zEGycEd2AuKVpuozjrA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="__6Z1YmycEd2AuKVpuozjrA"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_BHDOsGydEd2AuKVpuozjrA" type="2002">
+    <children xmi:type="notation:Node" xmi:id="_BHEc0GydEd2AuKVpuozjrA" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_BHEc0WydEd2AuKVpuozjrA" y="5"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_BHDOsWydEd2AuKVpuozjrA" fontName="Lucida Grande"/>
+    <element xmi:type="uml:Actor" href="../greetings/usecase1.uml#_BFB1cGydEd2AuKVpuozjrA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BHDOsmydEd2AuKVpuozjrA" x="90" y="216"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_DhIrgGydEd2AuKVpuozjrA" type="2003">
+    <children xmi:type="notation:Node" xmi:id="_DhJSkGydEd2AuKVpuozjrA" type="5003"/>
+    <children xmi:type="notation:Node" xmi:id="_DhJSkWydEd2AuKVpuozjrA" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_DhJSkmydEd2AuKVpuozjrA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_DhJSk2ydEd2AuKVpuozjrA"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_DhIrgWydEd2AuKVpuozjrA" fontName="Lucida Grande"/>
+    <element xmi:type="uml:UseCase" href="../greetings/usecase1.uml#_DgvC4GydEd2AuKVpuozjrA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DhIrgmydEd2AuKVpuozjrA" x="273" y="90"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_GETL0GydEd2AuKVpuozjrA" type="2003">
+    <children xmi:type="notation:Node" xmi:id="_GETy4GydEd2AuKVpuozjrA" type="5003"/>
+    <children xmi:type="notation:Node" xmi:id="_GETy4WydEd2AuKVpuozjrA" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_GETy4mydEd2AuKVpuozjrA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_GETy42ydEd2AuKVpuozjrA"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_GETL0WydEd2AuKVpuozjrA" fontName="Lucida Grande"/>
+    <element xmi:type="uml:UseCase" href="../greetings/usecase1.uml#_GEFJYGydEd2AuKVpuozjrA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GETL0mydEd2AuKVpuozjrA" x="270" y="189"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_H1kVIGydEd2AuKVpuozjrA" type="2003">
+    <children xmi:type="notation:Node" xmi:id="_H1kVI2ydEd2AuKVpuozjrA" type="5003"/>
+    <children xmi:type="notation:Node" xmi:id="_H1kVJGydEd2AuKVpuozjrA" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_H1kVJWydEd2AuKVpuozjrA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_H1kVJmydEd2AuKVpuozjrA"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_H1kVIWydEd2AuKVpuozjrA" fontName="Lucida Grande"/>
+    <element xmi:type="uml:UseCase" href="../greetings/usecase1.uml#_H1YH4GydEd2AuKVpuozjrA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_H1kVImydEd2AuKVpuozjrA" x="270" y="270"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="__bhhAGycEd2AuKVpuozjrA"/>
+  <element xmi:type="uml:Package" href="../greetings/usecase1.uml#__V4zEGycEd2AuKVpuozjrA"/>
+</notation:Diagram>

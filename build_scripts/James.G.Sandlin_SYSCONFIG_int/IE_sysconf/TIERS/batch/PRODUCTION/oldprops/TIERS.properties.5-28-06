@@ -1,0 +1,65 @@
+#Environment
+#ValidateMQEnvironment=Y
+env=/TIERS/ENV
+logFilePath=/TIERS/ENV/fw/report/
+#TIERS Properties FIle Path
+TIERSPropFilePath=/TIERS/ENV/
+OS=UNIX
+TIMER_LOG=N
+#JDBC Driver
+DRIVER=oracle.jdbc.driver.OracleDriver
+DATASOURCE=jdbc/tiersDS
+iepsdu001_URL=jdbc:oracle:thin:@iepsdu001.txaccess.net:1521:pte1a
+iepsdu002_URL=jdbc:oracle:thin:@iepsdu002.txaccess.net:1521:pte1b
+DB_INSTANCE=pte1
+ORACLE_SID=pte1
+DB_OWN_SCHEMA=TIERS2OWN
+USER=TIERS2CON
+USERID=TIERS2CON
+PASSWORD=DWELLPHI
+XML_PATH=/TIERS/ENV/fw/java/xml/
+REF_XML_PATH=/TIERS/ENV/fw/java/xml/references/
+RULES_XML_PATH=/TIERS/ENV/fw/java/xml/rules/
+XML_CONFIG=/TIERS/ENV/fw/java/xml/config/
+TIMER_LOG=N
+TEMPLATE_PATH=/TIERS/ENV/co/template
+IDS_MAX_CONNECTIONS=10
+IDS_INC_CONN=5
+IDS_HOST_NAME=iepsdu001
+IDS_HOST_PORT=3666
+IDS_RULE_BASE=ssa:pte1-tiers3
+IDS_SYSTEM=tiers3
+IDS_VERBOSE=-vd0
+IDS_OPEN_FUNC=
+SSA_CLEARANCE=Y
+DEBUG=N
+MCI_MQ_SW=Y
+MCI_VERSION=P602
+exitcodes = -99 157 98 999
+SEND_REPORT=Y
+#DYNAMIC_SCHEDULE_FILE_PATH = /usr/local/lsam/MSGIN/3100
+DYNAMIC_SCHEDULE_FILE_PATH = /usr/local/lsam-03.04.03/MSGIN/3900
+LSAM_USERNAME = ocadm
+LSAM_PASSWORD = Password1
+#LSAM_USERNAME = ocadm
+#LSAM_PASSWORD = ********************
+FTP_RECEIVE_DIRECTORY=/TIERS/batch/ftp/receive/
+FTP_ZIP_DIRECTORY=/TIERS/batch/ftp/receive/zipped/
+TIERS_ENV_NAME=PRD
+SPREAD_STATISTICS=NO_PLAN
+CLUSTER=true
+DYNAMIC_SCHEDULE_POLL_FREQUENCY=120000
+UNIVERSAL_SERVER_HOST=iepsau001.txaccess.net
+UNIVERSAL_SERVER_PORT=8080
+UNIVERSAL_SERVER_PATH=dcg/gateway
+UNIVERSAL_SERVER_ACCOUNT_ID=tiersUser
+UNIVERSAL_SERVER_ACCOUNT_PASSWORD=sample
+
+
+#coral01_URL=jdbc:oracle:thin:@coral01.dhs.state.tx.us:1521:pte1a
+#coral02_URL=jdbc:oracle:thin:@coral02.dhs.state.tx.us:1521:pte1b
+#URL=jdbc:oracle:thin:@coral01.dhs.state.tx.us:1521:pte1a
+#URL=jdbc:oracle:thin:@jade.dhs.state.tx.us:1521:ute1
+#URL=jdbc:oracle:thin:@(description=(address=(host=gold-d)(protocol=tcp)(port=1521))(connect_data=(service_name=pte1.dhs.state.tx.us)(server=dedicated)))
+#URL=jdbc:oracle:thin:@(description=(address=(host=onyx)(protocol=tcp)(port=1521))(connect_data=(service_name=bte3.dhs.state.tx.us)(server=dedicated)))
+#PASSWORD=trentonburg111

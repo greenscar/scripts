@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <title>[% template.title %] or "CMDB"</title>
+    <link rel="stylesheet" href="[% c.uri_for('/static/css/main.css') %]" />
+</head>
+
+<body>
+
+<div id="Header">HHSC CMDB</div>
+
+
+<div id="Content">
+   [%# Status and error messages %]
+        <span class="message">[% status_msg %]</span>
+        <span class="error">[% error_msg %]</span>
+        [%# This is where TT will stick all of your template's contents. -%]
+        [% content %]
+</div><!-- end Content -->
+
+<div id="Menu">
+   [%# Your logo could go here -%]
+   <img src="[% c.uri_for('/static/images/ritm_floorida.bmp') %]" />
+   <ul>
+   <li>
+      <a href="[% c.uri_for('/database/list') %]">DB List</a>
+   </li>
+   <li>
+      <a href="[% c.uri_for('/dbmigration/report') %]">MIG Env Report</a>
+   </li>
+   <li>
+      <a href="[% c.uri_for('/dbmigration/mig_compare_formfu') %]">MIG Diff</a>
+   </li>
+   <li>
+      <a href="[% c.uri_for('/dm/report') %]">Deployments</a>
+   
+   </li>
+   
+</div><!-- end Menu -->
+</body>
+</html>

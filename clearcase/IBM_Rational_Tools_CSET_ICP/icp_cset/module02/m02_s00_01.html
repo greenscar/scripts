@@ -1,0 +1,107 @@
+<html><!-- #BeginTemplate "/templates/module.dwt" --><!-- DW6 -->
+<head>
+<title>IBM Rational software online training</title>
+
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+<meta name="Description" content="IBM Rational software online training"/>
+<meta name="Abstract" content="IBM Rational software online training"/>
+<meta name="Keywords" content="ibm, international business machines, rational, rational sofware, ibm training, rational training, rational university, clearcase, clearquest, rup, rational uinified process, software modeling, software development, xde, rational rose, xde tester, software configuration management"/>
+<meta name="Owner" content="ref@ibm.us.com"/>
+<meta name="Robots" content="noindex,nofollow"/>
+<meta name="Security" content="private"/>
+<meta name="Source" content="IBM Rational sofware - Rational University"/>
+<meta name="IBM.Country" content="US"/>
+<meta name="DC.Date" scheme="iso8601" content="2004-01-30"/>
+<meta name="DC.Language" scheme="rfc1766" content="en-US"/>
+<meta name="DC.Rights" content="Copyright (c) 2004 by IBM Corporation"/>
+<meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="ZZ999"/>
+<meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="ZZ999"/>
+<meta name="DC.Publisher" content="IBM Corporation - Rational software"/>
+<meta name="IBM.Effective" scheme="W3CDTF" content="2004-01-30"/>
+<meta name="IBM.Industry" scheme="IBM_IndustryTaxonomy" content="ZZ"/>
+<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+<link rel='stylesheet' href='../../common_env/styles/ru_style.css' type='text/css'>
+<script language="javascript" src="../../common_env/scripts/mm_functions.js"></script>
+<!-- #BeginEditable "headCode" --><script language="javascript">
+//
+</script>
+<!-- #EndEditable -->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<!-- #BeginEditable "content" -->
+      <table width="800" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="../../common_media/images/0shim.gif" alt="" width="30" height="15"></td>
+    <td><img src="../../common_media/images/0shim.gif" alt="" width="600" height="1"></td>
+    <td><img src="../../common_media/images/0shim.gif" alt="" width="130" height="1"></td>
+  </tr>
+  <tr>
+    <td><img src="../../common_media/images/0shim.gif" alt="" width="30" height="30"></td>
+    <td valign="top"> <p>CSET.PL will redo, print or undo the activity specified 
+        by the passed activity-object-selector.<br>
+        If -ignore is specified, no check will occur to see if you have checkedout<br>
+        files in this view.</p>
+      <p>Here is the actual file; &lt;click&gt; to view, &lt;right-click&gt; and 
+        select &quot;Save Target As...&quot; to save it to your local disk: <a href="media/cset.pl">CSET.PL</a></p>
+      <p>Here is the interface:<strong> C:\ccperl c:\cm\bin\cset.pl -help</strong></p>
+      <p>Usage: <strong>cset.pl</strong> [-help] [-ignore] [-graphical]<br>
+        {-redo | -print | -undo | -findmerge} [activity]</p>
+      <p>Arguments:<br>
+        <strong>help</strong> Displays this message and exits.<br>
+        <strong>ignore</strong> Ignore check for checked-out files.<br>
+        <strong>graphical</strong> If specified, will always use the graphical 
+        diffmerge tool.<br>
+        <strong>redo</strong> Will redo the change set specified by activity.<br>
+        <strong>print</strong> Will print out the change set specified by activity.<br>
+        <strong>undo</strong> Will undo the change set specified by activity.<br>
+        <strong>findmerge</strong> Will merge the change set from activity (this 
+        is not redo).<br>
+        <strong>activity</strong> The specified activity-object-selector to redo, 
+        print, or undo.<br>
+        If not specified, then you will be prompted for an activity.</p>
+      <p>Undo does a subtractive merge on the cset, so it will only undo the deltas 
+        of that activity.<br>
+        Undo requires that the activity be in the same stream your view is connected 
+        to.</p>
+      <p>Redo will do an additive merge of the cset, and will only redo the deltas 
+        of that activity.<br>
+        Redo requires that the activity be on a different stream than your current 
+        view.</p>
+      <p>Both redo and undo use the merge command, so all requirements of merge 
+        are requirements of<br>
+        redo and undo. No hyperlink will be created. Future redos and undos from/to 
+        the same stream<br>
+        will function just like an underlying merge would.</p>
+      <p>Print simply prints out the change set info.</p>
+      <p>Findmerge will do a regular merge from the activity to the stream. Note, 
+        this will draw<br>
+        a hyperlink and process prior history of the activity's change set. This 
+        is not the same<br>
+        as redo. Redo does an additive merge of the activity's cset. Undo does 
+        a subtractive merge.<br>
+        Findmerge requires that activity be on a different stream than your view.</p>
+      <p>C-Set Version = 6.0</p>
+      <p>Also, this version supports prompting code, using our favorite clearprompt 
+        tool. So, if you are lazy, you can just do something like one of these:</p>
+      <p>ccperl c:\cm\bin\cset.pl -redo<br>
+        ccperl c:\cm\bin\cset.pl -undo -g</p>
+      <p>This makes it nicer when bolting it into the ClearCase Explorer and Windows 
+        Explorer.<br>
+      </p></td>
+    <td>&nbsp; </td>
+  </tr>
+  <tr>
+    <td><img src="../../common_media/images/0shim.gif" alt="" width="30" height="30"></td>
+    <td valign="top">
+      <p>&nbsp;</p>
+    <p>&nbsp;    </p></td>
+    <td><p>&nbsp;</p>
+    </td>
+  </tr>  
+</table>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

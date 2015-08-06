@@ -1,0 +1,205 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <env name="VIEW_NAME"     value="required"/>
+      <env name="BF_SERVER"         value="required"/>
+      <env name="BF_ROOT"           value="required"/>
+		<env name="CUR_DATE"          value="required" />
+   </template>
+   
+   <interface>      
+      <run command="figure_app" params="$VIEW_NAME" server="$BF_SERVER" dir="/" timeout="120"/>
+	   <run command="get_bls_ssp" params="$VIEW_NAME" server="$BF_SERVER" dir="/" timeout="120" condition="true('$app' eq 'SSP')"/>
+      <run command="get_bls_stp" params="$VIEW_NAME" server="$BF_SERVER" dir="/" timeout="120" condition="true('$app' eq 'STP')"/>
+      <run command="get_bls_tlm" params="$VIEW_NAME" server="$BF_SERVER" dir="/" timeout="120" condition="true('$app' eq 'TLM')"/>
+      <run command="get_bls_snbx" params="$VIEW_NAME" server="$BF_SERVER" dir="/" timeout="120" condition="true('$app' eq 'SNBX')"/>
+      <run command="get_bls_tiers" params="$VIEW_NAME" server="$BF_SERVER" dir="/" timeout="120" condition="true('$app' eq 'TIERS')"/>
+   </interface>
+   
+   <command name="figure_app">
+      <execute>
+         echo '$1'
+      </execute>
+      <resultsblock>
+         <match pattern="(SSP)">
+            <setenv name="app" value="SSP" type="temp"/>
+         </match>
+         <match pattern="(STP)">
+            <setenv name="app" value="STP" type="temp"/>
+         </match>
+         <match pattern="(TLM)">
+            <setenv name="app" value="TLM" type="temp"/>
+         </match>
+         <match pattern="(TIERS)">
+            <setenv name="app" value="TLM" type="temp"/>
+         </match>
+         <match pattern="(SNBX)">
+            <setenv name="app" value="SNBX" type="temp"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   
+   <command name="get_bls_ssp">
+      <execute>
+         ${BF_ROOT}get_bls.pl --srcstream "$1"
+      </execute>
+      <resultsblock>
+         <match pattern="^bl_dev=(.+)$">
+            <bom category="blssp" section="sspbaselines">
+               <field name="DEV" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^bl_sit=(.+)$">
+            <bom category="blssp" section="sspbaselines">
+               <field name="SIT" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^bl_uat=(.+)$">
+            <bom category="blssp" section="sspbaselines">
+               <field name="UAT" text="$1"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="get_bls_stp">
+      <execute>
+         ${BF_ROOT}get_bls.pl --srcstream "$1"
+      </execute>
+      <resultsblock>
+         <match pattern="^bl_dev=(.+)$">
+            <bom category="blstp" section="stpbaselines">
+               <field name="DEV" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^bl_sit=(.+)$">
+            <bom category="blstp" section="stpbaselines">
+               <field name="SIT" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^bl_uat=(.+)$">
+            <bom category="blstp" section="stpbaselines">
+               <field name="UAT" text="$1"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+   
+   
+   <command name="get_bls_tlm">
+      <execute>
+         ${BF_ROOT}get_bls.pl --srcstream "$1"
+      </execute>
+      <resultsblock>
+         <match pattern="^bl_dev=(.+)$">
+            <bom category="bltlm" section="tlmbaselines">
+               <field name="DEV" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^bl_sit=(.+)$">
+            <bom category="bltlm" section="tlmbaselines">
+               <field name="SIT" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^bl_uat=(.+)$">
+            <bom category="bltlm" section="tlmbaselines">
+               <field name="UAT" text="$1"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="get_bls_tiers">
+      <execute>
+         ${BF_ROOT}get_bls.pl --srcstream "$1"
+      </execute>
+      <resultsblock>
+         <match pattern="^bl_dev=(.+)$">
+            <bom category="bltiers" section="tiersbaselines">
+               <field name="DEV" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^bl_sit=(.+)$">
+            <bom category="bltiers" section="tiersbaselines">
+               <field name="SIT" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^bl_uat=(.+)$">
+            <bom category="bltiers" section="tiersbaselines">
+               <field name="UAT" text="$1"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="get_bls_snbx">
+      <execute>
+         ${BF_ROOT}get_bls.pl --srcstream "$1"
+      </execute>
+      <resultsblock>
+         <match pattern="^bl_dev=(.+)$">
+            <bom category="blsnbx" section="snbxbaselines">
+               <field name="DEV" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^bl_sit=(.+)$">
+            <bom category="blsnbx" section="snbxbaselines">
+               <field name="SIT" text="$1"/>
+            </bom>
+         </match>
+         <match pattern="^bl_uat=(.+)$">
+            <bom category="blsnbx" section="snbxbaselines">
+               <field name="UAT" text="$1"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <bomformat category="blssp" title="SSP Baseline Report">
+      <section name="sspbaselines">
+         <field order="1" name="DEV" title="DEV"/>
+         <field order="2" name="SIT" title="SIT"/>
+         <field order="3" name="UAT" title="UAT"/>
+      </section>
+   </bomformat>
+   
+		
+    
+   <bomformat category="blstp" title="STP Baseline Report">
+      <section name="stpbaselines">
+         <field order="1" name="DEV" title="DEV"/>
+         <field order="2" name="SIT" title="SIT"/>
+         <field order="3" name="UAT" title="UAT"/>
+      </section>
+   </bomformat>
+   
+    
+   <bomformat category="bltlm" title="TLM Baseline Report">
+      <section name="tlmbaselines">
+         <field order="1" name="DEV" title="DEV"/>
+         <field order="2" name="SIT" title="SIT"/>
+         <field order="3" name="UAT" title="UAT"/>
+      </section>
+   </bomformat>
+   
+   
+   <bomformat category="bltiers" title="TIERS Baseline Report">
+      <section name="tiersbaselines">
+         <field order="1" name="DEV" title="DEV"/>
+         <field order="2" name="SIT" title="SIT"/>
+         <field order="3" name="UAT" title="UAT"/>
+      </section>
+   </bomformat>
+   
+   
+   
+   <bomformat category="blsnbx" title="SNBX Baseline Report">
+      <section name="snbxbaselines">
+         <field order="1" name="DEV" title="DEV"/>
+         <field order="2" name="SIT" title="SIT"/>
+         <field order="3" name="UAT" title="UAT"/>
+      </section>
+   </bomformat>
+   
+</PROJECT_INTERFACE>

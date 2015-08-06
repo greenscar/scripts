@@ -1,0 +1,38 @@
+package Environments::Model::DB;
+
+use strict;
+use base 'Catalyst::Model::DBIC::Schema';
+
+__PACKAGE__->config(
+    schema_class => 'Environments::Schema',
+    connect_info => [
+        'dbi:Oracle:165.184.34.104:1522/DTE2',
+        'ENV_MGT',
+        'envown123',
+        
+    ],
+);
+
+=head1 NAME
+
+Environments::Model::DB - Catalyst DBIC Schema Model
+=head1 SYNOPSIS
+
+See L<Environments>
+
+=head1 DESCRIPTION
+
+L<Catalyst::Model::DBIC::Schema> Model using schema L<Environments::Schema>
+
+=head1 AUTHOR
+
+jsandlin
+
+=head1 LICENSE
+
+This library is free software, you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
+
+1;

@@ -1,0 +1,38 @@
+(dp1
+S'status'
+p2
+S'VARCHAR(10) NOT NULL'
+p3
+sS'name'
+p4
+S'VARCHAR(45) NOT NULL'
+p5
+sS'created_at'
+p6
+S'DATETIME'
+p7
+sS'updated_at'
+p8
+S'DATETIME'
+p9
+sS'port'
+p10
+S'INT NOT NULL'
+p11
+sS'san_disk'
+p12
+S'VARCHAR(10) NOT NULL'
+p13
+sS'user'
+p14
+S'VARCHAR(45) NOT NULL'
+p15
+sS'servers_id'
+p16
+S'INT, INDEX servers_id__idx (servers_id), FOREIGN KEY (servers_id) REFERENCES servers(id) ON DELETE CASCADE'
+p17
+sS'id'
+p18
+S'INT AUTO_INCREMENT NOT NULL'
+p19
+s.

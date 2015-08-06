@@ -1,0 +1,19 @@
+
+{{extend 'layout.html'}}
+<h1>Groups</h1>
+<table border="1px">
+{{=TR(TH('EDIT'),
+      TH('GROUP')
+     )
+}}
+{{ x = 0 }}
+{{for group in groups:}}
+{{if x % 2 == 0:}}
+{{=TR(TD(A('EDIT', _href=URL(r=request, f='edit', args=group.id))), group.name, _class="grey")}}
+{{else:}}
+{{=TR(TD(A('EDIT', _href=URL(r=request, f='edit', args=group.id))), group.name)}}
+{{pass}}
+{{ x = x + 1 }}
+{{pass}}
+</table>
+{{=H2(A('Add Group', _href=URL(r=request, f='add')))}}

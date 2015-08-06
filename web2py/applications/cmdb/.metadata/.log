@@ -1,0 +1,59 @@
+!SESSION 2010-04-14 13:07:21.290 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_17
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.php.product -keyring /Users/james.sandlin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.php.product -keyring /Users/james.sandlin/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.jface 2 0 2010-04-14 13:08:36.378
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2010-04-14 13:08:36.378
+!MESSAGE A conflict occurred for ALT+COMMAND+Q P:
+Binding(ALT+COMMAND+Q P,
+	ParameterizedCommand(Command(org.eclipse.ui.views.showView,Show View,
+		Shows a particular view,
+		Category(org.eclipse.ui.category.views,Views,Commands for opening views,true),
+		org.eclipse.ui.handlers.ShowViewHandler@496af7bf,
+		[Lorg.eclipse.ui.internal.commands.Parameter;@daf4241,,true),[Lorg.eclipse.core.commands.Parameterization;@6d26c06b),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+Binding(ALT+COMMAND+Q P,
+	ParameterizedCommand(Command(org.eclipse.ui.views.showView,Show View,
+		Shows a particular view,
+		Category(org.eclipse.ui.category.views,Views,Commands for opening views,true),
+		org.eclipse.ui.handlers.ShowViewHandler@496af7bf,
+		[Lorg.eclipse.ui.internal.commands.Parameter;@daf4241,,true),[Lorg.eclipse.core.commands.Parameterization;@b22e8c9),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY org.eclipse.core.net 1 0 2010-04-14 13:08:36.684
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2010-04-14 13:11:32.518
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2010-04-14 13:11:32.518
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2010-04-14 13:11:32.518
+!MESSAGE Missing requirement: 1271275891140 0.0.0.1271275891140 requires 'hgeclipse_win32.feature.group [1.3.1]' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2010-04-14 13:11:32.557
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2010-04-14 13:11:32.557
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2010-04-14 13:11:32.557
+!MESSAGE Missing requirement: 1271275891140 0.0.0.1271275891140 requires 'hgeclipse_win32.feature.group [1.3.1]' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2010-04-14 13:11:32.567
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2010-04-14 13:11:32.567
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2010-04-14 13:11:32.567
+!MESSAGE Missing requirement: 1271275891140 0.0.0.1271275891140 requires 'hgeclipse_win32.feature.group [1.3.1]' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2010-04-14 13:11:32.601
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2010-04-14 13:11:32.601
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2010-04-14 13:11:32.601
+!MESSAGE Missing requirement: 1271275891140 0.0.0.1271275891140 requires 'hgeclipse_win32.feature.group [1.3.1]' but it could not be found

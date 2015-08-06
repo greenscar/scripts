@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='ISO-8859-1'  ?>
+<interactions activityid="02" activityname="ClearCase interface" randomize="Off" questionstoask="0" resultspage="On" tryagain="On" tracking="Off" loginfile="">
+	<interaction type_interaction="mc" interaction_id="1" objective_id="clearcase" solutionoption="Off" solutiontry="1" tries="On" numoftries="2" tryoption="Off" selectone="Off" tracking="Off" weighting="1">
+		<question>At the start of the project, the project manager sets up a(n) ___________ .</question>
+		<choice_a check_des="A.">check face</choice_a>
+		<choice_b check_des="B.">development view</choice_b>
+		<choice_c check_des="C.">integration stream</choice_c>
+		<choice_d check_des="D.">check in</choice_d>
+		<choice_e check_des="E.">development stream</choice_e>
+		<choice_f check_des="F.">deliver</choice_f>
+		<choice_g check_des="G.">activity</choice_g>
+		<answer_a>incorrect</answer_a>
+		<answer_b>incorrect</answer_b>
+		<answer_c>correct</answer_c>
+		<answer_d>incorrect</answer_d>
+		<answer_e>incorrect</answer_e>
+		<answer_f>incorrect</answer_f>
+		<answer_g>incorrect</answer_g>
+		<correctfeedback>That's Correct.</correctfeedback>
+		<instruction>Complete the following sentences by choosing the correct word. Then click Check Answer.</instruction>
+		<incorrectfeedback>That's incorrect.</incorrectfeedback>
+		<incorrectfeedback2>on</incorrectfeedback2>
+		<solutionfeedback>The correct answer is C. integration stream.</solutionfeedback>
+	</interaction>
+	<interaction type_interaction="dd" interaction_id="1" objective_id="clearcase" solutionoption="On" solutiontry="1" tries="Off" numoftries="2" tryoption="On" selectone="Off" tracking="Off" weighting="1">
+		<drag_name1>Baseline</drag_name1>
+		<drag_name2>Component</drag_name2>
+		<drag_name3>Development Stream</drag_name3>
+		<drag_name4>Object</drag_name4>
+		<drag_name5>Element</drag_name5>
+		<drag_name6>Integration Stream</drag_name6>
+		<drag_name7>VOB</drag_name7>
+		<target1_text des="A.">Provides access to versions of the project's shared elements</target1_text>
+		<target2_text des="B.">An item stored in the VOB</target2_text>
+		<target3_text des="C.">Multi-versioned objec</target3_text>
+		<target4_text des="D.">An area that isolates your work from that of other team members</target4_text>
+		<target5_text des="E.">Stores all versions of objects</target5_text>
+		<target6_text des="F.">A group of related directory and file elements</target6_text>
+		<target7_text des=""></target7_text>
+		<answer_target1>drag4</answer_target1>
+		<answer_target2>drag5</answer_target2>
+		<answer_target3>drag2</answer_target3>
+		<answer_target4>drag1</answer_target4>
+		<answer_target5>drag6</answer_target5>
+		<answer_target6>drag3</answer_target6>
+		<answer_target7></answer_target7>
+		<correctfeedback>Good.</correctfeedback>
+		<instruction>Match the UCM term to the description. When you are done, click Check Answer. Click Solution at any time to see the correct answers.</instruction>
+		<incorrectfeedback>That's incorrect.</incorrectfeedback>
+		<incorrectfeedback2>0</incorrectfeedback2>
+		<solutionfeedback>The correct answer is True.</solutionfeedback>
+	</interaction>	
+	<interaction type_interaction="mc" interaction_id="2" objective_id="clearcase" solutionoption="On" solutiontry="1" tries="Off" numoftries="2" tryoption="On" selectone="Off" tracking="Off" weighting="1">
+		<question>To work on a set of activities and corresponding versions isolated from the rest of the project team, you must first go to your __________ .</question>
+		<choice_a check_des="A.">check out</choice_a>
+		<choice_b check_des="B.">evelopment stream</choice_b>
+		<choice_c check_des="C.">project manager</choice_c>
+		<choice_d check_des="D.">check in</choice_d>
+		<choice_e check_des="E.">development view</choice_e>
+		<choice_f check_des="F.">deliver</choice_f>
+		<choice_g check_des="G.">activity</choice_g>
+		<answer_a>incorrect</answer_a>
+		<answer_b>incorrect</answer_b>
+		<answer_c>incorrect</answer_c>
+		<answer_d>incorrect</answer_d>
+		<answer_e>correct</answer_e>
+		<answer_f>incorrect</answer_f>
+		<answer_g>incorrect</answer_g>
+		<correctfeedback>That's Correct.</correctfeedback>
+		<instruction>Complete the following sentences by choosing the correct word. Then click Check Answer.</instruction>
+		<incorrectfeedback>That's incorrect.</incorrectfeedback>
+		<incorrectfeedback2>oh kay</incorrectfeedback2>
+		<solutionfeedback>The correct answer is E. development view.</solutionfeedback>
+	</interaction>
+	<interaction type_interaction="mc" interaction_id="3" objective_id="clearcase" solutionoption="On" solutiontry="1" tries="Off" numoftries="2" tryoption="On" selectone="Off" tracking="Off" weighting="1">
+		<question>This view enables you to access your _________ . </question>
+		<choice_a check_des="A.">check out</choice_a>
+		<choice_b check_des="B.">evelopment stream</choice_b>
+		<choice_c check_des="C.">project manager</choice_c>
+		<choice_d check_des="D.">check in</choice_d>
+		<choice_e check_des="E.">rebase</choice_e>
+		<choice_f check_des="F.">deliver</choice_f>
+		<choice_g check_des="G.">activity</choice_g>
+		<answer_a>incorrect</answer_a>
+		<answer_b>correct</answer_b>
+		<answer_c>incorrect</answer_c>
+		<answer_d>incorrect</answer_d>
+		<answer_e>incorrect</answer_e>
+		<answer_f>incorrect</answer_f>
+		<answer_g>incorrect</answer_g>
+		<correctfeedback>That's Correct.</correctfeedback>
+		<instruction>Complete the following sentences by choosing the correct word. Then click Check Answer.</instruction>
+		<incorrectfeedback>That's incorrect.</incorrectfeedback>
+		<incorrectfeedback2></incorrectfeedback2>
+		<solutionfeedback>The correct answer is B. evelopment stream.</solutionfeedback>
+	</interaction>
+	<interaction type_interaction="mc" interaction_id="4" objective_id="clearcase" solutionoption="On" solutiontry="2" tries="Off" numoftries="2" tryoption="On" selectone="Off" tracking="Off" weighting="1">
+		<question>You must ___________ the element you want to work on.</question>
+		<choice_a check_des="A.">check out</choice_a>
+		<choice_b check_des="B.">recommended</choice_b>
+		<choice_c check_des="C.">project manager</choice_c>
+		<choice_d check_des="D.">check in</choice_d>
+		<choice_e check_des="E.">rebase</choice_e>
+		<choice_f check_des="F.">deliver</choice_f>
+		<choice_g check_des="G.">activity</choice_g>
+		<answer_a>correct</answer_a>
+		<answer_b>incorrect</answer_b>
+		<answer_c>incorrect</answer_c>
+		<answer_d>incorrect</answer_d>
+		<answer_e>incorrect</answer_e>
+		<answer_f>incorrect</answer_f>
+		<answer_g>incorrect</answer_g>
+		<correctfeedback>That's Correct.</correctfeedback>
+		<instruction>Complete the following sentences by choosing the correct word. Then click Check Answer.</instruction>
+		<incorrectfeedback>That's incorrect.</incorrectfeedback>
+		<incorrectfeedback2></incorrectfeedback2>
+		<solutionfeedback>The correct answer is A. check out.</solutionfeedback>
+	</interaction>
+</interactions>

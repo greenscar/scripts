@@ -1,0 +1,8 @@
+#Requisite connection properties for UMCI Listener 
+
+URL=jdbc:oracle:thin:@iedadu001:1525:trtstc2
+USERID=TIERS2CON 
+PASSWORD=AUABYQJTN920NAT
+DRIVER=oracle.jdbc.driver.OracleDriver
+QUEUE=RES.WAS.RULES.MCI_UPDATE
+receiveQueue=RCV.TIERS.LISTENER_ALERTS 

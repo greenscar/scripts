@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="C:\Inetpub\Tomcat\5.5\webapps\Exam" path="/exam">
+  <Logger className="org.apache.catalina.logger.FileLogger" prefix="exam." suffix=".log" timestamp="true"/>
+</Context>

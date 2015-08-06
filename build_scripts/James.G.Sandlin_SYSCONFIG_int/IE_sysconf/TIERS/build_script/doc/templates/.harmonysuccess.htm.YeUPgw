@@ -1,0 +1,133 @@
+<html>
+
+<head>
+</head>
+<div align="center" >
+  <center>
+  <table border="1" width="90%">
+    <tr>
+      <td colspan="2" align="left" bgcolor="#C0C0C0">
+        <p align="center">
+			<font face="Verdana">
+				<b>@env@ - @OBAT@</b>
+			</font>
+		</p>
+	  </td>
+    </tr>
+	     <tr>
+      	<td width="40%" align="left">
+			<p>
+				<font face="Verdana">
+					<b><u>Build</u></b><br>
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; Number</b><br>
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; Started</b><br>
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; Completed</b>
+				</font>
+        	</p>
+		</td>
+      	<td width="50%" align="left">
+			<p>
+				<font face="Verdana">
+					<br>
+					<b>@BN@</b><br>
+					<b>@BT@</b><br>
+					<b>@BET@</b>
+					<br>
+				</font>
+			</p>
+		</td>
+    </tr>
+	</tr>
+	     <tr>
+      	<td width="40%" align="left">
+			<p>
+				<font face="Verdana">
+					<b><u>Source</u></b><br>
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; Stream</b><br>
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; Update</b><br>
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; Number of Files Updated</b>
+				</font>
+        	</p>
+		</td>
+      	<td width="50%" align="left">
+			<p>
+				<font face="Verdana">
+					<br>
+					<b>@BV@</b><br>
+					<b>@UPT@ @UPTT@</b><br>
+					<b>@UPTFN@</b>
+				</font>
+			</p>
+		</td>
+    </tr>
+    <tr>
+      	<td width="40%" align="left">
+			<p>
+				<font face="Verdana">
+					<b><u>Compile</u></b><br>
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; Layer Compile</b><br>
+    				<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; RMIC</b><br>
+        			<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; EAR / JAR Creation</b>	
+ 				</font>
+        	</p>
+		</td>
+      	<td width="50%" align="left">
+			<p>
+				<font face="Verdana">
+					<br>
+					<b>@C@ @CT@</b><br>
+					<b>@R@ @RT@</b><br>
+					<b>@E@ @ET@</b>
+				</font>
+			</p>
+		</td>
+    </tr>
+    <tr>
+      	<td width="40%" align="left">
+			<p>
+				<font face="Verdana">
+					<b><u>Deployment</u></b><br>
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; Server</b><br>
+        			<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; Status</b><br>
+        			<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; Restart</b><br>
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; Cleanup Script</b><br>
+        			<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp; App. Path</b>
+				</font>
+        	</p>
+		</td>
+      	<td width="50%" align="left">
+			<p>
+				<font face="Verdana">
+					<br>
+					<b>@NODE@ : @SERV@</b><br>
+	       			<b>@D@ @DT@</b><br>
+	       			<b>@S@ @ST@</b><br>
+					<b>@CL@	@CLT@</b><br>
+	      			<b>@EURL@</b>
+					<br>
+				</font>
+			</p>
+		</td>
+    </tr>
+    <tr>
+      	<td width="100%" align="center" colspan="2">
+       		<p align="center">
+				<font face="Verdana">
+					<b><u>Changed Files for this Build - @UPTFN@</u></b><br>
+				</font>
+			</p>
+			<p align="left" >
+				<font face="Verdana" >
+					@UPTF@	
+				</font>
+		</td>
+    </tr>
+    <tr>
+      <td width="100%" align="left" height="1" colspan="2"></td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+
+</html>

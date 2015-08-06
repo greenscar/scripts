@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_rBfD4DXNEd6nxMDNMPVNiQ" type="UMLUseCase" name="browsing.umlusc" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_1gxtQDXNEd6nxMDNMPVNiQ" type="2001">
+    <children xmi:type="notation:Node" xmi:id="_1gyUUDXNEd6nxMDNMPVNiQ" type="5001"/>
+    <children xmi:type="notation:Node" xmi:id="_1gyUUTXNEd6nxMDNMPVNiQ" type="7001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_1gyUUjXNEd6nxMDNMPVNiQ" collapsed="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_1gyUUzXNEd6nxMDNMPVNiQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_1gyUVDXNEd6nxMDNMPVNiQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_1gxtQTXNEd6nxMDNMPVNiQ" fontName="Lucida Grande"/>
+    <element xmi:type="uml:Package" href="browsing.uml#_qheHEDXNEd6nxMDNMPVNiQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1gxtQjXNEd6nxMDNMPVNiQ"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_od9hwDXOEd6nxMDNMPVNiQ" type="2002">
+    <children xmi:type="notation:Node" xmi:id="_od-I0DXOEd6nxMDNMPVNiQ" type="5002">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_od-I0TXOEd6nxMDNMPVNiQ" y="5"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_od9hwTXOEd6nxMDNMPVNiQ" fontName="Lucida Grande"/>
+    <element xmi:type="uml:Actor" href="browsing.uml#_odQ-MDXOEd6nxMDNMPVNiQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_od9hwjXOEd6nxMDNMPVNiQ" x="359" y="187"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_pAXrQDXOEd6nxMDNMPVNiQ" type="2003">
+    <children xmi:type="notation:Node" xmi:id="_pAXrQzXOEd6nxMDNMPVNiQ" type="5003"/>
+    <children xmi:type="notation:Node" xmi:id="_pAXrRDXOEd6nxMDNMPVNiQ" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_pAXrRTXOEd6nxMDNMPVNiQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_pAXrRjXOEd6nxMDNMPVNiQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_pAXrQTXOEd6nxMDNMPVNiQ" fontName="Lucida Grande"/>
+    <element xmi:type="uml:UseCase" href="browsing.uml#_pARkoDXOEd6nxMDNMPVNiQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pAXrQjXOEd6nxMDNMPVNiQ" x="144" y="63"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_rBfD4TXNEd6nxMDNMPVNiQ"/>
+  <element xmi:type="uml:Package" href="browsing.uml#_qheHEDXNEd6nxMDNMPVNiQ"/>
+  <edges xmi:type="notation:Edge" xmi:id="_CVWWgDXPEd6nxMDNMPVNiQ" type="4004" source="_od9hwDXOEd6nxMDNMPVNiQ" target="_pAXrQDXOEd6nxMDNMPVNiQ">
+    <children xmi:type="notation:Node" xmi:id="_CVWWhDXPEd6nxMDNMPVNiQ" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_CVWWhTXPEd6nxMDNMPVNiQ" y="15"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_CVW9kDXPEd6nxMDNMPVNiQ" type="6004">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_CVW9kTXPEd6nxMDNMPVNiQ" y="15"/>
+    </children>
+    <styles xmi:type="notation:RoutingStyle" xmi:id="_CVWWgTXPEd6nxMDNMPVNiQ"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_CVWWgjXPEd6nxMDNMPVNiQ" fontName="Lucida Grande"/>
+    <element xmi:type="uml:Association" href="browsing.uml#_CVT6QDXPEd6nxMDNMPVNiQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CVWWgzXPEd6nxMDNMPVNiQ" points="[-15, -12, 145, 107]$[-90, -120, 70, -1]"/>
+  </edges>
+</notation:Diagram>

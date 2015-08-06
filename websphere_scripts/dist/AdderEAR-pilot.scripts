@@ -1,0 +1,35 @@
+#
+# Author: Barry Searle
+#
+# (C) Copyright IBM Corp. 2004,2007 - All Rights Reserved.
+# DISCLAIMER:
+# The following source code is sample code created by IBM Corporation.
+# This sample code is not part of any standard IBM product and is provided
+# to you solely for the purpose of assisting you in the development of your
+# applications. The code is provided 'AS IS', without warranty or condition
+# of any kind. IBM shall not be liable for any damages arising out of your
+# use of the sample code, even if IBM has been advised of the possibility of
+# such damages.
+#
+# Change History:
+# 3.1 (08may2007) initial version
+#
+
+#
+##################### USER APP SCRIPTS  ##############################
+# multiple lines: scriptLoad=scriptName    ###!!without any extension!!
+# multiple lines: preInstall=methodName (params)  ###!! quote strings!!
+# multiple lines: postInstall=methodName (params)  ###!! quote strings!!
+# multiple lines: postUninstall=methodName (params)  ###!! quote strings!!
+#
+
+scriptLoad=AdderEAR-setJVM
+
+####### BEWARE: PERMANENT CHANGE of jvm settings: ####################
+####### NOTE: JYTHON SYNTAX, quote all strings:   ####################
+preInstall   =setJvmDisableJIT ("bcsearle2NodeND61", "server1", "true")
+preUninstall =setJvmDisableJIT ("bcsearle2NodeND61", "server1", "false")
+postInstall  =setJvmDebugMode  ("bcsearle2NodeND61", "server1", "true" )
+postUninstall=setJvmDebugMode  ("bcsearle2NodeND61", "server1", "false")
+
+##postInstall=setJvmHeapSize   ("bcsearle2NodeND61", "server1", 80, 512)

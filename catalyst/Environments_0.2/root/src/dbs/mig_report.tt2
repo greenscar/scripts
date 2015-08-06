@@ -1,0 +1,5 @@
+[% META title = 'Select Schemas to Compare' %]
+[%# Render the HTML::FormFu Form %]
+
+<H3> Please select the DB ID AND/OR Release you would like to report</H3>
+[% form %]

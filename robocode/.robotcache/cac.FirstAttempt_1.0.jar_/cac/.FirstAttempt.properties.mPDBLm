@@ -1,0 +1,8 @@
+#Robot Properties
+#Fri Jul 06 16:15:41 CDT 2007
+robot.java.source.included=true
+robot.version=1.0
+robot.description=AwesomeBot\!
+robocode.version=1.0.7
+robot.author.name=
+robot.classname=cac.FirstAttempt

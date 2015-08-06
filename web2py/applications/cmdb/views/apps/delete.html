@@ -1,0 +1,4 @@
+
+{{extend 'layout.html'}}
+{{if response.flash:}}<div id="flash">{{=response.flash}}</div>{{pass}}
+{{=BEAUTIFY(response._vars)}}

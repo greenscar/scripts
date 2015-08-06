@@ -1,0 +1,115 @@
+
+
+# #############################################################################################################
+#      Written by Raghurajan Gurunathan
+#           Deloitte Consulting
+###############################################################################################################
+
+
+# ************************************************************************
+# 	----------------------------------------------------------	
+#  	restartserver.jacl - To restart server
+#	----------------------------------------------------------
+#
+#	Arguments Needed :
+#       cell name
+#		Node name
+#		App. Server Name
+#		Application Name
+#	
+# ************************************************************************
+
+proc restartserver {cellName nodeName appserverName entappName} {
+	#--------------------------------------------------------------
+	# set up globals
+	#--------------------------------------------------------------
+	global AdminConfig
+	global AdminControl
+	global AdminApp
+	#--------------------------------------------------------------
+	# Get server Mbean
+	#--------------------------------------------------------------
+	set runningServer [$AdminControl completeObjectName cell=$cellName,node=$nodeName,name=$appserverName,type=Server,*]
+	set errmsg "com.ibm.ws.scripting.ScriptingException: com.ibm.websphere.management.exception.ConnectorException: ADMC0009E: Failed to make the SOAP RPC call: invoke"
+	#--------------------------------------------------------------
+	# stop the Server
+	#--------------------------------------------------------------
+    if {[llength $runningServer] > 0} {
+    	puts "Stopping $appserverName server"
+    	$AdminControl stopServer $appserverName $nodeName terminate
+    	set FlagServerStopped "True"
+    	puts "!!! After stopping $appserverName server,Waiting 25 sec !!!"
+     } else {
+     	puts "!!! Server $appserverName not running on node $nodeName !!!"
+     	set FlagServerStopped "True"
+     }
+    #--------------------------------------------------------------
+    # Start Server
+    #	1. Issue a Start Server command
+    #	2. Catches the SOAP error if happend, then ignores that wait for 2 mts
+    #	3. Checks for application status if its up, then says it success
+    #	4. In case there is other than SOAP error, it will stop execution here and returns the control back to ANT
+    #	5. In case there is no error at all checks for application status if its up, then sends success, otherwise fails and stop executing
+    #      returns the control
+    #--------------------------------------------------------------
+  	if {$FlagServerStopped == "True"} {
+ 		if [catch {
+				$AdminControl startServer $appserverName $nodeName 600
+			} result ] {
+				if {[string compare $result [string trim $errmsg \"]] == 0} {
+				    puts "!!! Ignoring the SOAP Error,and will wait for 2 mts !!!"
+					after 120000
+					set appStatus [$AdminControl completeObjectName type=Application,name=$entappName,*]
+					puts "!!! $entappName Application Status: $appStatus !!!"
+					if {[llength $appStatus] > 0} {
+						puts "!!! Application $entappName Started !!!"
+					} else {
+						puts "*****	$entappName Application Not Started: $appStatus	*****"
+						puts "!!! Retry: Wait for 2 more mts !!!"
+						after 120000
+						set appState [$AdminControl completeObjectName type=Application,name=$entappName,*]
+						if {[llength $appState] > 0} {
+							puts "!!! Application $entappName Started !!!"
+						} else {
+							puts "XXXXX	After Retry,Error while Starting $appserverName Server:	$result	XXXXX"
+							return
+						}
+					}
+				} else {
+					puts "XXXXX	Error other than SOAP got $result	XXXXX"
+					return
+				}
+		} else {
+			puts "!!! No Error at all while starting Server $appserverName !!!"
+			set appStatus [$AdminControl completeObjectName type=Application,name=$entappName,*]
+			if {[llength $appStatus] > 0} {
+				puts "!!! Application $entappName Started !!!"
+			} else {
+				puts "XXXXX	Error while Starting $appserverName Server:	$result	XXXXX"
+				return
+			}
+		}
+ 	} else {
+   		puts "!!! $appserverName Already Running !!!"
+    }
+
+}
+	#-----------------------------------------------------------------
+	# Main
+	#-----------------------------------------------------------------
+	if { !($argc == 4 ) } {
+	   puts "restartserver: This script requires 4 Arguments" 
+	   puts "Arguments are :	
+	   			Cell Name,
+	   			Node name, 
+	   			App. Server Name
+	   			Application Name"
+	} else { 
+	   set cellName [lindex $argv 0]
+	   set nodeName [lindex $argv 1]
+	   set appserverName [lindex $argv 2]
+	   set entappName [lindex $argv 3]
+	   set FlagServerStopped "False"
+	   
+  	   restartserver $cellName $nodeName $appserverName $entappName
+ 	}

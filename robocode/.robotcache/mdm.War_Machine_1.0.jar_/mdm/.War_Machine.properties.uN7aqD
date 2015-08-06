@@ -1,0 +1,8 @@
+#Robot Properties
+#Fri Jul 06 18:26:31 CDT 2007
+robot.description=michael.mahnke bot
+robocode.version=1.0.7
+robot.java.source.included=true
+robot.version=1.0
+robot.author.name=
+robot.classname=mdm.War_Machine

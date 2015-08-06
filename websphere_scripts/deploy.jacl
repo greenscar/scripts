@@ -1,0 +1,220 @@
+#
+# Author: Barry Searle
+#
+# (C) Copyright IBM Corp. 2004,2007 - All Rights Reserved.
+# DISCLAIMER:
+# The following source code is sample code created by IBM Corporation.
+# This sample code is not part of any standard IBM product and is provided
+# to you solely for the purpose of assisting you in the development of your
+# applications. The code is provided 'AS IS', without warranty or condition
+# of any kind. IBM shall not be liable for any damages arising out of your
+# use of the sample code, even if IBM has been advised of the possibility of
+# such damages.
+#
+# Change History:
+# 3.1 (08may2007) added invocation of processScriptsFile
+# 2.0 (10feb2006) code cleanup, no functional change
+# 1.2 (14jan2005) fixed multiple EARs (start/stop apps on servers using $appsNodesServers)
+# 1.1 (17nov2004) initial shipped version
+#
+
+
+proc deploy { action depType failOnError distDir wasRoot } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        log $VERBOSE_ "deploy: INPUTS: $action $depType $distDir $wasRoot"
+
+        set action [string tolower $action]
+        if { $action=="install" || $action=="update" } {
+                installOrUpdate         $action $depType $distDir $wasRoot
+        } elseif { $action=="confirm" } {
+                confirm                 $action $depType $distDir $wasRoot
+        } elseif { $action=="uninstall" } {
+                uninstall               $action $depType $distDir $wasRoot
+        } else {
+                set msg "ERROR: deploy: unknown action=$action (must be 'install' or 'update' or 'confirm' or 'uninstall'"
+                fail $msg
+        }
+}
+
+proc installOrUpdate { action depType distDir wasRoot } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        global nodeServerPairs
+        global uniqueNodesContainedServers
+        global nodesAutosyncs
+        global clusters
+        global testURLs
+        global testResponses
+        global appsNodesServers
+        log $VERBOSE_ "installOrUpdate: $action $depType $distDir"
+        log $VERBOSE_ "installOrUpdate: $wasRoot ..."
+
+        ############### FIND APPLICATIONS ####################
+        set  ears [readDistributionDirectory $distDir]
+        log $INFO_ "installOrUpdate: Deployment ears=$ears"
+        set  appNames [parseApplicationNames $ears]
+        log $INFO_ "installOrUpdate: Deployment appNames=$appNames"
+
+        ################## PRE-VALIDATE Application TARGETS+SETTINGS files ####################
+        PreValidateApplicationTargetsAndSettings $appNames $depType $distDir
+
+        if { $action=="install" } {
+                PreValidateApplicationsAbsent $appNames
+        } else {
+                PreValidateApplicationsExist  $appNames
+        }
+
+        ############### CALCULATE AFFECTED NODES ####################
+        calculateAffectedNodes          $action $depType $distDir $wasRoot $appNames
+
+        ################## PRE-VALIDATE NODES and SERVERS ####################
+        PreValidateNodesAndServers $uniqueNodesContainedServers
+
+        ############### PREPARE AFFECTED NODES ####################
+        if { ($action == "update") } {
+                set nodesAutosyncs [saveAndDisableAutosync $action $uniqueNodesContainedServers ]
+                log $INFO_ "installOrUpdate: RESULT: nodesAutosyncs=$nodesAutosyncs"
+        }
+        configSave
+
+        ############### INSTALL APPLICATION AND CONFIGURE ####################
+        foreach appName $appNames {
+                processScriptsFile $appName $depType $distDir "preInstall"
+        }
+        installAndConfigureApps $action $depType $distDir $wasRoot $appNames
+        foreach appName $appNames {
+                processScriptsFile $appName $depType $distDir "postInstall"
+        }
+        configSave
+
+        ################## SYNC NODES (DISTRIBUTE APPS) ####################
+        log $INFO_ ""
+        log $MAJOR_ "installOrUpdate: stopSyncStart of affected nodes ..."
+        foreach nodeContainedServers $uniqueNodesContainedServers {
+                set nodeName    [lindex $nodeContainedServers 0]
+                set servers             [lindex $nodeContainedServers 1]
+                stopSyncStart   $action $nodeName $servers
+        }
+        log $MAJOR_ "installOrUpdate: stopSyncStart of affected nodes DONE."
+
+        ################## START INSTALLED APPLICATIONS ####################
+        if { ($action == "install") } {
+                set length [llength $appsNodesServers]
+                foreach item $appsNodesServers {
+                        set itm [lindex $item 0]
+                        set length [llength $itm]
+                        if { $length == 1}  {
+                                set appName $item
+                        } else {
+                                StartApplicationOnNodesAndServers $appName $item
+                        }
+                }
+        }
+
+        ############### RESTORE AFFECTED NODES ####################
+        if { ($action == "update") } {
+                log $DEBUG_ "installOrUpdate: nodesAutosyncs=$nodesAutosyncs"
+                restoreAutosync         $action $nodesAutosyncs
+        }
+        configSave
+
+        ################## TEST ####################
+        testApplication $testURLs $testResponses
+
+        highlight $MAJOR_ "installOrUpdate: DONE."
+}
+
+proc confirm { action depType distDir wasRoot  } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        global nodeServerPairs
+        global uniqueNodesContainedServers
+        global nodesAutosyncs
+        global clusters
+        global testURLs
+        global testResponses
+        log $VERBOSE_ "confirm: $action $depType $distDir"
+        log $VERBOSE_ "confirm: $wasRoot ..."
+
+        ############### FIND APPLICATIONS ####################
+        set  ears [readDistributionDirectory $distDir]
+        log $INFO_ "confirm: Deployment ears=$ears"
+        set  appNames [parseApplicationNames $ears]
+        log $INFO_ "confirm: Deployment appNames=$appNames"
+
+        ################## PRE-VALIDATE Application TARGETS+SETTINGS files ####################
+        PreValidateApplicationTargetsAndSettings $appNames $depType $distDir
+
+        ################## PRE-VALIDATE APPLICATIONS (exists) ####################
+        PreValidateApplicationsExist  $appNames
+
+        ############### CALCULATE AFFECTED NODES ####################
+        calculateAffectedNodes          $action $depType $distDir $wasRoot $appNames
+
+        ################## PRE-VALIDATE NODES and SERVERS ####################
+        PreValidateNodesAndServers $uniqueNodesContainedServers
+
+        ################## TEST ####################
+        testApplication $testURLs $testResponses
+
+        highlight $MAJOR_ "confirm: DONE."
+}
+
+proc uninstall { action depType distDir wasRoot  } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        global nodeServerPairs
+        global uniqueNodesContainedServers
+        global nodesAutosyncs
+        global clusters
+        global testURLs
+        global testResponses
+        global appsNodesServers
+        log $VERBOSE_ "uninstall: $action $depType $distDir"
+        log $VERBOSE_ "uninstall: $wasRoot ..."
+
+        ############### FIND APPLICATIONS ####################
+        set  ears [readDistributionDirectory $distDir]
+        log $INFO_ "uninstall: Deployment ears=$ears"
+        set  appNames [parseApplicationNames $ears]
+        log $INFO_ "uninstall: Deployment appNames=$appNames"
+
+        ################## PRE-VALIDATE Application TARGETS+SETTINGS files ####################
+        PreValidateApplicationTargetsAndSettings $appNames $depType $distDir
+
+        ################## PRE-VALIDATE APPLICATIONS (exists) ####################
+        PreValidateApplicationsExist  $appNames
+
+        ############### CALCULATE AFFECTED NODES ####################
+        calculateAffectedNodes          $action $depType $distDir $wasRoot $appNames
+
+        ################## PRE-VALIDATE NODES and SERVERS ####################
+        PreValidateNodesAndServers $uniqueNodesContainedServers
+
+        log $INFO_ "uninstall: Deployment appNames=$appNames"
+        listApplications
+
+        ################## STOP AND UNINSTALL APPLICATIONS ####################
+        foreach appName $appNames {
+                processScriptsFile $appName $depType $distDir "preUninstall"
+        }
+        set length [llength $appsNodesServers]
+        foreach item $appsNodesServers {
+                set itm [lindex $item 0]
+                set length [llength $itm]
+                if { $length == 1}  {
+                        set appName $item
+                } else {
+                        set appExists [checkIfAppExists $appName]
+                        if { $appExists } {
+                                StopApplicationOnNodesAndServers  $appName $item
+                                uninstallEAR $appName
+                        }
+                }
+        }
+        foreach appName $appNames {
+                processScriptsFile $appName $depType $distDir "postUninstall"
+        }
+
+        listApplications
+        configSave
+        highlight $MAJOR_ "uninstall: DONE. (appNames=$appNames) "
+}
+

@@ -1,0 +1,74 @@
+#
+# Author: Barry Searle
+#
+# (C) Copyright IBM Corp. 2004,2007 - All Rights Reserved.
+# DISCLAIMER:
+# The following source code is sample code created by IBM Corporation.
+# This sample code is not part of any standard IBM product and is provided
+# to you solely for the purpose of assisting you in the development of your
+# applications. The code is provided 'AS IS', without warranty or condition
+# of any kind. IBM shall not be liable for any damages arising out of your
+# use of the sample code, even if IBM has been advised of the possibility of
+# such damages.
+#
+# Change History:
+# 3.0 (25apr2007) added support for installOptions, removed hardcoded "-nodeployejb"
+# 2.0 (10feb2006) code cleanup, no functional change
+# 1.1 (17nov2004) initial shipped version
+#
+
+
+proc validateEAR { appPath } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        log $INFO_ "validateEAR: FUTURE: installed EAR-FILE validation"
+}
+
+proc installEAR { action appPath appName clusterName nodeName serverName installOptions } {
+        set installOptions ""
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        set update ""
+        if { $action=="update" } {
+                set update "-update -appname $appName"
+        }
+        if { $serverName!="" && $nodeName!="" } {
+                highlight $MAJOR_ "installEAR: $action node=$nodeName server=$serverName appName=$appName appPath=$appPath installOptions=$installOptions ..."
+                set temp [catch { set  installed [$AdminApp install $appPath "$update -verbose -node $nodeName -server $serverName -distributeApp $installOptions"] } errMsg ]
+                if { $temp != 0 } {
+                        set msg "Exception installing EAR $appPath to $nodeName $serverName"
+                        log $ERROR_,"AdminApp.install Exception=$errMsg"
+                        fail $msg
+                }
+        } elseif { $clusterName!="" } {
+                highlight $MAJOR_ "installEAR: $action cluster=$clusterName appName=$appName appPath=$appPath installOptions=$installOptions ..."
+                set temp [catch { set  installed [$AdminApp install $appPath "$update -verbose -cluster $clusterName               -distributeApp $installOptions"] } errMsg ]
+                if { $temp != 0 } {
+                        set msg "Exception installing EAR $appPath to $clusterName"
+                        log $ERROR_,"AdminApp.install Exception=$errMsg"
+                        fail $msg
+                }
+        } else {
+                set msg "ERROR: installEAR: no serverName/nodeName nor clusterName specified"
+                fail $msg
+        }
+        if { [llength $installed] > 0 } {
+                log $INFO_ $installed
+        }
+        set appExists [checkIfAppExists $appName]
+        if { $appExists } {
+        } else {
+                        fail "failed to installEAR application=$appName"
+        }
+        log $VERBOSE_ "InstallEAR: DONE."
+}
+
+proc uninstallEAR { appName } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        log $MAJOR_ "UninstallEAR: $appName..."
+        set  uninstalled [$AdminApp uninstall $appName]
+        log $INFO_ $uninstalled
+        set appExists [checkIfAppExists $appName]
+        if { $appExists } {
+                        fail "failed to uninstallEAR application=$appName"
+        }
+        log $VERBOSE_ "UninstallEAR: DONE."
+}

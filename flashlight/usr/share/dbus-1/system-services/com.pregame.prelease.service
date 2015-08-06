@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.pregame.prelease
+Exec=/usr/bin/luna-helper 'luna://com.palm.vm/launch' '{"serviceName":"com.pregame.prelease","className":"com.pregame.Prelease"}'

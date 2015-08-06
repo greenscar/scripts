@@ -1,0 +1,87 @@
+Return-Path: <james@caffeinewebdesign.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 31E759006A
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 08:08:44 -0500 (CDT)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RGe9pnne9R4m for <james@sandlininc.com>;
+	Sat, 23 Aug 2008 08:08:44 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 92DB7906A0
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 07:54:14 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Sat, 23 Aug 2008 07:46:02 -0500
+Received: from sandlininc.com [74.55.232.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Sat, 23 Aug 2008 07:54:14 -0500 (CDT)
+Received: from cpe-66-68-52-223.austin.res.rr.com ([66.68.52.223]:62417 helo=[10.0.0.9])
+	by maxserv.yourhostdns.com with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.69)
+	(envelope-from <james@caffeinewebdesign.com>)
+	id 1KWsVG-0004w3-DK
+	for james@sandlininc.com; Sat, 23 Aug 2008 07:46:02 -0500
+Resent-From: James Sandlin <james@caffeinewebdesign.com>
+Resent-To: james@sandlininc.com
+Resent-Date: Sat, 23 Aug 2008 07:46:04 -0500
+Resent-Message-Id: <48B0068C.5020900@caffeinewebdesign.com>
+Resent-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.16) Gecko/20080724 Thunderbird/2.0.0.16
+X-Mozilla-Keys:                                                                                 
+Received: from rv-out-0910.google.com ([209.85.198.190])
+	by johnny.yourhostdns.com with esmtp (Exim 4.68)
+	(envelope-from <jsandlin@gmail.com>)
+	id 1JISX6-0001Gc-1U
+	for james@sandlininc.com; Fri, 25 Jan 2008 12:40:04 -0500
+Received: by rv-out-0910.google.com with SMTP id k20so610723rvb.3
+        for <james@sandlininc.com>; Fri, 25 Jan 2008 09:49:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type;
+        bh=rw+J/WyZ9D7Pgj7pBAkX6Vkq2Gn4i1Y+pk2DcHd/7DQ=;
+        b=QT47fMYhrkLsjqQ5ZYQV2HaMBT6J7PnjZv3vEe01d7Lwgz+b2WfviD9QFnXUb/R6RiMeK575Ho2zzUZ+SV9RB++RbPQcujr7CJkJEHyqDWcayNl2cxvRlnDQ4SEbka68M9lyKmEk7OE5bo6rvR23RcGzlqLYKTSQViYx/c/S8DY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=message-id:date:from:to:subject:mime-version:content-type;
+        b=hHWL9iQRJtHqjfa6YRrlHzJ8wfqlu3bgqzw8EmV9CKzNNlFEmxM7a9PViYwUmeuiTt6g8dxnxfaDJzyUqva3Nbyv4eOWICw88AKCSef7rpRujpblYAAtSWdH/AZw9tv2H4+YTBte3BZBwmlINP5b35xdTGLxyOk80D/KZRT+YRw=
+Received: by 10.141.193.1 with SMTP id v1mr1598660rvp.245.1201283340724;
+        Fri, 25 Jan 2008 09:49:00 -0800 (PST)
+Received: by 10.141.116.13 with HTTP; Fri, 25 Jan 2008 09:49:00 -0800 (PST)
+Message-ID: <6a84e6140801250949y50f0931cof9f5a5d2df139f91@mail.gmail.com>
+Date: Fri, 25 Jan 2008 11:49:00 -0600
+From: "james sandlin" <jsandlin@gmail.com>
+To: james@sandlininc.com
+Subject: bank of america
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2222_25287112.1201283340725"
+X-cPanel-MailScanner-Information: Please contact the ISP for more information
+X-cPanel-MailScanner: Found Clean
+X-cPanel-MailScanner-SpamCheck: 
+X-cPanel-MailScanner-From: jsandlin@gmail.com
+
+
+------=_Part_2222_25287112.1201283340725
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+6403 Airport Blvd <http://maps.google.com/>
+Austin, TX 78752 <http://maps.google.com/>
+
+Get Directions <http://maps.google.com/>(512) 302-2600
+
+
+
+------=_Part_2222_25287112.1201283340725
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+<span><span><span><span class="street-address">6403 Airport Blvd</span></span><a href="http://maps.google.com/" target="_parent" style="text-decoration: underline; display: none;"><span></span></a><br></span><span><span><span class="locality">Austin</span>, <span class="region">TX</span> <span class="postal-code">78752</span></span><a href="http://maps.google.com/" target="_parent" style="text-decoration: underline; display: none;"><span></span></a><br>
+</span><span style="display: none;"><br><a href="http://maps.google.com/" target="_parent">Get Directions</a></span></span><span class="tel">(512) 302-2600</span>
+
+
+------=_Part_2222_25287112.1201283340725--
+

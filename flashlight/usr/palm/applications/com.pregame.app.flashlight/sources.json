@@ -1,0 +1,8 @@
+[ 
+   { 
+      "source": "app\/controllers\/app-assistant.js" 
+   },
+   { 
+      "source": "app\/controllers\/flashlight-assistant.js" 
+   }
+]

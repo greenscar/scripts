@@ -1,0 +1,22 @@
+[%- # List all instances -%]
+[% META title = 'Instance List' -%]
+<h1>[% instances.size %] instances</h1>
+<table border="1">
+   <tr>
+      <th>Environment</th>
+      <th>Application</th>
+      <th>Link</th>
+      <th>Link Public</th>
+   </tr>
+   [% FOREACH i IN instances -%]
+   <tr>
+      <td>[% i.environment.name %]</td>
+      <td>[% i.application.name %]</td>
+      <td>[% i.link %]</td>
+      <td>[% i.link_public %]</td>
+   </tr>
+   [% END -%]
+   
+</table>
+<a href="[% c.uri_for(c.controller.action_for('create')) %]">NEW ENV / Instance Set</a>
+   

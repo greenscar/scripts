@@ -1,0 +1,10 @@
+ClearCase CopyAreaDB|4
+EA_mepd1\BuildScripts
+2
+6
+d:buildMEPD.bat|1|11fae2a1aba|a1e|b3e72b1d|dc24471344864f3fa8dbe0b157bd8c94|0
+24:com.ibm.wbit.modulerefutil_1.0.0.zip|1|11fae2a1af9|1b85|48a1a152|a9d7af0330b04a789efbfc6c61ba9eed|0
+5:props|2|0|0|0|00cb157c8bf0443fbe5cab983704dd06|0
+13:ant-contrib-0.3.jar|1|11fae2a1a0e|452c|4fb210b3|1f1f45e0f22b4e5aaf2e251a071e5edf|0
+9:build.xml|1|11fae2a1a7c|13f6|b56c1d0a|0e57443b0c564ae2b6ba9c2417ecdeb1|0
+a:Readme.txt|1|11fae2a19d0|12e|39e067af|589ba1700f33497f861331623378674f|0

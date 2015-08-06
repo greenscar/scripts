@@ -1,0 +1,2 @@
+ALERTS.WEBSERVICE=iedaau052.txaccess.net:12201
+DEPROVISION.WEBSERVICE = http://tiers-aging03.txaccess.net/tiersWSWeb/services/UserProvisioningService

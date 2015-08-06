@@ -1,0 +1,14 @@
+[%- # List all recipes from the database. -%]
+[% META title = 'ALL Recipe List' -%]
+<table border="1">
+   <tr>
+      <th><a href="[% c.uri_for('/category/listall') %]/name">ID</a></th>
+      <th><a href="[% c.uri_for('/category/listall') %]/cat_name">NAME</a></th>
+   </tr>
+   [% FOREACH cat IN categories -%]
+   <tr>
+      <td>[% cat.cat_id %]</td>
+      <td>[% cat.cat_descr %]</td>
+   </tr>
+   [% END -%]
+</table>

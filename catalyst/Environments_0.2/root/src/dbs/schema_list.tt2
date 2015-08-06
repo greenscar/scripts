@@ -1,0 +1,74 @@
+[%- # List all schemas -%]
+[% META title = 'Schema List' -%]
+<table border="1">
+   <tr>
+      <th colspan="[% app_list.size + 1 %]">APP</td>
+   </tr>
+   <tr>
+      <td>
+            [% IF "ALL" == app_cur %]
+            <b>[% app_cur %]</b>
+            [% ELSE %]
+            <a href="[% c.uri_for(c.controller.action_for('list')) %]?app=ALL&rel=[% rel_cur %]">ALL</a>
+            [% END %]
+      </td>
+      [% FOREACH app IN app_list -%]
+         <td>
+            [% IF app == app_cur %]
+            <b>[% app %]</b>
+            [% ELSE %]
+            <a href="[% c.uri_for(c.controller.action_for('list')) %]?app=[% app %]&rel=[% rel_cur %]"> [% app %]</a>
+            [% END %]
+         </td>
+      [% END -%]
+   </tr>
+</table>
+<br>
+<table border="1">
+   <tr>
+      <th colspan="[% rel_num_list.size + 1 %]">RELEASE</td>
+   </tr>
+   <tr>
+      <td>
+            [% IF "ALL" == rel_cur %]
+            <b>[% rel_cur %]</b>
+            [% ELSE %]
+            <a href="[% c.uri_for(c.controller.action_for('list')) %]?app=[% app_cur %]&rel=ALL">ALL</a>
+            [% END %]
+      </td>
+      [% FOREACH rel IN rel_num_list -%]
+         <td>
+            [% IF rel == rel_cur %]
+            <b>[% rel %]</b>
+            [% ELSE %]
+            <a href="[% c.uri_for(c.controller.action_for('list')) %]?app=[% app_cur %]&rel=[% rel %]"> [% rel %]</a>
+            [% END %]
+         </td>
+      [% END -%]
+   </tr>
+</table>
+<br>
+<table border="1">
+   <tr>
+      <th>Env ID</th>
+      <th>Build Num</th>
+      <th>Application</th>
+      <th>Description</th>
+      <th>DB Name</th>
+      <th>Server Name</th>
+      <th>Connect Account</th>
+      <th>DB Version</th>
+   </tr>
+   [% FOREACH schema IN schemas -%]
+   <tr>
+      <td>[% schema.env_id %]</td>
+      <td>[% schema.build_num %]</td>
+      <td>[% schema.app_system %]</td>
+      <td>[% schema.name %]</td>
+      <td>[% schema.database.instance_name %]</td>
+      <td>[% schema.database.server.host_name %]</td>
+      <td>[% schema.connect_account %]</td>
+      <td>[% schema.database.db_version %]</td>
+   </tr>
+   [% END -%]
+</table>

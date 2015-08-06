@@ -1,0 +1,133 @@
+Return-Path: <200907151653109ad6de86829e432696583aebdf49622c@bounces.amazon.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 37ED490046
+	for <james@sandlininc.com>; Wed, 15 Jul 2009 11:55:06 -0500 (CDT)
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bIUITCUzFFpA for <james@sandlininc.com>;
+	Wed, 15 Jul 2009 11:55:06 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 0E52690034
+	for <james@sandlininc.com>; Wed, 15 Jul 2009 11:55:06 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Wed, 15 Jul 2009 11:53:07 -0500
+Received: from sandlininc.com [174.133.130.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Wed, 15 Jul 2009 11:55:06 -0500 (CDT)
+Received: from mm-notify-out-209-62.amazon.com ([72.21.209.62]:55935)
+	by lizzie.yourhostdns.com with esmtp (Exim 4.69)
+	(envelope-from <200907151653109ad6de86829e432696583aebdf49622c@bounces.amazon.com>)
+	id 1MR7j9-0002rI-3y
+	for james@sandlininc.com; Wed, 15 Jul 2009 11:53:07 -0500
+DomainKey-Signature: s=rte02; d=amazon.com; c=nofws; q=dns;
+  h=Date:From:To:Message-ID:Subject:MIME-Version:
+   Content-Type:Content-Transfer-Encoding:
+   X-AMAZON-CLIENT-HOST:Bounces-to:X-AMAZON-CLIENT-SENDTIME:
+   X-AMAZON-MAIL-RELAY-TYPE:X-AMAZON-RTE-VERSION;
+  b=Dcv6Hxw7e0IyHZvXhJu/SXiZKx5d6sPNz40Bgk90y2QRFlLOxWroe47h
+   n2L51Tb3J0HTocqFdqlrtONk3S8K6Q==;
+Date: Wed, 15 Jul 2009 16:53:10 +0000 (UTC)
+From: "Amazon.com" <order-update@amazon.com>
+To: "james@sandlininc.com" <james@sandlininc.com>
+Message-ID: <9254892.4999161247676790261.JavaMail.em-build@na-mm-relay.amazon.com>
+Subject: Your Amazon.com order 002-0187280-2265026 has shipped!
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-AMAZON-CLIENT-HOST: cone-na-1001.vdc.amazon.com
+Bounces-to: 200907151653109ad6de86829e432696583aebdf49622c@bounces.amazon.com
+X-AMAZON-CLIENT-SENDTIME: Wed Jul 15 16:53:10 UTC 2009
+X-AMAZON-MAIL-RELAY-TYPE: notification
+X-AMAZON-RTE-VERSION: 2.0
+
+
+Dear james@sandlininc.com,
+
+Today Phantom Skinz shipped item(s) in your order, placed on July 14, 
+2009.
+
+==================================================
+SHIPPING DETAILS
+==================================================
+ 
+The following items were sold by and shipped from Phantom Skinz in package 
+1 of this shipment:
+
+1 of Palm Pre Full Body Protection Kit by Phantom Skinz
+
+Shipping Carrier: USPS
+
+Ship Date: July 15, 2009
+Shipping Speed: Standard
+
+	Your shipping address:
+
+    James Sandlin
+    6311 Latigo Pass
+    Austin, TX 78749-1822
+    United States
+
+If you have additional items in your order, you will receive an e-mail 
+when those items have shipped.
+
+QUESTIONS? 
+
+If you have questions about this order, including the status of your 
+shipment, you can either visit http://www.amazon.com/wheres-my-stuff or 
+e-mail contact@phantomskinz.com to get in touch directly with Phantom 
+Skinz.
+
+**************************************************
+Safe Shopping Tips
+Amazon.com works hard to protect our customers. For your safety, when 
+ordering items advertised by sellers other than Amazon.com: 
+
+* Always place your orders directly through the Amazon.com shopping cart 
+using Amazon Payments. Never send money directly to sellers through wire 
+transfers or checks; we do not guarantee such transactions. 
+
+* Beware of e-mails that request direct payments, request payment to 
+international locations, or ask for personal information. Amazon.com will 
+never e-mail you to pay for Marketplace transactions outside our shopping 
+cart, or ask you to confirm personal information such as a credit card 
+number or password via e-mail. If a particular e-mail looks suspicious or 
+unusual, please contact us directly. 
+
+Reporting suspicious activity at 
+http://www.amazon.com/gp/help/reports/contact-us will help us enhance 
+marketplace safety and serve you better in the future. 
+
+For more safe-shopping tips, read about Safe Online Transactions at 
+http://www.amazon.com/safe-secure.
+************************************************** 
+
+==================================================
+Order Details
+==================================================
+
+Date:                July 14, 2009
+ 
+Amazon Order #:      002-0187280-2265026
+
+ 1 of Palm Pre Full Body Protection Kit by Phantom Skinz, $16.96*
+
+*above item(s) sold by and shipped from Phantom Skinz 
+---------------------------------------------------------------------
+               Item Subtotal:  $16.96
+         Shipping & Handling:  $0.00 
+ 
+                        Total:  $16.96
+
+                Paid by Visa:  $16.96 
+ 
+   ---------------------------------------------------------------------
+
+Thanks for shopping at Amazon.com.
+ 
+http://www.amazon.com/
+Earth's Biggest Selection
+Find, Discover & Buy Virtually Anything
+
+

@@ -1,0 +1,70 @@
+<!ELEMENT PROJECT_INTERFACE (template*,interface,command+,bomformat+)>
+<!ATTLIST PROJECT_INTERFACE IFTYPE CDATA #REQUIRED>
+<!ATTLIST PROJECT_INTERFACE INSTANCE CDATA #REQUIRED>
+<!ELEMENT template (env+)>
+<!ELEMENT interface (setenv*,adduser*,relate*,run+,adduser*,relate*,ontempenv*,onstep*,onproject*,setenv*,adduser*,relate*,ontempenv*,onstep*,onproject*)>
+<!ATTLIST interface name CDATA #IMPLIED>
+<!ELEMENT command (execute*,integrate*,resultsblock+)>
+<!ATTLIST command name CDATA #REQUIRED>
+<!ATTLIST command type (exec | conjoined | parallel) #IMPLIED>
+<!ELEMENT bomformat (section+)>
+<!ATTLIST bomformat category CDATA #REQUIRED>
+<!ATTLIST bomformat title CDATA #REQUIRED>
+<!ELEMENT env EMPTY>
+<!ATTLIST env name CDATA #REQUIRED>
+<!ATTLIST env value CDATA #REQUIRED>
+<!ELEMENT setenv EMPTY>
+<!ATTLIST setenv group CDATA #IMPLIED>
+<!ATTLIST setenv name CDATA #REQUIRED>
+<!ATTLIST setenv value CDATA #REQUIRED>
+<!ATTLIST setenv type CDATA #IMPLIED>
+<!ATTLIST setenv eval CDATA #IMPLIED>
+<!ATTLIST setenv condition CDATA #IMPLIED>
+<!ELEMENT run EMPTY>
+<!ATTLIST run command CDATA #REQUIRED>
+<!ATTLIST run params CDATA #REQUIRED>
+<!ATTLIST run server CDATA #REQUIRED>
+<!ATTLIST run dir CDATA #REQUIRED>
+<!ATTLIST run timeout CDATA #IMPLIED>
+<!ATTLIST run condition CDATA #IMPLIED>
+<!ATTLIST run mode (exec | conjoined | parallel) #IMPLIED>
+<!ELEMENT ontempenv (step+,setenv*)>
+<!ATTLIST ontempenv name CDATA #REQUIRED>
+<!ATTLIST ontempenv state (empty | hastext | true | false) #REQUIRED>
+<!ELEMENT onproject (notify+)>
+<!ATTLIST onproject result (PASS|FAIL|pass|fail) #REQUIRED>
+<!ELEMENT onstep (setenv*)>
+<!ATTLIST onstep result (PASS|FAIL|pass|fail) #REQUIRED>
+<!ELEMENT execute (#PCDATA)>
+<!ELEMENT integrate (#PCDATA)>
+<!ELEMENT resultsblock (match*,setenv*,resultsblock*,match*,setenv*,resultsblock*)>
+<!ATTLIST resultsblock beginpattern CDATA #IMPLIED>
+<!ATTLIST resultsblock endpattern CDATA #IMPLIED>
+<!ELEMENT section (field+)>
+<!ATTLIST section name CDATA #REQUIRED>
+<!ATTLIST section parent CDATA #IMPLIED>
+<!ATTLIST section expandable (true|false) #IMPLIED>
+<!ELEMENT step EMPTY>
+<!ATTLIST step result (FAIL|PASS|fail|pass) #REQUIRED>
+<!ELEMENT notify EMPTY>
+<!ATTLIST notify group CDATA #REQUIRED>
+<!ATTLIST notify subject CDATA #REQUIRED>
+<!ATTLIST notify message CDATA #REQUIRED>
+<!ELEMENT match (bom*,adduser*,relate*,setenv*,run*,bom*,adduser*,relate*,setenv*,run*)>
+<!ATTLIST match pattern CDATA #REQUIRED>
+<!ELEMENT field EMPTY>
+<!ATTLIST field name CDATA #REQUIRED>
+<!ATTLIST field text CDATA #IMPLIED>
+<!ATTLIST field order CDATA #IMPLIED>
+<!ATTLIST field title CDATA #IMPLIED>
+<!ELEMENT bom (field+)>
+<!ATTLIST bom category CDATA #REQUIRED>
+<!ATTLIST bom section CDATA #REQUIRED>
+<!ATTLIST bom condition CDATA #IMPLIED>
+<!ELEMENT adduser EMPTY>
+<!ATTLIST adduser group CDATA #REQUIRED>
+<!ATTLIST adduser user CDATA #REQUIRED>
+<!ATTLIST adduser condition CDATA #IMPLIED>
+<!ELEMENT relate EMPTY>
+<!ATTLIST relate artifact CDATA #REQUIRED>
+<!ATTLIST relate user CDATA #REQUIRED>

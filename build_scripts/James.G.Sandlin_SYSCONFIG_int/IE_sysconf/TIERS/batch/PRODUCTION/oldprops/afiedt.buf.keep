@@ -1,0 +1,3 @@
+select count(status_cd) from FW_BATCH_RUN_CONTROL where job_id like 'IN-MANCR%' and as_of_dt = '18-JUN-03'
+
+/

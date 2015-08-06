@@ -1,0 +1,164 @@
+
+
+# #############################################################################################################
+#      
+###############################################################################################################
+
+
+# ************************************************************************
+# 	----------------------------------------------------------	
+#  	 To install application to the server
+#	----------------------------------------------------------
+#
+#	Arguments Needed :
+#       cell name
+#		Node name
+#		App. Server Name
+#		Application Name
+#		EAR Path
+#	   	EAR Name
+#		Virtual Host Name
+#	
+# ************************************************************************
+
+proc stage3install {cellName nodeName appserverName entappName instalDir earfileName vHost} {
+	#--------------------------------------------------------------
+	# set up globals
+	#--------------------------------------------------------------
+	global AdminConfig
+	global AdminControl
+	global AdminApp
+	#--------------------------------------------------------------
+	# do some sanity checking 
+	#     -- do we have a ear file in given directory? 
+	#--------------------------------------------------------------
+		if {! [file exists $instalDir/$earfileName] } {
+		  puts "ERROR: $instalDir/$earfileName does not exist"
+		  puts "XXX ERROR Occured : Aborting XXX"
+		  return
+		}
+	#--------------------------------------------------------------
+	# do some Variable settings needed for installation
+	#     -- war 1 & war 2 
+	#     -- .ear path
+	#     -- JSP Cache 
+	#--------------------------------------------------------------
+	set modtovh1 [list tiersWeb stage3tiersWeb.war,WEB-INF/web.xml $vHost]
+       set modtovh2 [list "JSpell 2004 Spell Checker  - www.jspell.com" jspellhtml2k4.war,WEB-INF/web.xml $vHost]
+       set modtovh3 [list tiersWSWeb tiersWSWeb.war,WEB-INF/web.xml $vHost]
+	set modtovh [list $modtovh1 $modtovh2 $modtovh3]
+	set webcontent "/opt/WebSphere5/AppServer/installedApps/$cellName/${entappName}.ear"
+	# JSP Cache settings
+	set jspcache "/opt/WebSphere5/AppServer/temp/$nodeName/$appserverName"
+	#--------------------------------------------------------------
+	# stop the Server
+	#--------------------------------------------------------------
+	set runningServer [$AdminControl completeObjectName cell=$cellName,node=$nodeName,name=$appserverName,type=Server,*]
+    if {[llength $runningServer] > 0} {
+		puts "!!! Stopping $appserverName server !!!"
+		if [catch {
+				$AdminControl stopServer $appserverName $nodeName terminate
+			} result ] {
+				puts "XXX Error while stopping $appserverName Server $result XXX"
+				return
+		} else {
+			set FlagServerStopped "True"
+		}
+ 	} else {
+	 	puts "!!! Server $appserverName not running on node $nodeName !!!"
+	 	set FlagServerStopped "True"
+	}
+	#--------------------------------------------------------------
+	# Check if application already installed or not
+	# then if its installed then uninstall them
+	#--------------------------------------------------------------
+	set FlagAppExists "False" 
+	foreach TmpAppName [$AdminApp list] {
+	 	if {[string compare $TmpAppName [string trim $entappName \"]] == 0} {
+	 		set FlagAppExists "True"
+	 		if [catch {
+	 				$AdminApp uninstall $TmpAppName
+	 			} result ] {
+		    	puts "XXX Error while Uninstalling application $entappName from $appserverName server $result XXX"
+				return
+			} else {
+		     	$AdminConfig save
+		     	set FlagAppExists "False"
+			}
+	 	}
+	 }
+   	#--------------------------------------------------------------
+	# Cleanup EAR
+	#--------------------------------------------------------------
+	puts "!!! Cleaning $webcontent !!!"
+	catch {exec rm -rf $webcontent}
+    #catch {exec rm -rf $jspcache}	
+	    
+	#--------------------------------------------------------------
+	# Install an application onto this server
+	#--------------------------------------------------------------
+	if {$FlagAppExists == "False"} {
+		set attrs [list -MapWebModToVH $modtovh -node $nodeName -server $appserverName -appname $entappName]
+		if [catch {
+			$AdminApp install $instalDir/$earfileName $attrs
+		   } result ] {
+		    puts "XXX Error while deploying application $entappName on $appserverName server $result XXX"
+			return
+		} else {
+			$AdminConfig save
+		}
+	}
+    #--------------------------------------------------------------
+    # Node Sync
+    #--------------------------------------------------------------
+  	set nodeSync [$AdminControl completeObjectName type=NodeSync,node=$nodeName,*]
+  	if [catch {
+			$AdminControl invoke $nodeSync sync
+		} result ] {
+		puts "XXX Error in Node Sync $result XXX"
+		return
+	} else {
+		puts "!!! After Node Sync with node $nodeName wait for 8 mts !!!"
+		after 480000
+	}
+}
+	#-----------------------------------------------------------------
+	# Main
+	#-----------------------------------------------------------------
+	if { !($argc == 7 ) } {
+	
+	   puts "stage3_install: This script requires atleast 7 Arguments" 
+	   puts "Arguments are :	
+	   			Cell Name,
+	   			Node name, 
+	   			App. Server Name,
+	   			Application Name,
+	   			EAR Path,
+	   			EAR Name and 
+	   			Virtual Host Name"
+	} else { 
+	   set cellName [lindex $argv 0]
+	   set nodeName [lindex $argv 1]
+	   set appserverName [lindex $argv 2]
+	   set entappName [lindex $argv 3]
+	   set instalDir [lindex $argv 4]
+	   set earfileName [lindex $argv 5]
+	   set vHost [lindex $argv 6]
+	   
+	   
+	   set FlagServerStopped "False"
+	   
+	   puts " Passed Arguments are :"
+	   puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	   puts " 
+	   	  Cell name		---> $cellName
+	   	  Node name 		---> $nodeName, 
+		  App Server Name 	---> $appserverName,
+		  Enterprise App Name 	---> $entappName,
+		  EAR Path 		---> $instalDir,
+		  EAR Name 		---> $earfileName, 
+		  Virtual Host Name 	---> $vHost"
+  		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+  		
+  		stage3install $cellName $nodeName $appserverName $entappName $instalDir $earfileName $vHost
+ 	}

@@ -1,0 +1,17 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.uml2.diagram.activity,0.8.0.v200806112132,org.eclipse.uml2.diagram.activity,1248372357949
+started,bundle,org.eclipse.uml2.diagram.clazz,0.8.0.v200806112132,org.eclipse.uml2.diagram.clazz,1248372357984
+started,bundle,org.eclipse.uml2.diagram.common,0.8.0.v200806112132,org.eclipse.uml2.diagram.common,1248372357984
+started,bundle,org.eclipse.uml2.diagram.component,0.8.0.v200806112132,org.eclipse.uml2.diagram.component,1248372358011
+started,bundle,org.eclipse.uml2.diagram.csd,0.8.0.v200806112132,org.eclipse.uml2.diagram.csd,1248372358031
+started,bundle,org.eclipse.uml2.diagram.deploy,0.8.0.v200806112132,org.eclipse.uml2.diagram.deploy,1248372358073
+started,bundle,org.eclipse.uml2.diagram.parser,0.8.0.v200806112132,org.eclipse.uml2.diagram.parser,1248372358073
+started,bundle,org.eclipse.uml2.diagram.profile,0.8.0.v200806112132,org.eclipse.uml2.diagram.profile,1248372358083
+started,bundle,org.eclipse.uml2.diagram.statemachine,0.8.0.v200806112132,org.eclipse.uml2.diagram.statemachine,1248372358094
+started,bundle,org.eclipse.uml2.diagram.usecase,0.8.0.v200806112132,org.eclipse.uml2.diagram.usecase,1248372358108
+started,bundle,org.eclipse.uml2.uml,2.2.0.v200805141133,org.eclipse.uml2.uml,1248372358132
+started,bundle,org.eclipse.uml2.uml.edit,2.2.0.v200805131030,org.eclipse.uml2.uml.edit,1248372358165
+started,bundle,com.aptana.ide.eclipse34.aptana.bootstrap,1.2.6.23265,com.aptana.ide.eclipse34.aptana.bootstrap,1248372358166
+started,bundle,org.eclipse.jdt.apt.core,3.3.100.v20080513-1235,org.eclipse.jdt.apt.core,1248372359017
+started,bundle,org.eclipse.epp.usagedata.ui,1.0.0.R200806162215,org.eclipse.epp.usagedata.ui,1248372359715
+started,bundle,org.eclipse.update.ui,3.2.100.v20080318,org.eclipse.update.ui,1248372377845

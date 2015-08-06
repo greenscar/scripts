@@ -1,0 +1,19 @@
+#Requisite connection properties for UMCI Listener 
+DRIVER=oracle.jdbc.driver.OracleDriver
+DATASOURCE=jdbc/tiers3DS
+URL=jdbc:oracle:thin:@iedadu002:1521:trtsttrn
+DB_OWN_SCHEMA=TIERS3ATRNTEST2CON
+DB_INSTANCE=trtsttrn
+ORACLE_SID=trtsttrn
+USER=TIERS3ATRNTEST2CON
+PASSWORD=W1ll13w0nka
+#URL=jdbc:oracle:thin:@iedadu001:1521:trdev
+#USERID=tiers2con
+#PASSWORD=tiers2con1
+#DRIVER=oracle.jdbc.driver.OracleDriver
+QUEUE=RES.WAS.RULES.MCI_UPDATE
+receiveQueue=RCV.TIERS.LISTENER_ALERTS 
+
+
+
+

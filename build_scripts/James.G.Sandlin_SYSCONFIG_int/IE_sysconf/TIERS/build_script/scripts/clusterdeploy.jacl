@@ -1,0 +1,185 @@
+
+# #############################################################################################################
+#      Written by Raghurajan Gurunathan
+#           Deloitte Consulting
+###############################################################################################################
+
+# ************************************************************************
+# 	----------------------------------------------------------	
+#  	clusterdeploy.jacl - To install application to the cluster
+#	----------------------------------------------------------
+#
+#	Arguments Needed :
+#              	Cell Name
+#	   			Cluster Name,
+#	   			EAR Path,
+#	   			EAR Name and 
+#	   			Application Name
+#				Virtual Host Name
+#	                     Node Name
+# ************************************************************************
+
+proc stage3install {cellName clusterName earfilePath earfileName appName vhName nName} {
+
+	#--------------------------------------------------------------
+	# set up globals
+	#--------------------------------------------------------------
+	global AdminConfig
+	global AdminControl
+	global AdminApp
+	
+
+
+	#--------------------------------------------------------------
+	# do some sanity checking 
+	#     -- do we have a ear file in given directory? 
+	#--------------------------------------------------------------
+	if {! [file exists $earfilePath/$earfileName] } {
+	  puts "XXX ERROR: $earfilePath/$earfileName does not exist XXX"
+	  return
+	}
+	#--------------------------------------------------------------
+	# stop the Cluster
+	#--------------------------------------------------------------
+	set FlagClusterRun "True"
+	set clsstate "Running"
+	set clusters [$AdminControl queryNames type=Cluster,cell=$cellName,name=$clusterName,*]
+	if {[llength $clusters] > 0} {
+	    set clsstate [$AdminControl getAttribute $clusters state]
+	    set FlagClusterRun "True"
+	     
+	} else {
+	    set FlagClusterRun "False"
+	    puts "!!! Cluster $clusterName not Running !!!" 
+	}
+	set cluster [$AdminControl completeObjectName cell=$cellName,type=Cluster,name=$clusterName,*]
+	if {$FlagClusterRun == "True"} {
+		if [catch {
+				puts "!!! Stopping $clusterName Cluster !!!"
+				$AdminControl invoke $cluster stop
+		   } result ] {
+			puts "XXX Error Occured While Stopping Cluster:$result XXX"
+			return
+		} else {
+		     set FlagClusterRun "False"
+		     #--------------------------------------------------------------
+		     # Wait for some time after stop. so that it will fully stop
+		     # This is just to make sure that jvm process are stopped
+		     #--------------------------------------------------------------
+		     puts "!!! Wait for 3mts to stop all Cluster Members !!!"
+	 	     after 180000
+		}
+	 }
+    #--------------------------------------------------------------
+	# Uninstalling applications in cluster
+	#--------------------------------------------------------------
+	set FlagAppExists "False"
+	foreach TmpAppName [$AdminApp list] {
+		if {[string compare $TmpAppName [string trim $appName \"]] == 0} {
+			set FlagAppExists "True"
+			if [catch {
+				$AdminApp uninstall $TmpAppName
+			   } result ] {
+				puts "!!! Uninstall of ${appName} FAILED!:$result !!!"
+				return
+			   } else {
+				$AdminConfig save
+				set FlagAppExists "False"
+				puts "!!! Uninstallation of Application ${appName} Done,will wait for 3mts !!!"
+				after 180000
+			}
+		}
+	}
+	#--------------------------------------------------------------
+	# Install an application into this cluster
+	#--------------------------------------------------------------
+	if {$FlagAppExists == "False"} {
+		set modtovh1 [list tiersWeb stage3tiersWeb.war,WEB-INF/web.xml $vhName]
+		set modtovh2 [list "JSpell 2004 Spell Checker  - www.jspell.com" jspellhtml2k4.war,WEB-INF/web.xml $vhName]
+		set modtovh3 [list tiersWSWeb tiersWSWeb.war,WEB-INF/web.xml $vhName]
+		set modtovh [list $modtovh1 $modtovh2 $modtovh3]
+		set optionList [list -cluster $clusterName  -appname $appName -MapWebModToVH $modtovh]
+		if [catch {
+			$AdminApp install "$earfilePath/$earfileName" "$optionList"
+		   } result ] {
+			 puts "XXX Install of ${$earfilePath/$earfileName} FAILED!:$result XXX"
+			 return
+		} else {
+			$AdminConfig save
+			#--------------------------------------------------------------
+			# Wait for some time after installation just to make sure all 
+			# installed files are copied fully to all node 
+			#--------------------------------------------------------------
+			puts "!!! Application $appName Deployed onto Cluster $clusterName,will wait for 5 mts !!!"
+  			after 300000
+		}
+	}
+	#-------------------------------------------------------------
+	# Referesh ClusterMgr to refresh its list of clusters 
+	#-------------------------------------------------------------
+	set clusterMgr [$AdminControl completeObjectName type=ClusterMgr,cell=$cellName,*]
+	if {[llength $clusterMgr] == 0} {
+		puts "XXX Error clusterMgr MBean not found for cell: $cellName XXX"
+		return
+	}
+	$AdminControl invoke $clusterMgr retrieveClusters
+	#--------------------------------------------------------------
+	# Node Sync
+	#--------------------------------------------------------------
+    
+    set nodes [list $nName]
+    	foreach nodeName $nodes {
+	     set nodeSync [$AdminControl completeObjectName type=NodeSync,node=$nodeName,*]
+	     if {[llength $nodeSync] == 0} {
+			puts "XXX Error NodeSync MBean not found for name: $nodeName XXX"
+			return
+		 }
+	     $AdminControl invoke $nodeSync sync
+	     puts "!!! Node synchronization Done for: $nodeSync !!!"
+     }
+ 	 #--------------------------------------------------------------
+     #wait to node sync is fully done
+     #--------------------------------------------------------------
+     puts "!!! Node synchronization Done,wait for 5mts !!!"
+     after 300000
+ 
+}
+	#-----------------------------------------------------------------
+	# Main
+	#-----------------------------------------------------------------
+	if { !($argc == 7 ) } {
+	   puts "stage3_install: This script requires 7 Arguments"
+	   puts "Arguments are :
+	   			Cell Name
+	   			Cluster Name,
+	   			EAR Path,
+	   			EAR Name,
+	   			Application Name and
+				Virtual Host Name
+				Node Name"
+	} else {
+	   set cellName [lindex $argv 0]
+	   set clusterName [lindex $argv 1]
+	   set earfilePath [lindex $argv 2]
+	   set earfileName [lindex $argv 3]
+	   set appName [lindex $argv 4]
+	   set vhName [lindex $argv 5]
+	   set nName [lindex $argv 6]
+ 		   
+	   puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	   puts "
+			  Cell Name		---> $cellName,
+			  Cluster name	        ---> $clusterName,
+			  EAR File Location	---> $earfilePath,
+			  .ear FileName 	---> $earfileName,
+			  Application Name	---> $appName,
+			  Node Name             ----> $nName"
+
+       puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+           
+   #-----------------------------------------------------------------
+   # Executing
+   #-----------------------------------------------------------------
+   stage3install $cellName $clusterName $earfilePath $earfileName $appName $vhName $nName
+
+}

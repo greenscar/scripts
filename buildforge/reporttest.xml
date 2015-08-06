@@ -1,0 +1,48 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>  
+      <env name="COLOR" value="Red-Green" />  
+      <env name="SIZE" value="Small" />  
+      <env name="BF_SERVER" value="ball" />  
+   </template>  
+   
+   <interface>
+      <run command="determine_color" params="$COLOR" server="$BF_SERVER" dir="/" timeout="360" />  
+      
+      <adduser group="BALL_WATCHERS" user="${BF_USER_EMAIL}"/>
+      
+      <ontempenv name="Changed" state="empty">  
+         <step result="fail"/>  
+      </ontempenv>  
+      <onproject result="fail">  
+         <notify group="BALL_WATCHERS" subject="Build failed!" message="The $SIZE $COLOR ball failed!" />  
+      </onproject>  
+   </interface>
+   
+   <command name="determine_color">  
+      <execute>  
+         echo $1 $SIZE 
+      </execute>  
+      <resultsblock>  
+         <match pattern="(.*)?-(.*)\ (.*)?">  
+            <bom category="ball_category_${SIZE}" section="ball_section">  
+               <field name="color" text="${1}"/>  
+               <field name="date" text="${3}"/>  
+            </bom>  
+            <setenv group="[ADAPTOR]" name="COLOR1" value="$1"/>
+            <setenv group="[ADAPTOR]" name="COLOR2" value="$2"/>
+            <setenv name="Changed" value="TRUE" type="temp"/>  
+         </match>  
+      </resultsblock>  
+   </command>  
+   
+   <bomformat category="ball_category_large" title="Ball Category">  
+      <section name="ball_section">  
+         <field order="1" name="color" title="$SIZE"/>  
+         <field order="2" name="date" title="Current Date"/>  
+      </section>  
+   </bomformat>
+</PROJECT_INTERFACE>
+
+
+

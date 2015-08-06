@@ -1,0 +1,91 @@
+<html>
+<!-- DW6 -->
+<head>
+<title>IBM Rational software intellectual capital package</title>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+<meta name="Description" content="IBM Rational software intellectual capital package"/>
+<meta name="Abstract" content="IBM Rational software intellectual capital module"/>
+<meta name="Keywords" content="ibm, international business machines, rational, rational sofware, intellectual capital, IC, clearcase, clearquest, rup, rational uinified process, software modeling, software development, xde, rational rose, xde tester, software configuration management"/>
+<meta name="Owner" content="dbellagio@us.ibm.com"/>
+<meta name="Robots" content="noindex,nofollow"/>
+<meta name="Security" content="private"/>
+<meta name="Source" content="IBM Rational sofware"/>
+<meta name="IBM.Country" content="US"/>
+<meta name="DC.Date" scheme="iso8601" content="2004-12-20"/>
+<meta name="DC.Language" scheme="rfc1766" content="en-US"/>
+<meta name="DC.Rights" content="Copyright (c) 2004 by IBM Corporation"/>
+<meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="ZZ999"/>
+<meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="ZZ999"/>
+<meta name="DC.Publisher" content="IBM Corporation - Rational software"/>
+<meta name="IBM.Effective" scheme="W3CDTF" content="2004-01-30"/>
+<meta name="IBM.Industry" scheme="IBM_IndustryTaxonomy" content="ZZ"/>
+<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+<link rel='stylesheet' href='../../common_env/styles/ru_style.css' type='text/css'>
+
+</head>
+<body bgcolor='#FFFFFF' text='#000000' leftmargin='0' topmargin='0' marginwidth='0' marginheight='0'>
+
+<script language="javascript">
+ 	// ********************* Page navigation and Cell Titles *************************** 
+	document.write("<table width='800' border='0' cellpadding='0' cellspacing='0'><tr>");
+	document.write("<td><img src='../../common_media/images/0shim.gif' alt=''  width='30' height='10'></td>");
+	document.write("<td><img src='../../common_media/images/0shim.gif' alt=''  width='745' height='1'></td>");
+	document.write("<td><img src='../../common_media/images/0shim.gif' alt=''  width='15' height='1'></td></tr>");
+        
+	document.write("<tr><td><img src='../../common_media/images/0shim.gif' alt=''  width='30' height='50'></td>");
+	document.write("<td valign='top'>");
+
+	// Determine and write the opening - if first time accessor of this IC, welcome them.
+	// if returning accessor, welcome them back and offer link to the last page they viewed
+
+	if ((parent.navBar.lastView != "") && (parent.navBar.started == "1")){ 
+		display="<p align='center'><br>";
+		display+="<span class='titleblack'>" +parent.navBar.courseTitle + "</span>";
+		display+="</span><br></p><table width='600' border='0' cellspacing='0' cellpadding='0' align='center'>";
+		display+="<tr><td><img src='../../common_media/images/0shim.gif' alt=''  width='600' height='5'></td></tr><tr><td bgcolor='#ff0000'>";
+		display+="<img src='../../common_media/images/0shim.gif' alt=''  width='1' height='1'></td></tr><tr><td><img src='../../common_media/images/0shim.gif' alt=''  width='1' height='1' ";
+		display+="width='1' height='5'></td></tr><tr><td align='center'>" + parent.navBar.open_3a + "&nbsp;&nbsp;<a href='" + parent.navBar.lastView + "' target='mainContent'><b>" + parent.navBar.open_3b + "</b></a>&nbsp;&nbsp;";
+		display+=" " + parent.navBar.open_3c + "</td></tr><tr><td><img src='../../common_media/images/0shim.gif' alt=''  width='600' height='5'>";
+		display+="</td></tr><tr><td bgcolor='#ff0000'><img src='../../common_media/images/0shim.gif' alt=''  width='1' height='1'>";
+		display+="</td></tr><tr><td><img src='../../common_media/images/0shim.gif' alt=''  width='1' height='5'></td></tr></table>";
+	    document.write(display);
+	} else {
+		document.write("<br><p align='center'><span class='titleblack'>" + parent.navBar.courseTitle + "</span></p>");
+	}
+
+	// Output the introduction paragraph
+	document.write("<p>" + parent.navBar.open_4a + "</p><p><ul><li>" + parent.navBar.open_4a_list1 + "</li><li>" + parent.navBar.open_4a_list2 + "</li>");
+	
+	if (parent.navBar.ext_labs){
+	document.write("<li>" + parent.navBar.open_4a_list3 + "</li>");
+	}
+	document.write("</ul>");
+	// Output help for first time students
+
+	if ((parent.navBar.lastView != "") && (parent.navBar.started == "1")){ 
+	document.write("<p><span class='h3'>" + parent.navBar.open_6c + "</span></p>");
+
+	} else {
+	document.write("<p><span class='h3'>" + parent.navBar.open_5a + "</span> " + parent.navBar.open_5b + "</p>");
+	// Output option to go to first page for returning accessors
+	document.write("<p><span class='h3'>" + parent.navBar.open_6a + "</span> " + parent.navBar.open_6b + "</p>");
+	// Output general info on Lab Exercises
+	}
+	//Write message about external labs using an application if the ext_labs variable is set to true
+	if (parent.navBar.ext_labs){
+	document.write("<p><span class='bold'>" + parent.navBar.open_7a + "</span> " + parent.navBar.open_7b + parent.navBar.ratAppl + parent.navBar.open_7c +"</p>");
+	}
+	// write the opening page message about completing the IC evaluation if the ruProduction
+	// variable is set to true - indicating that this is a Rational University course
+	if ((parent.navBar.ruProduction) && (parent.navBar.wbt_domain == "ibm")){
+		document.write("<p><span class='bold'>" + parent.navBar.course_eval_1 + "</span> ");
+		document.write(parent.navBar.course_eval_2 + " " + parent.navBar.course_eval_3a + " " + parent.navBar.course_eval_3b + "</p>");
+		document.write("</td>");
+	}
+	document.write("<td><img src='../../common_media/images/0shim.gif' alt=''  width='15' height='1'></td></tr></table>");
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+#
+# Author: Barry Searle
+#
+# (C) Copyright IBM Corp. 2004,2006 - All Rights Reserved.
+# DISCLAIMER:
+# The following source code is sample code created by IBM Corporation.
+# This sample code is not part of any standard IBM product and is provided
+# to you solely for the purpose of assisting you in the development of your
+# applications. The code is provided 'AS IS', without warranty or condition
+# of any kind. IBM shall not be liable for any damages arising out of your
+# use of the sample code, even if IBM has been advised of the possibility of
+# such damages.
+#
+# Change History:
+# 2.0 (10feb2006) code cleanup, no functional change
+# 1.1 (17nov2004) initial shipped version
+#
+
+
+proc readDistributionDirectory { distDir } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        log $MAJOR_ "readDistributionDirectory: $distDir ..."
+
+    if { [file isdirectory $distDir]==0 } {
+                set msg "readDistributionDirectory: ERROR: is not a directory, distDir=$distDir"
+                fail $msg
+        }
+        if { [file exists $distDir]==0 } {
+                set msg "readDistributionDirectory: ERROR: does not exist, distDir=$distDir"
+                fail $msg
+        }
+        if { [file readable $distDir]==0 } {
+                set msg "readDistributionDirectory: ERROR: cannot read distDir=$distDir"
+                fail $msg
+        }
+
+        set names  [glob -nocomplain $distDir/*]
+        if { [llength $names]==0} {
+                set msg "ERROR: readDistributionDirectory: no files found in distDir=$distDir"
+                fail $msg
+        }
+
+        set ears [list]
+        set wars [list]
+        set ejbs [list]
+        foreach name $names {
+                set dot  [string last "." $name]
+                if { $dot > 1 } {
+                        set ext [string range $name $dot end]
+                        set ext [string tolower $ext]
+                } else {
+                        set ext ""
+                }
+                if { $ext == ".ear" } {
+                        log $VERBOSE_ "readDistributionDirectory: ear=$name"
+                        lappend ears $name
+                } elseif { $ext == ".war" } {
+                        log $VERBOSE_ "readDistributionDirectory: war=$name"
+                        lappend wars $name
+                } elseif { $ext == ".jar" } {
+                        log $VERBOSE_ "readDistributionDirectory: jar=$name"
+                        lappend ejbs $name
+                }
+        }
+        return $ears
+}
+
+proc parseApplicationNames { ears } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        set appNames [list]
+        foreach ear $ears {
+                set  app $ear
+                log $INFO_ "parseApplicationNames: earPath=$app"
+                set  dot       [string first ".ear" $app]
+                if { $dot>0 } {
+                        set app [string range $app 0 [expr $dot-1]]
+                }
+                set  sl       [string last "/" $app]
+                set  bs       [string last "\\" $app]
+                if { $bs > $sl } {
+                        set sl $bs
+                }
+                if { $sl>0 } {
+                        set app [string range $app [expr $sl+1] end ]
+                }
+                log $INFO_ "parseApplicationNames: appName=$app"
+                lappend appNames $app
+        }
+        return $appNames
+}

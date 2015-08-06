@@ -1,0 +1,220 @@
+Return-Path: <james@caffeinewebdesign.com>
+X-Original-To: james@sandlininc.com
+Delivered-To: james@sandlininc.com
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 1247490069
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 08:32:10 -0500 (CDT)
+X-Virus-Scanned: Debian amavisd-new at server.sandlininc.lan
+Received: from server.sandlininc.lan ([127.0.0.1])
+	by localhost (server.sandlininc.lan [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3H0-hyJA8SiP for <james@sandlininc.com>;
+	Sat, 23 Aug 2008 08:32:09 -0500 (CDT)
+Received: from server.sandlininc.lan (localhost.localdomain [127.0.0.1])
+	by server.sandlininc.lan (Postfix) with ESMTP id 1F9A790738
+	for <james@sandlininc.com>; Sat, 23 Aug 2008 07:56:37 -0500 (CDT)
+Envelope-to: james@sandlininc.com
+Delivery-date: Sat, 23 Aug 2008 07:52:07 -0500
+Received: from sandlininc.com [74.55.232.34]
+	by server.sandlininc.lan with POP3 (fetchmail-6.3.8)
+	for <james@sandlininc.com> (single-drop); Sat, 23 Aug 2008 07:56:37 -0500 (CDT)
+Received: from cpe-66-68-52-223.austin.res.rr.com ([66.68.52.223]:60474 helo=[10.0.0.9])
+	by maxserv.yourhostdns.com with esmtpsa (TLSv1:AES256-SHA:256)
+	(Exim 4.69)
+	(envelope-from <james@caffeinewebdesign.com>)
+	id 1KWsb8-0005Ry-F8
+	for james@sandlininc.com; Sat, 23 Aug 2008 07:52:06 -0500
+Resent-From: James Sandlin <james@caffeinewebdesign.com>
+Resent-To: james@sandlininc.com
+Resent-Date: Sat, 23 Aug 2008 07:52:08 -0500
+Resent-Message-Id: <48B007F8.30208@caffeinewebdesign.com>
+Resent-User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.16) Gecko/20080724 Thunderbird/2.0.0.16
+X-Mozilla-Keys:                                                                                 
+Received: from [64.179.4.149] (helo=sql2.linuxquestions.org)
+	by johnny.yourhostdns.com with esmtps (TLSv1:AES256-SHA:256)
+	(Exim 4.66)
+	(envelope-from <forum@linuxquestions.org>)
+	id 1IPkw9-0001lx-56
+	for linux@caffeinewebdesign.com; Mon, 27 Aug 2007 16:11:49 -0400
+Received: from web2.linuxquestions.org (web2-be.linuxquestions.org [192.168.201.146])
+	by sql2.linuxquestions.org (8.13.1/8.13.1) with ESMTP id l7RKBoWa002808
+	for <linux@caffeinewebdesign.com>; Mon, 27 Aug 2007 16:11:50 -0400
+DomainKey-Signature: a=rsa-sha1; s=sql2; d=linuxquestions.org; c=simple; q=dns;
+	b=ElPgA9OWh1j7QqaNlsA2JraL2BHhiC+bfiYWNlySKF/jG/U6pNoOtBNVhh4PDWRFD
+	BY9rI+/4JbHJB/jQnJWKw==
+Received: from web2.linuxquestions.org (localhost.localdomain [127.0.0.1])
+	by web2.linuxquestions.org (8.13.1/8.13.1) with ESMTP id l7RKBo6l023305
+	for <linux@caffeinewebdesign.com>; Mon, 27 Aug 2007 16:11:50 -0400
+Received: (from nobody@localhost)
+	by web2.linuxquestions.org (8.13.1/8.13.1/Submit) id l7RKBom6023302;
+	Mon, 27 Aug 2007 16:11:50 -0400
+Date: Mon, 27 Aug 2007 16:11:50 -0400
+To: linux@caffeinewebdesign.com
+Subject: LinuxQuestions.org - Community Bulletin
+From: "forum@linuxquestions.org" <forum@linuxquestions.org>
+Message-ID: <200708272050.16aada226328@www.linuxquestions.org>
+X-LQ-ComTo: 43509
+MIME-Version: 1.0
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 8bit
+X-Priority: 3
+X-Mailer: LQ Mailer
+
+LinuxQuestions.org Community Bulletin
+
+	For unsubscription information, please see the bottom of this email
+
+---------------------------------------------------------------------------
+*Note: To ensure the LQ Community Bulletin regularly makes it to your inbox, please add forum@linuxquestions.org to your address book or whitelist.*
+
+sandlinjames,
+
+     You may have noticed that this Community Bulletin is not arriving according to the normal schedule.  Why?  I'm happy to announce that a major code upgrade has taken place.  We wanted to squash as many bugs as possible before sending a mass announcement.  If you haven't visited LQ since the upgrade, you should notice a whole host of usability improvements, new features and performance enhancements.  The upgrade also lays the foundation for some upcoming planned new additions at LQ, so stay tuned.  If there's something you'd like to see implemented at LQ, now is a great time to speak up.  Visit http://www.linuxquestions.org/questions/showthread.php?t=576545 to discuss the recent LQ code upgrade.
+
+     At LinuxQuestions.org, community feedback is absolutely critical to us. On that note, I'm happy to announce the LQ Project Tools, which will allow us to monitor community feedback, bug reports and feature requests in a much better way than we have in the past. If you have a suggestion on a project you'd like to see us undertake, have found a bug or have a feature suggestion, please let us know. We really do listen.  Visit http://www.linuxquestions.org/questions/project.php to use the new LQ Project Tools.
+
+-jeremy
+http://jeremy.linuxquestions.org/
+
+***SPONSOR***
+Did you know you can save $3 off any domain name registration and help support LinuxQuestions.org?  Visit http://www.lqconsulting.com/services/Web/Domain-Registration and use LQ3 as a discount code.
+***SPONSOR***
+
+---------------------------------------------------------------------------
+
+Today's Date: 08-27-2007
+
+Activity since: 08-01-2007
+---------------------------------------------------------------------------
+
+View all new content here: http://www.linuxquestions.org/questions/
+---------------------------------------------------------------------------
+LATEST THREADS
+---------------------------------------------------------------------------
+
+-- Threads posted most recently --
+
+Title: "How to create new process from within loadable kernel module?" (Date Posted 08-27-2007 by mtb001)
+ o 0 Replies, 0 Views, Last Post: 03:30 PM, 08-27-2007 by mtb001
+ o http://www.linuxquestions.org/questions/showthread.php?t=580227
+
+Title: "Avast antivirus as daemon" (Date Posted 08-27-2007 by sigma_50)
+ o 0 Replies, 0 Views, Last Post: 03:26 PM, 08-27-2007 by sigma_50
+ o http://www.linuxquestions.org/questions/showthread.php?t=580226
+
+Title: "Mandriva and win XP in a new PC" (Date Posted 08-27-2007 by nightrider)
+ o 0 Replies, 4 Views, Last Post: 03:14 PM, 08-27-2007 by nightrider
+ o http://www.linuxquestions.org/questions/showthread.php?t=580225
+
+Title: "courier-authlib can not load auth modules" (Date Posted 08-27-2007 by neily)
+ o 0 Replies, 8 Views, Last Post: 03:14 PM, 08-27-2007 by neily
+ o http://www.linuxquestions.org/questions/showthread.php?t=580224
+
+Title: "Booting grub from secondary hard disk ?" (Date Posted 08-27-2007 by Fezar)
+ o 0 Replies, 8 Views, Last Post: 03:09 PM, 08-27-2007 by Fezar
+ o http://www.linuxquestions.org/questions/showthread.php?t=580222
+
+Title: "Dual boot network card locks" (Date Posted 08-27-2007 by nichoover)
+ o 0 Replies, 7 Views, Last Post: 02:59 PM, 08-27-2007 by nichoover
+ o http://www.linuxquestions.org/questions/showthread.php?t=580221
+
+Title: "Slackware and SAS disks" (Date Posted 08-27-2007 by sunkenmel)
+ o 0 Replies, 6 Views, Last Post: 02:59 PM, 08-27-2007 by sunkenmel
+ o http://www.linuxquestions.org/questions/showthread.php?t=580220
+
+
+-- Threads with no replies yet --
+
+Title: "does anyone know how to use LMMS?" (Date Posted 08-27-2007 by whocares)
+ o 9 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=580216
+
+Title: "Extract SU attempts to separate log" (Date Posted 08-27-2007 by beammeup)
+ o 5 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=580214
+
+Title: "Make a link to a wine application" (Date Posted 08-27-2007 by telovoyagarcar)
+ o 16 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=580213
+
+Title: "include_path for Zend" (Date Posted 08-27-2007 by vargadanis)
+ o 8 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=580211
+
+Title: "LQ ISO - Call for Participation" (Date Posted 08-27-2007 by jeremy)
+ o 39 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=580207
+
+Title: "samba shares show 0 files in every folder???" (Date Posted 08-27-2007 by alabamaman)
+ o 25 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=580206
+
+Title: "Mounted drive and SAMBA" (Date Posted 08-27-2007 by cferron)
+ o 18 Views
+ o http://www.linuxquestions.org/questions/showthread.php?t=580203
+
+---------------------------------------------------------------------------
+LATEST POLLS
+---------------------------------------------------------------------------
+
+Question: Which is better Office
+ o 'MS Office 2003' (1 Votes)
+ o 'OpenOffice' (4 Votes)
+ o 'StarOffice' (0 Votes)
+ o 'KOffice' (0 Votes)
+   View Poll Results: http://www.linuxquestions.org/questions/showthread.php?t=580084
+
+Question: IF the apps were of a high quality, marketable value, Would you pay...?
+ o 'The price was reasonable but the licence was proprietary' (4 Votes)
+ o 'The price is high but the license was opensource' (0 Votes)
+ o 'The price is "fair" and the license is a type of opensource to stop theft/allow modification' (5 Votes)
+ o 'Never. All Linux apps should be Free as in Free Beer and opensource' (1 Votes)
+   View Poll Results: http://www.linuxquestions.org/questions/showthread.php?t=579869
+
+Question: What is your favorite language?
+ o 'C' (18 Votes)
+ o 'C++' (9 Votes)
+ o 'Java' (5 Votes)
+ o 'Shell' (2 Votes)
+ o 'Python' (3 Votes)
+ o 'Other' (7 Votes)
+   View Poll Results: http://www.linuxquestions.org/questions/showthread.php?t=579542
+
+
+---------------------------------------------------------------------------
+FORTHCOMING EVENTS 			Public:
+to view the calendar, click the link below:
+http://www.linuxquestions.org/questions/calendar.php?c=1
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+STATISTICS:
+We have had the following activity since 08-01-2007
+---------------------------------------------------------------------------
+
+ o 4,407 New Members
+ o 5,161 New Threads
+ o 25,352 New posts
+ o 10 New 
+
+
+---------------------------------------------------------------------------
+USER INFO:
+These are your current user details
+---------------------------------------------------------------------------
+
+ o Your username is: "sandlinjames"
+ o You have 0 Posts
+ o You registered on 08-03-2003
+  o You were last active on LinuxQuestions.org at 01:56 PM, 04-08-2005
+ 
+
+---------------------------------------------------------------------------
+To unsubscribe from the community updates, click this link:
+http://www.linuxquestions.org/questions/profile.php?do=editoptions
+and uncheck "Receive Community Bulletin Newsletters". 
+Currently, community updates are sent weekly. 
+---------------------------------------------------------------------------
+Best regards,
+LinuxQuestions.org
+

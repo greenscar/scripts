@@ -1,0 +1,52 @@
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.02">
+   <template>
+      <env name="BF_SERVER"         value="required"/>
+      <env name="DO_REBASE"         value="required"/>
+   </template>
+   
+   <interface>
+      <run command="set_test_lvl" params="SSP_73.2.x.0_SPE_LOCAL" server="$BF_SERVER" dir="/" timeout="120" condition="true('$DO_REBASE' eq 'YES')"/>
+      
+      <run command="autobl" params="" server="$BF_SERVER" dir="/" timeout="300" condition=""/>
+      
+	   <setenv name="JAMES" value="stuff" type="temp"/>
+		<run command="test" params="PHIL" server="$BF_SERVER" dir="/" timeout="360" condition="isempty($PHIL)"/>
+		<run command="test" params="JAMES" server="$BF_SERVER" dir="/" timeout="360" condition="hastext($JAMES)"/>
+   </interface>
+   
+	<command name="test">
+		<execute>
+		echo $1
+		</execute>
+		<resultsblock/>
+	</command>
+
+   
+   <command name="set_test_lvl">
+      <execute>
+         echo '$1'
+      </execute>
+      <resultsblock>
+         <match pattern="(LOCAL)">
+            <setenv name="DO_REBASE" value="NO" type="temp"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   <command name="autobl">
+      <execute>
+         print "LOCAL - NO REBASE NEEDED"
+      </execute>
+      <resultsblock>
+         <match pattern="^(LOCAL .+)">
+            <run command="test2" params="$1" server="$BF_SERVER" dir="/" timeout="600"/>
+         </match>
+         <match pattern="(LOCAL .+)">
+            <setenv name="OLDBL" value="$2" type="temp"/>
+            <setenv name="testlvl" value="LOCAL" type="temp"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+</PROJECT_INTERFACE>

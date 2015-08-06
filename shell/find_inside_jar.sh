@@ -1,0 +1,1 @@
+for i in `find . -name "*.jar" -print`; do unzip  -l $i 2> /dev/null | grep VShAppointmentProgramsDAO > /dev/null 2>&1; if [ $? == 0 ]; then echo $i; fi; done;

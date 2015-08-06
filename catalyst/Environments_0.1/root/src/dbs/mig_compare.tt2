@@ -1,0 +1,35 @@
+[%- # List all script changes -%]
+[% META title = 'Table Difference List' -%]
+<table border="1">
+   <tr><td colspan=5 class="divider">
+      [% table1 %] has [% in1not2.size %] not in [% table2 %]
+   </td></tr>
+   <tr>
+      <th>[% table1 %]</th>
+      <th>ER</th>
+      <th>FILE</th>
+      <th>BUILD NUM</th>
+      <th>[% table2 %]</th>
+   </tr>
+   [% FOREACH row IN in1not2 -%]
+   <tr>
+      <th color=green>[% table1 %]</th>
+      <td>[% row.tiers_id %]</td>
+      <td>[% row.file.file_name %]</td>
+      <td>[% row.build_num %]</td>
+      <th color=black>[% table2 %]</th>
+   </tr>
+   [% END -%]
+   <tr><td colspan=5 class="divider">
+      [% table2 %] has [% in2not1.size %] not in [% table1 %]
+   </td></tr>
+   [% FOREACH row IN in2not1 -%]
+   <tr>
+      <th color=green>[% table2 %]</th>
+      <td>[% row.tiers_id %]</td>
+      <td>[% row.file.file_name %]</td>
+      <td>[% row.build_num %]</td>
+      <th color=black>[% table1 %]</th>
+   </tr>
+   [% END -%]
+</table>

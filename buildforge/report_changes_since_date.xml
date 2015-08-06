@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!-- (c) Copyright by IBM Corp. and other(s) [2003], 2007 All Rights Reserved. -->
+<!DOCTYPE PROJECT_INTERFACE SYSTEM "interface.dtd">
+<PROJECT_INTERFACE IFTYPE="Source" INSTANCE="7.021">
+   <template>
+      <!-- Template section, these are parsed out of the final xml and used to populate an 
+      existing environment group if an instance of this interface is linked with a project.
+      However, use the list below to help identify the variables needed to run this interface
+      if you are integrating it during a regular BuildForge step.
+      -->
+      <env name="CurDate" value=".date %d-%b-%y.%H:%M:%S" />
+      <env name="LAST_RUN" value="1-Jan-05.00:00:00" />
+      <env name="LABEL" value="TEST_1"/>
+      <env name="BASELINE" value="BUILD_1"/>
+      <env name="VIEW" value="TEST_snbx_85_DEV" />
+      <env name="VOB_PATH" value="/snbx_batch" />
+      <env name="PROJECT_VOB" value="/snbx_Projects" />
+      <env name="CCSERVER" value="iedaau020_wasadmin" />
+      <env name="UNIXCLIENT" value="1"/>
+      <env name="_CHAR_NATIVE" value="1" />
+   </template>
+   
+   
+   <!-- The 'ByDate' entry point is used to gather changes between two build instances. -->
+   <interface>
+      <!-- The internal variable 'Changing' is used to store an email template that we will dynamically generate -->
+      <setenv name="Changing" value="Source Changes for this Build:\n" type="temp"/>
+      
+      <!-- Set some platform specific information -->
+      <setenv name="CdCommand" value="cd /home/wasadmin" type="temp" condition="true($UNIXCLIENT==1)"/>
+      <setenv name="CdCommand" value="pushd \\view" type="temp" condition="true($UNIXCLIENT==0)"/>
+      <setenv name="DirSep" value="/" type="temp" condition="true($UNIXCLIENT==1)"/>
+      <setenv name="DirSep" value="\" type="temp" condition="true($UNIXCLIENT==0)"/>
+      <setenv name="ExpansionVar" value="%" type="temp" condition="true($UNIXCLIENT==1)"/>
+      <setenv name="ExpansionVar" value="%%" type="temp" condition="true($UNIXCLIENT==0)"/>
+      
+      <!-- cc_changes is detailed below, but is basically the entry point into the command set to gather change info -->
+      <run command="cc_changes" params="$LAST_RUN $VIEW $VOB_PATH" server="$CCSERVER" dir="/" timeout="360"/>
+      
+      <!-- Here we test to see if we have any changes, 'Changes' should have some data if a change was found -->
+      <ontempenv name="Changes" state="empty">
+         <!-- No changes, fail the build, default behaviour is pass -->
+         <step result="FAIL"/>
+      </ontempenv>
+      
+      <!-- If we found changes (not failing step), then update our environment for the next run -->
+      <onstep result="pass">
+         <setenv group="[ADAPTOR]" name="LAST_RUN" value="$CurDate"/>
+      </onstep>
+      
+      <!-- Set some notifications for when the build completes -->
+      <onproject result="fail">
+         <notify group="MyChangers" subject="Build $BF_TAG ($CurDate) Failed." message="${Changing}${Changes}"/>
+      </onproject>
+      <onproject result="pass">
+         <notify group="MyChangers" subject="Build $BF_TAG ($CurDate) Passed." message="${Changing}${Changes}"/>
+      </onproject>
+   </interface>
+   
+   
+   <!-- This command gathers details about an activity and logs pertinent information to the BuildForge BOM -->
+   <!-- This command finds all the new versions of vob objects created since the last run of this project -->
+   <command name="cc_changes">
+      <execute>
+         $CdCommand${DirSep}$2 &amp;&amp; /opt/rational/clearcase/bin/cleartool find .$3 -all -cview -version "{created_since($1)}" -print
+      </execute>
+      <resultsblock>
+         <!-- if we find any changes then we gather more details about those changes with the cc_describe command -->
+         <match pattern="^(.*?)\@\@(.*?)$">
+            <run command="cc_describe" params="$VIEW $1 $2" server="$CCSERVER" dir="/" timeout="360"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   
+   <!-- This command gets some details about a particular object version -->
+   <command name="cc_describe">
+      <execute>
+         $CdCommand${DirSep}$1 &amp;&amp; /opt/rational/clearcase/bin/cleartool desc -fmt "${ExpansionVar}En:${ExpansionVar}Vn:${ExpansionVar}Nd:${ExpansionVar}u:${ExpansionVar}c" $2@@$3
+      </execute>
+      <resultsblock>
+         <!-- Foreach match of our output, we log information to the BOM, and then generate
+         some diff output using the cc_diff command -->
+         <match pattern="^(.*?):(.*?):(.*?):(.*?):(.*?)$">
+            <bom category="Source" section="changes">
+               <field name="file" text="$1"/>
+               <field name="version" text="$2"/>
+               <field name="date" text="$3"/>
+               <field name="user" text="$4"/>
+               <field name="comment" text="$5"/>
+            </bom>
+            <run command="cc_diff" params="$VIEW $1 $2" server="$CCSERVER" dir="/" timeout="360"/>
+            <!-- We also add the user who created this version to our list of changers for this build, and
+            we further populate our email template with user and file information -->
+            <adduser group="MyChangers" user="$4"/>
+            <setenv name="Changes" value="$4 - $1" type="temp append\n"/>
+         </match>
+      </resultsblock>
+   </command>
+   
+   
+   <!-- The cc_diff command does a generic clearcase diff, logging the full output of the diff in the BuildForge BOM -->
+   <command name="cc_diff">
+      <execute>
+         $CdCommand${DirSep}$1 &amp;&amp; /opt/rational/clearcase/bin/cleartool diff -pred -diff_format &quot;$2@@$3&quot;
+      </execute>
+      <resultsblock>
+         <match pattern=".+">
+            <bom category="Source" section="diff">
+               <field name="diff" text="$_"/>
+            </bom>
+         </match>
+      </resultsblock>
+   </command>
+   
+   
+   <!-- The bomformat sets up the BuildForge BOM display for the information we gather during this interface execution -->
+   <!-- A category is a top level expandable item -->
+   <bomformat category="Source" title="Source Changes">
+      <!-- A section defines the columns for blocks of information, a new row of information is added 
+      each time the last field (by order number) in a block is populated with new information -->
+      <section name="changes" expandable="true">
+         <field order="1" name="file" title="File/Dir Name"/>
+         <field order="2" name="version" title="Version"/>
+         <field order="3" name="date" title="Date"/>
+         <field order="4" name="user" title="User"/>
+         <field order="5" name="comment" title="Comment"/>
+      </section>
+      <section name="diff" parent="changes">
+         <field name="diff" title="Change Details"/>
+      </section>
+   </bomformat>
+</PROJECT_INTERFACE>

@@ -1,0 +1,352 @@
+timestamp: 2010-02-17T12:59:39.677445
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2010-02-17T12:59:39.788584
+CREATE TABLE auth_group(
+    id INT AUTO_INCREMENT NOT NULL,
+    role VARCHAR(512),
+    description LONGTEXT,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2010-02-17T12:59:39.941472
+CREATE TABLE auth_membership(
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INT, INDEX group_id__idx (group_id), FOREIGN KEY (group_id) REFERENCES auth_group(id) ON DELETE CASCADE,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2010-02-17T12:59:40.048085
+CREATE TABLE auth_permission(
+    id INT AUTO_INCREMENT NOT NULL,
+    group_id INT, INDEX group_id__idx (group_id), FOREIGN KEY (group_id) REFERENCES auth_group(id) ON DELETE CASCADE,
+    name VARCHAR(512),
+    table_name VARCHAR(512),
+    record_id INT,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2010-02-17T12:59:40.149242
+CREATE TABLE auth_event(
+    id INT AUTO_INCREMENT NOT NULL,
+    time_stamp DATETIME,
+    client_ip VARCHAR(512),
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin VARCHAR(512),
+    description LONGTEXT,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2010-02-17T13:00:08.149841
+CREATE TABLE environments(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(45),
+    created_at DATETIME,
+    updated_at DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2010-02-17T13:00:08.235592
+CREATE TABLE servers(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(45),
+    os VARCHAR(24),
+    created_at DATETIME,
+    updated_at DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2010-02-17T13:00:08.391708
+CREATE TABLE databases(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(45),
+    user VARCHAR(45),
+    port INT,
+    status VARCHAR(10),
+    san_disk VARCHAR(10),
+    servers_id INT, INDEX servers_id__idx (servers_id), FOREIGN KEY (servers_id) REFERENCES servers(id) ON DELETE CASCADE,
+    created_at DATETIME,
+    updated_at DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2010-02-17T13:07:55.933342
+CREATE TABLE databases(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(45),
+    user VARCHAR(45),
+    port INT,
+    status VARCHAR(10),
+    san_disk VARCHAR(10),
+    servers_id INT, INDEX servers_id__idx (servers_id), FOREIGN KEY (servers_id) REFERENCES servers(id) ON DELETE CASCADE,
+    created_at DATETIME,
+    updated_at DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2010-02-17T13:08:44.321737
+CREATE TABLE databases(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(45),
+    user VARCHAR(45),
+    port INT,
+    status VARCHAR(10),
+    san_disk VARCHAR(10),
+    servers_id INT, INDEX servers_id__idx (servers_id), FOREIGN KEY (servers_id) REFERENCES servers(id) ON DELETE CASCADE,
+    created_at DATETIME,
+    updated_at DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2010-02-17T13:10:47.440140
+CREATE TABLE databases(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(45),
+    user VARCHAR(45),
+    port INT,
+    status VARCHAR(10),
+    san_disk VARCHAR(10),
+    servers_id INT, INDEX servers_id__idx (servers_id), FOREIGN KEY (servers_id) REFERENCES servers(id) ON DELETE CASCADE,
+    created_at DATETIME,
+    updated_at DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2010-02-17T13:11:42.694112
+CREATE TABLE databases(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(45),
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2010-02-17T13:12:06.797257
+CREATE TABLE databases(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(512),
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2010-02-17T13:18:20.047578
+CREATE TABLE databases(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(45),
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2010-02-17T13:20:22.496952
+CREATE TABLE dbs(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(45),
+    user VARCHAR(45),
+    port INT,
+    status VARCHAR(10),
+    san_disk VARCHAR(10),
+    servers_id INT, INDEX servers_id__idx (servers_id), FOREIGN KEY (servers_id) REFERENCES servers(id) ON DELETE CASCADE,
+    created_at DATETIME,
+    updated_at DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2010-02-17T13:20:22.568015
+CREATE TABLE env_2_db(
+    id INT AUTO_INCREMENT NOT NULL,
+    dbs_id INT, INDEX dbs_id__idx (dbs_id), FOREIGN KEY (dbs_id) REFERENCES dbs(id) ON DELETE CASCADE,
+    environments_id INT, INDEX environments_id__idx (environments_id), FOREIGN KEY (environments_id) REFERENCES environments(id) ON DELETE CASCADE,
+    created_at DATETIME,
+    updated_at DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2010-02-17T13:20:22.749372
+CREATE TABLE env_2_server(
+    id INT AUTO_INCREMENT NOT NULL,
+    servers_id INT, INDEX servers_id__idx (servers_id), FOREIGN KEY (servers_id) REFERENCES servers(id) ON DELETE CASCADE,
+    environments_id INT, INDEX environments_id__idx (environments_id), FOREIGN KEY (environments_id) REFERENCES environments(id) ON DELETE CASCADE,
+    created_at DATETIME,
+    updated_at DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2010-02-17T13:29:11.085653
+ALTER TABLE servers ADD updated_at__tmp DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE servers SET updated_at__tmp=updated_at;
+success!
+ALTER TABLE servers DROP COLUMN updated_at;
+success!
+ALTER TABLE servers ADD updated_at DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE servers SET updated_at=updated_at__tmp;
+success!
+ALTER TABLE servers DROP COLUMN updated_at__tmp;
+success!
+timestamp: 2010-02-17T13:29:11.553130
+ALTER TABLE servers ADD created_at__tmp DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE servers SET created_at__tmp=created_at;
+success!
+ALTER TABLE servers DROP COLUMN created_at;
+success!
+ALTER TABLE servers ADD created_at DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE servers SET created_at=created_at__tmp;
+success!
+ALTER TABLE servers DROP COLUMN created_at__tmp;
+success!
+timestamp: 2010-02-17T13:29:11.973796
+ALTER TABLE servers ADD os__tmp VARCHAR(24) NOT NULL;
+success!
+UPDATE servers SET os__tmp=os;
+success!
+ALTER TABLE servers DROP COLUMN os;
+success!
+ALTER TABLE servers ADD os VARCHAR(24) NOT NULL;
+success!
+UPDATE servers SET os=os__tmp;
+success!
+ALTER TABLE servers DROP COLUMN os__tmp;
+success!
+timestamp: 2010-02-17T13:29:12.477018
+ALTER TABLE servers ADD name__tmp VARCHAR(45) NOT NULL;
+success!
+UPDATE servers SET name__tmp=name;
+success!
+ALTER TABLE servers DROP COLUMN name;
+success!
+ALTER TABLE servers ADD name VARCHAR(45) NOT NULL;
+success!
+UPDATE servers SET name=name__tmp;
+success!
+ALTER TABLE servers DROP COLUMN name__tmp;
+success!
+timestamp: 2010-02-17T13:29:12.944954
+ALTER TABLE dbs ADD status__tmp VARCHAR(10) NOT NULL;
+success!
+UPDATE dbs SET status__tmp=status;
+success!
+ALTER TABLE dbs DROP COLUMN status;
+success!
+ALTER TABLE dbs ADD status VARCHAR(10) NOT NULL;
+success!
+UPDATE dbs SET status=status__tmp;
+success!
+ALTER TABLE dbs DROP COLUMN status__tmp;
+success!
+timestamp: 2010-02-17T13:29:13.469726
+ALTER TABLE dbs ADD name__tmp VARCHAR(45) NOT NULL;
+success!
+UPDATE dbs SET name__tmp=name;
+success!
+ALTER TABLE dbs DROP COLUMN name;
+success!
+ALTER TABLE dbs ADD name VARCHAR(45) NOT NULL;
+success!
+UPDATE dbs SET name=name__tmp;
+success!
+ALTER TABLE dbs DROP COLUMN name__tmp;
+success!
+timestamp: 2010-02-17T13:29:13.921759
+ALTER TABLE dbs ADD user__tmp VARCHAR(45) NOT NULL;
+success!
+UPDATE dbs SET user__tmp=user;
+success!
+ALTER TABLE dbs DROP COLUMN user;
+success!
+ALTER TABLE dbs ADD user VARCHAR(45) NOT NULL;
+success!
+UPDATE dbs SET user=user__tmp;
+success!
+ALTER TABLE dbs DROP COLUMN user__tmp;
+success!
+timestamp: 2010-02-17T13:29:14.351955
+ALTER TABLE dbs ADD san_disk__tmp VARCHAR(10) NOT NULL;
+success!
+UPDATE dbs SET san_disk__tmp=san_disk;
+success!
+ALTER TABLE dbs DROP COLUMN san_disk;
+success!
+ALTER TABLE dbs ADD san_disk VARCHAR(10) NOT NULL;
+success!
+UPDATE dbs SET san_disk=san_disk__tmp;
+success!
+ALTER TABLE dbs DROP COLUMN san_disk__tmp;
+success!
+timestamp: 2010-02-17T13:29:14.788043
+ALTER TABLE dbs ADD port__tmp INT NOT NULL;
+success!
+UPDATE dbs SET port__tmp=port;
+success!
+ALTER TABLE dbs DROP COLUMN port;
+success!
+ALTER TABLE dbs ADD port INT NOT NULL;
+success!
+UPDATE dbs SET port=port__tmp;
+success!
+ALTER TABLE dbs DROP COLUMN port__tmp;
+success!
+timestamp: 2010-02-17T13:29:15.275767
+ALTER TABLE env_2_db ADD updated_at__tmp DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE env_2_db SET updated_at__tmp=updated_at;
+success!
+ALTER TABLE env_2_db DROP COLUMN updated_at;
+success!
+ALTER TABLE env_2_db ADD updated_at DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE env_2_db SET updated_at=updated_at__tmp;
+success!
+ALTER TABLE env_2_db DROP COLUMN updated_at__tmp;
+success!
+timestamp: 2010-02-17T13:29:15.695693
+ALTER TABLE env_2_db ADD created_at__tmp DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE env_2_db SET created_at__tmp=created_at;
+success!
+ALTER TABLE env_2_db DROP COLUMN created_at;
+success!
+ALTER TABLE env_2_db ADD created_at DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE env_2_db SET created_at=created_at__tmp;
+success!
+ALTER TABLE env_2_db DROP COLUMN created_at__tmp;
+success!
+timestamp: 2010-02-17T13:29:16.100306
+ALTER TABLE env_2_server ADD updated_at__tmp DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE env_2_server SET updated_at__tmp=updated_at;
+success!
+ALTER TABLE env_2_server DROP COLUMN updated_at;
+success!
+ALTER TABLE env_2_server ADD updated_at DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE env_2_server SET updated_at=updated_at__tmp;
+success!
+ALTER TABLE env_2_server DROP COLUMN updated_at__tmp;
+success!
+timestamp: 2010-02-17T13:29:16.503038
+ALTER TABLE env_2_server ADD created_at__tmp DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE env_2_server SET created_at__tmp=created_at;
+success!
+ALTER TABLE env_2_server DROP COLUMN created_at;
+success!
+ALTER TABLE env_2_server ADD created_at DATETIME NOT NULL DEFAULT '2010-02-17 13:29:11';
+success!
+UPDATE env_2_server SET created_at=created_at__tmp;
+success!
+ALTER TABLE env_2_server DROP COLUMN created_at__tmp;
+success!
+timestamp: 2010-02-17T13:54:32.330815
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;

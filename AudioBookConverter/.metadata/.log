@@ -1,0 +1,213 @@
+!SESSION 2008-12-24 08:21:15.669 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_13
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=carbon, NL=en_US
+Framework arguments:  -keyring /Users/jsandlin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws carbon -arch x86 -keyring /Users/jsandlin/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.update.configurator 4 0 2008-12-24 08:21:18.059
+!MESSAGE /Users/jsandlin/.eclipse/532414747/plugins is not a valid plugins directory.
+
+!ENTRY org.eclipse.core.net 1 0 2008-12-24 08:23:02.728
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 2 0 2008-12-24 08:24:29.277
+!MESSAGE Error parsing metadata repository
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2008-12-24 08:24:29.277
+!MESSAGE Error at line 10, column 91: Missing required attribute in "repository": url
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2008-12-24 08:24:29.277
+!MESSAGE Error at line 10, column 91: Illegal value for attribute "url" of element "repository": null
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2008-12-24 08:24:29.277
+!MESSAGE Error at line 11, column 91: Missing required attribute in "repository": url
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2008-12-24 08:24:29.277
+!MESSAGE Error at line 11, column 91: Illegal value for attribute "url" of element "repository": null
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2008-12-24 08:24:29.278
+!MESSAGE Error at line 12, column 90: Missing required attribute in "repository": url
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2008-12-24 08:24:29.278
+!MESSAGE Error at line 12, column 90: Illegal value for attribute "url" of element "repository": null
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2008-12-24 08:24:29.278
+!MESSAGE Error at line 13, column 90: Missing required attribute in "repository": url
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2008-12-24 08:24:29.279
+!MESSAGE Error at line 13, column 90: Illegal value for attribute "url" of element "repository": null
+!SESSION 2008-12-25 14:26:06.602 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_13
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=carbon, NL=en_US
+Framework arguments:  -keyring /Users/jsandlin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws carbon -arch x86 -keyring /Users/jsandlin/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.update.configurator 4 0 2008-12-25 14:26:09.416
+!MESSAGE /Users/jsandlin/.eclipse/532414747/plugins is not a valid plugins directory.
+
+!ENTRY org.eclipse.core.net 1 0 2008-12-25 14:26:31.307
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.search 4 0 2008-12-25 16:14:08.039
+!MESSAGE Problems encountered during text search.
+!SUBENTRY 1 org.eclipse.search 4 4 2008-12-25 16:14:08.039
+!MESSAGE File 'audiobookconverter/.DS_Store' has been skipped, problem while reading: ('Resource is out of sync with the file system: '/audiobookconverter/.DS_Store'.').
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/audiobookconverter/.DS_Store'.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:619)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:298)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:287)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.getInputStream(FileCharSequenceProvider.java:282)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.initializeReader(FileCharSequenceProvider.java:276)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.reset(FileCharSequenceProvider.java:268)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider.newCharSequence(FileCharSequenceProvider.java:40)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFile(TextSearchVisitor.java:255)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFiles(TextSearchVisitor.java:190)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:171)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:183)
+	at org.eclipse.search.core.text.TextSearchEngine$1.search(TextSearchEngine.java:54)
+	at org.eclipse.search.internal.ui.text.FileSearchQuery.run(FileSearchQuery.java:184)
+	at org.eclipse.search2.internal.ui.InternalSearchUI$InternalSearchJob.run(InternalSearchUI.java:94)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 2 org.eclipse.core.resources 4 274 2008-12-25 16:14:08.040
+!MESSAGE Resource is out of sync with the file system: '/audiobookconverter/.DS_Store'.
+
+!ENTRY org.eclipse.search 4 0 2008-12-25 16:14:28.874
+!MESSAGE Problems encountered during text search.
+!SUBENTRY 1 org.eclipse.search 4 4 2008-12-25 16:14:28.874
+!MESSAGE File 'audiobookconverter/.DS_Store' has been skipped, problem while reading: ('Resource is out of sync with the file system: '/audiobookconverter/.DS_Store'.').
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/audiobookconverter/.DS_Store'.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:619)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:298)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:287)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.getInputStream(FileCharSequenceProvider.java:282)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.initializeReader(FileCharSequenceProvider.java:276)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.reset(FileCharSequenceProvider.java:268)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider.newCharSequence(FileCharSequenceProvider.java:40)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFile(TextSearchVisitor.java:255)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFiles(TextSearchVisitor.java:190)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:171)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:183)
+	at org.eclipse.search.core.text.TextSearchEngine$1.search(TextSearchEngine.java:54)
+	at org.eclipse.search.internal.ui.text.FileSearchQuery.run(FileSearchQuery.java:184)
+	at org.eclipse.search2.internal.ui.InternalSearchUI$InternalSearchJob.run(InternalSearchUI.java:94)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 2 org.eclipse.core.resources 4 274 2008-12-25 16:14:28.875
+!MESSAGE Resource is out of sync with the file system: '/audiobookconverter/.DS_Store'.
+
+!ENTRY org.eclipse.search 4 0 2008-12-25 16:36:50.650
+!MESSAGE Problems encountered during text search.
+!SUBENTRY 1 org.eclipse.search 4 4 2008-12-25 16:36:50.651
+!MESSAGE File 'audiobookconverter/.DS_Store' has been skipped, problem while reading: ('Resource is out of sync with the file system: '/audiobookconverter/.DS_Store'.').
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/audiobookconverter/.DS_Store'.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:619)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:298)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:287)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.getInputStream(FileCharSequenceProvider.java:282)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.initializeReader(FileCharSequenceProvider.java:276)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.reset(FileCharSequenceProvider.java:268)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider.newCharSequence(FileCharSequenceProvider.java:40)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFile(TextSearchVisitor.java:255)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFiles(TextSearchVisitor.java:190)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:171)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:183)
+	at org.eclipse.search.core.text.TextSearchEngine$1.search(TextSearchEngine.java:54)
+	at org.eclipse.search.internal.ui.text.FileSearchQuery.run(FileSearchQuery.java:184)
+	at org.eclipse.search2.internal.ui.InternalSearchUI$InternalSearchJob.run(InternalSearchUI.java:94)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 2 org.eclipse.core.resources 4 274 2008-12-25 16:36:50.652
+!MESSAGE Resource is out of sync with the file system: '/audiobookconverter/.DS_Store'.
+
+!ENTRY org.eclipse.search 4 0 2008-12-25 16:38:15.588
+!MESSAGE Problems encountered during text search.
+!SUBENTRY 1 org.eclipse.search 4 4 2008-12-25 16:38:15.588
+!MESSAGE File 'audiobookconverter/.DS_Store' has been skipped, problem while reading: ('File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.').
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:612)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:298)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:287)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.getInputStream(FileCharSequenceProvider.java:282)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.initializeReader(FileCharSequenceProvider.java:276)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.reset(FileCharSequenceProvider.java:268)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider.newCharSequence(FileCharSequenceProvider.java:40)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFile(TextSearchVisitor.java:255)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFiles(TextSearchVisitor.java:190)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:171)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:183)
+	at org.eclipse.search.core.text.TextSearchEngine$1.search(TextSearchEngine.java:54)
+	at org.eclipse.search.internal.ui.text.FileSearchQuery.run(FileSearchQuery.java:184)
+	at org.eclipse.search2.internal.ui.InternalSearchUI$InternalSearchJob.run(InternalSearchUI.java:94)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 2 org.eclipse.core.resources 4 271 2008-12-25 16:38:15.589
+!MESSAGE File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.
+
+!ENTRY org.eclipse.search 4 0 2008-12-25 16:49:09.196
+!MESSAGE Problems encountered during text search.
+!SUBENTRY 1 org.eclipse.search 4 4 2008-12-25 16:49:09.197
+!MESSAGE File 'audiobookconverter/.DS_Store' has been skipped, problem while reading: ('File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.').
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:612)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:298)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:287)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.getInputStream(FileCharSequenceProvider.java:282)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.initializeReader(FileCharSequenceProvider.java:276)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.reset(FileCharSequenceProvider.java:268)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider.newCharSequence(FileCharSequenceProvider.java:40)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFile(TextSearchVisitor.java:255)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFiles(TextSearchVisitor.java:190)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:171)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:183)
+	at org.eclipse.search.core.text.TextSearchEngine$1.search(TextSearchEngine.java:54)
+	at org.eclipse.search.internal.ui.text.FileSearchQuery.run(FileSearchQuery.java:184)
+	at org.eclipse.search2.internal.ui.InternalSearchUI$InternalSearchJob.run(InternalSearchUI.java:94)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 2 org.eclipse.core.resources 4 271 2008-12-25 16:49:09.197
+!MESSAGE File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.
+
+!ENTRY org.eclipse.search 4 0 2008-12-25 16:51:44.650
+!MESSAGE Problems encountered during text search.
+!SUBENTRY 1 org.eclipse.search 4 4 2008-12-25 16:51:44.650
+!MESSAGE File 'audiobookconverter/.DS_Store' has been skipped, problem while reading: ('File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.').
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:612)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:298)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:287)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.getInputStream(FileCharSequenceProvider.java:282)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.initializeReader(FileCharSequenceProvider.java:276)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.reset(FileCharSequenceProvider.java:268)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider.newCharSequence(FileCharSequenceProvider.java:40)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFile(TextSearchVisitor.java:255)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFiles(TextSearchVisitor.java:190)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:171)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:183)
+	at org.eclipse.search.core.text.TextSearchEngine$1.search(TextSearchEngine.java:54)
+	at org.eclipse.search.internal.ui.text.FileSearchQuery.run(FileSearchQuery.java:184)
+	at org.eclipse.search2.internal.ui.InternalSearchUI$InternalSearchJob.run(InternalSearchUI.java:94)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 2 org.eclipse.core.resources 4 271 2008-12-25 16:51:44.650
+!MESSAGE File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.
+
+!ENTRY org.eclipse.search 4 0 2008-12-25 16:53:08.652
+!MESSAGE Problems encountered during text search.
+!SUBENTRY 1 org.eclipse.search 4 4 2008-12-25 16:53:08.652
+!MESSAGE File 'audiobookconverter/.DS_Store' has been skipped, problem while reading: ('File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.').
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:612)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:298)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:287)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.getInputStream(FileCharSequenceProvider.java:282)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.initializeReader(FileCharSequenceProvider.java:276)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider$FileCharSequence.reset(FileCharSequenceProvider.java:268)
+	at org.eclipse.search.internal.core.text.FileCharSequenceProvider.newCharSequence(FileCharSequenceProvider.java:40)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFile(TextSearchVisitor.java:255)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.processFiles(TextSearchVisitor.java:190)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:171)
+	at org.eclipse.search.internal.core.text.TextSearchVisitor.search(TextSearchVisitor.java:183)
+	at org.eclipse.search.core.text.TextSearchEngine$1.search(TextSearchEngine.java:54)
+	at org.eclipse.search.internal.ui.text.FileSearchQuery.run(FileSearchQuery.java:184)
+	at org.eclipse.search2.internal.ui.InternalSearchUI$InternalSearchJob.run(InternalSearchUI.java:94)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 2 org.eclipse.core.resources 4 271 2008-12-25 16:53:08.653
+!MESSAGE File not found: /Users/jsandlin/workspaces/AudioBookConverter/audiobookconverter/.DS_Store.

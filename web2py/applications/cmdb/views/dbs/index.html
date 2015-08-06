@@ -1,0 +1,81 @@
+
+{{extend 'layout.html'}}
+<h1>Databases</h1>
+<table border=1>
+   <tr>
+      <th>Edit</th>
+      <th>{{=A('NAME', _href=URL(r=request, args="name"))}}</th>
+      <th>{{=A('USER', _href=URL(r=request, args="user"))}}</th>
+      <th>{{=A('PORT', _href=URL(r=request, args="port"))}}</th>
+      <th>{{=A('STATUS', _href=URL(r=request, args="status"))}}</th>
+      <th>{{=A('SAN DISK', _href=URL(r=request, args="san"))}}</th>
+      <th>{{=A('SERVER', _href=URL(r=request, args="server"))}}</th>
+   </tr>
+   {{ if False: }}
+   <tr class="grey">
+      <td>
+         <form>
+         <select name="name" onChange="ajax('load_port', ['port'], 'target')">
+            {{for n in names:}}
+            <option value="{{=n}}">{{=n}}</option>
+            {{pass}}
+         </select>
+         </form>
+      </td>
+      <td>
+         <select name="user" onChange="ajax('load_port', ['port'], 'target')">
+            {{for u in users:}}
+            <option value="{{=u}}">{{=u}}</option>
+            {{pass}}
+         </select>
+      </td>
+      <td>
+      <select name="port" onChange="ajax('load_port', ['port'], 'target')">
+            {{for p in ports:}}
+            <option value="{{=p}}">{{=p}}</option>
+            {{pass}}
+         </select>
+      </td>
+      <td>
+         <select name="status" onChange="ajax('load_port', ['port'], 'target')">
+            {{for s in statuses:}}
+            <option value="{{=s}}">{{=s}}</option>
+            {{pass}}
+         </select>
+      </td>
+      <td>
+         <select name="san" onChange="ajax('load_port', ['port'], 'target')">
+            {{for s in sans:}}
+            <option value="{{=s}}">{{=s}}</option>
+            {{pass}}
+         </select>
+      </td>
+      <td>
+         <select name="server" onChange="ajax('load_port', ['port'], 'target')">
+            {{for s in servers:}}
+            <option value="{{=s}}">{{=s}}</option>
+            {{pass}}
+         </select>
+      </td>
+   </tr>
+   {{pass}}
+   {{ x = 0 }}
+   {{for db in dbs:}}
+   {{if x % 2 == 0:}}
+   <tr>
+   {{else:}}
+   <tr class="grey">
+   {{pass}}
+   {{ x = x + 1 }}
+      {{=TD(A('EDIT', _href=URL(r=request, f='edit', args=db.dbs.id)))}}
+      {{=TD(db.dbs.name)}}
+      {{=TD(db.dbs.user)}}
+      {{=TD(db.dbs.port)}}
+      {{=TD(db.dbs.status)}}
+      {{=TD(db.dbs.san_disk)}}
+      {{=TD(db.servers.name)}}
+   </tr>
+   {{pass}}
+</table>
+{{=H2(A('Add DB', _href=URL(r=request, f='add')))}}
+

@@ -1,0 +1,53 @@
+#!/bin/ksh
+if [[ $# -eq 0 ]];then
+   print "You must provide an environment to run this script in."
+   exit
+fi
+
+ENVT="/TIERS/$1"
+KSH_LOCS="bi/BOP */script"
+PROPS_LOCS="bi/script/BOP/config bi/BOP/config cv/script props"
+XML_LOCS="fw/java/xml"
+
+if [[ ! -d ${ENVT} ]]; then
+   echo "Environment ${ENVT} does not exist."
+   exit
+fi
+#
+# Written by James Sandlin
+# This is version 2.0 of this script.
+# The original version searched all of /TIERS/$1 to do a cleanup. 
+# This worked, however it was very slow. Thus, I have modified the script to only
+# search select directories for each file type.
+#
+
+
+
+
+echo "------ Removing CTRL-M from *.ksh --------"
+for a_dir in $KSH_LOCS
+do
+   echo "Removing CTRL-M from $ENVT/$a_dir/*.ksh" 
+   find $ENVT/$a_dir -type f -name "*.ksh" -exec perl -pi -e "s/\015\012/\012/g" {} \;
+done
+
+echo "------ Removing CTRL-M from *.properties --------"
+for a_dir in $PROPS_LOCS
+do
+   echo "Removing CTRL-M from $ENVT/$a_dir/*.properties" 
+   find $ENVT/$a_dir -type f -name "*.properties" -exec perl -pi -e "s/\015\012/\012/g" {} \;
+done
+
+echo "------ Removing CTRL-M from *.xml --------"
+for a_dir in $XML_LOCS
+do
+   echo "Removing CTRL-M from in $ENVT/$a_dir/*.xml" 
+   find $ENVT/$a_dir -type f -name "*.xml" -exec perl -pi -e "s/\015\012/\012/g" {} \;
+done
+
+echo "------ Changing ENV to $1 in *.ksh --------"
+for a_dir in $KSH_LOCS
+do
+   echo "Changing ENV to $1 in $ENVT/$a_dir/*.ksh" 
+   find $ENVT/$a_dir -type f -name "*.ksh" -exec perl -pi -e "s/ENV/$1/g" {} \;
+done

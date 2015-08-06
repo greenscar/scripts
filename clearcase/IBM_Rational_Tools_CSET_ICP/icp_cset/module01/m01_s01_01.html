@@ -1,0 +1,92 @@
+<html><!-- #BeginTemplate "/templates/module.dwt" --><!-- DW6 -->
+<head>
+<title>IBM Rational software online training</title>
+
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+<meta name="Description" content="IBM Rational software online training"/>
+<meta name="Abstract" content="IBM Rational software online training"/>
+<meta name="Keywords" content="ibm, international business machines, rational, rational sofware, ibm training, rational training, rational university, clearcase, clearquest, rup, rational uinified process, software modeling, software development, xde, rational rose, xde tester, software configuration management"/>
+<meta name="Owner" content="ref@ibm.us.com"/>
+<meta name="Robots" content="noindex,nofollow"/>
+<meta name="Security" content="private"/>
+<meta name="Source" content="IBM Rational sofware - Rational University"/>
+<meta name="IBM.Country" content="US"/>
+<meta name="DC.Date" scheme="iso8601" content="2004-01-30"/>
+<meta name="DC.Language" scheme="rfc1766" content="en-US"/>
+<meta name="DC.Rights" content="Copyright (c) 2004 by IBM Corporation"/>
+<meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="ZZ999"/>
+<meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="ZZ999"/>
+<meta name="DC.Publisher" content="IBM Corporation - Rational software"/>
+<meta name="IBM.Effective" scheme="W3CDTF" content="2004-01-30"/>
+<meta name="IBM.Industry" scheme="IBM_IndustryTaxonomy" content="ZZ"/>
+<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+
+<link rel='stylesheet' href='../../common_env/styles/ru_style.css' type='text/css'>
+<script language="javascript" src="../../common_env/scripts/mm_functions.js"></script>
+<!-- #BeginEditable "headCode" --><script language="javascript">
+//
+</script>
+<!-- #EndEditable -->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<!-- #BeginEditable "content" -->
+      <table width="800" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="../../common_media/images/0shim.gif" alt="" width="30" height="15"></td>
+    <td><img src="../../common_media/images/0shim.gif" alt="" width="600" height="1"></td>
+    <td><img src="../../common_media/images/0shim.gif" alt="" width="130" height="1"></td>
+  </tr>
+  <tr>
+    <td><img src="../../common_media/images/0shim.gif" alt="" width="30" height="30"></td>
+    <td valign="top"> <p>In some cases, and in some situations, people on other 
+        streams may only want certain changes propagated to their stream out of 
+        a large set of changes. A deliver of the activity would attempt to merge 
+        starting at the cset version (so including activity versions up to the 
+        activity’s versions being delivered). Cset.pl would simply redo that activity’s 
+        cset. Lets look at some pictures to show the difference between a deliver 
+        (or findmerge –cset) with a cset.pl –redo:</p>
+      <p><img src="images/CSET_001.jpg" width="450" height="433"></p>
+      <p><br>
+        In the above picture, if you were able to deliver activities (Actp1, Actp2, 
+        Actp3) from the integration stream of Project_2 to the integration stream 
+        of Project_1, then the Deliver1 activity would comprise of the changes 
+        incorporated in activities Actp1, Actp2, and Actp3. There are a few problems 
+        with this normal sequence to be aware of:</p>
+      <p>1) Currently, UCM only allows deliveries of baselines between project 
+        integration streams, so the above example is not possible with Deliver 
+        (but can be accomplished with cset.pl). So, pretend Project_2 is a developer 
+        stream and things will work with deliver.<br>
+        2) Suppose I only wanted to deliver Actp3’s changes? UCM will require 
+        that Actp1 and Actp2 be delivered as well, even if they don’t relate to 
+        the changes in Actp3. A developer may end up having to resolve conflicts 
+        with activities they did not participate in. With only three activities 
+        here, it may not be a big deal. Suppose I have a stream with 150 activities 
+        on it, and I only want 15 of those on my project stream?</p>
+      <p><br>
+        Let’s look at the picture for a cset.pl –redo operation:</p>
+      <p><img src="images/CSET_002.jpg" width="471" height="435"></p>
+      <p>By using the cset.pl –redo operation, you can create a new activity called 
+        Redo_Actp3, and simply do a ccperl cset.pl –redo Actp3 and ClearCase will 
+        perform the merge of only Actp3’s change set into your view. Note, there 
+        are no hyperlinks drawn in the Vtree, or nothing else currently stored 
+        within the activity Redo_Actp3 letting you know where it came from (thus 
+        the naming convention is important). But it will solve some of the issues 
+        that arise in certain UCM environments.</p>
+      <p>Let's take a look at the CSET.PL Undo operation...<br>
+      </p>
+      </td>
+    <td><img src="../../common_media/images/0shim.gif" alt="" width="30" height="1"></td>
+  </tr>
+  <tr>
+    <td><img src="../../common_media/images/0shim.gif" alt="" width="30" height="30"></td>
+    <td valign="top">
+      <p>&nbsp;</p></td>
+    <td><p>&nbsp;</p>
+    </td>
+  </tr>  
+</table>
+<!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

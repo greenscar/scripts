@@ -1,0 +1,1654 @@
+#############################################################################################################
+# 
+###############################################################################################################
+
+project.name=TIERS
+remoteproject.name=TIERS-Remote
+bldserver.name=iedaau019
+blduser.name=ccbuild
+
+#==================== New Build Setup Properties =======================================
+bldhome.dir=/home/${blduser.name}/tiersbuild/harmony
+
+tiersapps.dir=${bldhome.dir}/tiersapps/${view_name}
+
+bldlogs.dir=${bldhome.dir}/tiersapps/${env_name}/logs
+blddocs.dir=${bldhome.dir}/doc
+bldprops.dir=${bldhome.dir}/props
+bldscripts.dir=${bldhome.dir}/scripts
+bldxml.dir=${bldhome.dir}/xml
+bldlib.dir=${bldhome.dir}/lib
+bldreports.dir=${tiersapps.dir}/bldreports
+bldreport.props=${bldprops.dir}/bldreport.properties
+bldrpthtml.template=harmonysuccess.htm
+#==================== End New Build Setup Properties ===================================
+
+#==================== General Properties ===============================================
+base.dir=${bldhome.dir}
+
+
+build.dir=${base.dir}
+online.dir=${tiersapps.dir}/online
+class.dir=${online.dir}/class
+onlinejar.dir=${online.dir}/jar
+cpfiles.dir=${build.dir}/lib
+externaljar.dir=${cpfiles.dir}/thirdparty
+othertiers.dir=${cpfiles.dir}/othertiers
+ear.name=stage3.ear
+bakupear.dir=${online.dir}/bkupears
+ear.dir=${online.dir}/ear
+xml.dir=${build.dir}/xml
+docs.dir=${build.dir}/doc
+api.dir=${docs.dir}/api
+dgm.dir=${docs.dir}/dgm
+templates.dir=${docs.dir}/templates
+props.dir=${build.dir}/props
+scripts.dir=${build.dir}/scripts
+uptscript.name=parsecclog.pl
+update.script=${scripts.dir}/${uptscript.name}
+onlineclass.dir=${class.dir}/online
+logs.dir=${tiersapps.dir}/logs
+viewlog.file=${logs.dir}/${env_name}updateView
+dd.dir=${view.dir}/TIERS_entity/Build/DeploymentDescriptors
+compileflag.file=${props.dir}/${view_name}Compile.properties
+ear.jarincludes=*EJB.jar,trackFW.jar,${war.name}
+ear.externaljarincludes=jspellhtml2k4.war,AdminCommon.jar,AdminConsole.jar,g1client.jar,unicoder.jar,xerces.jar
+#layerdd.dir=${online.dir}/dd
+layerdd.dir=${view.dir}/TIERS_entity/Build/DeploymentDescriptors
+layerappxml_ws.name=${layerdd.dir}/j2ee_ws/META-INF/application.xml
+layerappxml.name=${layerdd.dir}/j2ee/META-INF/application.xml
+#==================== End General Properties ============================================
+
+#====================== Property Files Properties ==============================
+pf.view.name=SYSCONFIG_Int
+pf.view.dir=/home/ccbuild/${pf.view.name}/IE_sysconf/TIERS
+pf.view.subdir=online
+pf.viewlog.file=${logs.dir}/${env_name}updatePropsView
+pf.dir=${online.dir}/${pf.view.subdir}
+#==================== END Property Files Properties ============================
+
+#==================== Build file documentation related ==================================
+buildxml.name=build.xml
+buildfiledoc.dir=${api.dir}
+buildxml.file=${xml.dir}/${buildxml.name}
+buildfilehtml.dir=${api.dir}
+buildfiledgm.dir=${dgm.dir}
+buildocdot.name=builddoc.dot
+builddocdot.file=${buildfiledgm.dir}/${buildocdot.name}
+graphiz.dir=${build.dir}/ATT/Graphviz/bin
+graphizip.option=-Tpng
+graphizop.option=-o
+graphizipip.file=${builddocdot.file}
+targetflow.file=buildtargetflow.png
+graphizipop.file=${buildfiledgm.dir}/${targetflow.file}
+#==================== End Build file documentation related ==============================
+
+#==================== WebSphere Related Properties ======================================
+was.home=/opt/WebSphere/AppServer/
+was.anttask=${was.home}/lib/wsanttasks.jar
+#==================== WebSphere Related Properties ======================================
+
+#===================== Tomcat Related  ===================================================
+CATALINA_HOME=/opt/${blduser.name}/Tomcat
+#CATALINA_HOME=/Tomcat/
+bldservertomcat.version=jakarta-tomcat-5.0.30
+bldservertomcat.home=${CATALINA_HOME}/${bldservertomcat.version}
+bldservertomcat.lib=${bldservertomcat.home}/webapps/rant/WEB-INF/lib
+#===================== End Tomcat Related  ================================================
+
+#==================== RMIC Related Properties ===========================================
+rmic.warning=true
+rmic.information=true
+rmic.quiteflag=true
+rmic.failonerror=true
+#--rmic.classpath=${onlinejar.dir}:${cpfiles.dir}:${was.home}/lib/iioprt.jar
+#--dormic.tracks=trackfw,track01,track02,track04,track05,track06,track07,track09,track10
+
+layerrmic.list=bean,trackfw
+layerrmic_ws.list=bean,trackfw,trackws
+#--layerrmicjar.name=${layerjar.dir}/bean.jar
+
+#==================== End RMIC Related Properties =======================================
+
+
+#===================== ClearCase Related ================================================
+uptpreservetime=false
+uptfailonerror=true
+uptcurrenttime=true
+uptrenamehijack=false
+uptoverwritehijack=true
+
+cccq.dir=/home/${blduser.name}
+
+#C:\\build52.2src\\source
+#C:\\projects\\build52_2
+
+view.dir=${cccq.dir}/${view_name}
+#===================== End ClearCase Related ============================================
+
+#===================== Compiling Related ================================================
+pcompile.flag=
+fullcompile.flag=true
+debug.switch=on
+deprecation.switch=off
+fork.switch=off
+verbose.switch=on
+memoryInitialSize.switch=
+memoryMaximumSize.switch=
+onlinecompile.failonerror=true
+recordlog.level=info
+#--compilelogfile.name=${logs.dir}/onlinecompile${env_name}
+#--compileerror.subj=Online Compilation Error in ${env_name} build started at 
+#--compileerror.msg=Please look into the attached file for Error Details
+#===================== End Compiling Related =============================================
+
+#===================== Remote ANT/Project Related =========================================
+remotebuild.flag=
+remoteserver.builddir=/home/${blduser.name}/harmony
+remoteserver.name=cone.dhs.state.tx.us
+remoteserver.xml=${remoteserver.builddir}/xml
+remote.portno=
+remotebuildfile.name=build.xml
+remotebuild.file=${remoteserver.xml}/${remotebuildfile.name}
+remotesoap.url=http://${remoteserver.name}:${remote.portno}/rant/servlet/rpcrouter
+remote.target=remotecompile
+remoteserver.failonerror=true
+
+#===================== End Remote ANT/Project Related =====================================
+
+#============================= WICA Deploy Related =============================
+wica.host=iedaau019
+wica.path=/opt/csw/WICA
+wica.script=${wica.path}/bin/WICA.sh
+wica.ear.dir=${wica.path}/environments/TIERS/cells
+wica.user=wasadmin
+
+#=========================== END WICA Deploy Related ===========================
+
+#===================== Rsync Related ======================================================
+remotecccq.dir=${remoteserver.builddir}/cccq
+remoteear.dir=${remoteserver.builddir}/classes/${env_name}/online/ear/
+# IF DEVELOPMENT / TESTING, USE THIS RSYNC
+rsyncmd.option=-e ssh --delete -av --rsync-path=/opt/csw/bin/rsync
+# IF PROD USE THIS RSYNC
+rsyncmd.production.option=-e ssh --delete -av --rsync-path=/net/ieeprodhome/csw/bin
+rsynremoteview.dir=${cccq.dir}
+rsyn.uptviewfrom=${cccq.dir}/${view_name}/
+remoteview.name=dev
+rsyn.uptviewto=${blduser.name}@${remoteserver.name}:${remotecccq.dir}/${remoteview.name}
+rsyn.copyfrom=${rsynremoteview.dir}/${view_name}/
+rsyn.copyto=${blduser.name}@${remoteserver.name}:${view.dir}/
+rsyn.jarearfrom=${ear.dir}/${ear.name}
+rsyn.jarearto=${blduser.name}@${bldserver.name}:${ear.dir}/${ear.name}
+#===================== End Rsync Related ==================================================
+
+# ==================== Track Level =======================================================
+tracks.all=trackfw,track06,track03,track04,track01,track05,track07,track09,track10,track11
+
+trackfwnowarn.switch=on
+trackfwdebug.switch=on
+trackfwdeprecation.switch=off
+trackfwfork.switch=off
+trackfwverbose.switch=off
+trackfwmemoryInitialSize.switch=
+trackfwmemoryMaximumSize.switch=
+trackfwoptimize.switch=
+trackfwmanifest.name=Functional-Areas
+trackfwmanifest.value=Framework
+trackfwsrc1= ${view.dir}/TIERS_trackfw/FrameworkEJB/ejbModule
+trackfwsrc2=${view.dir}/TIERS_trackfw/TrackFWCommon
+#trackfwsrc=${trackfwsrc1}:${trackfwsrc2}
+trackfwsrc=${view.dir}/TIERS_trackfw/trackfwEJB/ejbModule
+trackfwexcludes=us/tx/state/dhs/framework/batch/**,us/tx/state/dhs/framework/data/sql/batch/**,us/tx/state/dhs/fw/batch/Adapter/**,us/tx/state/dhs/fw/batch/Controller/**/*,us/tx/state/dhs/fw/batch/HelperClasses/**,us/tx/state/dhs/fw/batch/StreamHandler/**,us/tx/state/dhs/fw/batch/broker/**,us/tx/state/dhs/fw/batch/dynamicscheduler/**,us/tx/state/dhs/fw/batch/ftp/**,us/tx/state/dhs/fw/batch/instrumentation/**,us/tx/state/dhs/fw/batch/load/**,us/tx/state/dhs/fw/batch/monitor/**,us/tx/state/dhs/fw/batch/scripts/**,us/tx/state/dhs/fw/batch/services/**,us/tx/state/dhs/fw/batch/sort/**,us/tx/state/dhs/fw/batch/util/**,test/**,**/*ValueObject.java
+trackfwclass.dir=${onlineclass.dir}/trackfw
+trackfwalltherfiles.dir=
+trackfwsourcejar.name=${onlinejar.dir}/trackFW_source.jar
+trackfwBjar.name=${onlinejar.dir}/trackFW_B.jar
+trackfwjar.name=${onlinejar.dir}/trackFW.jar
+trackfwDD.dir=${dd.dir}/trackfw
+trackfwwebcontent.dir=
+
+track01nowarn.switch=on
+track01debug.switch=on
+track01deprecation.switch=off
+track01fork.switch=off
+track01verbose.switch=off
+track01memoryInitialSize.switch=
+track01memoryMaximumSize.switch=
+track01manifest.name=Functional-Areas
+track01manifest.value=DI ED EG
+#track01src=${view.dir}/TIERS_track01/EDEJB/ejbModule
+track01src=${view.dir}/TIERS_track01/track01EJB/ejbModule
+track01excludes=us/tx/state/dhs/tiers/business/batch/**,us/tx/state/dhs/tiers/data/sequential/**,**/*ValueObject.java
+track01.rulesengine=us/tx/state/dhs/tiers/business/rules/rulesengine/RulesEngine.properties
+track01class.dir=${onlineclass.dir}/track01
+track01alltherfiles.dir=
+track01sourcejar.name=${onlinejar.dir}/track01_source.jar
+track01Bjar.name=${onlinejar.dir}/track01EJB_B.jar
+track01jar.name=${onlinejar.dir}/track01EJB.jar
+track01DD.dir=${dd.dir}/track01
+track01webcontent.dir=
+
+
+track02nowarn.switch=on
+track02debug.switch=on
+track02deprecation.switch=off
+track02fork.switch=off
+track02verbose.switch=off
+track02memoryInitialSize.switch=
+track02memoryMaximumSize.switch=
+track02manifest.name=Functional-Areas
+track02manifest.value=AL QC RP
+
+track02src1=${view.dir}/TIERS_track02/ALEJB/ejbModule
+track02src2=${view.dir}/TIERS_track02/QCEJB/ejbModule
+track02src3=${view.dir}/TIERS_track02/RPEJB/ejbModule
+track02src4=${view.dir}/TIERS_track02/track2Common
+#track02src=${track02src1}:${track02src2}:${track02src3}
+track02src=${view.dir}/TIERS_track02/track02EJB/ejbModule
+track2batch=us/tx/state/dhs/tiers/business/rules
+track02excludes=${track2batch}/al/ALSOPPendInfoBo.java,${track2batch}/qc/QcLtcCaseDetailsBo.java,${track2batch}/qc/QcLtcDataExtractBo.java,${track2batch}/qc/QcLtcUtill.java,${track2batch}/qc/QcLtcValidationBo.java,${track2batch}/qc/QcLtcValidationUtill.java,${track2batch}/al/AlMassUpdateManager.java,${track2batch}/rp/**,us/tx/state/dhs/tiers/business/entities/**/*Link.java,**/*ValueObject.java
+track02includes=${track2batch}/rp/RPReportsGetterBO.java,${track2batch}/rp/RPQueueUtil.java,${track2batch}/rp/RPQueueInsertManager.java,${track2batch}/rp/RpReportConstant.java,${track2batch}/rp/RpCaseImplement.java,${track2batch}/rp/RpFactory.java,${track2batch}/rp/IReports.java,${track2batch}/rp/RpExtractDateManager.java,${track2batch}/rp/RpReportsBO.java,${track2batch}/rp/RpAppDenialTrigger.java
+track02class.dir=${onlineclass.dir}/track02
+track02alltherfiles.dir=
+track02sourcejar.name=${onlinejar.dir}/track02_source.jar
+track02Bjar.name=${onlinejar.dir}/track02EJB_B.jar
+track02jar.name=${onlinejar.dir}/track02EJB.jar
+track02DD.dir=${dd.dir}/track02
+track02webcontent.dir=
+
+track06nowarn.switch=on
+track06debug.switch=on
+track06deprecation.switch=off
+track06fork.switch=off
+track06verbose.switch=off
+track06memoryInitialSize.switch=
+track06memoryMaximumSize.switch=512
+track06manifest.name=Functional-Areas
+track06manifest.value=
+track06src1=${view.dir}/TIERS_track06/AREJB/ejbModule
+track06src2=${view.dir}/TIERS_track06/RLEJB/ejbModule
+track06src3=${view.dir}/TIERS_track06/MOEJB/ejbModule
+track06src4=${view.dir}/TIERS_track06/SHEJB/ejbModule
+#track06src=${track06src1}:${track06src2}:${track06src3}:${track06src4}
+track06src=${view.dir}/TIERS_track06/track06EJB/ejbModule
+track06excludes=us/tx/state/dhs/tiers/business/batch/**,us/tx/state/dhs/tiers/data/sequential/**,us/tx/state/dhs/tiers/presenation/model/*.java,us/tx/state/dhs/tiers/business/entities/**/*Link.java,**/*ValueObject.java
+track06class.dir=${onlineclass.dir}/track06
+track06alltherfiles.dir=
+track06sourcejar.name=${onlinejar.dir}/track06_source.jar
+track06Bjar.name=${onlinejar.dir}/track06EJB_B.jar
+track06jar.name=${onlinejar.dir}/track06EJB.jar
+track06DD.dir=${dd.dir}/track06
+track06webcontent.dir=
+
+
+track03nowarn.switch=on
+track03debug.switch=on
+track03deprecation.switch=off
+track03fork.switch=off
+track03verbose.switch=off
+track03memoryInitialSize.switch=
+track03memoryMaximumSize.switch=
+track03manifest.name=Functional-Areas
+track03manifest.value=
+track03src1=${view.dir}/TIERS_track03/DCEJB/ejbModule
+track03src2=${view.dir}/TIERS_track03/IQEJB/ejbModule
+#track03src=${track03src1}:${track03src2}
+track03src=${view.dir}/TIERS_track03/track03EJB/ejbModule
+track03excludes=us/tx/state/dhs/tiers/business/batch/**,us/tx/state/dhs/tiers/data/sequential/**,us/tx/state/dhs/tiers/business/entities/**/*Link.java,**/*ValueObject.java
+track03class.dir=${onlineclass.dir}/track03
+track03sourcejar.name=${onlinejar.dir}/track03_source.jar
+#track03Bjar.name=${onlinejar.dir}/track03EJB_B.jar
+track03Bjar.name=${track06Bjar.name}
+#track03jar.name=${onlinejar.dir}/track03EJB.jar
+track03alltherfiles.dir=
+track03jar.name=${track06jar.name}
+#track03DD.dir=${dd.dir}/track03
+track03DD.dir=${track06DD.dir}
+track03webcontent.dir=
+
+track04nowarn.switch=on
+track04debug.switch=on
+track04deprecation.switch=off
+track04fork.switch=off
+track04verbose.switch=off
+track04memoryInitialSize.switch=
+track04memoryMaximumSize.switch=
+track04manifest.name=Functional-Areas
+track04manifest.value=
+#track04src=${view.dir}/TIERS_track04/COEJB/ejbModule
+track04src=${view.dir}/TIERS_track04/track04EJB/ejbModule
+track04excludes=us/tx/state/dhs/tiers/business/batch/**,us/tx/state/dhs/tiers/data/sequential/**,us\tx\state\dhs\tiers\business\rules\co\MassCorrespondenceDriver.java,us/tx/state/dhs/tiers/business/entities/**/*Link.java,**/*ValueObject.java
+track04class.dir=${onlineclass.dir}/track04
+track04alltherfiles.dir=
+track04sourcejar.name=${onlinejar.dir}/track04_source.jar
+track04Bjar.name=${onlinejar.dir}/track04EJB_B.jar
+track04jar.name=${onlinejar.dir}/track04EJB.jar
+track04DD.dir=${dd.dir}/track04
+track04webcontent.dir=
+
+track05nowarn.switch=on
+track05debug.switch=on
+track05deprecation.switch=off
+track05fork.switch=off
+track05verbose.switch=off
+track05memoryInitialSize.switch=
+track05memoryMaximumSize.switch=
+track05manifest.name=Functional-Areas
+track05manifest.value=
+track05src1=${view.dir}/TIERS_track05/BIEJB/ejbModule
+track05src2=${view.dir}/TIERS_track05/track5Common
+track05src3=${view.dir}/TIERS_track05/HMEJB/ejbModule
+#track05src=${track05src1}:${track05src2}
+track05src=${view.dir}/TIERS_track05/track05EJB/ejbModule
+track05excludes=us/tx/state/dhs/tiers/business/batch/**,us/tx/state/dhs/tiers/data/sequential/**,us/tx/state/dhs/tiers/business/entities/**/*Link.java,**/*ValueObject.java
+track05class.dir=${onlineclass.dir}/track05
+track05alltherfiles.dir=
+track05sourcejar.name=${onlinejar.dir}/track05_source.jar
+track05Bjar.name=${onlinejar.dir}/track05EJB_B.jar
+track05jar.name=${onlinejar.dir}/track05EJB.jar
+track05DD.dir=${dd.dir}/track05
+track05webcontent.dir=
+
+
+
+track07nowarn.switch=on
+track07debug.switch=on
+track07deprecation.switch=off
+track07fork.switch=off
+track07verbose.switch=off
+track07memoryInitialSize.switch=
+track07memoryMaximumSize.switch=
+track07manifest.name=Functional-Areas
+track07manifest.value=
+track07src1=${view.dir}/TIERS_track07/INEJB/ejbModule
+track07src2=${view.dir}/TIERS_track07/track7Common
+#track07src=${track07src1}:${track07src2}
+track07src=${view.dir}/TIERS_track07/track07EJB/ejbModule
+track07excludes=us/tx/state/dhs/tiers/business/batch/**,us/tx/state/dhs/tiers/data/sequential/**,us/tx/state/dhs/tiers/business/entities/**/*Link.java,**/*ValueObject.java
+track07class.dir=${onlineclass.dir}/track07
+track07alltherfiles.dir=
+track07sourcejar.name=${onlinejar.dir}/track07_source.jar
+track07Bjar.name=${onlinejar.dir}/track07EJB_B.jar
+track07jar.name=${onlinejar.dir}/track07EJB.jar
+track07DD.dir=${dd.dir}/track07
+track07webcontent.dir=
+
+track09nowarn.switch=on
+track09debug.switch=on
+track09deprecation.switch=off
+track09fork.switch=off
+track09verbose.switch=off
+track09memoryInitialSize.switch=
+track09memoryMaximumSize.switch=
+track07manifest.name=Functional-Areas
+track07manifest.value=
+#track09src=${view.dir}/TIERS_track09/CVEJB/ejbModule
+track09src=${view.dir}/TIERS_track09/track09EJB/ejbModule
+track09excludes=us/tx/state/dhs/tiers/business/batch/**,us/tx/state/dhs/tiers/data/sequential/**,us/tx/state/dhs/tiers/business/entities/**/*Link.java,**/*ValueObject.java
+track09class.dir=${onlineclass.dir}/track09
+track09alltherfiles.dir=
+track09sourcejar.name=${onlinejar.dir}/track09_source.jar
+track09Bjar.name=${onlinejar.dir}/track09EJB_B.jar
+track09jar.name=${onlinejar.dir}/track09EJB.jar
+track09DD.dir=${dd.dir}/track09
+track09webcontent.dir=
+
+track10nowarn.switch=on
+track10debug.switch=on
+track10deprecation.switch=off
+track10fork.switch=off
+track10verbose.switch=off
+track10memoryInitialSize.switch=
+track10memoryMaximumSize.switch=
+track07manifest.name=Functional-Areas
+track07manifest.value=
+track10src1=${view.dir}/TIERS_track10/RTEJB/ejbModule
+track10src2=${view.dir}/TIERS_track10/SEEJB/ejbModule
+track10src3=${view.dir}/TIERS_track10/HPEJB/ejbModule
+#track10src=${track10src1}:${track10src2}:${track10src3}
+track10src=${view.dir}/TIERS_track10/track10EJB/ejbModule
+track10excludes=us/tx/state/dhs/tiers/business/batch/**,us/tx/state/dhs/tiers/data/sequential/**,us/tx/state/dhs/tiers/business/entities/**/*Link.java,**/*ValueObject.java
+track10class.dir=${onlineclass.dir}/track10
+track10alltherfiles.dir=
+track10sourcejar.name=${onlinejar.dir}/track10_source.jar
+track10Bjar.name=${onlinejar.dir}/track10EJB_B.jar
+track10jar.name=${onlinejar.dir}/track10EJB.jar
+track10DD.dir=${dd.dir}/track10
+track10webcontent.dir=
+
+track11nowarn.switch=on
+track11debug.switch=on
+track11deprecation.switch=off
+track11fork.switch=off
+track11verbose.switch=off
+track11memoryInitialSize.switch=
+track11memoryMaximumSize.switch=
+track11manifest.name=Functional-Areas
+track11manifest.value=
+track11src=${view.dir}/TIERS_track11/track11Common
+track11excludes=us/tx/state/dhs/tiers/business/batch/**,us/tx/state/dhs/tiers/data/sequential/**,us/tx/state/dhs/tiers/business/entities/**/*Link.java,**/*ValueObject.java
+track11class.dir=${onlineclass.dir}/track11
+track11alltherfiles.dir=
+track11sourcejar.name=${onlinejar.dir}/track11_source.jar
+track11Bjar.name=${onlinejar.dir}/track11EJB_B.jar
+track11jar.name=${onlinejar.dir}/track11EJB.jar
+track11DD.dir=${dd.dir}/track11
+track11webcontent.dir=
+
+tierswebnowarn.switch=on
+tierswebdebug.switch=on
+tierswebdeprecation.switch=off
+tierswebfork.switch=off
+tierswebverbose.switch=off
+tierswebmemoryInitialSize.switch=
+tierswebmemoryMaximumSize.switch=
+tierswebmanifest.name=Functional-Areas
+tierswebmanifest.value=
+trackEntity.dir=${view.dir}/TIERS_entity
+tierswebsrc=${trackEntity.dir}/tiersWeb/JavaSource/
+tierswebexcludes=us/tx/state/dhs/tiers/presentation/model/riskmodel/RmPositiveConditionViewCollection.java,us/tx/state/dhs/tiers/presentation/model/riskmodel/RmScoreViewCollection.java
+tierswebclass.dir=${onlineclass.dir}/web/webApplication/WEB-INF/classes/
+webclassroot.dir=${onlineclass.dir}/web/webApplication/
+tiersweballtherfiles.dir=${onlineclass.dir}/web/webApplication/
+tierswebBjar.name=tierswebBwar.jar
+tierswebjar.name=${onlinejar.dir}/stage3tiersWeb.war
+#tierswebDD.dir=${dd.dir}/web/
+tierswebDD.dir=${layerdd.dir}/web/
+tierswebcontent.dir=${trackEntity.dir}/tiersWeb/WebContent
+tiersjsp.dir=${trackEntity.dir}/tiersWeb/WebContent
+tierswebentitysourcejar.name=${onlinejar.dir}/Entity_source.jar
+
+# ==================== End Track Level =================================================
+
+# ==================== Layer Compile=====================================================
+layermanifest.classpath=Class-Path
+cpmanifest.value=trackFW.jar ccd.jar bo.jar bean.jar stage3tiersWeb.war unicoder.jar g1client.jar xerces.jar jspellhtml2k4.war
+cpmanifest_ws.value=trackFW.jar ccd.jar bo.jar bean.jar stage3tiersWeb.war trackws.jar tiersWSWeb.war unicoder.jar g1client.jar xerces.jar jspellhtml2k4.war
+passphrase.text=
+scpverbose.switch=true
+
+layer.classes=${class.dir}
+layerjar.dir=${onlinejar.dir}
+
+layercompile.list=tfw,ccd,bo,bean,web
+layercompile_ws.list=tfw,ccd,bo,bean,trackws,web
+layercompile.failonerror=true
+
+layercompilefork.switch=on
+layercompilememoryInitialSize.switch=512M
+layercompilememoryMaximumSize.switch=850M
+layercompilewarn.switch=on
+layercompiledeprecation.switch=off
+
+t1layer.src=${track01src}
+t2layer.src=${track02src}
+t3layer.src=${track03src}
+t4layer.src=${track04src}
+t5layer.src=${track05src}
+t6layer.src=${track06src}
+t7layer.src=${track07src}
+t9layer.src=${track09src}
+t10layer.src=${track10src}
+t11layer.src=${track11src}
+
+layer.src=${t1layer.src}:${t2layer.src}:${t3layer.src}:${t4layer.src}:${t5layer.src}:${t6layer.src}:${t7layer.src}:${t9layer.src}:${t10layer.src}:${t11layer.src}
+
+
+tfw.src=${trackfwsrc}
+tfwclass.dir=${layer.classes}/tfw
+tfwclasses.dir=${layer.classes}/tfw
+tfw.excludes=us/tx/state/dhs/framework/data/sql/batch/**,us/tx/state/dhs/fw/batch/Adapter/**,us/tx/state/dhs/fw/batch/Controller/**,us/tx/state/dhs/fw/batch/HelperClasses/**,us/tx/state/dhs/fw/batch/StreamHandler/**,us/tx/state/dhs/fw/batch/dynamicscheduler/**,us/tx/state/dhs/fw/batch/ftp/**,us/tx/state/dhs/fw/batch/instrumentation/**,us/tx/state/dhs/fw/batch/load/**,us/tx/state/dhs/fw/batch/monitor/**,us/tx/state/dhs/fw/batch/scripts/**,us/tx/state/dhs/fw/batch/services/**,us/tx/state/dhs/fw/batch/sort/**,test/**,**/*ValueObject.java
+tfw.includes=
+tfwjar.name=${layerjar.dir}/trackFW.jar
+tfwbjar.name=${layerjar.dir}/trackFW_B.jar
+trackfwbjar.name=${tfwbjar.name}
+trackfwjar.name=${tfwjar.name}
+tfwincludetojar.files=${tfwclasses.dir}
+tfwdd.dir=${layerdd.dir}/tfw/
+tfwnowarn.switch=
+tfwdebug.switch=
+tfwdeprecation.switch=
+tfwverbose.switch=
+tfwfork.switch=
+tfwmemoryInitialSize.switch=
+tfwmemoryMaximumSize.switch=
+
+ccd.src=${layer.src}
+ccdclass.dir=${layer.classes}/ccd
+ccdclasses.dir=${layer.classes}/ccd
+ccd.excludes=
+ccd.includes=**/entities/**,**/data/oracle/**,**/ibm/wsif/format/jca/**,**/hhsc/ie/architecture/processservice/**,**/hhsc/ie/architecture/tos/**
+ccdjar.name=${layerjar.dir}/ccd.jar
+ccdbjar.name=${layerjar.dir}/ccd_B.jar
+ccddd.dir=${layer.classes}/ccd
+ccdincludetojar.files=${ccdclasses.dir}
+ccdnowarn.switch=
+ccddebug.switch=
+ccddeprecation.switch=
+ccdverbose.switch=
+ccdfork.switch=
+ccdmemoryInitialSize.switch=
+ccdmemoryMaximumSize.switch=
+
+bo.src=${layer.src}
+boclass.dir=${layer.classes}/bo
+boclasses.dir=${layer.classes}/bo
+bo.excludes=**/business/batch/dc/**,**/business/rules/co/MassCorrespondenceDriver.java,**/business/batch/mo/**,**/business/batch/sh/**
+bo.includes=**/rules/**,**/business/batch/**,**/data/sequential/**
+bojar.name=${layerjar.dir}/bo.jar
+bobjar.name=${layerjar.dir}/bo_B.jar
+bodd.dir=${layer.classes}/bo
+boincludetojar.files=us/tx/state/dhs/tiers/business/rules/rulesengine/RulesEngine.properties
+bonowarn.switch=
+bodebug.switch=
+bodeprecation.switch=
+boverbose.switch=
+bofork.switch=
+bomemoryInitialSize.switch=
+bomemoryMaximumSize.switch=
+
+bean.src=${layer.src}
+beanclass.dir=${layer.classes}/bean
+beanclasses.dir=${layer.classes}/bean
+bean.excludes=
+bean.includes=**/services/**
+beanjar.name=${layerjar.dir}/bean.jar
+beanbjar.name=${layerjar.dir}/bean_B.jar
+beandd.dir=${layerdd.dir}/bean/
+beanincludetojar.files=${beanclasses.dir}
+beannowarn.switch=
+beandebug.switch=
+beandeprecation.switch=
+beanverbose.switch=
+beanfork.switch=
+beanmemoryInitialSize.switch=
+beanmemoryMaximumSize.switch=
+
+web.src=${tierswebsrc}
+webclasspathtojar.dir=${layer.classes}/tiersweb
+webclass.dir=${webclasspathtojar.dir}/WEB-INF/classes
+webclasses.dir=${tierswebcontent.dir}
+webstaticcontent.dir=${tierswebcontent.dir}
+deployxmlfrom.dir=${webstaticcontent.dir}/XML/
+web.excludes=us/tx/state/dhs/tiers/presentation/model/riskmodel/RmPositiveConditionViewCollection.java,us/tx/state/dhs/tiers/presentation/model/riskmodel/RmScoreViewCollection.java
+web.includes=
+webbjar.name=${layerjar.dir}/stage3tiersWeb.war
+webjar.name=${webbjar.name}
+webdd.dir=${tierswebDD.dir}
+webincludetojar.files=${webclass.dir}
+webnowarn.switch=
+webdebug.switch=
+webdeprecation.switch=
+webverbose.switch=
+webfork.switch=
+webmemoryInitialSize.switch=
+webmemoryMaximumSize.switch=
+
+##Track created for webservices
+trackwsnowarn.switch=on
+trackwsdebug.switch=on
+trackwsdeprecation.switch=off
+trackwsfork.switch=off
+trackwsverbose.switch=off
+trackwsmemoryInitialSize.switch=
+trackwsmemoryMaximumSize.switch=
+trackwsmanifest.name=Functional-Areas
+trackwsmanifest.value=
+trackws.src=${view.dir}/TIERS_trackws/trackwsEJB/ejbModule
+trackws.excludes=
+trackws.includes=**/*.java
+trackwsclass.dir=${layer.classes}/trackws
+trackwsclasses.dir=${layer.classes}/trackws
+trackwsWSDL.dir=${trackwsclass.dir}/META-INF
+trackwssourcejar.name=${onlinejar.dir}/trackws_source.jar
+trackwsbjar.name=${onlinejar.dir}/trackws_B.jar
+trackwsjar.name=${onlinejar.dir}/trackws.jar
+trackwsdd.dir=${trackws.src}
+trackwswebcontent.dir=
+webwsclasspathtojar.dir=${view.dir}/TIERS_trackwsWeb/trackwsWeb/WebContent
+webwsbjar.name=${layerjar.dir}/tiersWSWeb.war
+
+
+##Template jars path
+template.jar.name=template.jar
+template.src.dir=${view.dir}/TIERS_track04/template
+
+################### Trackwise properties ####################
+
+trackwiseclasses.dir=${online.dir}/trackwiseclasses
+trackwisejar.dir=${online.dir}/trackwisejars
+trackwise.list=trackfw_tw,track01_tw,track02_tw,track03_tw,track04_tw,track05_tw,track06_tw,track07_tw,track09_tw,track10_tw,track11_tw
+#trackwise.list=track07_tw
+
+trackfw_tw.src=${view.dir}/TIERS_trackfw/trackfwEJB/ejbModule
+trackfw_tw.name=trackfw
+
+track01_tw.src=${view.dir}/TIERS_track01/track01EJB/ejbModule
+track01_tw.name=track01
+
+track02_tw.src=${view.dir}/TIERS_track02/track02EJB/ejbModule
+track02_tw.name=track02
+
+track03_tw.src=${view.dir}/TIERS_track03/track03EJB/ejbModule
+track03_tw.name=track03
+
+track04_tw.src=${view.dir}/TIERS_track04/track04EJB/ejbModule
+track04_tw.name=track04
+
+track05_tw.src=${view.dir}/TIERS_track05/track05EJB/ejbModule
+track05_tw.name=track05
+
+track06_tw.src=${view.dir}/TIERS_track06/track06EJB/ejbModule
+track06_tw.name=track06
+
+track07_tw.src=${view.dir}/TIERS_track07/track07EJB/ejbModule
+track07_tw.name=track07
+
+track09_tw.src=${view.dir}/TIERS_track09/track09EJB/ejbModule
+track09_tw.name=track09
+
+track10_tw.src=${view.dir}/TIERS_track10/track10EJB/ejbModule
+track10_tw.name=track10
+
+track11_tw.src=${view.dir}/TIERS_track11/track11Common
+track11_tw.name=track11
+################## End trackwise properties ####################
+
+
+# ==================== End Package Compile=================================================
+
+#==================== Deployment Specific Properties ====================================
+deploymentappxml.name=${dd.dir}/j2ee/META-INF/application.xml
+extjarstoEAR.files=jspellhtml2k4.war,xerces.jar,unicoder.jar,g1client.jar
+othertiersjarstoEAR.files=AdminCommon.jar,AdminConsole.jar
+jarstoEAR.files=trackFW.jar,ccd.jar,bo.jar,bean.jar,ws.jar,stage3tiersWeb.war
+jarstoEAR_ws.files=trackFW.jar,ccd.jar,bo.jar,bean.jar,ws.jar,stage3tiersWeb.war,trackws.jar,tiersWSWeb.war
+
+deploylogfile.name=${logs.dir}/onlinedeploy${env_name}
+
+deployscript.name=${scripts.dir}/deployonline.jacl
+clusterdeployscript.name=${scripts.dir}/clusterdeploy.jacl
+restartscript.name=${scripts.dir}/restartserver.jacl
+serverstartsleep.time=2
+
+#====================End Build Related properties====================================
+
+#****************************************************************************************************************************************
+# MODIFIED BY JAMES SANDLIN
+# This section is the properties for the environments I know are in use currently.
+# 2006-10-13
+#****************************************************************************************************************************************
+
+#******************AST01*****************************************
+onlineAST01appserver.list=AST01
+onlineAST01appserver1.list=
+onlineAST01cell.name=tiers_ast_Network
+onlineAST01host.name=iedaau018
+onlineAST01user.name=wastest
+onlineAST01hostxml.dir=/home/${onlineAST01user.name}/WebContent/${onlineAST01appserver.list}/XML
+# host.port => Deployment Manager SOAP Port
+onlineAST01host.port=14511
+onlineAST01node.name=iedaau002
+onlineAST01server.name=ast01-server2
+onlineAST01dns.name=tiers-ast01
+onlineAST01clustersserver.name=iedaau002
+onlineAST01app.name=tiersast01
+onlineAST01vh.name=ast01-cluster
+onlineAST01conn.type=SOAP
+onlineAST01was.home=/export/ENV/TIERS/ast/WebSphere/AppServer
+onlineAST01svr.login=${onlineAST01user.name}@${onlineAST01host.name}
+onlineAST01webserver.switch=true
+onlineAST01webserver.list=${onlineAST01clustersserver.name}
+onlineAST01webserver.dir=/home/${onlineAST01user.name}/WebContent/${onlineAST01appserver.list}/web
+AST01onlineserverstatus.cmd=${onlineAST01was.home}/bin/serverStatus.sh ${onlineAST01server.name}
+AST01onlineserverstop.cmd=${onlineAST01was.home}/bin/stopServer.sh ${onlineAST01server.name} 
+AST01onlineserverstart.cmd=${onlineAST01was.home}/bin/startServer.sh ${onlineAST01server.name} 
+onlineAST01clustermembers.list=ast01-server2
+onlineAST01cluster.switch=Yes
+onlineAST01cluster.name=ast01-cluster
+onlineAST01dmgr.home=/export/ENV/TIERS/ast/WebSphere/DeploymentManager
+onlineAST01templatedest=/home/${onlineAST01user.name}/WebContent/${onlineAST01appserver.list}/bin
+onlineAST01pf.pullfromstream=true
+onlineAST01pf.dir=/home/${onlineAST01user.name}/WebContent/${onlineAST01appserver.list}/properties  
+ 
+#******************AST02*****************************************
+onlineAST02appserver.list=AST02
+onlineAST02appserver1.list=
+onlineAST02cell.name=tiers_ast_Network
+onlineAST02host.name=iedaau018
+onlineAST02user.name=wastest
+onlineAST02hostxml.dir=/home/${onlineAST02user.name}/WebContent/${onlineAST02appserver.list}/XML
+onlineAST02host.port=14511
+onlineAST02node.name=iedaau002
+onlineAST02server.name=ast02-server2
+onlineAST02dns.name=tiers-ast02
+onlineAST02clustersserver.name=iedaau002
+onlineAST02app.name=tiersast02
+onlineAST02vh.name=ast02-cluster
+onlineAST02conn.type=SOAP
+onlineAST02was.home=/export/ENV/TIERS/ast/WebSphere/AppServer
+onlineAST02svr.login=${onlineAST02user.name}@${onlineAST02host.name}
+onlineAST02webserver.switch=true
+onlineAST02webserver.list=${onlineAST02clustersserver.name}
+onlineAST02webserver.dir=/home/${onlineAST02user.name}/WebContent/${onlineAST02appserver.list}/web
+AST02onlineserverstatus.cmd=${onlineAST02was.home}/bin/serverStatus.sh ${onlineAST02server.name}
+AST02onlineserverstop.cmd=${onlineAST02was.home}/bin/stopServer.sh ${onlineAST02server.name} 
+AST02onlineserverstart.cmd=${onlineAST02was.home}/bin/startServer.sh ${onlineAST02server.name} 
+onlineAST02clustermembers.list=ast02-server2
+onlineAST02cluster.switch=Yes
+onlineAST02cluster.name=ast02-cluster
+onlineAST02dmgr.home=/export/ENV/TIERS/ast/WebSphere/DeploymentManager
+onlineAST02templatedest=/home/${onlineAST02user.name}/WebContent/${onlineAST02appserver.list}/bin
+onlineAST02pf.pullfromstream=true
+onlineAST02pf.dir=/home/${onlineAST02user.name}/WebContent/${onlineAST02appserver.list}/properties  
+ 
+#******************AST03*****************************************
+onlineAST03appserver.list=AST03
+onlineAST03appserver1.list=
+onlineAST03cell.name=tiers_ast_Network
+onlineAST03host.name=iedaau018
+onlineAST03user.name=wastest
+onlineAST03hostxml.dir=/home/${onlineAST03user.name}/WebContent/${onlineAST03appserver.list}/XML
+onlineAST03host.port=14511
+onlineAST03node.name=iedaau002
+onlineAST03server.name=ast03-server2
+onlineAST03dns.name=tiers-ast03
+onlineAST03clustersserver.name=iedaau002
+onlineAST03app.name=tiersast03
+onlineAST03vh.name=ast03-cluster
+onlineAST03conn.type=SOAP
+onlineAST03was.home=/export/ENV/TIERS/ast/WebSphere/AppServer
+onlineAST03svr.login=${onlineAST03user.name}@${onlineAST03host.name}
+onlineAST03webserver.switch=true
+onlineAST03webserver.list=${onlineAST03clustersserver.name}
+onlineAST03webserver.dir=/home/${onlineAST03user.name}/WebContent/${onlineAST03appserver.list}/web
+AST03onlineserverstatus.cmd=${onlineAST03was.home}/bin/serverStatus.sh ${onlineAST03server.name}
+AST03onlineserverstop.cmd=${onlineAST03was.home}/bin/stopServer.sh ${onlineAST03server.name} 
+AST03onlineserverstart.cmd=${onlineAST03was.home}/bin/startServer.sh ${onlineAST03server.name} 
+onlineAST03clustermembers.list=ast03-server2
+onlineAST03cluster.switch=Yes
+onlineAST03cluster.name=ast03-cluster
+onlineAST03dmgr.home=/export/ENV/TIERS/ast/WebSphere/DeploymentManager
+onlineAST03templatedest=/home/${onlineAST03user.name}/WebContent/${onlineAST03appserver.list}/bin
+onlineAST03pf.pullfromstream=true
+onlineAST03pf.dir=/home/${onlineAST03user.name}/WebContent/${onlineAST03appserver.list}/properties  
+
+#****************** APT01 ************************************
+onlineAPT01appserver.list=APT01
+onlineAPT01appserver1.list=
+onlineAPT01cell.name=tiers_apt_Network
+onlineAPT01host.name=iedaau018
+onlineAPT01user.name=wasapt
+onlineAPT01hostxml.dir=/home/${onlineAPT01user.name}/WebContent/${onlineAPT01appserver.list}/XML
+onlineAPT01host.port=14211
+onlineAPT01node.name=iedaau002
+onlineAPT01server.name=apt01-server2
+onlineAPT01dns.name=tiers-apt01
+onlineAPT01clustersserver.name=iedaau002
+onlineAPT01app.name=tiersapt01
+onlineAPT01vh.name=apt01-cluster
+onlineAPT01conn.type=SOAP
+onlineAPT01was.home=/export/ENV/TIERS/apt/WebSphere/AppServer
+onlineAPT01svr.login=${onlineAPT01user.name}@${onlineAPT01host.name}
+onlineAPT01webserver.switch=true
+onlineAPT01webserver.list=${onlineAPT01clustersserver.name}
+onlineAPT01webserver.dir=/home/${onlineAPT01user.name}/WebContent/${onlineAPT01appserver.list}/web
+APT01onlineserverstatus.cmd=${onlineAPT01was.home}/bin/serverStatus.sh ${onlineAPT01server.name}
+APT01onlineserverstop.cmd=${onlineAPT01was.home}/bin/stopServer.sh ${onlineAPT01server.name}
+APT01onlineserverstart.cmd=${onlineAPT01was.home}/bin/startServer.sh ${onlineAPT01server.name}
+onlineAPT01clustermembers.list=apt01-server2
+onlineAPT01cluster.switch=Yes
+onlineAPT01cluster.name=apt01-cluster
+onlineAPT01dmgr.home=/export/ENV/TIERS/aging/WebSphere/DeploymentManager
+onlineAPT01templatedest=/home/${onlineAPT01user.name}/WebContent/${onlineAPT01appserver.list}/bin
+onlineAPT01pf.pullfromstream=true
+onlineAPT01pf.dir=/home/${onlineAPT01user.name}/WebContent/${onlineAPT01appserver.list}/properties
+
+#****************** APT02 ************************************
+onlineAPT02appserver.list=APT02
+onlineAPT02appserver1.list=
+onlineAPT02cell.name=tiers_apt_Network
+onlineAPT02host.name=iedaau018
+onlineAPT02user.name=wasapt
+onlineAPT02hostxml.dir=/home/${onlineAPT02user.name}/WebContent/${onlineAPT02appserver.list}/XML
+onlineAPT02host.port=14211
+onlineAPT02node.name=iedaau002
+onlineAPT02server.name=apt02-server2
+onlineAPT02dns.name=tiers-apt02
+onlineAPT02clustersserver.name=iedaau002
+onlineAPT02app.name=tiersapt02
+onlineAPT02vh.name=apt02-cluster
+onlineAPT02conn.type=SOAP
+onlineAPT02was.home=/export/ENV/TIERS/apt/WebSphere/AppServer
+onlineAPT02svr.login=${onlineAPT02user.name}@${onlineAPT02host.name}
+onlineAPT02webserver.switch=true
+onlineAPT02webserver.list=${onlineAPT02clustersserver.name}
+onlineAPT02webserver.dir=/home/${onlineAPT02user.name}/WebContent/${onlineAPT02appserver.list}/web
+APT02onlineserverstatus.cmd=${onlineAPT02was.home}/bin/serverStatus.sh ${onlineAPT02server.name}
+APT02onlineserverstop.cmd=${onlineAPT02was.home}/bin/stopServer.sh ${onlineAPT02server.name}
+APT02onlineserverstart.cmd=${onlineAPT02was.home}/bin/startServer.sh ${onlineAPT02server.name}
+onlineAPT02clustermembers.list=apt02-server2
+onlineAPT02cluster.switch=Yes
+onlineAPT02cluster.name=apt02-cluster
+onlineAPT02dmgr.home=/export/ENV/TIERS/aging/WebSphere/DeploymentManager
+onlineAPT02templatedest=/home/${onlineAPT02user.name}/WebContent/${onlineAPT02appserver.list}/bin
+onlineAPT02pf.pullfromstream=true
+onlineAPT02pf.dir=/home/${onlineAPT02user.name}/WebContent/${onlineAPT02appserver.list}/properties
+
+#****************** AGING01 ************************************
+onlineAGING01appserver.list=AGING01
+onlineAGING01appserver1.list=
+onlineAGING01cell.name=tiers_aging_Network
+onlineAGING01host.name=iedaau018
+onlineAGING01user.name=wasaging
+onlineAGING01hostxml.dir=/home/${onlineAGING01user.name}/WebContent/${onlineAGING01appserver.list}/XML
+onlineAGING01host.port=14211
+onlineAGING01node.name=iedaau002
+onlineAGING01server.name=aging01-server2
+onlineAGING01dns.name=tiers-aging01
+onlineAGING01clustersserver.name=iedaau002
+onlineAGING01app.name=tiersaging01
+onlineAGING01vh.name=aging01-cluster
+onlineAGING01conn.type=SOAP
+onlineAGING01was.home=/export/ENV/TIERS/aging/WebSphere/AppServer
+onlineAGING01svr.login=${onlineAGING01user.name}@${onlineAGING01host.name}
+onlineAGING01webserver.switch=true
+onlineAGING01webserver.list=${onlineAGING01clustersserver.name}
+onlineAGING01webserver.dir=/home/${onlineAGING01user.name}/WebContent/${onlineAGING01appserver.list}/web
+AGING01onlineserverstatus.cmd=${onlineAGING01was.home}/bin/serverStatus.sh ${onlineAGING01server.name}
+AGING01onlineserverstop.cmd=${onlineAGING01was.home}/bin/stopServer.sh ${onlineAGING01server.name}
+AGING01onlineserverstart.cmd=${onlineAGING01was.home}/bin/startServer.sh ${onlineAGING01server.name}
+onlineAGING01clustermembers.list=aging01-server2
+onlineAGING01cluster.switch=Yes
+onlineAGING01cluster.name=aging01-cluster
+onlineAGING01dmgr.home=/export/ENV/TIERS/aging/WebSphere/DeploymentManager
+onlineAGING01templatedest=/home/${onlineAGING01user.name}/WebContent/${onlineAGING01appserver.list}/bin
+onlineAGING01pf.pullfromstream=true
+onlineAGING01pf.dir=/home/${onlineAGING01user.name}/WebContent/${onlineAGING01appserver.list}/properties
+
+#****************** AGING02 **************************************
+onlineAGING02appserver.list=AGING02
+onlineAGING02appserver1.list=
+onlineAGING02cell.name=tiers_aging_Network
+onlineAGING02host.name=iedaau018
+onlineAGING02user.name=wasaging
+onlineAGING02hostxml.dir=/home/${onlineAGING02user.name}/WebContent/${onlineAGING02appserver.list}/XML
+onlineAGING02host.port=14211
+onlineAGING02node.name=iedaau002
+onlineAGING02server.name=aging02-server2
+onlineAGING02dns.name=tiers-aging02
+onlineAGING02clustersserver.name=iedaau002
+onlineAGING02app.name=tiersaging02
+onlineAGING02vh.name=aging02-cluster
+onlineAGING02conn.type=SOAP
+onlineAGING02was.home=/export/ENV/TIERS/aging/WebSphere/AppServer
+onlineAGING02svr.login=${onlineAGING02user.name}@${onlineAGING02host.name}
+onlineAGING02webserver.switch=true
+onlineAGING02webserver.list=${onlineAGING02clustersserver.name}
+onlineAGING02webserver.dir=/home/${onlineAGING02user.name}/WebContent/${onlineAGING02appserver.list}/web
+AGING02onlineserverstatus.cmd=${onlineAGING02was.home}/bin/serverStatus.sh ${onlineAGING02server.name}
+AGING02onlineserverstop.cmd=${onlineAGING02was.home}/bin/stopServer.sh ${onlineAGING02server.name}
+AGING02onlineserverstart.cmd=${onlineAGING02was.home}/bin/startServer.sh ${onlineAGING02server.name}
+onlineAGING02clustermembers.list=aging02-server2
+onlineAGING02cluster.switch=Yes
+onlineAGING02cluster.name=aging02-cluster
+onlineAGING02dmgr.home=/export/ENV/TIERS/aging/WebSphere/DeploymentManager
+onlineAGING02templatedest=/home/${onlineAGING02user.name}/WebContent/${onlineAGING02appserver.list}/bin
+onlineAGING02pf.pullfromstream=true
+onlineAGING02pf.dir=/home/${onlineAGING02user.name}/WebContent/${onlineAGING02appserver.list}/properties
+
+#****************** AGING03 ************************************
+onlineAGING03appserver.list=AGING03
+onlineAGING03appserver1.list=
+onlineAGING03cell.name=tiers_aging_Network
+onlineAGING03host.name=iedaau018
+onlineAGING03user.name=wasaging
+onlineAGING03hostxml.dir=/home/${onlineAGING03user.name}/WebContent/${onlineAGING03appserver.list}/XML
+onlineAGING03host.port=14211
+onlineAGING03node.name=iedaau002
+onlineAGING03server.name=aging03-server2
+onlineAGING03dns.name=tiers-aging03
+onlineAGING03clustersserver.name=iedaau002
+onlineAGING03app.name=tiersaging03
+onlineAGING03vh.name=aging03-cluster
+onlineAGING03conn.type=SOAP
+onlineAGING03was.home=/export/ENV/TIERS/aging/WebSphere/AppServer
+onlineAGING03svr.login=${onlineAGING03user.name}@${onlineAGING03host.name}
+onlineAGING03webserver.switch=true
+onlineAGING03webserver.list=${onlineAGING03clustersserver.name}
+onlineAGING03webserver.dir=/home/${onlineAGING03user.name}/WebContent/${onlineAGING03appserver.list}/web
+AGING03onlineserverstatus.cmd=${onlineAGING03was.home}/bin/serverStatus.sh ${onlineAGING03server.name}
+AGING03onlineserverstop.cmd=${onlineAGING03was.home}/bin/stopServer.sh ${onlineAGING03server.name}
+AGING03onlineserverstart.cmd=${onlineAGING03was.home}/bin/startServer.sh ${onlineAGING03server.name}
+onlineAGING03clustermembers.list=aging03-server2
+onlineAGING03cluster.switch=Yes
+onlineAGING03cluster.name=aging03-cluster
+onlineAGING03dmgr.home=/export/ENV/TIERS/aging/WebSphere/DeploymentManager
+onlineAGING03templatedest=/home/${onlineAGING03user.name}/WebContent/${onlineAGING03appserver.list}/bin
+onlineAGING03pf.pullfromstream=true
+onlineAGING03pf.dir=/home/${onlineAGING03user.name}/WebContent/${onlineAGING03appserver.list}/properties
+
+#****************** MISC01 **************************************
+onlineMISC01appserver.list=MISC01
+onlineMISC01appserver1.list=
+onlineMISC01cell.name=tiers_misc_Network
+onlineMISC01host.name=iedaau018
+onlineMISC01user.name=wasmisc
+onlineMISC01hostxml.dir=/home/${onlineMISC01user.name}/WebContent/${onlineMISC01appserver.list}/XML
+onlineMISC01host.port=14311
+onlineMISC01node.name=iedaau002
+onlineMISC01server.name=misc01-server2
+onlineMISC01dns.name=tiers-misc01
+onlineMISC01clustersserver.name=iedaau002
+onlineMISC01app.name=tiersmisc01
+onlineMISC01vh.name=misc01-cluster
+onlineMISC01conn.type=SOAP
+onlineMISC01was.home=/export/ENV/TIERS/misc/WebSphere/AppServer
+onlineMISC01svr.login=${onlineMISC01user.name}@${onlineMISC01host.name}
+onlineMISC01webserver.switch=true
+onlineMISC01webserver.list=${onlineMISC01clustersserver.name}
+onlineMISC01webserver.dir=/home/${onlineMISC01user.name}/WebContent/${onlineMISC01appserver.list}/web
+MISC01onlineserverstatus.cmd=${onlineMISC01was.home}/bin/serverStatus.sh ${onlineMISC01server.name}
+MISC01onlineserverstop.cmd=${onlineMISC01was.home}/bin/stopServer.sh ${onlineMISC01server.name} 
+MISC01onlineserverstart.cmd=${onlineMISC01was.home}/bin/startServer.sh ${onlineMISC01server.name} 
+onlineMISC01clustermembers.list=misc01-server2
+onlineMISC01cluster.switch=Yes
+onlineMISC01cluster.name=misc01-cluster
+onlineMISC01dmgr.home= /export/ENV/TIERS/misc/WebSphere/DeploymentManager
+onlineMISC01templatedest=/home/${onlineMISC01user.name}/WebContent/${onlineMISC01appserver.list}/bin
+onlineMISC01pf.pullfromstream=true
+onlineMISC01pf.dir=/home/${onlineMISC01user.name}/WebContent/${onlineMISC01appserver.list}/properties
+
+
+#****************** MISC02 **************************************
+onlineMISC02appserver.list=MISC02
+onlineMISC02appserver1.list=
+onlineMISC02cell.name=tiers_misc_Network
+onlineMISC02host.name=iedaau018
+onlineMISC02user.name=wasmisc
+onlineMISC02hostxml.dir=/home/${onlineMISC02user.name}/WebContent/${onlineMISC02appserver.list}/XML
+onlineMISC02host.port=14311
+onlineMISC02node.name=iedaau002
+onlineMISC02server.name=misc02-server2
+onlineMISC02dns.name=tiers-misc02
+onlineMISC02clustersserver.name=iedaau002
+onlineMISC02app.name=tiersmisc02
+onlineMISC02vh.name=misc02-cluster
+onlineMISC02conn.type=SOAP
+onlineMISC02was.home=/export/ENV/TIERS/misc/WebSphere/AppServer
+onlineMISC02svr.login=${onlineMISC02user.name}@${onlineMISC02host.name}
+onlineMISC02webserver.switch=true
+onlineMISC02webserver.list=${onlineMISC01clustersserver.name}
+onlineMISC02webserver.dir=/home/${onlineMISC02user.name}/WebContent/${onlineMISC02appserver.list}/web
+MISC02onlineserverstatus.cmd=${onlineMISC02was.home}/bin/serverStatus.sh ${onlineMISC02server.name}
+MISC02onlineserverstop.cmd=${onlineMISC02was.home}/bin/stopServer.sh ${onlineMISC02server.name} 
+MISC02onlineserverstart.cmd=${onlineMISC02was.home}/bin/startServer.sh ${onlineMISC02server.name} 
+onlineMISC02clustermembers.list=misc02-server2
+onlineMISC02cluster.switch=Yes
+onlineMISC02cluster.name=misc02-cluster
+onlineMISC02dmgr.home= /export/ENV/TIERS/misc/WebSphere/DeploymentManager
+onlineMISC02templatedest=/home/${onlineMISC02user.name}/WebContent/${onlineMISC02appserver.list}/bin
+onlineMISC02pf.pullfromstream=true
+onlineMISC02pf.dir=/home/${onlineMISC02user.name}/WebContent/${onlineMISC02appserver.list}/properties
+
+#****************** COLA **************************************
+onlineCOLAappserver.list=COLA
+onlineCOLAappserver1.list=
+onlineCOLAcell.name=tiers_misc_Network
+onlineCOLAhost.name=iedaau018
+onlineCOLAuser.name=wasmisc
+onlineCOLAhostxml.dir=/home/${onlineCOLAuser.name}/WebContent/${onlineCOLAappserver.list}/XML
+onlineCOLAhost.port=14311
+onlineCOLAnode.name=iedaau002
+onlineCOLAserver.name=cola-server2
+onlineCOLAdns.name=tiers-cola
+onlineCOLAclustersserver.name=iedaau002
+onlineCOLAapp.name=stage3tiersCOLA
+onlineCOLAvh.name=cola-cluster
+onlineCOLAconn.type=SOAP
+onlineCOLAwas.home=/export/ENV/TIERS/misc/WebSphere/AppServer
+onlineCOLAsvr.login=${onlineCOLAuser.name}@${onlineCOLAhost.name}
+onlineCOLAwebserver.switch=true
+onlineCOLAwebserver.list=${onlineCOLAclustersserver.name}
+onlineCOLAwebserver.dir=/home/${onlineCOLAuser.name}/WebContent/${onlineCOLAappserver.list}/web
+COLAonlineserverstatus.cmd=${onlineCOLAwas.home}/bin/serverStatus.sh ${onlineCOLAserver.name}
+COLAonlineserverstop.cmd=${onlineCOLAwas.home}/bin/stopServer.sh ${onlineCOLAserver.name} 
+COLAonlineserverstart.cmd=${onlineCOLAwas.home}/bin/startServer.sh ${onlineCOLAserver.name} 
+onlineCOLAclustermembers.list=cola-server2
+onlineCOLAcluster.switch=Yes
+onlineCOLAcluster.name=cola-cluster
+onlineCOLAdmgr.home= /export/ENV/TIERS/misc/WebSphere/DeploymentManager
+onlineCOLAtemplatedest=/home/${onlineCOLAuser.name}/WebContent/${onlineCOLAappserver.list}/bin
+onlineCOLApf.pullfromstream=true
+onlineCOLApf.dir=/home/${onlineCOLAuser.name}/WebContent/${onlineCOLAappserver.list}/properties 
+
+
+#****************************************************************************************************************************************
+# END MODIFIED BY JAMES SANDLIN
+# This section is the properties for the environments I know are in use currently.
+# 2006-10-13
+#****************************************************************************************************************************************
+
+#******************IPT*******************************************
+#
+# ADDED BY KEVIN MCCARTIN
+# 15-08-2006
+# 
+onlineIPTappserver.list=IPT
+onlineIPTappserver1.list=
+onlineIPTcell.name=tiers_ipt_Network
+onlineIPThost.name=iedaau018
+onlineIPTuser.name=wasipt
+onlineIPThostxml.dir=/home/${onlineIPTuser.name}/WebContent/${onlineIPTappserver.list}/XML
+# host.port = DM SOAP PORT
+onlineIPThost.port=10211
+onlineIPTnode.name=iedaau002
+onlineIPTserver.name=ipt-server2
+onlineIPTdns.name=tiers-ipt
+onlineIPTclustersserver.name=iedaau002
+onlineIPTapp.name=stage3tiersIPT
+onlineIPTvh.name=ipt-cluster
+onlineIPTconn.type=SOAP
+onlineIPTwas.home=/export/ENV/TIERS/ipt/WebSphere/AppServer
+onlineIPTsvr.login=${onlineIPTuser.name}@${onlineIPThost.name}
+onlineIPTwebserver.switch=true
+onlineIPTwebserver.list=${onlineIPTclustersserver.name}
+onlineIPTwebserver.dir=/home/${onlineIPTuser.name}/WebContent/${onlineIPTappserver.list}/web
+IPTonlineserverstatus.cmd=${onlineIPTwas.home}/bin/serverStatus.sh ${onlineIPTserver.name}
+IPTonlineserverstop.cmd=${onlineIPTwas.home}/bin/stopServer.sh ${onlineIPTserver.name} 
+IPTonlineserverstart.cmd=${onlineIPTwas.home}/bin/startServer.sh ${onlineIPTserver.name} 
+onlineIPTclustermembers.list=ipt-server2
+onlineIPTcluster.switch=Yes
+onlineIPTcluster.name=ipt-cluster
+onlineIPTdmgr.home= /export/ENV/TIERS/ipt/WebSphere/DeploymentManager
+onlineIPTtemplatedest=/home/${onlineIPTuser.name}/WebContent/${onlineIPTappserver.list}/bin
+onlineIPTpf.pullfromstream=true
+onlineIPTpf.dir=/home/${onlineIPTuser.name}/WebContent/${onlineIPTappserver.list}/properties
+
+#****************** CONV1 **************************************
+onlineCONV1appserver.list=CONV1
+onlineCONV1appserver1.list=
+onlineCONV1cell.name=tiers_conv_Network
+onlineCONV1host.name=iedaau018
+onlineCONV1user.name=wasconv
+onlineCONV1hostxml.dir=/home/${onlineCONV1user.name}/WebContent/${onlineCONV1appserver.list}/XML
+onlineCONV1host.port=14011
+onlineCONV1node.name=iedaau002
+onlineCONV1server.name=conv1-server2
+onlineCONV1dns.name=tiers-conv1
+onlineCONV1clustersserver.name=iedaau002
+onlineCONV1app.name=stage3tiersCONV1
+onlineCONV1vh.name=conv1-cluster
+onlineCONV1conn.type=SOAP
+onlineCONV1was.home=/export/ENV/TIERS/conv/WebSphere/AppServer
+onlineCONV1svr.login=${onlineCONV1user.name}@${onlineCONV1host.name}
+onlineCONV1webserver.switch=true
+onlineCONV1webserver.list=${onlineCONV1clustersserver.name}
+onlineCONV1webserver.dir=/home/${onlineCONV1user.name}/WebContent/${onlineCONV1appserver.list}/web
+CONV1onlineserverstatus.cmd=${onlineCONV1was.home}/bin/serverStatus.sh ${onlineCONV1server.name}
+CONV1onlineserverstop.cmd=${onlineCONV1was.home}/bin/stopServer.sh ${onlineCONV1server.name}
+CONV1onlineserverstart.cmd=${onlineCONV1was.home}/bin/startServer.sh ${onlineCONV1server.name}
+onlineCONV1clustermembers.list=conv1-server2
+onlineCONV1cluster.switch=Yes
+onlineCONV1cluster.name=conv1-cluster
+onlineCONV1dmgr.home=/export/ENV/TIERS/conv/WebSphere/DeploymentManager
+onlineCONV1templatedest=/home/${onlineCONV1user.name}/WebContent/${onlineCONV1appserver.list}/bin
+onlineCONV1pf.pullfromstream=true
+onlineCONV1pf.dir=/home/${onlineCONV1user.name}/WebContent/${onlineCONV1appserver.list}/properties
+ 
+#****************** CONV2 **************************************
+onlineCONV2appserver.list=CONV2
+onlineCONV2appserver1.list=
+onlineCONV2cell.name=tiers_conv_Network
+onlineCONV2host.name=iedaau018
+onlineCONV2user.name=wasconv
+onlineCONV2hostxml.dir=/home/${onlineCONV2user.name}/WebContent/${onlineCONV2appserver.list}/XML
+onlineCONV2host.port=14011
+onlineCONV2node.name=iedaau002
+onlineCONV2server.name=conv2-server2
+onlineCONV2dns.name=tiers-conv2
+onlineCONV2clustersserver.name=iedaau002
+onlineCONV2app.name=stage3tiersCONV2
+onlineCONV2vh.name=conv2-cluster
+onlineCONV2conn.type=SOAP
+onlineCONV2was.home=/export/ENV/TIERS/conv/WebSphere/AppServer
+onlineCONV2svr.login=${onlineCONV2user.name}@${onlineCONV2host.name}
+onlineCONV2webserver.list=${onlineCONV2clustersserver.name}
+onlineCONV2webserver.secure=false
+onlineCONV2webserver.switch=true
+onlineCONV2webserver.dir=/home/${onlineCONV2user.name}/WebContent/${onlineCONV2appserver.list}/web
+CONV2onlineserverstatus.cmd=${onlineCONV2was.home}/bin/serverStatus.sh ${onlineCONV2server.name}
+CONV2onlineserverstop.cmd=${onlineCONV2was.home}/bin/stopServer.sh ${onlineCONV2server.name}
+CONV2onlineserverstart.cmd=${onlineCONV2was.home}/bin/startServer.sh ${onlineCONV2server.name}
+onlineCONV2clustermembers.list=conv2-server2
+onlineCONV2cluster.switch=Yes
+onlineCONV2cluster.name=conv2-cluster
+onlineCONV2dmgr.home=/export/ENV/TIERS/conv/WebSphere/DeploymentManager
+onlineCONV2templatedest=/home/${onlineCONV2user.name}/WebContent/${onlineCONV2appserver.list}/bin
+onlineCONV2pf.pullfromstream=true
+onlineCONV2pf.dir=/home/${onlineCONV2user.name}/WebContent/${onlineCONV2appserver.list}/properties
+
+#****************** GENX **************************************
+onlineGENXappserver.list=GENX
+onlineGENXappserver1.list=
+onlineGENXcell.name=tiers_genx_Network
+onlineGENXhost.name=iedaau018
+onlineGENXuser.name=wasgenx
+onlineGENXhostxml.dir=/home/${onlineGENXuser.name}/WebContent/${onlineGENXappserver.list}/XML
+onlineGENXhost.port=14011
+onlineGENXnode.name=iedaau002
+onlineGENXserver.name=genx-server2
+onlineGENXdns.name=tiers-genx
+onlineGENXclustersserver.name=iedaau002
+onlineGENXapp.name=stage3tiersGENX
+onlineGENXvh.name=genx-cluster
+onlineGENXconn.type=SOAP
+onlineGENXwas.home=/export/ENV/TIERS/genx/WebSphere/AppServer
+onlineGENXsvr.login=${onlineGENXuser.name}@${onlineGENXhost.name}
+onlineGENXwebserver.switch=true
+onlineGENXwebserver.list=${onlineGENXclustersserver.name}
+onlineGENXwebserver.dir=/home/${onlineGENXuser.name}/WebContent/${onlineGENXappserver.list}/web
+GENXonlineserverstatus.cmd=${onlineGENXwas.home}/bin/serverStatus.sh ${onlineGENXserver.name}
+GENXonlineserverstop.cmd=${onlineGENXwas.home}/bin/stopServer.sh ${onlineGENXserver.name}
+GENXonlineserverstart.cmd=${onlineGENXwas.home}/bin/startServer.sh ${onlineGENXserver.name}
+onlineGENXclustermembers.list=genx-server2
+onlineGENXcluster.switch=Yes
+onlineGENXcluster.name=genx-cluster
+onlineGENXdmgr.home=/export/ENV/TIERS/genx/WebSphere/DeploymentManager
+onlineGENXtemplatedest=/home/${onlineGENXuser.name}/WebContent/${onlineGENXappserver.list}/bin
+onlineGENXpf.pullfromstream=true
+onlineGENXpf.dir=/home/${onlineGENXuser.name}/WebContent/${onlineGENXappserver.list}/properties
+
+
+#****************** PSR **************************************
+onlinePSRappserver.list=PSR
+onlinePSRappserver1.list=
+onlinePSRcell.name=tiers_prodfix_Network
+onlinePSRhost.name=iedaau018
+onlinePSRuser.name=wasprodfix
+onlinePSRhostxml.dir=/home/${onlinePSRuser.name}/WebContent/${onlinePSRappserver.list}/XML
+onlinePSRhost.port=10711
+onlinePSRnode.name=iedaau002
+onlinePSRserver.name=psr-server2
+onlinePSRdns.name=tiers-psr
+onlinePSRclustersserver.name=iedaau002
+onlinePSRapp.name=stage3tiersPSR
+onlinePSRvh.name=psr-cluster
+onlinePSRconn.type=SOAP
+onlinePSRwas.home=/export/ENV/TIERS/prodfix/WebSphere/AppServer
+onlinePSRsvr.login=${onlinePSRuser.name}@${onlinePSRhost.name}
+onlinePSRwebserver.switch=true
+onlinePSRwebserver.list=${onlinePSRclustersserver.name}
+onlinePSRwebserver.dir=/home/${onlinePSRuser.name}/WebContent/${onlinePSRappserver.list}/web
+PSRonlineserverstatus.cmd=${onlinePSRwas.home}/bin/serverStatus.sh ${onlinePSRserver.name}
+PSRonlineserverstop.cmd=${onlinePSRwas.home}/bin/stopServer.sh ${onlinePSRserver.name}
+PSRonlineserverstart.cmd=${onlinePSRwas.home}/bin/startServer.sh ${onlinePSRserver.name}
+onlinePSRclustermembers.list=psr-server2
+onlinePSRcluster.switch=Yes
+onlinePSRcluster.name=psr-cluster
+onlinePSRdmgr.home=/export/ENV/TIERS/prodfix/WebSphere/DeploymentManager
+onlinePSRtemplatedest=/home/${onlinePSRuser.name}/WebContent/${onlinePSRappserver.list}/bin
+onlinePSRpf.pullfromstream=true
+onlinePSRpf.dir=/home/${onlinePSRuser.name}/WebContent/${onlinePSRappserver.list}/properties
+
+
+#****************** PRODFIX **************************************
+onlinePRODFIXappserver.list=PRODFIX
+onlinePRODFIXappserver1.list=
+onlinePRODFIXcell.name=tiers_prodfix_Network
+onlinePRODFIXhost.name=iedaau018
+onlinePRODFIXuser.name=wasprodfix
+onlinePRODFIXhostxml.dir=/home/${onlinePRODFIXuser.name}/WebContent/${onlinePRODFIXappserver.list}/XML
+onlinePRODFIXhost.port=10711
+onlinePRODFIXnode.name=iedaau002
+onlinePRODFIXserver.name=prodfix-server2
+onlinePRODFIXdns.name=tiers-prodfix
+onlinePRODFIXclustersserver.name=iedaau002
+onlinePRODFIXapp.name=stage3tiersPRODFIX
+onlinePRODFIXvh.name=prodfix-cluster
+onlinePRODFIXconn.type=SOAP
+onlinePRODFIXwas.home=/export/ENV/TIERS/prodfix/WebSphere/AppServer
+onlinePRODFIXsvr.login=${onlinePRODFIXuser.name}@${onlinePRODFIXhost.name}
+onlinePRODFIXwebserver.switch=true
+onlinePRODFIXwebserver.list=${onlinePRODFIXclustersserver.name}
+onlinePRODFIXwebserver.dir=/home/${onlinePRODFIXuser.name}/WebContent/${onlinePRODFIXappserver.list}/web
+PRODFIXonlineserverstatus.cmd=${onlinePRODFIXwas.home}/bin/serverStatus.sh ${onlinePRODFIXserver.name}
+PRODFIXonlineserverstop.cmd=${onlinePRODFIXwas.home}/bin/stopServer.sh ${onlinePRODFIXserver.name}
+PRODFIXonlineserverstart.cmd=${onlinePRODFIXwas.home}/bin/startServer.sh ${onlinePRODFIXserver.name}
+onlinePRODFIXclustermembers.list=prodfix-server2
+onlinePRODFIXcluster.switch=Yes
+onlinePRODFIXcluster.name=prodfix-cluster
+onlinePRODFIXdmgr.home=/export/ENV/TIERS/prodfix/WebSphere/DeploymentManager
+onlinePRODFIXtemplatedest=/home/${onlinePRODFIXuser.name}/WebContent/${onlinePRODFIXappserver.list}/bin
+onlinePRODFIXpf.pullfromstream=true
+onlinePRODFIXpf.dir=/home/${onlinePRODFIXuser.name}/WebContent/${onlinePRODFIXappserver.list}/properties
+
+#********************* DAR *****************************************
+onlineDARappserver.list=DAR
+onlineDARappserver1.list=
+onlineDARcell.name=tiers_dar_Network
+onlineDARhost.name=iedaau018
+onlineDARuser.name=wasdar
+onlineDARhostxml.dir=/home/${onlineDARuser.name}/WebContent/${onlineDARappserver.list}/XML
+onlineDARhost.port=10911
+onlineDARnode.name=iedaau002
+onlineDARserver.name=dar-server2
+onlineDARdns.name=tiers-dar
+onlineDARclustersserver.name=iedaau002
+onlineDARapp.name=stage3tiersDAR
+onlineDARvh.name=dar-cluster
+onlineDARconn.type=SOAP
+onlineDARwas.home=/export/ENV/TIERS/dar/WebSphere/AppServer
+onlineDARsvr.login=${onlineDARuser.name}@${onlineDARhost.name}
+onlineDARwebserver.switch=true
+onlineDARwebserver.list=${onlineDARclustersserver.name}
+onlineDARwebserver.dir=/home/${onlineDARuser.name}/WebContent/${onlineDARappserver.list}/web
+DARonlineserverstatus.cmd=${onlineDARwas.home}/bin/serverStatus.sh ${onlineDARserver.name}
+DARonlineserverstop.cmd=${onlineDARwas.home}/bin/stopServer.sh ${onlineDARserver.name}
+DARonlineserverstart.cmd=${onlineDARwas.home}/bin/startServer.sh ${onlineDARserver.name}
+onlineDARclustermembers.list=dar-server2
+onlineDARcluster.switch=Yes
+onlineDARcluster.name=dar-cluster
+onlineDARdmgr.home=/export/ENV/TIERS/dar/WebSphere/DeploymentManager
+onlineDARtemplatedest=/home/${onlineDARuser.name}/WebContent/${onlineDARappserver.list}/bin
+onlineDARpf.pullfromstream=true
+onlineDARpf.dir=/home/${onlineDARuser.name}/WebContent/${onlineDARappserver.list}/properties
+
+#********************* LAST *****************************************
+onlineLASTappserver.list=LAST
+onlineLASTappserver1.list=
+onlineLASTcell.name=tiers_last_Network
+onlineLASThost.name=iedaau018
+onlineLASTuser.name=waslast
+onlineLASThostxml.dir=/home/${onlineLASTuser.name}/WebContent/${onlineLASTappserver.list}/XML
+onlineLASThost.port=14111
+onlineLASTnode.name=iedaau002
+onlineLASTserver.name=last-server2
+onlineLASTdns.name=tiers-last
+onlineLASTclustersserver.name=iedaau002
+onlineLASTapp.name=stage3tiersLAST
+onlineLASTvh.name=last-cluster
+onlineLASTconn.type=SOAP
+onlineLASTwas.home=/export/ENV/TIERS/LAST/WebSphere/AppServer
+onlineLASTsvr.login=${onlineLASTuser.name}@${onlineLASThost.name}
+onlineLASTwebserver.switch=true
+onlineLASTwebserver.list=${onlineLASTclustersserver.name}
+onlineLASTwebserver.dir=/home/${onlineLASTuser.name}/WebContent/${onlineLASTappserver.list}/web
+LASTonlineserverstatus.cmd=${onlineLASTwas.home}/bin/serverStatus.sh ${onlineLASTserver.name}
+LASTonlineserverstop.cmd=${onlineLASTwas.home}/bin/stopServer.sh ${onlineLASTserver.name}
+LASTonlineserverstart.cmd=${onlineLASTwas.home}/bin/startServer.sh ${onlineLASTserver.name}
+onlineLASTclustermembers.list=last-server2
+onlineLASTcluster.switch=Yes
+onlineLASTcluster.name=last-cluster
+onlineLASTdmgr.home=/export/ENV/TIERS/LAST/WebSphere/DeploymentManager
+onlineLASTtemplatedest=/home/${onlineLASTuser.name}/WebContent/${onlineLASTappserver.list}/bin
+onlineLASTpf.pullfromstream=false
+onlineLASTpf.dir=/home/${onlineLASTuser.name}/WebContent/${onlineLASTappserver.list}/properties
+
+
+#********************* PRODUCTION *****************************************
+onlinePRODUCTIONappserver.list=prd
+onlinePRODUCTIONappserver1.list=
+onlinePRODUCTIONcell.name=iepsau004Network
+onlinePRODUCTIONhost.name=iedaau004
+onlinePRODUCTIONuser.name=wasadmin
+onlinePRODUCTIONhostxml.dir=/home/${onlinePRODUCTIONuser.name}/WebContent/XML
+onlinePRODUCTIONhost.port=8879
+onlinePRODUCTIONnode.name=iepsau001
+onlinePRODUCTIONserver.name=prd-cluster-server1
+onlinePRODUCTIONdns.name=tiers.dhs.state.tx.us
+onlinePRODUCTIONclustersserver.name=iepsau001
+onlinePRODUCTIONapp.name=stage3tiers
+onlinePRODUCTIONvh.name=prd-cluster
+onlinePRODUCTIONconn.type=SOAP
+onlinePRODUCTIONwas.home=/export/WebSphere/AppServer2
+onlinePRODUCTIONsvr.login=${onlinePRODUCTIONuser.name}@${onlinePRODUCTIONhost.name}
+onlinePRODUCTIONwebserver.switch=true
+onlinePRODUCTIONwebserver.list=${onlinePRODUCTIONclustersserver.name}
+onlinePRODUCTIONwebserver.dir=/home/${onlinePRODUCTIONuser.name}/WebContent/web
+PRODUCTIONonlineserverstatus.cmd=${onlinePRODUCTIONwas.home}/bin/serverStatus.sh ${onlinePRODUCTIONserver.name}
+PRODUCTIONonlineserverstop.cmd=${onlinePRODUCTIONwas.home}/bin/stopServer.sh ${onlinePRODUCTIONserver.name} 
+PRODUCTIONonlineserverstart.cmd=${onlinePRODUCTIONwas.home}/bin/startServer.sh ${onlinePRODUCTIONserver.name} 
+onlinePRODUCTIONclustermembers.list=prd-cluster-server1
+onlinePRODUCTIONcluster.switch=Yes
+onlinePRODUCTIONcluster.name=prd-cluster
+onlinePRODUCTIONdmgr.home=/export/WebSphere/DeploymentManager
+onlinePRODUCTIONtemplatedest=/home/${onlinePRODUCTIONuser.name}/${op.project.name}/ENV/co
+onlinePRODUCTIONpf.pullfromstream=true
+onlinePRODUCTIONpf.dir=/home/${onlinePRODUCTIONuser.name}/WebContent/${onlinePRODUCTIONappserver.list}/properties
+
+#****************** TRNPRD1 **************************************
+onlineTRNPRD1appserver.list=TRNPRD1
+onlineTRNPRD1appserver1.list=
+onlineTRNPRD1cell.name=tiers_training_Network
+onlineTRNPRD1host.name=ietsau001
+onlineTRNPRD1user.name=wastrain
+onlineTRNPRD1hostxml.dir=/home/${onlineTRNPRD1user.name}/WebContent/${onlineTRNPRD1appserver.list}/XML
+onlineTRNPRD1host.port=11011
+onlineTRNPRD1node.name=ietsau002
+onlineTRNPRD1server.name=trnprd1-server1,trnprd1-server2
+onlineTRNPRD1dns.name=tiers-trnprd1
+onlineTRNPRD1clustersserver.name=ietsau002
+onlineTRNPRD1app.name=stage3TRNPRD1
+onlineTRNPRD1vh.name=trnprd1-cluster
+onlineTRNPRD1conn.type=SOAP
+onlineTRNPRD1was.home=/export/ENV/TIERS/training/WebSphere/AppServer
+onlineTRNPRD1svr.login=${onlineTRNPRD1user.name}@${onlineTRNPRD1host.name}
+onlineTRNPRD1webserver.switch=true
+onlineTRNPRD1webserver.list=${onlineTRNPRD1clustersserver.name}
+onlineTRNPRD1webserver.dir=/home/${onlineTRNPRD1user.name}/WebContent/${onlineTRNPRD1appserver.list}/web
+TRNPRD1onlineserverstatus.cmd=${onlineTRNPRD1was.home}/bin/serverStatus.sh ${onlineTRNPRD1server.name}
+TRNPRD1onlineserverstop.cmd=${onlineTRNPRD1was.home}/bin/stopServer.sh ${onlineTRNPRD1server.name}
+TRNPRD1onlineserverstart.cmd=${onlineTRNPRD1was.home}/bin/startServer.sh ${onlineTRNPRD1server.name}
+onlineTRNPRD1clustermembers.list=trnprd1-server1,trnprd1-server2
+onlineTRNPRD1cluster.switch=Yes
+onlineTRNPRD1cluster.name=trnprd1-cluster
+onlineTRNPRD1dmgr.home= /export/ENV/TIERS/training/WebSphere/DeploymentManager
+onlineTRNPRD1templatedest=/home/${onlineTRNPRD1user.name}/WebContent/${onlineTRNPRD1appserver.list}/bin
+onlineTRNPRD1pf.pullfromstream=true
+onlineTRNPRD1pf.dir=/home/${onlineTRNPRD1user.name}/WebContent/${onlineTRNPRD1appserver.list}/properties
+
+
+#****************** TRNPRD2 **************************************
+onlineTRNPRD2appserver.list=TRNPRD2
+onlineTRNPRD2appserver1.list=
+onlineTRNPRD2cell.name=tiers_training_Network
+onlineTRNPRD2host.name=ietsau001
+onlineTRNPRD2user.name=wastrain
+onlineTRNPRD2hostxml.dir=/home/${onlineTRNPRD2user.name}/WebContent/${onlineTRNPRD2appserver.list}/XML
+onlineTRNPRD2host.port=11011
+onlineTRNPRD2node.name=ietsau002
+onlineTRNPRD2server.name=trnprd2-server1,trnprd2-server2
+onlineTRNPRD2dns.name=tiers-trnprd2
+onlineTRNPRD2clustersserver.name=ietsau002
+onlineTRNPRD2app.name=stage3TRNPRD2
+onlineTRNPRD2vh.name=trnprd2-cluster
+onlineTRNPRD2conn.type=SOAP
+onlineTRNPRD2was.home=/export/ENV/TIERS/training/WebSphere/AppServer
+onlineTRNPRD2svr.login=${onlineTRNPRD2user.name}@${onlineTRNPRD2host.name}
+onlineTRNPRD2webserver.switch=true
+onlineTRNPRD2webserver.list=${onlineTRNPRD2clustersserver.name}
+onlineTRNPRD2webserver.dir=/home/${onlineTRNPRD2user.name}/WebContent/${onlineTRNPRD2appserver.list}/web
+TRNPRD2onlineserverstatus.cmd=${onlineTRNPRD2was.home}/bin/serverStatus.sh ${onlineTRNPRD2server.name}
+TRNPRD2onlineserverstop.cmd=${onlineTRNPRD2was.home}/bin/stopServer.sh ${onlineTRNPRD2server.name}
+TRNPRD2onlineserverstart.cmd=${onlineTRNPRD2was.home}/bin/startServer.sh ${onlineTRNPRD2server.name}
+onlineTRNPRD2clustermembers.list=trnprd2-server1,trnprd2-server2
+onlineTRNPRD2cluster.switch=Yes
+onlineTRNPRD2cluster.name=trnprd2-cluster
+onlineTRNPRD2dmgr.home= /export/ENV/TIERS/training/WebSphere/DeploymentManager
+onlineTRNPRD2templatedest=/home/${onlineTRNPRD2user.name}/WebContent/${onlineTRNPRD2appserver.list}/bin
+onlineTRNPRD2pf.pullfromstream=true
+onlineTRNPRD2pf.dir=/home/${onlineTRNPRD2user.name}/WebContent/${onlineTRNPRD2appserver.list}/properties
+
+
+#****************** TRNPRD3 **************************************
+onlineTRNPRD3appserver.list=TRNPRD3
+onlineTRNPRD3appserver1.list=
+onlineTRNPRD3cell.name=tiers_training_Network
+onlineTRNPRD3host.name=ietsau001
+onlineTRNPRD3user.name=wastrain
+onlineTRNPRD3hostxml.dir=/home/${onlineTRNPRD3user.name}/WebContent/${onlineTRNPRD3appserver.list}/XML
+onlineTRNPRD3host.port=11011
+onlineTRNPRD3node.name=ietsau002
+onlineTRNPRD3server.name=trnprd3-server1,trnprd3-server2
+onlineTRNPRD3dns.name=tiers-trnprd3
+onlineTRNPRD3clustersserver.name=ietsau002
+onlineTRNPRD3app.name=stage3TRNPRD3
+onlineTRNPRD3vh.name=trnprd3-cluster
+onlineTRNPRD3conn.type=SOAP
+onlineTRNPRD3was.home=/export/ENV/TIERS/training/WebSphere/AppServer
+onlineTRNPRD3svr.login=${onlineTRNPRD3user.name}@${onlineTRNPRD3host.name}
+onlineTRNPRD3webserver.switch=true
+onlineTRNPRD3webserver.list=${onlineTRNPRD3clustersserver.name}
+onlineTRNPRD3webserver.dir=/home/${onlineTRNPRD3user.name}/WebContent/${onlineTRNPRD3appserver.list}/web
+TRNPRD3onlineserverstatus.cmd=${onlineTRNPRD3was.home}/bin/serverStatus.sh ${onlineTRNPRD3server.name}
+TRNPRD3onlineserverstop.cmd=${onlineTRNPRD3was.home}/bin/stopServer.sh ${onlineTRNPRD3server.name}
+TRNPRD3onlineserverstart.cmd=${onlineTRNPRD3was.home}/bin/startServer.sh ${onlineTRNPRD3server.name}
+onlineTRNPRD3clustermembers.list=trnprd3-server1,trnprd3-server2
+onlineTRNPRD3cluster.switch=Yes
+onlineTRNPRD3cluster.name=trnprd3-cluster
+onlineTRNPRD3dmgr.home= /export/ENV/TIERS/training/WebSphere/DeploymentManager
+onlineTRNPRD3templatedest=/home/${onlineTRNPRD3user.name}/WebContent/${onlineTRNPRD3appserver.list}/bin
+onlineTRNPRD3pf.pullfromstream=true
+onlineTRNPRD3pf.dir=/home/${onlineTRNPRD3user.name}/WebContent/${onlineTRNPRD3appserver.list}/properties
+
+#****************** TRNPRD4 **************************************
+onlineTRNPRD4appserver.list=TRNPRD4
+onlineTRNPRD4appserver1.list=
+onlineTRNPRD4cell.name=tiers_training_Network
+onlineTRNPRD4host.name=ietsau001
+onlineTRNPRD4user.name=wastrain
+onlineTRNPRD4hostxml.dir=/home/${onlineTRNPRD4user.name}/WebContent/${onlineTRNPRD4appserver.list}/XML
+onlineTRNPRD4host.port=11011
+onlineTRNPRD4node.name=ietsau002
+onlineTRNPRD4server.name=trnprd4-server1,trnprd4-server2
+onlineTRNPRD4dns.name=tiers-trnprd4
+onlineTRNPRD4clustersserver.name=ietsau002
+onlineTRNPRD4app.name=stage3TRNPRD4
+onlineTRNPRD4vh.name=trnprd4-cluster
+onlineTRNPRD4conn.type=SOAP
+onlineTRNPRD4was.home=/export/ENV/TIERS/training/WebSphere/AppServer
+onlineTRNPRD4svr.login=${onlineTRNPRD4user.name}@${onlineTRNPRD4host.name}
+onlineTRNPRD4webserver.switch=true
+onlineTRNPRD4webserver.list=${onlineTRNPRD4clustersserver.name}
+onlineTRNPRD4webserver.dir=/home/${onlineTRNPRD4user.name}/WebContent/${onlineTRNPRD4appserver.list}/web
+TRNPRD4onlineserverstatus.cmd=${onlineTRNPRD4was.home}/bin/serverStatus.sh ${onlineTRNPRD4server.name}
+TRNPRD4onlineserverstop.cmd=${onlineTRNPRD4was.home}/bin/stopServer.sh ${onlineTRNPRD4server.name}
+TRNPRD4onlineserverstart.cmd=${onlineTRNPRD4was.home}/bin/startServer.sh ${onlineTRNPRD4server.name}
+onlineTRNPRD4clustermembers.list=trnprd4-server1,trnprd4-server2
+onlineTRNPRD4cluster.switch=Yes
+onlineTRNPRD4cluster.name=trnprd4-cluster
+onlineTRNPRD4dmgr.home= /export/ENV/TIERS/training/WebSphere/DeploymentManager
+onlineTRNPRD4templatedest=/home/${onlineTRNPRD4user.name}/WebContent/${onlineTRNPRD4appserver.list}/bin
+onlineTRNPRD4pf.pullfromstream=true
+onlineTRNPRD4pf.dir=/home/${onlineTRNPRD4user.name}/WebContent/${onlineTRNPRD4appserver.list}/properties
+
+#****************** TRNPRD5 **************************************
+onlineTRNPRD5appserver.list=TRNPRD5
+onlineTRNPRD5appserver1.list=
+onlineTRNPRD5cell.name=tiers_training_Network
+onlineTRNPRD5host.name=ietsau001
+onlineTRNPRD5user.name=wastrain
+onlineTRNPRD5hostxml.dir=/home/${onlineTRNPRD5user.name}/WebContent/${onlineTRNPRD5appserver.list}/XML
+onlineTRNPRD5host.port=11011
+onlineTRNPRD5node.name=ietsau002
+onlineTRNPRD5server.name=trnprd5-server1,trnprd5-server2
+onlineTRNPRD5dns.name=tiers-trnprd5
+onlineTRNPRD5clustersserver.name=ietsau002
+onlineTRNPRD5app.name=stage3TRNPRD5
+onlineTRNPRD5vh.name=trnprd5-cluster
+onlineTRNPRD5conn.type=SOAP
+onlineTRNPRD5was.home=/export/ENV/TIERS/training/WebSphere/AppServer
+onlineTRNPRD5svr.login=${onlineTRNPRD5user.name}@${onlineTRNPRD5host.name}
+onlineTRNPRD5webserver.switch=true
+onlineTRNPRD5webserver.list=${onlineTRNPRD5clustersserver.name}
+onlineTRNPRD5webserver.dir=/home/${onlineTRNPRD5user.name}/WebContent/${onlineTRNPRD5appserver.list}/web
+TRNPRD5onlineserverstatus.cmd=${onlineTRNPRD5was.home}/bin/serverStatus.sh ${onlineTRNPRD5server.name}
+TRNPRD5onlineserverstop.cmd=${onlineTRNPRD5was.home}/bin/stopServer.sh ${onlineTRNPRD5server.name}
+TRNPRD5onlineserverstart.cmd=${onlineTRNPRD5was.home}/bin/startServer.sh ${onlineTRNPRD5server.name}
+onlineTRNPRD5clustermembers.list=trnprd5-server1,trnprd5-server2
+onlineTRNPRD5cluster.switch=Yes
+onlineTRNPRD5cluster.name=trnprd5-cluster
+onlineTRNPRD5dmgr.home= /export/ENV/TIERS/training/WebSphere/DeploymentManager
+onlineTRNPRD5templatedest=/home/${onlineTRNPRD5user.name}/WebContent/${onlineTRNPRD5appserver.list}/bin
+onlineTRNPRD5pf.pullfromstream=true
+onlineTRNPRD5pf.dir=/home/${onlineTRNPRD5user.name}/WebContent/${onlineTRNPRD5appserver.list}/properties
+
+#****************** TRNPRD6 **************************************
+onlineTRNPRD6appserver.list=TRNPRD6
+onlineTRNPRD6appserver1.list=
+onlineTRNPRD6cell.name=tiers_training_Network
+onlineTRNPRD6host.name=ietsau001
+onlineTRNPRD6user.name=wastrain
+onlineTRNPRD6hostxml.dir=/home/${onlineTRNPRD6user.name}/WebContent/${onlineTRNPRD6appserver.list}/XML
+onlineTRNPRD6host.port=11011
+onlineTRNPRD6node.name=ietsau002
+onlineTRNPRD6server.name=trnprd6-server1,trnprd6-server2
+onlineTRNPRD6dns.name=tiers-trnprd6
+onlineTRNPRD6clustersserver.name=ietsau002
+onlineTRNPRD6app.name=stage3TRNPRD6
+onlineTRNPRD6vh.name=trnprd6-cluster
+onlineTRNPRD6conn.type=SOAP
+onlineTRNPRD6was.home=/export/ENV/TIERS/training/WebSphere/AppServer
+onlineTRNPRD6svr.login=${onlineTRNPRD6user.name}@${onlineTRNPRD6host.name}
+onlineTRNPRD6webserver.switch=true
+onlineTRNPRD6webserver.list=${onlineTRNPRD6clustersserver.name}
+onlineTRNPRD6webserver.dir=/home/${onlineTRNPRD6user.name}/WebContent/${onlineTRNPRD6appserver.list}/web
+TRNPRD6onlineserverstatus.cmd=${onlineTRNPRD6was.home}/bin/serverStatus.sh ${onlineTRNPRD6server.name}
+TRNPRD6onlineserverstop.cmd=${onlineTRNPRD6was.home}/bin/stopServer.sh ${onlineTRNPRD6server.name}
+TRNPRD6onlineserverstart.cmd=${onlineTRNPRD6was.home}/bin/startServer.sh ${onlineTRNPRD6server.name}
+onlineTRNPRD6clustermembers.list=trnprd6-server1,trnprd6-server2
+onlineTRNPRD6cluster.switch=Yes
+onlineTRNPRD6cluster.name=trnprd6-cluster
+onlineTRNPRD6dmgr.home= /export/ENV/TIERS/training/WebSphere/DeploymentManager
+onlineTRNPRD6templatedest=/home/${onlineTRNPRD6user.name}/WebContent/${onlineTRNPRD6appserver.list}/bin
+onlineTRNPRD6pf.pullfromstream=true
+onlineTRNPRD6pf.dir=/home/${onlineTRNPRD6user.name}/WebContent/${onlineTRNPRD6appserver.list}/properties
+
+#****************** TRNDEV **************************************
+onlineTRNDEVappserver.list=TRNDEV
+onlineTRNDEVappserver1.list=
+onlineTRNDEVcell.name=tiers_training_Network
+onlineTRNDEVhost.name=ietsau001
+onlineTRNDEVuser.name=wastrain
+onlineTRNDEVhostxml.dir=/home/${onlineTRNDEVuser.name}/WebContent/${onlineTRNDEVappserver.list}/XML
+onlineTRNDEVhost.port=11011
+onlineTRNDEVnode.name=ietsau002
+onlineTRNDEVserver.name=trndev-server1,trndev-server2
+onlineTRNDEVdns.name=tiers-trndev
+onlineTRNDEVclustersserver.name=ietsau002
+onlineTRNDEVapp.name=stage3TRNDEV
+onlineTRNDEVvh.name=trndev-cluster
+onlineTRNDEVconn.type=SOAP
+onlineTRNDEVwas.home=/export/ENV/TIERS/training/WebSphere/AppServer
+onlineTRNDEVsvr.login=${onlineTRNDEVuser.name}@${onlineTRNDEVhost.name}
+onlineTRNDEVwebserver.switch=true
+onlineTRNDEVwebserver.list=${onlineTRNDEVclustersserver.name}
+onlineTRNDEVwebserver.dir=/home/${onlineTRNDEVuser.name}/WebContent/${onlineTRNDEVappserver.list}/web
+TRNDEVonlineserverstatus.cmd=${onlineTRNDEVwas.home}/bin/serverStatus.sh ${onlineTRNDEVserver.name}
+TRNDEVonlineserverstop.cmd=${onlineTRNDEVwas.home}/bin/stopServer.sh ${onlineTRNDEVserver.name}
+TRNDEVonlineserverstart.cmd=${onlineTRNDEVwas.home}/bin/startServer.sh ${onlineTRNDEVserver.name}
+onlineTRNDEVclustermembers.list=trndev-server1,trndev-server2
+onlineTRNDEVcluster.switch=Yes
+onlineTRNDEVcluster.name=trndev-cluster
+onlineTRNDEVdmgr.home= /export/ENV/TIERS/training/WebSphere/DeploymentManager
+onlineTRNDEVtemplatedest=/home/${onlineTRNDEVuser.name}/WebContent/${onlineTRNDEVappserver.list}/bin
+onlineTRNDEVpf.pullfromstream=true
+onlineTRNDEVpf.dir=/home/${onlineTRNDEVuser.name}/WebContent/${onlineTRNDEVappserver.list}/properties
+
+#****************** TRNTST **************************************
+onlineTRNTSTappserver.list=TRNTST
+onlineTRNTSTappserver1.list=
+onlineTRNTSTcell.name=tiers_training_Network
+onlineTRNTSThost.name=ietsau001
+onlineTRNTSTuser.name=wastrain
+onlineTRNTSThostxml.dir=/home/${onlineTRNTSTuser.name}/WebContent/${onlineTRNTSTappserver.list}/XML
+onlineTRNTSThost.port=11011
+onlineTRNTSTnode.name=ietsau002
+onlineTRNTSTserver.name=trntst-server1,trntst-server2
+onlineTRNTSTdns.name=tiers-trntst
+onlineTRNTSTclustersserver.name=ietsau002
+onlineTRNTSTapp.name=stage3TRNTST
+onlineTRNTSTvh.name=trntst-cluster
+onlineTRNTSTconn.type=SOAP
+onlineTRNTSTwas.home=/export/ENV/TIERS/training/WebSphere/AppServer
+onlineTRNTSTsvr.login=${onlineTRNTSTuser.name}@${onlineTRNTSThost.name}
+onlineTRNTSTwebserver.switch=true
+onlineTRNTSTwebserver.list=${onlineTRNTSTclustersserver.name}
+onlineTRNTSTwebserver.dir=/home/${onlineTRNTSTuser.name}/WebContent/${onlineTRNTSTappserver.list}/web
+TRNTSTonlineserverstatus.cmd=${onlineTRNTSTwas.home}/bin/serverStatus.sh ${onlineTRNTSTserver.name}
+TRNTSTonlineserverstop.cmd=${onlineTRNTSTwas.home}/bin/stopServer.sh ${onlineTRNTSTserver.name}
+TRNTSTonlineserverstart.cmd=${onlineTRNTSTwas.home}/bin/startServer.sh ${onlineTRNTSTserver.name}
+onlineTRNTSTclustermembers.list=trntst-server1,trntst-server2
+onlineTRNTSTcluster.switch=Yes
+onlineTRNTSTcluster.name=trntst-cluster
+onlineTRNTSTdmgr.home= /export/ENV/TIERS/training/WebSphere/DeploymentManager
+onlineTRNTSTtemplatedest=/home/${onlineTRNTSTuser.name}/WebContent/${onlineTRNTSTappserver.list}/bin
+onlineTRNTSTpf.pullfromstream=true
+onlineTRNTSTpf.dir=/home/${onlineTRNTSTuser.name}/WebContent/${onlineTRNTSTappserver.list}/properties
+
+#****************** TRNPRC **************************************
+onlineTRNPRCappserver.list=TRNPRC
+onlineTRNPRCappserver1.list=
+onlineTRNPRCcell.name=tiers_trainpractice_Network
+onlineTRNPRChost.name=ietsau001
+onlineTRNPRCuser.name=wastrain
+onlineTRNPRChostxml.dir=/home/${onlineTRNPRCuser.name}/WebContent/${onlineTRNPRCappserver.list}/XML
+onlineTRNPRChost.port=11111
+onlineTRNPRCnode.name=ietsau002
+onlineTRNPRCserver.name=trnprc-server1,trnprc-server2
+onlineTRNPRCdns.name=tierspractice.txaccess.net
+onlineTRNPRCclustersserver.name=ietsau002
+onlineTRNPRCapp.name=stage3TRNPRC
+onlineTRNPRCvh.name=trnprc-cluster
+onlineTRNPRCconn.type=SOAP
+onlineTRNPRCwas.home=/export/ENV/TIERS/trainpractice/WebSphere/AppServer
+onlineTRNPRCsvr.login=${onlineTRNPRCuser.name}@${onlineTRNPRChost.name}
+onlineTRNPRCwebserver.switch=true
+onlineTRNPRCwebserver.list=${onlineTRNPRCclustersserver.name}
+onlineTRNPRCwebserver.dir=/home/${onlineTRNPRCuser.name}/WebContent/${onlineTRNPRCappserver.list}/web
+TRNPRConlineserverstatus.cmd=${onlineTRNPRCwas.home}/bin/serverStatus.sh ${onlineTRNPRCserver.name}
+TRNPRConlineserverstop.cmd=${onlineTRNPRCwas.home}/bin/stopServer.sh ${onlineTRNPRCserver.name}
+TRNPRConlineserverstart.cmd=${onlineTRNPRCwas.home}/bin/startServer.sh ${onlineTRNPRCserver.name}
+onlineTRNPRCclustermembers.list=trnprc-server1,trnprc-server2
+onlineTRNPRCcluster.switch=Yes
+onlineTRNPRCcluster.name=trnprc-cluster
+onlineTRNPRCdmgr.home= /export/ENV/TIERS/trainpractice/WebSphere/DeploymentManager
+onlineTRNPRCtemplatedest=/home/${onlineTRNPRCuser.name}/WebContent/${onlineTRNPRCappserver.list}/bin
+onlineTRNPRCpf.pullfromstream=true
+onlineTRNPRCpf.dir=/home/${onlineTRNPRCuser.name}/WebContent/${onlineTRNPRCappserver.list}/properties
+
+#==================== End - Deployment Specific Properties ==============================
+
+#==================== Email Related ===========================================================
+emailmsg.header=TIERS ONLINE BUILD ${build_number}:
+email.host=IEDAMW011.txaccess.net
+email.port=25
+email.from=buildteam_donotreply@txaccess.com
+email.tolist=james.samuel@txaccess.com,james.g.sandlin@txaccess.com
+uptpfviewfail.subj=${emailmsg.header} from SYSCONFIG_Int - Error in Updating View
+uptpfviewfail.msg=Updating view SYSCONFIG_Int for build {build_number} failed. Build started at 
+
+uptviewfail.subj=${emailmsg.header} from ${view_name} - Error in Updating View
+uptviewfail.msg=Updating view ${view_name} for build {build_number} failed. Build started at 
+
+nobld.subj=${emailmsg.header} from ${view_name} - No Files Were Updated
+nobld.msg=No files were updated from view ${view_name}. There will not be a Build or Deployment. Build started at  
+
+lccompilefail.subj=${emailmsg.header} from ${view_name} - Error in Online Compilation
+lccompilefail.msg= TIERS Online compilation failed for view ${view_name}. Build started at 
+
+rmicfail.subj=${emailmsg.header} from ${view_name} - Error in Online Compilation
+rmicfail.msg=TIERS Online RMIC failed for view ${view_name}. Build started at 
+
+earfail.subj=${emailmsg.header} from ${env_name} - Error in Online Deployment
+earfail.msg= Error Creating ${ear.name} for ${view_name}. Build started at 
+
+predeployfail.subj= - Error in Online Deployment ${env_name}
+predeployfail.msg=TIERS Online deployment failed for view ${view_name}. Build started at 
+
+genpffail.subj= - Error Generating Properties File
+genpffail.msg=Property File Failed to Generate. Build started at 
+
+deployfail.subj= - Error in Online Deployment ${env_name}
+deployfail.msg=TIERS Online Deployment Failed. Build started at 
+
+svrrestartfail.subj= - Error in Server Restart ${env_name}
+svrrestartfail.msg=Server Failed to restart. Build started at 
+
+svrrestartsuccess.subj= - Built and Deployed
+svrrestartsuccess.msg=  TIERS ONLINE Build ${build_number} from ${view_name} view Built and Deployed at 
+
+deploysucc.subj= - Online Build Success to environment ${env_name}
+deploysucc.msg=Online Deployment Successful. Build started at
+
+#==================== End Email Related =======================================================
+
+onlinebldreport.list=uptdone,lcdone,rmicdone,eardone,oddone,rtsvrdone
+
+datetime.format=yyyy-MM-dd_hh:mmaa
+
+
+
+

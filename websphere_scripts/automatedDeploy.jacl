@@ -1,0 +1,177 @@
+#
+# Author: Barry Searle
+#
+# (C) Copyright IBM Corp. 2004,2007 - All Rights Reserved.
+# DISCLAIMER:
+# The following source code is sample code created by IBM Corporation.
+# This sample code is not part of any standard IBM product and is provided
+# to you solely for the purpose of assisting you in the development of your
+# applications. The code is provided 'AS IS', without warranty or condition
+# of any kind. IBM shall not be liable for any damages arising out of your
+# use of the sample code, even if IBM has been advised of the possibility of
+# such damages.
+#
+# Change History:
+# 3.1 (08may2007) changed hard-coded version number to 3.1 (no code changes)
+# 3.1 (08may2007) added load of getScripts.jacl
+# 2.0 (10feb2006) code cleanup, several code changes (envar handling)
+# 1.3 (22apr2005) removed DEPLOY_WAS, optional DistDir, uses getEnvars
+# 1.2 (14jan2005) restructured (future: will read DEPLOY_XXXX envars or invocation parameters)
+# 1.1 (17nov2004) initial shipped version
+#
+
+set ScriptLocation [java::call java.lang.System getProperty "script.dir"]
+if { $ScriptLocation==""} {
+        set ScriptLocation [java::call java.lang.System getProperty "user.dir"]
+}
+set ScriptLocation "$ScriptLocation/"
+
+
+set    version          "3.1"
+
+set true 1
+set false 0
+set nodeServerPairs {}
+set uniqueNodesContainedServers {}
+set nodesAutosyncs {}
+set clusters {}
+set testURLs {}
+set testResponses {}
+set appsNodesServers {}
+set errors {}
+set warnings {}
+
+source "$ScriptLocation/Definitions.jacl"
+source "$ScriptLocation/log-fail-highlight.jacl"
+set    failOnError      "true"
+set    logLevel         $INFO_
+source "$ScriptLocation/deploy.jacl"
+source "$ScriptLocation/deploy-install-configure.jacl"
+source "$ScriptLocation/deploy-prepareNodes.jacl"
+source "$ScriptLocation/getApplications.jacl"
+source "$ScriptLocation/getScripts.jacl"
+source "$ScriptLocation/getTargets.jacl"
+source "$ScriptLocation/EAR-install-validate-uninstall-list.jacl"
+source "$ScriptLocation/APP-list-start-stop-test-exists.jacl"
+source "$ScriptLocation/ATTRIB-setTargets.jacl"
+source "$ScriptLocation/ATTRIB-show-set.jacl"
+source "$ScriptLocation/ATTRIB-file.jacl"
+source "$ScriptLocation/NODES-pairs-unique.jacl"
+source "$ScriptLocation/NODE-save-restore-sync.jacl"
+source "$ScriptLocation/SERVER-stop-sync-start.jacl"
+source "$ScriptLocation/getEnvars.jacl"
+
+        puts ""
+        puts ""
+        set SCRIPTNAME "automatedDeploy.jacl - Version $version"
+        highlight $MAJOR_ "running $SCRIPTNAME"
+        puts ""
+
+        set wasRoot [getEnvar "was.install.root"]
+        set wasRoot [convertToJaclPath $wasRoot]
+        log $INFO_ "envar script.dir=$ScriptLocation"
+        log $INFO_ "envar was.install.root=$wasRoot"
+
+        set action      ""
+        set depType     ""
+        set failOnError ""
+        set distDir     ""
+        if { ([info exists argv] != 0) && ([llength $argv]>0) } {
+                set argc [llength $argv]
+                set action      [lindex $argv 0]
+                if {$argc > 1} {
+                        set depType     [lindex $argv 1]
+                        if {$argc > 2} {
+                                set failOnError [lindex $argv 2]
+                                if {$argc > 3} {
+                                        set distDir     [lindex $argv 3]
+                                        if {$argc > 4} {
+                                                set extra       [lindex $argv 4]
+                                                log $ERROR_ "$SCRIPTNAME: only accepts 4 parameters, ignoring $extra"
+                                        }
+                                }
+                        }
+                }
+        } elseif { [llength $action]==0 } {
+                set  proc_result "$SCRIPTNAME requires 1-4 params (action depType failonerror distDir)"
+                log $ERROR_ $proc_result
+                return $proc_result
+        }
+        if { [string length $action]<=0 }      { set action      "confirm" }
+        if { [string length $depType]<=0 }     { set depType     "-pilot" }
+        if { [string length $failOnError]<=0 } { set failOnError "true" }
+        if { [string length $distDir]<=0 }     { set distDir     "$ScriptLocation/dist" }
+        set distDir [convertToJaclPath $distDir]
+
+
+        log $MAJOR_ "$SCRIPTNAME: INPUTS:(default=confirm)action=      $action"
+        log $MAJOR_ "$SCRIPTNAME: INPUTS:(default=-pilot) depType=     $depType"
+        log $MAJOR_ "$SCRIPTNAME: INPUTS:(default=true)   failOnError= $failOnError"
+        log $MAJOR_ "$SCRIPTNAME: INPUTS:(default=./dist) distDir=     $distDir"
+        log $MAJOR_ "$SCRIPTNAME: INPUTS:(unused)         wasRoot=     $wasRoot"
+
+        set wsadminSvr    [$AdminControl queryNames    node=[$AdminControl getNode],type=Server,* ]
+        set v [string first ",version=" $wsadminSvr]
+        set serverVers [string range $wsadminSvr [expr $v+9] end ]
+        set v [string first "," $serverVers]
+        set serverVers [string range $serverVers 0 [expr $v-1] ]
+        set wsadminSvrId  [$AdminControl getConfigId   $wsadminSvr]
+        set wsadminType   [$AdminConfig  showAttribute $wsadminSvrId  serverType]
+        set wsadminVers   [$AdminControl getAttribute  $wsadminSvr    platformVersion]
+        set wsadminConn   [$AdminControl getType]
+        set wsadminServer [$AdminControl getAttribute  $wsadminSvr    name]
+        set wsadminNode   [$AdminControl getNode]
+        set wsadminCell   [$AdminControl getCell]
+        set wsadminHost   [$AdminControl getHost]
+        set wsadminPort   [$AdminControl getPort]
+        if { $wsadminType != "DEPLOYMENT_MANAGER" } {
+                fail "$SCRIPTNAME currently only tested for AppServers connected to NetworkDeployment DeploymentManager"
+        }
+        if { $wsadminConn != "SOAP" } {
+                fail "$SCRIPTNAME currently only tested for AppServers connected using type=SOAP"
+        }
+        log $MAJOR_ "$SCRIPTNAME: WSADMIN: AdminType=$wsadminType"
+        log $MAJOR_ "$SCRIPTNAME: WSADMIN: AdminVers=$wsadminVers"
+        log $MAJOR_ "$SCRIPTNAME: WSADMIN: ServrVers=$serverVers"
+        log $MAJOR_ "$SCRIPTNAME: WSADMIN: AdminCell=$wsadminCell"
+        log $MAJOR_ "$SCRIPTNAME: WSADMIN: AdminNode=$wsadminNode"
+        log $MAJOR_ "$SCRIPTNAME: WSADMIN: AdminConn=$wsadminConn"
+        log $MAJOR_ "$SCRIPTNAME: WSADMIN: AdminHost=$wsadminHost"
+        log $MAJOR_ "$SCRIPTNAME: WSADMIN: AdminSevr=$wsadminServer"
+        log $MAJOR_ "$SCRIPTNAME: WSADMIN: AdminPort=$wsadminPort"
+
+        set JaclVers [info tclversion]
+        log $VERBOSE_ "JACL vers=$JaclVers"
+        set WasTclVers  0
+
+        log $MAJOR_ "$SCRIPTNAME: invoking deploy $action $depType $failOnError $distDir $wasRoot"
+        log $INFO_ ""
+        deploy $action $depType $failOnError $distDir $wasRoot
+
+        puts ""
+        puts ""
+        puts ""
+        if { [llength $errors]>0 } {
+                log $DEBUG_ "errors.length=[llength $errors]"
+                set msgs ""
+                foreach msg $errors {
+                        set msgs "$msgs\n$msg"
+                }
+                debugHighlight $ERROR_ "ERRORS during DEPLOYMENT:$msgs"
+        }
+        if { [llength $warnings]>0 } {
+                log $DEBUG_ "warnings.length=[llength $warnings]"
+                set msgs ""
+                foreach msg $warnings {
+                        set msgs "$msgs\n$msg"
+                }
+                highlight $WARNING_ "WARNINGS during DEPLOYMENT:$msgs"
+        }
+        if { ([llength $errors]==0) && ([llength $warnings]==0)  } {
+                highlight $MAJOR_ "No errors, no warnings during automatedDeployment (action=$action)"
+        }
+
+        puts ""
+        highlight $MAJOR_ "$SCRIPTNAME DONE."
+        puts ""
+        puts ""

@@ -1,0 +1,23 @@
+#COLA Properties for 2005-2006
+
+firstDayofNextYear=1-1-2006
+lastDayofYear=12-31-2005
+colaEndDate=12-04-2005
+mlyTreasuryRunDate=12-07-2005
+
+budgetBeginDate=01/01/2006
+budgetEndDate=01/31/2006
+effBeginDate=01/01/2006
+effEndDate=12/31/2005
+
+unearnedIncomeDAOEffBeginDt='01-JAN-2006'
+
+
+dblRSDIpercentage=1.041
+dblNewMCPremium=88.50
+dblCurrentMCPremium=78.20
+dblRSDICentsCompare=0.20
+dblRRPercentage=1.041
+dblSSINewIndividualStandard=603
+dblSSIPercentage=1.041
+

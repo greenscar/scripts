@@ -1,0 +1,12 @@
+{
+    "title": "FlashLight!",
+    "version": "0.0.1",
+    "type": "web",
+    "main": "index.html",
+    "id": "com.pregame.app.flashlight",
+    "icon": "icon.png",
+    "vendor": "Brian Jost",
+    "vendorurl": "",
+    "visible": true,
+    "removable": true
+}

@@ -1,0 +1,61 @@
+
+var ctrlr;
+var FlashlightAssistant = Class.create( {
+initialize: function() {
+    Mojo.Log.info("Initialize");
+
+	//this.disableFlashlight();
+    this.onOffToggleOpt= {
+	    modelProperty: 'toggleOpt',
+	    trueValue: "ON",
+	    falseValue: "OFF"	
+    };
+
+    this.toggleModel= {
+	    toggleOpt: "OFF",
+	    disabled : false
+    };
+
+},
+
+setup: function(){
+    Mojo.Log.info("Setup");
+    ctrlr=this.controller;
+    this.controller.setupWidget('onOffToggle', this.onOffToggleOpt, this.toggleModel);
+    this.controller.get('onOffToggle').observe('mojo-property-change', this.selectorChangedHandler.bind(this));
+},
+
+selectorChangedHandler: function(e) {
+    Mojo.Log.info("selectorChangedHandler");
+
+    if(e.value=="OFF") {
+        this.disableFlashlight();
+    } else {
+       this.enableFlashlight();
+    }
+        
+    },
+enableFlashlight: function() {
+	this.controller.get('modeSwitchDescription_OFF').hide();
+        this.controller.get('modeSwitchDescription_ON').show();
+        this.controller.serviceRequest('palm://com.pregame.prelease', {
+            method: 'runCmd',
+                parameters: {
+                      cmd: '/usr/palm/applications/com.pregame.app.flashlight/app/scripts/lighton.sh'}
+                                                });
+                                                
+},
+disableFlashlight: function() {
+	this.controller.get('modeSwitchDescription_ON').hide();
+	this.controller.get('modeSwitchDescription_OFF').show();
+	this.controller.serviceRequest('palm://com.pregame.prelease', {
+	    method: 'runCmd',
+	        parameters: {
+	              cmd: '/usr/palm/applications/com.pregame.app.flashlight/app/scripts/lightoff.sh'
+	                                  }
+	                                        });
+	                                        
+}
+
+
+});

@@ -1,0 +1,733 @@
+!SESSION 2009-04-28 09:04:00.089 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_16
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=carbon, NL=en_US
+Framework arguments:  -keyring /Users/jsandlin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws carbon -arch x86 -keyring /Users/jsandlin/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.update.configurator 4 0 2009-04-28 09:04:16.875
+!MESSAGE /Users/jsandlin/.eclipse/532414747/plugins is not a valid plugins directory.
+
+!ENTRY org.eclipse.core.net 1 0 2009-04-28 09:04:44.821
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 0 2009-04-28 12:39:26.492
+!MESSAGE An unexpected exception was thrown.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.swt.widgets.Menu.destroyItem(Menu.java:335)
+	at org.eclipse.swt.widgets.MenuItem.destroyWidget(MenuItem.java:233)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1440)
+	at org.eclipse.swt.widgets.Widget.dispose(Widget.java:670)
+	at org.eclipse.jface.action.ActionContributionItem.dispose(ActionContributionItem.java:1190)
+	at org.eclipse.jface.action.MenuManager.dispose(MenuManager.java:234)
+	at org.eclipse.uml2.diagram.usecase.part.DiagramEditorContextMenuProvider.dispose(DiagramEditorContextMenuProvider.java:46)
+	at org.eclipse.gef.ui.parts.AbstractEditPartViewer.unhookControl(AbstractEditPartViewer.java:743)
+	at org.eclipse.gef.ui.parts.GraphicalViewerImpl.unhookControl(GraphicalViewerImpl.java:401)
+	at org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer.unhookControl(DiagramGraphicalViewer.java:363)
+	at org.eclipse.gef.ui.parts.AbstractEditPartViewer.setControl(AbstractEditPartViewer.java:619)
+	at org.eclipse.gef.ui.parts.AbstractEditPartViewer.handleDispose(AbstractEditPartViewer.java:218)
+	at org.eclipse.gef.ui.parts.GraphicalViewerImpl.handleDispose(GraphicalViewerImpl.java:108)
+	at org.eclipse.gef.ui.parts.AbstractEditPartViewer$2.widgetDisposed(AbstractEditPartViewer.java:423)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:117)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1561)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1585)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1566)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1430)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2528)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:849)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1433)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2528)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:849)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1433)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2528)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:849)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1433)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2528)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:849)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1433)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2528)
+	at org.eclipse.swt.widgets.Widget.dispose(Widget.java:670)
+	at org.eclipse.ui.internal.PartPane.dispose(PartPane.java:179)
+	at org.eclipse.ui.internal.WorkbenchPartReference.dispose(WorkbenchPartReference.java:678)
+	at org.eclipse.ui.internal.WorkbenchPage.disposePart(WorkbenchPage.java:1682)
+	at org.eclipse.ui.internal.WorkbenchPage.handleDeferredEvents(WorkbenchPage.java:1389)
+	at org.eclipse.ui.internal.WorkbenchPage.deferUpdates(WorkbenchPage.java:1373)
+	at org.eclipse.ui.internal.WorkbenchPage.closeEditors(WorkbenchPage.java:1347)
+	at org.eclipse.ui.internal.WorkbenchPage.closeEditor(WorkbenchPage.java:1411)
+	at org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor$4.run(DiagramDocumentEditor.java:464)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3338)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3067)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.block(ModalContext.java:172)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:370)
+	at org.eclipse.ltk.internal.ui.refactoring.RefactoringWizardDialog2.run(RefactoringWizardDialog2.java:317)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizard.internalPerformFinish(RefactoringWizard.java:558)
+	at org.eclipse.ltk.ui.refactoring.UserInputWizardPage.performFinish(UserInputWizardPage.java:154)
+	at org.eclipse.ltk.ui.refactoring.resource.RenameResourceWizard$RenameResourceRefactoringConfigurationPage.performFinish(RenameResourceWizard.java:119)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizard.performFinish(RefactoringWizard.java:622)
+	at org.eclipse.ltk.internal.ui.refactoring.RefactoringWizardDialog2.okPressed(RefactoringWizardDialog2.java:446)
+	at org.eclipse.jface.dialogs.Dialog.buttonPressed(Dialog.java:472)
+	at org.eclipse.jface.dialogs.Dialog$2.widgetSelected(Dialog.java:624)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:228)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1561)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1585)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1570)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1360)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3474)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3064)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:825)
+	at org.eclipse.jface.window.Window.open(Window.java:801)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizardOpenOperation$1.run(RefactoringWizardOpenOperation.java:144)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizardOpenOperation.run(RefactoringWizardOpenOperation.java:156)
+	at org.eclipse.jdt.internal.ui.refactoring.actions.RefactoringStarter.activate(RefactoringStarter.java:37)
+	at org.eclipse.jdt.internal.corext.refactoring.RefactoringExecutionStarter.startRenameResourceRefactoring(RefactoringExecutionStarter.java:441)
+	at org.eclipse.jdt.internal.ui.refactoring.actions.RenameResourceAction.run(RenameResourceAction.java:43)
+	at org.eclipse.jdt.ui.actions.RenameAction.run(RenameAction.java:110)
+	at org.eclipse.jdt.ui.actions.SelectionDispatchAction.dispatchRun(SelectionDispatchAction.java:274)
+	at org.eclipse.jdt.ui.actions.SelectionDispatchAction.run(SelectionDispatchAction.java:250)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1561)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1585)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1570)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1360)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3474)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3064)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:382)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+
+!ENTRY org.eclipse.gmf.runtime.diagram.ui 4 4 2009-04-28 13:18:39.370
+!MESSAGE execute
+!STACK 0
+org.eclipse.core.commands.ExecutionException: While executing the operation, an exception occurred
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.execute(DefaultOperationHistory.java:519)
+	at org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack.execute(DiagramCommandStack.java:205)
+	at org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack.execute(DiagramCommandStack.java:168)
+	at org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack.execute(DiagramCommandStack.java:155)
+	at org.eclipse.gef.tools.AbstractTool.executeCommand(AbstractTool.java:399)
+	at org.eclipse.gef.tools.AbstractTool.executeCurrentCommand(AbstractTool.java:411)
+	at org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool.performCreation(AbstractPopupBarTool.java:137)
+	at org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool.handleButtonUp(AbstractPopupBarTool.java:125)
+	at org.eclipse.gef.tools.AbstractTool.mouseUp(AbstractTool.java:1064)
+	at org.eclipse.gef.tools.SelectionTool.mouseUp(SelectionTool.java:544)
+	at org.eclipse.gef.EditDomain.mouseUp(EditDomain.java:263)
+	at org.eclipse.gef.ui.parts.DomainEventDispatcher.dispatchMouseReleased(DomainEventDispatcher.java:374)
+	at org.eclipse.draw2d.LightweightSystem$EventHandler.mouseUp(LightweightSystem.java:538)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:207)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1561)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1585)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1570)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1360)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3474)
+	at org.eclipse.swt.widgets.Control.sendTrackEvents(Control.java:3105)
+	at org.eclipse.swt.widgets.Control.kEventControlTrack(Control.java:2104)
+	at org.eclipse.swt.widgets.Widget.controlProc(Widget.java:375)
+	at org.eclipse.swt.widgets.Display.controlProc(Display.java:862)
+	at org.eclipse.swt.internal.carbon.OS.SendEventToEventTarget(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3047)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:382)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+Caused by: org.eclipse.core.runtime.AssertionFailedException: null argument:failed to create a view
+	at org.eclipse.core.runtime.Assert.isNotNull(Assert.java:86)
+	at org.eclipse.gmf.runtime.diagram.ui.commands.CreateCommand.doExecuteWithResult(CreateCommand.java:99)
+	at org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand.doExecute(AbstractTransactionalCommand.java:247)
+	at org.eclipse.emf.workspace.AbstractEMFOperation.execute(AbstractEMFOperation.java:157)
+	at org.eclipse.gmf.runtime.common.core.command.CompositeCommand.doExecuteWithResult(CompositeCommand.java:403)
+	at org.eclipse.gmf.runtime.common.core.command.AbstractCommand.execute(AbstractCommand.java:135)
+	at org.eclipse.gmf.runtime.common.core.command.CompositeCommand.doExecuteWithResult(CompositeCommand.java:403)
+	at org.eclipse.gmf.runtime.common.core.command.AbstractCommand.execute(AbstractCommand.java:135)
+	at org.eclipse.gmf.runtime.common.core.command.CompositeCommand.doExecuteWithResult(CompositeCommand.java:403)
+	at org.eclipse.gmf.runtime.common.core.command.AbstractCommand.execute(AbstractCommand.java:135)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.execute(DefaultOperationHistory.java:511)
+	... 45 more
+
+!ENTRY org.eclipse.ui.workbench 4 2 2009-05-04 20:04:10.105
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:3777)
+	at org.eclipse.swt.SWT.error(SWT.java:3695)
+	at org.eclipse.swt.SWT.error(SWT.java:3666)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:681)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:340)
+	at org.eclipse.swt.widgets.Menu.indexOf(Menu.java:865)
+	at org.eclipse.swt.widgets.MenuItem.setMenu(MenuItem.java:722)
+	at org.eclipse.swt.widgets.Menu.releaseParent(Menu.java:956)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1438)
+	at org.eclipse.swt.widgets.Widget.dispose(Widget.java:670)
+	at org.eclipse.swt.widgets.Decorations.releaseChildren(Decorations.java:396)
+	at org.eclipse.swt.widgets.Shell.releaseChildren(Shell.java:1327)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:1433)
+	at org.eclipse.swt.widgets.Control.release(Control.java:2528)
+	at org.eclipse.swt.widgets.Widget.dispose(Widget.java:670)
+	at org.eclipse.jface.window.Window.close(Window.java:335)
+	at org.eclipse.jface.window.ApplicationWindow.close(ApplicationWindow.java:306)
+	at org.eclipse.ui.internal.WorkbenchWindow.hardClose(WorkbenchWindow.java:1624)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:722)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$0(WorkbenchWindow.java:698)
+	at org.eclipse.ui.internal.WorkbenchWindow$3.run(WorkbenchWindow.java:814)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:812)
+	at org.eclipse.jface.window.WindowManager.close(WindowManager.java:109)
+	at org.eclipse.ui.internal.Workbench$16.run(Workbench.java:912)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:909)
+	at org.eclipse.ui.internal.Workbench.access$15(Workbench.java:838)
+	at org.eclipse.ui.internal.Workbench$23.run(Workbench.java:1082)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1080)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1052)
+	at org.eclipse.ui.internal.Workbench$56.handleEvent(Workbench.java:2253)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:3582)
+	at org.eclipse.swt.widgets.Display.coreEventProc(Display.java:869)
+	at org.eclipse.swt.internal.carbon.OS.MenuSelect(Native Method)
+	at org.eclipse.swt.widgets.Display.mouseProc(Display.java:2891)
+	at org.eclipse.swt.internal.carbon.OS.SendEventToEventTarget(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3047)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:382)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SESSION 2009-05-05 10:29:05.978 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_16
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=carbon, NL=en_US
+Framework arguments:  -keyring /Users/jsandlin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws carbon -arch x86 -keyring /Users/jsandlin/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.update.configurator 4 0 2009-05-05 10:29:26.935
+!MESSAGE /Users/jsandlin/.eclipse/532414747/plugins is not a valid plugins directory.
+
+!ENTRY org.eclipse.core.resources 2 10035 2009-05-05 10:30:34.832
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.core.net 1 0 2009-05-05 10:30:57.111
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.epp.usagedata.recording 1 0 2009-05-05 10:31:28.018
+!MESSAGE Usage data uploaded to http://udc.eclipse.org/upload.php in 11645 milliseconds.
+
+!ENTRY org.eclipse.gmf.runtime.diagram.ui 4 4 2009-05-05 16:04:52.514
+!MESSAGE execute
+!STACK 0
+org.eclipse.core.commands.ExecutionException: While executing the operation, an exception occurred
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.execute(DefaultOperationHistory.java:519)
+	at org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack.execute(DiagramCommandStack.java:205)
+	at org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack.execute(DiagramCommandStack.java:168)
+	at org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack.execute(DiagramCommandStack.java:155)
+	at org.eclipse.gef.tools.AbstractTool.executeCommand(AbstractTool.java:399)
+	at org.eclipse.gef.tools.AbstractTool.executeCurrentCommand(AbstractTool.java:411)
+	at org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool.performCreation(AbstractPopupBarTool.java:137)
+	at org.eclipse.gmf.runtime.diagram.ui.tools.AbstractPopupBarTool.handleButtonUp(AbstractPopupBarTool.java:125)
+	at org.eclipse.gef.tools.AbstractTool.mouseUp(AbstractTool.java:1064)
+	at org.eclipse.gef.tools.SelectionTool.mouseUp(SelectionTool.java:544)
+	at org.eclipse.gef.EditDomain.mouseUp(EditDomain.java:263)
+	at org.eclipse.gef.ui.parts.DomainEventDispatcher.dispatchMouseReleased(DomainEventDispatcher.java:374)
+	at org.eclipse.draw2d.LightweightSystem$EventHandler.mouseUp(LightweightSystem.java:538)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:207)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1561)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1585)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1570)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1360)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3474)
+	at org.eclipse.swt.widgets.Control.sendTrackEvents(Control.java:3105)
+	at org.eclipse.swt.widgets.Control.kEventControlTrack(Control.java:2104)
+	at org.eclipse.swt.widgets.Widget.controlProc(Widget.java:375)
+	at org.eclipse.swt.widgets.Display.controlProc(Display.java:862)
+	at org.eclipse.swt.internal.carbon.OS.SendEventToEventTarget(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3047)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:382)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+Caused by: org.eclipse.core.runtime.AssertionFailedException: null argument:failed to create a view
+	at org.eclipse.core.runtime.Assert.isNotNull(Assert.java:86)
+	at org.eclipse.gmf.runtime.diagram.ui.commands.CreateCommand.doExecuteWithResult(CreateCommand.java:99)
+	at org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand.doExecute(AbstractTransactionalCommand.java:247)
+	at org.eclipse.emf.workspace.AbstractEMFOperation.execute(AbstractEMFOperation.java:157)
+	at org.eclipse.gmf.runtime.common.core.command.CompositeCommand.doExecuteWithResult(CompositeCommand.java:403)
+	at org.eclipse.gmf.runtime.common.core.command.AbstractCommand.execute(AbstractCommand.java:135)
+	at org.eclipse.gmf.runtime.common.core.command.CompositeCommand.doExecuteWithResult(CompositeCommand.java:403)
+	at org.eclipse.gmf.runtime.common.core.command.AbstractCommand.execute(AbstractCommand.java:135)
+	at org.eclipse.gmf.runtime.common.core.command.CompositeCommand.doExecuteWithResult(CompositeCommand.java:403)
+	at org.eclipse.gmf.runtime.common.core.command.AbstractCommand.execute(AbstractCommand.java:135)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.execute(DefaultOperationHistory.java:511)
+	... 45 more
+!SESSION 2009-05-07 10:10:01.106 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_16
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=carbon, NL=en_US
+Framework arguments:  -keyring /Users/jsandlin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws carbon -arch x86 -keyring /Users/jsandlin/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.update.configurator 4 0 2009-05-07 10:10:15.886
+!MESSAGE /Users/jsandlin/.eclipse/532414747/plugins is not a valid plugins directory.
+
+!ENTRY org.eclipse.core.net 1 0 2009-05-07 10:11:10.193
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2009-05-18 13:55:41.044 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_16
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=carbon, NL=en_US
+Framework arguments:  -keyring /Users/jsandlin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws carbon -arch x86 -keyring /Users/jsandlin/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.update.configurator 4 0 2009-05-18 13:55:50.057
+!MESSAGE /Users/jsandlin/.eclipse/532414747/plugins is not a valid plugins directory.
+
+!ENTRY org.eclipse.core.net 1 0 2009-05-18 13:56:40.704
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2009-05-18 16:06:32.123 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_16
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=carbon, NL=en_US
+Framework arguments:  -keyring /Users/jsandlin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws carbon -arch x86 -keyring /Users/jsandlin/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.update.configurator 4 0 2009-05-18 16:06:33.543
+!MESSAGE /Users/jsandlin/.eclipse/532414747/plugins is not a valid plugins directory.
+
+!ENTRY org.eclipse.core.net 1 0 2009-05-18 16:06:47.701
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2009-07-23 13:04:38.104 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_19
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=carbon, NL=en_US
+Framework arguments:  -keyring /Users/jsandlin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws carbon -arch x86 -keyring /Users/jsandlin/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.equinox.p2.metadata.generator 2 0 2009-07-23 13:04:43.649
+!MESSAGE An error occurred while generating manifest for /Developer/SDKs/Eclipse/plugins/org.eclipse.emf.cdo.server.hibernate.source_1.0.0.v200806180411.
+!STACK 0
+org.eclipse.osgi.service.pluginconversion.PluginConversionException: Error parsing plugin manifest. Missing attribute "id" in element "plugin".
+	at org.eclipse.core.runtime.internal.adaptor.PluginConverterImpl.fillPluginInfo(PluginConverterImpl.java:111)
+	at org.eclipse.core.runtime.internal.adaptor.PluginConverterImpl.convertManifest(PluginConverterImpl.java:707)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.convertPluginManifest(BundleDescriptionFactory.java:67)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.loadManifest(BundleDescriptionFactory.java:161)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.getBundleDescription(BundleDescriptionFactory.java:96)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.RepositoryListener.isBundle(RepositoryListener.java:223)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.RepositoryListener.added(RepositoryListener.java:193)
+	at org.eclipse.equinox.internal.p2.extensionlocation.BundlePoolFilteredListener.added(BundlePoolFilteredListener.java:39)
+	at org.eclipse.equinox.internal.p2.extensionlocation.SiteListener.added(SiteListener.java:278)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.processFile(DirectoryWatcher.java:200)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.scanDirectories(DirectoryWatcher.java:161)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:108)
+	at org.eclipse.equinox.internal.p2.extensionlocation.ExtensionLocationMetadataRepository.ensureInitialized(ExtensionLocationMetadataRepository.java:72)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:213)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+
+!ENTRY org.eclipse.equinox.p2.metadata.generator 2 0 2009-07-23 13:04:51.119
+!MESSAGE An error occurred while generating manifest for /Developer/SDKs/Eclipse/plugins/org.eclipse.emf.cdo.server.hibernate.source_1.0.0.v200806180411.
+!STACK 0
+org.eclipse.osgi.service.pluginconversion.PluginConversionException: Error parsing plugin manifest. Missing attribute "id" in element "plugin".
+	at org.eclipse.core.runtime.internal.adaptor.PluginConverterImpl.fillPluginInfo(PluginConverterImpl.java:111)
+	at org.eclipse.core.runtime.internal.adaptor.PluginConverterImpl.convertManifest(PluginConverterImpl.java:707)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.convertPluginManifest(BundleDescriptionFactory.java:67)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.loadManifest(BundleDescriptionFactory.java:161)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.getBundleDescription(BundleDescriptionFactory.java:96)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.RepositoryListener.isBundle(RepositoryListener.java:223)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.RepositoryListener.added(RepositoryListener.java:193)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.processFile(DirectoryWatcher.java:200)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.scanDirectories(DirectoryWatcher.java:161)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:108)
+	at org.eclipse.equinox.internal.p2.extensionlocation.ExtensionLocationArtifactRepository.ensureInitialized(ExtensionLocationArtifactRepository.java:70)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:232)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+
+!ENTRY org.eclipse.core.net 1 0 2009-07-23 13:05:49.864
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.update.configurator 4 0 2009-07-23 13:59:54.177
+!MESSAGE Plugin does not have a valid identifier: plugins/org.eclipse.emf.cdo.server.hibernate.source_1.0.0.v200806180411/
+
+!ENTRY org.eclipse.update.configurator 4 0 2009-07-23 13:59:54.202
+!MESSAGE Plugin does not have a valid version: plugins/org.eclipse.emf.cdo.server.hibernate.source_1.0.0.v200806180411/
+!SESSION 2009-07-23 14:07:06.587 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_19
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=carbon, NL=en_US
+Framework arguments:  -keyring /Users/jsandlin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws carbon -arch x86 -keyring /Users/jsandlin/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.equinox.p2.metadata.generator 2 0 2009-07-23 14:07:13.520
+!MESSAGE An error occurred while generating manifest for /Developer/SDKs/Eclipse/plugins/org.eclipse.emf.cdo.server.hibernate.source_1.0.0.v200806180411.
+!STACK 0
+org.eclipse.osgi.service.pluginconversion.PluginConversionException: Error parsing plugin manifest. Missing attribute "id" in element "plugin".
+	at org.eclipse.core.runtime.internal.adaptor.PluginConverterImpl.fillPluginInfo(PluginConverterImpl.java:111)
+	at org.eclipse.core.runtime.internal.adaptor.PluginConverterImpl.convertManifest(PluginConverterImpl.java:707)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.convertPluginManifest(BundleDescriptionFactory.java:67)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.loadManifest(BundleDescriptionFactory.java:161)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.getBundleDescription(BundleDescriptionFactory.java:96)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.RepositoryListener.isBundle(RepositoryListener.java:223)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.RepositoryListener.added(RepositoryListener.java:193)
+	at org.eclipse.equinox.internal.p2.extensionlocation.BundlePoolFilteredListener.added(BundlePoolFilteredListener.java:39)
+	at org.eclipse.equinox.internal.p2.extensionlocation.SiteListener.added(SiteListener.java:278)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.processFile(DirectoryWatcher.java:200)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.scanDirectories(DirectoryWatcher.java:161)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:108)
+	at org.eclipse.equinox.internal.p2.extensionlocation.ExtensionLocationMetadataRepository.ensureInitialized(ExtensionLocationMetadataRepository.java:72)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:213)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+
+!ENTRY org.eclipse.equinox.p2.metadata.generator 2 0 2009-07-23 14:07:14.382
+!MESSAGE An error occurred while generating manifest for /Developer/SDKs/Eclipse/plugins/org.eclipse.emf.cdo.server.hibernate.source_1.0.0.v200806180411.
+!STACK 0
+org.eclipse.osgi.service.pluginconversion.PluginConversionException: Error parsing plugin manifest. Missing attribute "id" in element "plugin".
+	at org.eclipse.core.runtime.internal.adaptor.PluginConverterImpl.fillPluginInfo(PluginConverterImpl.java:111)
+	at org.eclipse.core.runtime.internal.adaptor.PluginConverterImpl.convertManifest(PluginConverterImpl.java:707)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.convertPluginManifest(BundleDescriptionFactory.java:67)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.loadManifest(BundleDescriptionFactory.java:161)
+	at org.eclipse.equinox.internal.provisional.p2.metadata.generator.BundleDescriptionFactory.getBundleDescription(BundleDescriptionFactory.java:96)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.RepositoryListener.isBundle(RepositoryListener.java:223)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.RepositoryListener.added(RepositoryListener.java:193)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.processFile(DirectoryWatcher.java:200)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.scanDirectories(DirectoryWatcher.java:161)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:108)
+	at org.eclipse.equinox.internal.p2.extensionlocation.ExtensionLocationArtifactRepository.ensureInitialized(ExtensionLocationArtifactRepository.java:70)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:232)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+
+!ENTRY org.eclipse.equinox.p2.director 2 0 2009-07-23 14:07:15.153
+!MESSAGE Problems resolving provisioning plan.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 2 0 2009-07-23 14:07:15.153
+!MESSAGE Unable to satisfy dependency from com.aptana.ide.feature.professional.feature.group 1.2.7.024688_200905101214 to requiredCapability: org.eclipse.equinox.p2.iu/com.aptana.ide.debug.core.ie/[1.1.12.024688_200905101214,1.1.12.024688_200905101214].
+
+!ENTRY org.eclipse.equinox.p2.reconciler.dropins 4 0 2009-07-23 14:07:35.711
+!MESSAGE 
+!STACK 0
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/org.eclipse.equinox.p2.reconciler.dropins_1.0.0.v20080611.jar" by thread "Start Level Event Dispatcher".
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1144)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.suspend(AbstractBundle.java:529)
+	at org.eclipse.osgi.framework.internal.core.Framework.suspendBundle(Framework.java:1104)
+	at org.eclipse.osgi.framework.internal.core.PackageAdminImpl.suspendBundle(PackageAdminImpl.java:280)
+	at org.eclipse.osgi.framework.internal.core.PackageAdminImpl.processDelta(PackageAdminImpl.java:415)
+	at org.eclipse.osgi.framework.internal.core.PackageAdminImpl.doResolveBundles(PackageAdminImpl.java:223)
+	at org.eclipse.osgi.framework.internal.core.PackageAdminImpl$1.run(PackageAdminImpl.java:162)
+	at java.lang.Thread.run(Thread.java:613)
+Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	... 8 more
+Root exception:
+org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1144)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.suspend(AbstractBundle.java:529)
+	at org.eclipse.osgi.framework.internal.core.Framework.suspendBundle(Framework.java:1104)
+	at org.eclipse.osgi.framework.internal.core.PackageAdminImpl.suspendBundle(PackageAdminImpl.java:280)
+	at org.eclipse.osgi.framework.internal.core.PackageAdminImpl.processDelta(PackageAdminImpl.java:415)
+	at org.eclipse.osgi.framework.internal.core.PackageAdminImpl.doResolveBundles(PackageAdminImpl.java:223)
+	at org.eclipse.osgi.framework.internal.core.PackageAdminImpl$1.run(PackageAdminImpl.java:162)
+	at java.lang.Thread.run(Thread.java:613)
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 0 2009-07-23 14:07:38.002
+!MESSAGE ProvisioningEventBus could not be obtained. Metadata caches may not be cleaned up properly.
+
+!ENTRY org.eclipse.equinox.p2.garbagecollector 4 0 2009-07-23 14:07:38.010
+!MESSAGE ProvisioningEventBus service could not be obtained, CoreGarbageCollector will not function properly.
+
+!ENTRY org.eclipse.ui 2 0 2009-07-23 14:07:41.631
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2009-07-23 14:07:41.632
+!MESSAGE Cannot bind to an undefined command: plug-in='com.aptana.ide.editors', id='org.eclipse.ui.edit.text.openExternalFile'
+
+!ENTRY org.eclipse.core.net 1 0 2009-07-23 14:07:53.639
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.aptana.ide.core 4 0 2009-07-23 14:08:08.517
+!MESSAGE (Build 1.2.7.024747) [ERROR] (Build 1.2.7.024747) [ERROR] An error occurred while executing a query
+!STACK 0
+ERROR 42Y55: 'DROP TABLE' cannot be performed on 'PROXY_CACHE' because it does not exist.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.sql.compile.DDLStatementNode.getTableDescriptor(Unknown Source)
+	at org.apache.derby.impl.sql.compile.DDLStatementNode.getTableDescriptor(Unknown Source)
+	at org.apache.derby.impl.sql.compile.DropTableNode.bind(Unknown Source)
+	at org.apache.derby.impl.sql.GenericStatement.prepMinion(Unknown Source)
+	at org.apache.derby.impl.sql.GenericStatement.prepare(Unknown Source)
+	at org.apache.derby.impl.sql.conn.GenericLanguageConnectionContext.prepareInternalStatement(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedStatement.execute(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedStatement.execute(Unknown Source)
+	at com.aptana.ide.core.db.AptanaDB.execute(AptanaDB.java:106)
+	at com.aptana.ide.server.jetty.portal.PortalProxyServlet.dropTable(PortalProxyServlet.java:426)
+	at com.aptana.ide.server.jetty.portal.PortalProxyServlet.initCache(PortalProxyServlet.java:330)
+	at com.aptana.ide.server.jetty.portal.PortalProxyServlet.<init>(PortalProxyServlet.java:105)
+	at com.aptana.ide.server.jetty.portal.PortalServer.start(PortalServer.java:271)
+	at com.aptana.ide.server.jetty.portal.PortalServer.getServer(PortalServer.java:366)
+	at com.aptana.ide.intro.actions.StartPortalAction.init(StartPortalAction.java:49)
+	at org.eclipse.ui.internal.WWinPluginAction.initDelegate(WWinPluginAction.java:189)
+	at org.eclipse.ui.internal.PluginAction.createDelegate(PluginAction.java:125)
+	at org.eclipse.ui.internal.PluginAction.selectionChanged(PluginAction.java:275)
+	at org.eclipse.ui.internal.WWinPluginAction.refreshSelection(WWinPluginAction.java:275)
+	at org.eclipse.ui.internal.WWinPluginAction.<init>(WWinPluginAction.java:121)
+	at org.eclipse.ui.internal.ActionDescriptor.createAction(ActionDescriptor.java:265)
+	at org.eclipse.ui.internal.ActionDescriptor.<init>(ActionDescriptor.java:176)
+	at org.eclipse.ui.internal.PluginActionSetBuilder.createActionDescriptor(PluginActionSetBuilder.java:132)
+	at org.eclipse.ui.internal.PluginActionBuilder.readElement(PluginActionBuilder.java:158)
+	at org.eclipse.ui.internal.registry.RegistryReader.readElements(RegistryReader.java:144)
+	at org.eclipse.ui.internal.registry.RegistryReader.readElementChildren(RegistryReader.java:133)
+	at org.eclipse.ui.internal.PluginActionBuilder.readElement(PluginActionBuilder.java:141)
+	at org.eclipse.ui.internal.registry.RegistryReader.readElements(RegistryReader.java:144)
+	at org.eclipse.ui.internal.PluginActionSetBuilder.readActionExtensions(PluginActionSetBuilder.java:259)
+	at org.eclipse.ui.internal.PluginActionSetBuilder.processActionSets(PluginActionSetBuilder.java:221)
+	at org.eclipse.ui.internal.ActionPresentation.setActionSets(ActionPresentation.java:187)
+	at org.eclipse.ui.internal.WorkbenchWindow.updateActionSets(WorkbenchWindow.java:3138)
+	at org.eclipse.ui.internal.WorkbenchWindow$25.run(WorkbenchWindow.java:2889)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.setActivePage(WorkbenchWindow.java:2850)
+	at org.eclipse.ui.internal.WorkbenchWindow$19.runWithException(WorkbenchWindow.java:2167)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3338)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3067)
+	at org.eclipse.ui.application.WorkbenchAdvisor.openWindows(WorkbenchAdvisor.java:803)
+	at org.eclipse.ui.internal.Workbench$27.runWithException(Workbench.java:1361)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3338)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3067)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2293)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:382)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+
+!ENTRY com.aptana.ide.intro 4 0 2009-07-23 14:08:26.308
+!MESSAGE (Build 1.2.7.024747) [ERROR] Feature store does not exist
+
+!ENTRY com.aptana.ide.server.portal 4 0 2009-07-23 14:08:29.944
+!MESSAGE (Build 1.2.7.024747) [ERROR] License Channel: Key Is No Longer Valid.
+
+!ENTRY com.aptana.ide.server.portal 4 0 2009-07-23 14:08:29.944
+!MESSAGE (Build 1.2.7.024747) [ERROR] License Channel: Key Is No Longer Valid.
+
+!ENTRY org.eclipse.ui.workbench 4 2 2009-07-23 14:08:32.039
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.IllegalStateException: Aptana Studio Professional is not licensed.  No key found.
+	at com.aptana.ide.intro.licensing.TrialKeyStartup.earlyStartup(TrialKeyStartup.java:84)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:87)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ui.internal.Workbench$54.run(Workbench.java:2169)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui 4 4 2009-07-23 14:08:32.041
+!MESSAGE Unhandled Exception
+
+!ENTRY com.aptana.ide.intro 4 0 2009-07-23 14:08:32.041
+!MESSAGE Unable to execute early startup code for an extension
+!STACK 0
+java.lang.IllegalStateException: Aptana Studio Professional is not licensed.  No key found.
+	at com.aptana.ide.intro.licensing.TrialKeyStartup.earlyStartup(TrialKeyStartup.java:84)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:87)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ui.internal.Workbench$54.run(Workbench.java:2169)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2009-07-27 12:06:00.707 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_19
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=carbon, NL=en_US
+Framework arguments:  -keyring /Users/jsandlin/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws carbon -arch x86 -keyring /Users/jsandlin/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.ui 2 0 2009-07-27 12:06:55.373
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2009-07-27 12:06:55.373
+!MESSAGE Cannot bind to an undefined command: plug-in='com.aptana.ide.editors', id='org.eclipse.ui.edit.text.openExternalFile'
+
+!ENTRY org.eclipse.core.net 1 0 2009-07-27 12:07:36.314
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.aptana.ide.intro 4 0 2009-07-27 12:08:18.358
+!MESSAGE (Build 1.2.7.024747) [ERROR] null
+
+!ENTRY com.aptana.ide.server.portal 4 0 2009-07-27 12:08:39.238
+!MESSAGE (Build 1.2.7.024747) [ERROR] License Channel: Days Left:27
+
+!ENTRY com.aptana.ide.server.portal 4 0 2009-07-27 12:08:39.329
+!MESSAGE (Build 1.2.7.024747) [ERROR] License Channel: Days Left:27
+
+!ENTRY com.aptana.ide.server.portal 4 0 2009-07-27 12:08:39.406
+!MESSAGE (Build 1.2.7.024747) [ERROR] License Channel: Key is valid but unable to get calendar from the key's expiration.
+
+!ENTRY com.aptana.ide.server.portal 4 0 2009-07-27 12:08:39.459
+!MESSAGE (Build 1.2.7.024747) [ERROR] License Channel: Key is valid but unable to get calendar from the key's expiration.
+
+!ENTRY org.eclipse.core.jobs 4 2 2009-07-27 12:09:14.405
+!MESSAGE An internal error occurred during: "Searching for updates".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.update.search.UpdateSearchRequest.performSearch(UpdateSearchRequest.java:287)
+	at org.eclipse.update.ui.UpdateJob.runUpdates(UpdateJob.java:207)
+	at org.eclipse.update.ui.UpdateJob.run(UpdateJob.java:168)
+	at com.aptana.ide.core.ui.update.AutomaticUpdateJob.run(AutomaticUpdateJob.java:143)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)

@@ -1,0 +1,119 @@
+#
+# Author: Barry Searle
+#
+# (C) Copyright IBM Corp. 2004,2007 - All Rights Reserved.
+# DISCLAIMER:
+# The following source code is sample code created by IBM Corporation.
+# This sample code is not part of any standard IBM product and is provided
+# to you solely for the purpose of assisting you in the development of your
+# applications. The code is provided 'AS IS', without warranty or condition
+# of any kind. IBM shall not be liable for any damages arising out of your
+# use of the sample code, even if IBM has been advised of the possibility of
+# such damages.
+#
+# Change History:
+# 3.1 (08may2007) added POST-APP-INSTALL scriptLoad+scriptCall
+# 3.1 (08may2007) moved installOptions from getTargets
+# 2.0 (10feb2006) code cleanup, no functional change
+# 2.0 (10feb2006) API: changed WebModuleName test into ModuleName
+# 1.1 (17nov2004) initial shipped version
+#
+
+
+proc PreValidateSettingsFile { appName depType distDir  } {
+        set ext ".settings"
+        set  settingsFileName $distDir/$appName$depType$ext
+
+        if { [file isfile $settingsFileName]==0 } {
+                set msg "PreValidateSettingsFile: ERROR: is not a file, settingsFileName=$settingsFileName"
+                fail $msg
+        }
+        if { [file exists $settingsFileName]==0 } {
+                set msg "PreValidateSettingsFile: ERROR: does not exist, settingsFileName=$settingsFileName"
+                fail $msg
+        }
+        if { [file readable $settingsFileName]==0 } {
+                set msg "PreValidateSettingsFile: ERROR: cannot read settingsFileName=$settingsFileName"
+                fail $msg
+        }
+}
+
+proc processSettingsFileInstallOptions { appName depType distDir } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        set installOptions [processSettingsFile $appName $depType $distDir $false]
+        return $installOptions
+}
+
+proc processSettingsFile { appName depType distDir performSet } {
+        global ScriptLocation;  source "$ScriptLocation/Definitions.jacl"
+        PreValidateSettingsFile $appName $depType $distDir
+        set ext ".settings"
+        set  settingsFileName $distDir/$appName$depType$ext
+        log $INFO_ ""
+        if { $performSet==$true } { log $MAJOR_ "processSettingsFile: settingsFileName=$settingsFileName" }
+        set objectType "?"
+        set objectName "?"
+        set showSetResult $false
+        set appName "?"
+        set installOptions ""
+
+        set temp [catch {open $settingsFileName r} fd]
+        if { $temp == 0 } {
+                set more $true
+        } else {
+                set more $false
+                set msg "ERROR: processSettingsFile: attempting to read settingsFileName=$settingsFileName"
+                fail $msg
+                exit -1
+        }
+        while {$more} {
+                if { [eof $fd] } {
+                        set more $false
+                }
+                set line [gets $fd]
+                set line [string trim $line]
+                set comment [string first "#" $line]
+                if { $comment==0 } {
+                        set line ""
+                }
+                set i [string first "=" $line]
+                if { $i>0 } {
+                        set attrib [string range $line 0 [expr $i-1] ]
+                        set attrib [string trim $attrib]
+                        set value  [string range $line [expr $i+1] end]
+                        if { $attrib == "ApplicationName" } {
+                                set objectName $value
+                                set objectType "Application"
+                                if { $performSet==$true } { log $VERBOSE_ "processSettingsFile: objectType=$objectType objectName=$objectName" }
+                                set appName $value
+                        } elseif { $attrib == "ModuleName" } {
+                                set objectName $value
+                                set objectType "Module"
+                                if { $performSet==$true } { log $VERBOSE_ "processSettingsFile: objectType=$objectType objectName=$objectName" }
+                        } elseif { $attrib == "showSetResult"  } {
+                                if { $value == "true" || $value == "TRUE" ||$value == "1" } {
+                                        set value 1
+                                } else { set value 0 }
+                                set showSetResult $value
+                                if { $performSet==$true } { log $VERBOSE_ "processSettingsFile: showSetResult=$showSetResult" }
+                        } elseif {$attrib=="installOption"} {
+                                if { $performSet!=$true } { log $VERBOSE_ "processSettingsFile: installOption=$value" }
+                                set installOptions "$installOptions $value"
+                        } else {
+                                if { $performSet==$true } { log $VERBOSE_ "processSettingsFile: attribute=$attrib  value=$value  objectType=$objectType  objectName=$objectName  showSetResult=$showSetResult" }
+                                if { $performSet==$true } { setAttribute $objectName $objectType $attrib $value $appName $showSetResult }
+                        }
+                } else {
+                        if { "" == $line } {
+                                #log $DEBUG_ "BLANK line"
+                        } else {
+                                set msg "processSettingsFile: ERROR(MISSING'='):  line=$line   propertyfile=$settingsFileName "
+                                log $ERROR_ $msg
+                                fail $msg
+                        }
+                }
+        }
+        log $VERBOSE_ "processSettingsFile: DONE."
+        close $fd
+        return $installOptions
+}

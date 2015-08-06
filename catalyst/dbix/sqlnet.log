@@ -1,0 +1,38 @@
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(ADDRESS=(HOST=165.184.34.104)(PROTOCOL=tcp)(PORT=1522))(CONNECT_DATA=(SERVICE_NAME=DTE2)(CID=(PROGRAM=perl)(HOST=james-sandlins-macbook-pro.local)(USER=jsandlin))))
+
+  VERSION INFORMATION:
+	TNS for MacOS X Server: Version 10.2.0.4.0 - Production
+	TCP/IP NT Protocol Adapter for MacOS X Server: Version 10.2.0.4.0 - Production
+  Time: 06-OCT-2009 12:26:05
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: Message 12560 not found; No message file for product=network, facility=TNS
+    ns secondary err code: 0
+    nt main err code: 538
+    TNS-00538: Message 538 not found; No message file for product=network, facility=TNS
+    nt secondary err code: 65
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12560, connecting to:
+ (DESCRIPTION=(ADDRESS=(HOST=165.184.34.104)(PROTOCOL=tcp)(PORT=1522))(CONNECT_DATA=(SERVICE_NAME=DTE2)(CID=(PROGRAM=perl)(HOST=james-sandlins-macbook-pro.local)(USER=jsandlin))))
+
+  VERSION INFORMATION:
+	TNS for MacOS X Server: Version 10.2.0.4.0 - Production
+	TCP/IP NT Protocol Adapter for MacOS X Server: Version 10.2.0.4.0 - Production
+  Time: 06-OCT-2009 12:26:05
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12560
+    TNS-12560: Message 12560 not found; No message file for product=network, facility=TNS
+    ns secondary err code: 0
+    nt main err code: 538
+    TNS-00538: Message 538 not found; No message file for product=network, facility=TNS
+    nt secondary err code: 65
+    nt OS err code: 0

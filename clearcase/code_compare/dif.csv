@@ -1,0 +1,84 @@
+Compare M:\Jordan.M.Klein_TIERS_Project_IPT_dyn with M:\Jordan.M.Klein_TIERS_Project_APT_dyn
+6/28/2006 12:36:20 PM
+Filename,Directory,Comparison result,Left Date,Right Date,Extension
+DiagnosisCode2.java.keep.1,TIERS_entity\tiersWeb\JavaSource\us\tx\state\dhs\tiers\presentation\view\pageelements,Only in M:\Jordan.M.Klein_TIERS_Project_IPT_dyn\TIERS_entity\tiersWeb\JavaSource\us\tx\state\dhs\tiers\presentation\view\pageelements,* 6/16/2006 2:38:46 PM,,1
+nfdt.xml.bak,TIERS_entity\tiersWeb\WebContent\XML\rules,Only in M:\Jordan.M.Klein_TIERS_Project_IPT_dyn\TIERS_entity\tiersWeb\WebContent\XML\rules,* 6/15/2006 10:59:14 AM,,bak
+nfdt.xml.merge,TIERS_entity\tiersWeb\WebContent\XML\rules,Only in M:\Jordan.M.Klein_TIERS_Project_IPT_dyn\TIERS_entity\tiersWeb\WebContent\XML\rules,* 6/15/2006 11:31:40 AM,,merge
+tanfdt.xml.bak,TIERS_entity\tiersWeb\WebContent\XML\rules,Only in M:\Jordan.M.Klein_TIERS_Project_IPT_dyn\TIERS_entity\tiersWeb\WebContent\XML\rules,* 6/15/2006 10:59:16 AM,,bak
+EdIndvBudPayExpHelper.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Only in M:\Jordan.M.Klein_TIERS_Project_APT_dyn\TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,,* 5/22/2006 10:16:57 AM,java
+MecmAddressBookXlationAndLoad.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Only in M:\Jordan.M.Klein_TIERS_Project_APT_dyn\TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,,* 6/2/2006 11:40:35 AM,java
+CV-IC3LB-COR_sort.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Only in M:\Jordan.M.Klein_TIERS_Project_APT_dyn\TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,,* 5/22/2006 11:16:21 AM,ksh
+CV-MECMX-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Only in M:\Jordan.M.Klein_TIERS_Project_APT_dyn\TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,,* 6/12/2006 10:17:51 PM,ksh
+DiagnosisBeginDt.java,TIERS_entity\tiersWeb\JavaSource\us\tx\state\dhs\tiers\presentation\view\pageelements,Files are different,* 6/16/2006 2:46:23 PM,5/15/2006 1:39:09 PM,java
+DiagnosisEndDt.java,TIERS_entity\tiersWeb\JavaSource\us\tx\state\dhs\tiers\presentation\view\pageelements,Files are different,* 6/16/2006 2:46:23 PM,5/15/2006 1:39:09 PM,java
+arErrorCodes.js,TIERS_entity\tiersWeb\WebContent\js,Files are different,* 6/14/2006 5:33:22 PM,5/22/2006 6:23:18 PM,js
+DCVCLIndividualVerificationChecklist.jsp,TIERS_entity\tiersWeb\WebContent\jsp\dc\dcwrapup,Files are different,* 6/22/2006 2:47:16 PM,6/21/2006 4:50:47 PM,jsp
+DCUIAUnearnedIncDetails.jsp,TIERS_entity\tiersWeb\WebContent\jsp\dc\income,Files are different,9/27/2005 11:56:57 AM,* 5/30/2006 3:02:32 PM,jsp
+DCADDMainAddressBook.jsp,TIERS_entity\tiersWeb\WebContent\jsp\dc\miscellaneous,Files are different,9/27/2005 11:58:03 AM,* 6/15/2006 5:35:52 PM,jsp
+DCPRUPRA.jsp,TIERS_entity\tiersWeb\WebContent\jsp\dc\nonfinancial,Files are different,10/24/2005 2:20:28 PM,* 5/27/2006 5:09:03 PM,jsp
+DCRTDTrustResourceDet.jsp,TIERS_entity\tiersWeb\WebContent\jsp\dc\resources,Files are different,9/27/2005 11:57:44 AM,* 5/30/2006 4:19:26 PM,jsp
+opsdt.xml,TIERS_entity\tiersWeb\WebContent\XML\rules,Files are different,* 6/14/2006 9:40:56 PM,5/25/2006 5:11:21 PM,xml
+tanfdt.xml,TIERS_entity\tiersWeb\WebContent\XML\rules,Files are different,* 6/15/2006 12:02:10 PM,6/5/2006 12:06:21 PM,xml
+vcldt.xml,TIERS_entity\tiersWeb\WebContent\XML\rules,Files are different,6/15/2006 1:26:18 PM,* 6/26/2006 9:55:12 AM,xml
+vcledd.xml,TIERS_entity\tiersWeb\WebContent\XML\rules,Files are different,6/15/2006 1:26:18 PM,* 6/26/2006 9:30:14 AM,xml
+EDDataReader.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ed,Files are different,* 6/26/2006 11:01:25 AM,6/23/2006 3:51:57 PM,java
+EDDataWriter.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ed,Files are different,* 6/26/2006 11:01:25 AM,6/26/2006 9:19:05 AM,java
+EdUtil.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ed,Files are different,6/15/2006 1:26:18 PM,* 6/23/2006 11:23:24 AM,java
+IEdEligCodes.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ed,Files are different,* 6/26/2006 11:01:25 AM,6/23/2006 11:23:24 AM,java
+VCLFinIncomeLoader.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ed,Files are different,6/15/2006 1:26:18 PM,* 6/21/2006 4:50:47 PM,java
+EgDataHandler.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\eg,Files are different,* 6/15/2006 1:37:50 PM,5/25/2006 5:11:21 PM,java
+EgUnloader.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\eg,Files are different,2/20/2006 1:01:21 PM,* 6/26/2006 9:19:05 AM,java
+UnauthorisedEligDetail.java,TIERS_track01\track01EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\eg,Files are different,6/20/2006 12:15:48 PM,* 6/23/2006 3:51:57 PM,java
+DcAddressBO.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\dc,Files are different,10/24/2005 2:11:46 PM,* 6/23/2006 12:10:24 PM,java
+DcInfoSupplierBO.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\dc,Files are different,10/24/2005 2:11:25 PM,* 5/26/2006 11:45:25 AM,java
+DcValueCustomFilter.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\dc,Files are different,6/22/2006 2:47:16 PM,* 6/26/2006 6:27:07 PM,java
+DcVerificationChecklistBO.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\dc,Files are different,6/22/2006 2:47:16 PM,* 6/23/2006 12:10:24 PM,java
+QueueManagerFactory.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\driver\queue,Files are different,* 6/14/2006 11:13:09 PM,5/26/2006 11:45:25 AM,java
+DcDriverSessionEJBBean.java,TIERS_track03\track03EJB\ejbModule\us\tx\state\dhs\tiers\business\services\driver,Files are different,* 6/22/2006 2:51:54 PM,5/15/2006 5:16:12 PM,java
+PendingVerificationCargo.java,TIERS_track04\track04EJB\ejbModule\us\tx\state\dhs\tiers\business\entities\correspondence,Files are different,1/18/2006 2:54:17 PM,* 6/13/2006 12:20:39 AM,java
+FXX032Assembler.java,TIERS_track04\track04EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\co,Files are different,5/11/2006 2:40:38 PM,* 6/14/2006 10:49:52 AM,java
+ApplicationBO.java,TIERS_track06\track06EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\ar,Files are different,12/30/2005 9:57:00 AM,* 6/23/2006 12:10:24 PM,java
+CommonTranslation.java,TIERS_track09\track09EJB\ejbModule\us\tx\state\dhs\tiers\business\rules\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 5:04:21 PM,java
+CaseAssignmentDAO.java,TIERS_track09\track09EJB\ejbModule\us\tx\state\dhs\tiers\data\oracle\mci,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 3:50:47 PM,java
+CvEdMciEdgIndividualDAO.java,TIERS_track09\track09EJB\ejbModule\us\tx\state\dhs\tiers\data\oracle\mci,Files are different,10/27/2005 3:51:33 PM,* 5/5/2006 3:35:06 PM,java
+GWSValidate.java,TIERS_track09\track9Common\us\tx\state\dhs\cv\gws,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,java
+CaseAssignmentController.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 3:50:47 PM,java
+CaseEdgeIndvLoad.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Files are different,6/15/2006 4:54:00 PM,* 6/23/2006 2:13:32 PM,java
+CEILoadUpdates.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Files are different,4/25/2006 3:29:18 PM,* 5/22/2006 10:16:57 AM,java
+DcCaseXlation.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Files are different,6/15/2006 1:05:12 PM,* 6/20/2006 4:49:15 PM,java
+EdEligibilityXlation.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Files are different,* 6/15/2006 4:54:00 PM,5/22/2006 5:06:05 PM,java
+InactiveClientLoad.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Files are different,* 6/15/2006 4:54:00 PM,5/9/2006 11:18:11 AM,java
+IncomeResLoadUpdates.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Files are different,6/15/2006 4:54:00 PM,* 6/20/2006 3:45:15 PM,java
+InterimLoad.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Files are different,10/24/2005 2:17:20 PM,* 5/5/2006 3:36:10 PM,java
+MergeFiles.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,java
+MergeListFiles.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:36:08 AM,java
+SaveRRCaseData.java,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\batch\cv,Files are different,10/24/2005 2:17:27 PM,* 5/22/2006 5:06:05 PM,java
+CV-GWS01-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,ksh
+CV-GWS02-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,ksh
+CV-GWS03-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,ksh
+CV-GWS04-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,ksh
+CV-GWS05-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,ksh
+CV-GWS06-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,ksh
+CV-GWS07-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,ksh
+CV-GWS08-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,ksh
+CV-GWS09-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,ksh
+CV-GWS10-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/9/2006 4:50:08 PM,ksh
+CV-IC201-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC202-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC203-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC204-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC205-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC206-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC207-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC208-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC209-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC301-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC302-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC303-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC304-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC305-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC306-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC307-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC308-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+CV-IC309-COR.ksh,TIERS_track09\track9Common\us\tx\state\dhs\tiers\business\scripts\cv,Files are different,* 6/15/2006 4:54:00 PM,6/2/2006 11:38:06 AM,ksh
+ShApptControllerServiceEJBBean.java,TIERS_trackws\trackwsEJB\ejbModule\us\tx\state\hhsc\ie\integration\business\services\sh,Files are different,4/25/2006 3:29:18 PM,* 5/15/2006 1:31:30 PM,java

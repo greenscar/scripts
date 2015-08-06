@@ -1,0 +1,27 @@
+#!/usr/bin/ksh
+#
+# This script goes in and removes Windows New line Chars and changes ENV to the arg provided
+#
+# @author: James Sandlin
+# created: 2006-11-30
+# company: Accenture
+#
+#
+if [ $# -ne 1 ]; then
+   echo 1>&2 Usage: cleanup_all.ksh ENV_NAME
+   exit 127
+fi
+
+echo "Removing CTRL-M from *.ksh"
+find /TIERS/$1 -type f -name "*.ksh" -exec perl -pi -e "s/\015\012/\012/g" {} \;
+echo "Removing CTRL-M from *.properties"
+find /TIERS/$1 -type f -name "*.properties" -exec perl -pi -e "s/\015\012/\012/g" {} \;
+echo "Removing CTRL-M from *.xml"
+find /TIERS/$1 -type f -name "*.xml" -exec perl -pi -e "s/\015\012/\012/g" {} \;
+
+echo "Changing ENV to $1 in *.ksh"
+find /TIERS/$1 -type f -name "*.ksh" -exec perl -pi -e "s/ENV/$1/g" {} \;
+
+echo "Changing ENV to $1 in *.properties"
+find /TIERS/$1 -type f -name "*.properties" -exec perl -pi -e "s/ENV/$1/g" {} \;
+

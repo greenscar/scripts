@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <title>Deploy List or "CMDB"</title>
+    <link rel="stylesheet" href="http://iedaau020.txaccess.net:6666/static/css/main.css" />
+</head>
+
+<body>
+
+<div id="Header">HHSC CMDB</div>
+
+
+<div id="Content">
+   
+        <span class="message"></span>
+        <span class="error"></span>
+                <table>
+<tr>
+   <th>Application</th>
+   <th>Environment</th>
+   <th>Baseline</th>
+   <th>Time</th>
+   <th>BF Job</th>
+</tr>
+
+<tr>
+   <td></td>
+   <td></td>
+   <td>bl1</td>
+   <td>26-AUG-09 03.53.54.274047 PM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bl1</td>
+   <td>26-AUG-09 04.03.15.072666 PM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bl1</td>
+   <td>26-AUG-09 04.03.55.526540 PM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bl3</td>
+   <td>26-AUG-09 05.03.02.459603 PM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bl12345</td>
+   <td>31-AUG-09 10.56.25.928551 AM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bladfw234234w</td>
+   <td>31-AUG-09 10.59.09.891647 AM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bl12345</td>
+   <td>31-AUG-09 10.59.19.031120 AM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bladfw234234w</td>
+   <td>31-AUG-09 02.15.58.113909 PM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bl12345</td>
+   <td>31-AUG-09 02.30.32.474493 PM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bl12345</td>
+   <td>31-AUG-09 02.31.48.172432 PM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bl12345</td>
+   <td>31-AUG-09 02.31.55.829562 PM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bl12345</td>
+   <td>31-AUG-09 02.32.00.635759 PM</td>
+   <td></td>
+</tr>
+<tr>
+   <td></td>
+   <td></td>
+   <td>bl12345</td>
+   <td>31-AUG-09 02.32.11.698944 PM</td>
+   <td></td>
+</tr>
+<table>
+</div><!-- end Content -->
+
+<div id="Menu">
+      <img src="http://iedaau020.txaccess.net:6666/static/images/ritm_floorida.bmp" />
+   <ul>
+   <li>
+      <a href="http://iedaau020.txaccess.net:6666/database/list">DB List</a>
+   </li>
+   <li>
+      <a href="http://iedaau020.txaccess.net:6666/dbmigration/report">MIG Env Report</a>
+   </li>
+   <li>
+      <a href="http://iedaau020.txaccess.net:6666/dbmigration/mig_compare_formfu">MIG Diff</a>
+   </li>
+   <li>
+      <a href="http://iedaau020.txaccess.net:6666/dm/report">Deployments</a>
+   
+   </li>
+   
+</div><!-- end Menu -->
+</body>
+</html>

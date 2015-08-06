@@ -1,0 +1,25 @@
+#Requisite connection properties for messaging framework
+
+queueConnectionFactory	= com.ibm.mq.jms.MQQueueConnectionFactory
+queuePort			= 1415
+queueTransport		= JMSC.MQJMS_TP_CLIENT_MQ_TCPIP
+queueCcsId			= 819
+
+
+# Production MQ Configurations
+queueHost	= 165.184.34.212
+queueChannel	= D090706RBAT.CHL
+queueManager	= DHS.TIERS.PRD2
+ 
+#queueHost	= prd-mq02
+
+timeout.length = 5000
+header.remove = on
+
+commit.producer=1
+commit.consumer.sync=1
+commit.consumer.async=1
+
+user.name=mqm
+user.password=tiersapp
+mciQueue=stop

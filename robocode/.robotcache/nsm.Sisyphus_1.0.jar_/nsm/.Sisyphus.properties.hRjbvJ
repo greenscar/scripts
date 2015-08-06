@@ -1,0 +1,8 @@
+#Robot Properties
+#Sat Jul 07 04:25:05 CDT 2007
+robot.description=Nick Moore
+robocode.version=1.0.7
+robot.java.source.included=true
+robot.version=1.0
+robot.author.name=
+robot.classname=nsm.Sisyphus

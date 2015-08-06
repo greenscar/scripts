@@ -1,0 +1,49 @@
+constraints   Required
+<elements>
+   <constraints>
+      min   5
+      max   40
+      type   Length
+      message   Length must be between 5 and 40 characters
+   </constraints>
+   filter   TrimEdges
+   filter   HTMLEscape
+   name   title
+   type   Text
+   label   Title
+   <attributes>
+      title   Enter a book title here
+   </attributes>
+</elements>
+<elements>
+   <constraints>
+      min   1
+      max   5
+      type  Range
+      message  Must be between 1 and 5
+   </constraints>
+   filter   TrimEdges
+   filter   NonNumeric
+   name   rating
+   type   Text
+   label   Rating
+   <attributes>
+      title   Enter a rating between 1 and 5 here
+   </attributes>
+</elements>
+<elements>
+   constraints   Integer
+   filter   TrimEdges
+   filter   HTMLEscape
+   name   authors
+   type   Select
+   label   Author
+   multiple   1
+   size   3
+</elements>
+<elements>
+   value   Submit
+   name   submit
+   type   Submit
+</elements>
+indicator   submit
