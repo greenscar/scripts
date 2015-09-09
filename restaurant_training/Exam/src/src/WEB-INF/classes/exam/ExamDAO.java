@@ -1,4 +1,4 @@
-/* Shari's ses_EXAM System
+/* place's ses_EXAM System
  * ExamDAO.java
  *
  * Created on September 22, 2003, 1:55 PM
