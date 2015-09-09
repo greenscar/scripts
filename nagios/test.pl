@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
  
 ### test.pl
-# James Sandlin <james.sandlin@theplatform.com>
+# James Sandlin <james.sandlin@app.com>
 #
 # Simply a test to learn Nagios / Zenoss scripting 
 #

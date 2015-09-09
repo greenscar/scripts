@@ -5,7 +5,7 @@
 #########################################################################
 
 response.title = request.application
-response.subtitle = T('thePlatform')
+response.subtitle = T('app')
 
 ##########################################
 ## this is the main application menu

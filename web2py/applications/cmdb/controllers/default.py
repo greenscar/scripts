@@ -17,7 +17,7 @@ def index():
     rendered by views/default/index.html or views/generic.html
     """
     response.flash = T('Welcome to web2py')
-    return dict(message=T('thePlatform CMDB'))
+    return dict(message=T('app CMDB'))
 
 
 def user():

@@ -329,7 +329,7 @@ ALL = (
     'MONTH',
     'MORE',
     'MOVE',
-    'MUMPS',
+    'MUapp',
 
     'NAMES',
     'NATIONAL',
@@ -1025,7 +1025,7 @@ POSTGRESQL_NONRESERVED = (
     'MORE',
     'MOVE',
     'MULTISET',
-    'MUMPS',
+    'MUapp',
     'NAME',
     'NAMES',
     'NAMESPACE',

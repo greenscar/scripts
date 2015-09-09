@@ -3,7 +3,7 @@
 #############################################################################
 #
 # Script:        blcompare.pl
-# Author:        Jordan Klein <jordan.m.klein@accenture.com>
+# Author:        Jordan Klein <jordan.m.klein@company.com>
 # Company:       Accenture
 # Project:       Texas ACCESS Alliance
 # Date written:  08/08/2006

@@ -2,7 +2,7 @@
 
 # Script:   autobuild.pl
 # Version:  2.1
-# Author:   Jordan Klein <jordan.m.klein@accenture.com>
+# Author:   Jordan Klein <jordan.m.klein@company.com>
 # Date:     03/09/2007
 # Purpose:  Automatically generates a baseline in a pseudo integration stream
 #           with all unlabeled activities selected as members.  After
@@ -109,7 +109,7 @@ use Net::hostent;
 # Constants are all uppercase
 $VERSION      = "2.1";
 $VERSION_DATE = "03/09/2007";
-$AUTHOR       = "Jordan Klein <Jordan.M.Klein\@accenture.com>";
+$AUTHOR       = "Jordan Klein <Jordan.M.Klein\@company.com>";
 $USER         = scalar getpwuid($<);
 $HOME         = "/home/$USER";
 $HARMONY      = "/home/$USER/tiersbuild/harmony";
