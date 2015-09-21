@@ -26,4 +26,4 @@ def getAllImages(url):
 
 
 print "getAllImages"
-getAllImages("http://www.glam0ur.com/sasha-cane")
+getAllImages("http://www.digg.com/pics")
